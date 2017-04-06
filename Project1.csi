@@ -1,3 +1,27 @@
 [History]
-1=#P0#=mb	#P1#=Form_Load	#P2#=Project1/Form1/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406195534	#P7#=0	#P8#=17	.
-2=#P0#=mb	#P1#=getCommPortList	#P2#=Project1/Registry/getCommPortList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406195252	#P7#=0	#P8#=26	.
+1=#P0#=mb	#P1#=TextLength	#P2#=Project1/uTextBox/TextLength [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406222953	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=txtReceived_Changed	#P2#=Project1/Form1/txtReceived_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406221859	#P7#=0	#P8#=8	.
+3=#P0#=mb	#P1#=UserControl_Initialize	#P2#=Project1/uTextBox/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406220930	#P7#=0	#P8#=17	.
+4=#P0#=mb	#P1#=FileToString	#P2#=Project1/uTextBox/FileToString	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220626	#P7#=0	#P8#=4	.
+5=#P0#=mb	#P1#=SetTopMostWindow	#P2#=Project1/uGlobals/SetTopMostWindow	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220428	#P7#=0	#P8#=13	.
+6=#P0#=mb	#P1#=ReCalculateWords	#P2#=Project1/uTextBox/ReCalculateWords	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220317	#P7#=0	#P8#=13	.
+7=#P0#=mb	#P1#=Form_Load	#P2#=Project1/Form1/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406220146	#P7#=0	#P8#=11	.
+8=#P0#=mb	#P1#=Redraw	#P2#=Project1/uTextBox/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406222034	#P7#=0	#P8#=251	.
+9=#P0#=mb	#P1#=scrollTest_Scroll	#P2#=Project1/Form1/scrollTest_Scroll	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406214631	#P7#=0	#P8#=-1	.
+10=#P0#=mb	#P1#=Form_Resize	#P2#=Project1/Form1/Form_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406214530	#P7#=0	#P8#=-3	.
+11=#P0#=mb	#P1#=comm_OnComm	#P2#=Project1/Form1/comm_OnComm	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406213756	#P7#=0	#P8#=6	.
+12=#P0#=mb	#P1#=ReCalculateMarkup	#P2#=Project1/uTextBox/ReCalculateMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406213341	#P7#=0	#P8#=1	.
+13=#P0#=mb	#P1#=UserControl_DblClick	#P2#=Project1/uTextBox/UserControl_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406213325	#P7#=0	#P8#=1	.
+14=#P0#=mb	#P1#=fillCommportList	#P2#=Project1/Form1/fillCommportList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406212516	#P7#=0	#P8#=69	.
+15=#P0#=mb	#P1#=fillBaudList	#P2#=Project1/Form1/fillBaudList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406211756	#P7#=0	#P8#=-2	.
+16=#P0#=mb	#P1#=Text	#P2#=Project1/uTextBox/Text [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406222128	#P7#=0	#P8#=0	.
+17=#P0#=mb	#P1#=Text	#P2#=Project1/uTextBox/Text [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406210759	#P7#=0	#P8#=1	.
+18=#P0#=mb	#P1#=AddCharAtCursor	#P2#=Project1/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406210556	#P7#=0	#P8#=0	.
+19=#P0#=mb	#P1#=drpCommports_ItemChange	#P2#=Project1/Form1/drpCommports_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406210218	#P7#=0	#P8#=1	.
+20=#P0#=mb	#P1#=cmdConnect_Click	#P2#=Project1/Form1/cmdConnect_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406210132	#P7#=0	#P8#=-1	.
+21=#P0#=mb	#P1#=drpBaud_ItemChange	#P2#=Project1/Form1/drpBaud_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406210034	#P7#=0	#P8#=2	.
+22=#P0#=mb	#P1#=chkDTR_ActivateNextState	#P2#=Project1/Form1/chkDTR_ActivateNextState	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406205913	#P7#=0	#P8#=2	.
+23=#P0#=mb	#P1#=txtReceived_KeyDown	#P2#=Project1/Form1/txtReceived_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406205524	#P7#=0	#P8#=3	.
+24=#P0#=mb	#P1#=txtReceived_KeyPress	#P2#=Project1/Form1/txtReceived_KeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406205504	#P7#=0	#P8#=1	.
+25=#P0#=mb	#P1#=Redraw	#P2#=Project1/uDropDown/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406203432	#P7#=0	#P8#=89	.
+26=#P0#=mb	#P1#=getCommPortList	#P2#=Project1/Registry/getCommPortList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406195252	#P7#=0	#P8#=26	.

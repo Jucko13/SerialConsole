@@ -1,0 +1,30 @@
+
+Cloud computing:
+	ik: 	
+	sheets:	een handige manier om met een simpele netwerkverbinding een hele infrastructuur aan computing resources (switches, servers, storage and services) in te kunnen stellen. 
+	
+	
+NIST:
+	wat is het: National Institute of Standards and technology
+	Garandeerd (5 kenmerken):
+		on-demand self-service
+		Rapid elasticity
+		Broad network access
+		resource pooling
+		measured service
+		
+	Cloud service modellen:
+		SAAS: Cloud Software as a Service
+		PAAS: Cloud Platform as a Service
+		IAAS: Cloud Infrastructure as a Service
+		
+	
+	Saas:
+		Software on demand
+		Gebruiker hoeft zelf geen software aan te schaffen maar heeft een contract per maand ofzoiets
+		
+		Voorbeeld: Microsoft Office 365
+		
+	
+	Paas:
+		
