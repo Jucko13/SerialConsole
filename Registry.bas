@@ -93,7 +93,7 @@ Declare Function RegCloseKey Lib "advapi32.dll" _
 
 Declare Function SendMessage Lib "user32" _
    Alias "SendMessageA" _
-  (ByVal hwnd As Long, _
+  (ByVal hWnd As Long, _
    ByVal wMsg As Long, _
    ByVal wParam As Long, _
    lParam As Any) As Long
@@ -105,13 +105,13 @@ Declare Function RegEnumValue Lib "advapi32.dll" Alias "RegEnumValueA" (ByVal hK
 
 
 
-Sub getCommPortList(ByRef resultList() As String)
+Function getCommPortList(ByRef resultList() As String)
     Dim subkeys As Collection
     Dim subkey_values As Collection
     Dim subkey_num As Integer
     Dim subkey_name As String
     Dim subkey_value As String
-    Dim length As Long
+    Dim Length As Long
     Dim hKey As Long
     Dim txt As String
     Dim subkey_txt As String
@@ -129,7 +129,7 @@ Sub getCommPortList(ByRef resultList() As String)
     
     If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "HARDWARE\DEVICEMAP\SERIALCOMM", 0&, KEY_ALL_ACCESS, hKey) <> ERROR_SUCCESS Then
         getCommPortList = ""
-        Exit Sub
+        Exit Function
     End If
     
     value_num = 0
@@ -162,4 +162,4 @@ Sub getCommPortList(ByRef resultList() As String)
     
     Debug.Print txt
     
-End Sub
+End Function

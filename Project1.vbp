@@ -10,6 +10,7 @@ UserControl=Taskbar-Tools\uTextBox.ctl
 UserControl=Taskbar-Tools\uButton.ctl
 UserControl=Taskbar-Tools\uCheckBox.ctl
 Startup="Form1"
+ExeName32="PicoHost.exe"
 Command32=""
 Name="Project1"
 HelpContextID="0"
