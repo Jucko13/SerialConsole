@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Begin VB.Form Form1 
    AutoRedraw      =   -1  'True
-   Caption         =   "Form1"
+   Caption         =   "Zebromote - V1.0 by Ricardo de Roode"
    ClientHeight    =   6780
    ClientLeft      =   120
    ClientTop       =   465
@@ -234,9 +234,9 @@ Begin VB.Form Form1
    End
    Begin Project1.uTextBox txtReceived 
       Height          =   810
-      Left            =   13380
+      Left            =   10485
       TabIndex        =   6
-      Top             =   3750
+      Top             =   2805
       Visible         =   0   'False
       Width           =   840
       _ExtentX        =   1482
@@ -877,10 +877,13 @@ Private Sub Form_Load()
     
     errorMessages = Split(errorMessagesConst, ",")
     
+    comm.OutBufferSize = 5
+    
+    On Error Resume Next
     drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
     drpCommports.ListIndex = GetSetting("SerialConsole", "dropdown", "drpCommports.ListIndex", 0)
     
-    comm.OutBufferSize = 5
+    
     'txtReceived.ReCalculateMarkup
     'txtReceived.ReCalculateWords
     'txtReceived.Redraw
@@ -927,7 +930,7 @@ End Sub
 
 
 Sub fillCommportList()
-On Error Resume Next
+'On Error Resume Next
     
     Dim colItems, objItem
     
@@ -1005,7 +1008,7 @@ On Error Resume Next
     If prevIndex <> -1 And drpCommports.ListCount < prevIndex Then
         drpCommports.ListIndex = prevIndex
     Else
-        drpCommports.ListIndex = 0
+        If itemCount <> 0 Then drpCommports.ListIndex = 0
     End If
     
 End Sub
