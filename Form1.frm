@@ -2,11 +2,11 @@ VERSION 5.00
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Begin VB.Form Form1 
    AutoRedraw      =   -1  'True
-   Caption         =   "Zebromote - V1.0 by Ricardo de Roode"
-   ClientHeight    =   6780
+   Caption         =   "ZebroMote - V1.0 by Ricardo de Roode"
+   ClientHeight    =   5910
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   14280
+   ClientWidth     =   14775
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -18,10 +18,46 @@ Begin VB.Form Form1
    EndProperty
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   ScaleHeight     =   452
+   ScaleHeight     =   394
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   952
+   ScaleWidth      =   985
    StartUpPosition =   3  'Windows Default
+   Begin Project1.uFrame frmColors 
+      Height          =   615
+      Left            =   180
+      TabIndex        =   20
+      Top             =   4665
+      Visible         =   0   'False
+      Width           =   4380
+      _ExtentX        =   7726
+      _ExtentY        =   1085
+      BackgroundColor =   -2147483633
+      BorderColor     =   8421504
+      Caption         =   "Colors for Led 1"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin VB.PictureBox picColors 
+         Appearance      =   0  'Flat
+         BackColor       =   &H00C0C0FF&
+         ForeColor       =   &H80000008&
+         Height          =   285
+         Index           =   0
+         Left            =   120
+         ScaleHeight     =   255
+         ScaleWidth      =   420
+         TabIndex        =   21
+         TabStop         =   0   'False
+         Top             =   225
+         Width           =   450
+      End
+   End
    Begin Project1.uButton cmdControls 
       Height          =   1410
       Index           =   0
@@ -81,18 +117,18 @@ Begin VB.Form Form1
    Begin VB.VScrollBar scrollTest 
       Height          =   3015
       LargeChange     =   20
-      Left            =   9630
+      Left            =   9615
       Max             =   10
       TabIndex        =   5
-      Top             =   3465
+      Top             =   2130
       Visible         =   0   'False
       Width           =   255
    End
    Begin Project1.uTextBox txtStatus 
       Height          =   300
-      Left            =   90
+      Left            =   180
       TabIndex        =   4
-      Top             =   6330
+      Top             =   5445
       Width           =   8835
       _ExtentX        =   15584
       _ExtentY        =   529
@@ -110,7 +146,7 @@ Begin VB.Form Form1
    Begin Project1.uCheckBox chkCommOptions 
       Height          =   465
       Index           =   0
-      Left            =   12285
+      Left            =   12780
       TabIndex        =   3
       Top             =   180
       Width           =   870
@@ -133,7 +169,7 @@ Begin VB.Form Form1
    End
    Begin Project1.uButton cmdConnect 
       Height          =   465
-      Left            =   10080
+      Left            =   10575
       TabIndex        =   2
       Top             =   180
       Width           =   2130
@@ -167,8 +203,8 @@ Begin VB.Form Form1
       Left            =   180
       TabIndex        =   0
       Top             =   180
-      Width           =   5865
-      _ExtentX        =   10345
+      Width           =   6360
+      _ExtentX        =   11218
       _ExtentY        =   820
       BackgroundColor =   14737632
       BorderColor     =   8421504
@@ -205,7 +241,7 @@ Begin VB.Form Form1
    End
    Begin Project1.uDropDown drpBaud 
       Height          =   465
-      Left            =   6120
+      Left            =   6615
       TabIndex        =   1
       Top             =   180
       Width           =   3885
@@ -261,7 +297,7 @@ Begin VB.Form Form1
    Begin Project1.uCheckBox chkCommOptions 
       Height          =   465
       Index           =   1
-      Left            =   13230
+      Left            =   13725
       TabIndex        =   7
       Top             =   180
       Width           =   870
@@ -617,12 +653,6 @@ Attribute VB_Exposed = False
 Option Explicit
 
 
-Private Type SerialDevice
-    name As String
-    commport As String
-    baudMax As String
-End Type
-
 Dim picoSendCommand(0 To 19) As Boolean
 Dim picoConnected(0 To 19) As Boolean
 
@@ -635,8 +665,11 @@ Dim serialDevices() As SerialDevice
 
 Dim receiveBuffer As String
 
+Dim ledCommand As Long
+
 Dim errorMessages() As String
 Const errorMessagesConst = ",M_ERROR,M_ERROR_NOT_CONNECTED,M_ERROR_BUFFER_OVERFLOW,M_ERROR_BUFFER_EMPTY,M_ERROR_UNKNOWN_COMMAND"
+
 
 Private Sub chkCommOptions_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uCheckboxConstants)
     Dim newState As Boolean
@@ -707,13 +740,25 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, x As Single, 
             
                 Case 3
                     sendCommand i, 1, 32, 0, 255
-                
-                Case 4
-                    sendCommand i, 1, 33, Rnd * 7, 255
                     
             End Select
         End If
     Next i
+    
+    
+    Select Case Index
+        Case 4 To 9
+            
+            If ledCommand = Index - 4 Then
+                ledCommand = -1
+                frmColors.Visible = False
+            Else
+                ledCommand = Index - 4
+                frmColors.Caption = "Colors for Led " & ledCommand + 1
+                frmColors.Visible = True
+                
+            End If
+    End Select
     
 End Sub
 
@@ -795,7 +840,11 @@ Sub processIncommingMessage()
         Case 2
             Dim errorValue As Long
             errorValue = Asc(Left$(msg, 1))
-            setStatus "Arduino Error: " & IIf(errorValue > 0 And errorValue < 6, errorMessages(errorValue), "UNKNOWN_ERROR"), True, errorValue
+            If errorValue = 0 Then
+                setStatus "Command successfull!"
+            Else
+                setStatus "Arduino Error: " & IIf(errorValue > 0 And errorValue < 6, errorMessages(errorValue), "UNKNOWN_ERROR"), True, errorValue
+            End If
             
     End Select
     
@@ -867,13 +916,37 @@ Sub refreshConnected()
     
 End Sub
 
+Sub fillLedColors()
+    Const strColors As String = "&h0, &HFF0000,&HFF00,&HFFFF00,&HFF,&HFF00FF,&HFFFF,&HFFFFFF"
+    Dim splColors() As String
+    
+    splColors = Split(strColors, ",")
+    
+    Dim i As Long
+    
+    picColors(0).BackColor = CLng(splColors(0))
+    
+    For i = 1 To UBound(splColors)
+        Load picColors(i)
+        picColors(i).BackColor = CLng(splColors(i))
+        picColors(i).Left = picColors(i - 1).Left + picColors(i - 1).Width + Screen.TwipsPerPixelX * 5
+        
+        picColors(i).Visible = True
+    Next i
+    
+End Sub
+
 Private Sub Form_Load()
+    uDontDrawDots = True
+    frmColors.Redraw
     
     fillCommportList
     
     fillBaudList
     
     fillZebroButtons
+    
+    fillLedColors
     
     errorMessages = Split(errorMessagesConst, ",")
     
@@ -883,6 +956,7 @@ Private Sub Form_Load()
     drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
     drpCommports.ListIndex = GetSetting("SerialConsole", "dropdown", "drpCommports.ListIndex", 0)
     
+    ledCommand = -1
     
     'txtReceived.ReCalculateMarkup
     'txtReceived.ReCalculateWords
@@ -932,13 +1006,13 @@ End Sub
 Sub fillCommportList()
 'On Error Resume Next
     
-    Dim colItems, objItem
+    Dim colItems As Object, objItem As Object
     
     'ReDim serialDevices(0 to colItems
     
-    Set wmi = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+    Set wmi = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\WMI") '\\.\root\cimv2
     
-    Set colItems = wmi.ExecQuery("Select * from Win32_SerialPort")
+    Set colItems = wmi.ExecQuery("SELECT * from MSSerial_PortName") ' WHERE Name LIKE '%(COM%' ''' 'Win32_SerialPort
     
     
     'Set objWMIService =
@@ -954,40 +1028,11 @@ Sub fillCommportList()
         ReDim Preserve serialDevices(0 To itemCount)
         
         With serialDevices(itemCount)
-            .commport = objItem.DeviceID
-            .name = objItem.Description
-            .baudMax = objItem.MaxBaudRate
+            .commport = objItem.PortName
+            .instanceName = objItem.instanceName
+            fillDeviceProperties serialDevices(itemCount)
             
         End With
-    '
-    '    Debug.Print "Binary: " & objItem.Binary
-    '    Debug.Print "Description: " & objItem.Description
-    '    Debug.Print "Device ID: " & objItem.DeviceID
-    '    Debug.Print "Maximum Baud Rate: " & objItem.MaxBaudRate
-    '    Debug.Print "Maximum Input Buffer Size: " & objItem.MaximumInputBufferSize
-    '    Debug.Print "Maximum Output Buffer Size: " & objItem.MaximumOutputBufferSize
-    '    Debug.Print "Name: " & objItem.name
-    '    Debug.Print "OS Auto Discovered: " & objItem.OSAutoDiscovered
-    '    Debug.Print "PNP Device ID: " & objItem.PNPDeviceID
-    '    Debug.Print "Provider Type: " & objItem.ProviderType
-    '    Debug.Print "Settable Baud Rate: " & objItem.SettableBaudRate
-    '    Debug.Print "Settable Data Bits: " & objItem.SettableDataBits
-    '    Debug.Print "Settable Flow Control: " & objItem.SettableFlowControl
-    '    Debug.Print "Settable Parity: " & objItem.SettableParity
-    '    Debug.Print "Settable Parity Check: " & objItem.SettableParityCheck
-    '    Debug.Print "Settable RLSD: " & objItem.SettableRLSD
-    '    Debug.Print "Settable Stop Bits: " & objItem.SettableStopBits
-    '    Debug.Print "Supports 16-Bit Mode: " & objItem.Supports16BitMode
-    '    Debug.Print "Supports DTRDSR: " & objItem.SupportsDTRDSR
-    '    Debug.Print "Supports Elapsed Timeouts: " & objItem.SupportsElapsedTimeouts
-    '    Debug.Print "Supports Int Timeouts: " & objItem.SupportsIntTimeouts
-    '    Debug.Print "Supports Parity Check: " & objItem.SupportsParityCheck
-    '    Debug.Print "Supports RLSD: " & objItem.SupportsRLSD
-    '    Debug.Print "Supports RTSCTS: " & objItem.SupportsRTSCTS
-    '    Debug.Print "Supports Special Characters: " & objItem.SupportsSpecialCharacters
-    '    Debug.Print "Supports XOn XOff: " & objItem.SupportsXOnXOff
-    '    Debug.Print "Supports XOn XOff Setting: " & objItem.SupportsXOnXOffSet
-    '
         itemCount = itemCount + 1
     Next
     
@@ -1000,7 +1045,7 @@ Sub fillCommportList()
     drpCommports.Clear
     
     For i = 0 To itemCount - 1
-        drpCommports.AddItem serialDevices(i).name & " (" & serialDevices(i).commport & ", " & serialDevices(i).baudMax & ")", i, , -1
+        drpCommports.AddItem serialDevices(i).friendlyName & " (" & serialDevices(i).commport & ", " & serialDevices(i).locationInformation & ")", i, , -1
     Next i
     
     drpCommports.ItemsVisible = itemCount
@@ -1018,6 +1063,19 @@ Private Sub Form_Unload(Cancel As Integer)
     SaveSetting "SerialConsole", "dropdown", "drpBaud.ListIndex", drpBaud.ListIndex
     SaveSetting "SerialConsole", "dropdown", "drpCommports.ListIndex", drpCommports.ListIndex
     
+End Sub
+
+Private Sub picColors_Click(Index As Integer)
+    Dim i As Byte
+    
+    For i = 0 To UBound(picoSendCommand)
+        If picoSendCommand(i) And picoConnected(i) Then
+            sendCommand i, 1, 33 + ledCommand, CByte(Index), 255
+        End If
+    Next i
+    
+    ledCommand = -1
+    frmColors.Visible = False
 End Sub
 
 Private Sub scrollTest_Scroll()
@@ -1090,3 +1148,61 @@ End Sub
 Private Sub txtReceived_KeyPress(KeyAscii As Integer)
     'KeyAscii = 0
 End Sub
+
+Function getDeviceErrorStatusMessage(errorCode As Long) As String
+    Dim msg As String
+    Select Case errorCode
+        Case 0: msg = "This device is working properly."
+        Case 1: msg = "This device is not configured correctly."
+        Case 2: msg = "Windows cannot load the driver for this device."
+        Case 3: msg = "The driver might be corrupted, or your system " & _
+                       "may be running low on memory or other resources."
+        Case 4: msg = "This device is not working properly. One of its " & _
+                       "drivers or your registry might be corrupted."
+        Case 5: msg = "The driver for this device needs a resource " & _
+                       "that Windows cannot manage."
+        Case 6: msg = "The boot configuration for this device " & _
+                      "conflicts with other devices."
+        Case 7: msg = "Cannot filter."
+        Case 8: msg = "The driver loader for the device is missing."
+        Case 9: msg = "This device is not working properly because" & _
+                      "the controlling firmware is reporting the " & _
+                      "resources for the device incorrectly."
+        Case 10: msg = "This device cannot start."
+        Case 11: msg = "This device failed."
+        Case 12: msg = "This device cannot find enough free " & _
+                       "resources that it can use."
+        Case 13: msg = "Windows cannot verify this device's resources."
+        Case 14: msg = "This device cannot work properly until " & _
+                       "you restart your computer."
+        Case 15: msg = "This device is not working properly because " & _
+                       "there is probably a re-enumeration problem."
+        Case 16: msg = "Windows cannot identify all the resources this device uses."
+        Case 17: msg = "This device is asking for an unknown resource type."
+        Case 18: msg = "Reinstall the drivers for this device."
+        Case 19: msg = "Failure using the VXD loader."
+        Case 20: msg = "Your registry might be corrupted."
+        Case 21: msg = "System failure: Try changing the driver for this device. " & _
+                       "If that does not work, see your hardware " & _
+                       "documentation. Windows is removing this device."
+        Case 22: msg = "This device is disabled."
+        Case 23: msg = "System failure: Try changing the driver for " & _
+                       "this device. If that doesn't work, see your " & _
+                       "hardware documentation."
+        Case 24: msg = "This device is not present, is not working " & _
+                       "properly, or does not have all its drivers installed."
+        Case 25: msg = "Windows is still setting up this device."
+        Case 26: msg = "Windows is still setting up this device."
+        Case 27: msg = "This device does not have valid log configuration."
+        Case 28: msg = "The drivers for this device are not installed."
+        Case 29: msg = "This device is disabled because the firmware of " & _
+                       "the device did not give it the required resources."
+        Case 30: msg = "This device is using an Interrupt Request (IRQ) " & _
+                       "resource that another device is using."
+        Case 31: msg = "This device is not working properly because Windows " & _
+                       "cannot load the drivers required for this device."
+    End Select
+
+
+    getDeviceErrorStatusMessage = msg
+End Function
