@@ -403,11 +403,11 @@ Begin VB.Form Form1
       CaptionBorderColorDisabled=   0
       FocusColorDisabled=   12632256
       FocusVisible    =   0   'False
-      Caption         =   ""
+      Caption         =   "Leds Off"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Wingdings 3"
-         Size            =   20.25
-         Charset         =   2
+         Name            =   "Tahoma"
+         Size            =   15.75
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -644,6 +644,70 @@ Begin VB.Form Form1
       EndProperty
       CaptionOffsetTop=   -1
    End
+   Begin Project1.uButton cmdControls 
+      Height          =   1410
+      Index           =   10
+      Left            =   4635
+      TabIndex        =   22
+      Top             =   1710
+      Width           =   1410
+      _ExtentX        =   2487
+      _ExtentY        =   2487
+      BackgroundColor =   14737632
+      BorderColor     =   8421504
+      ForeColor       =   0
+      MouseOverBackgroundColor=   12632256
+      FocusColor      =   12632256
+      BackgroundColorDisabled=   14737632
+      BorderColorDisabled=   8421504
+      ForeColorDisabled=   0
+      MouseOverBackgroundColorDisabled=   12632256
+      CaptionBorderColorDisabled=   0
+      FocusColorDisabled=   12632256
+      FocusVisible    =   0   'False
+      Caption         =   "u"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Wingdings 3"
+         Size            =   20.25
+         Charset         =   2
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+   End
+   Begin Project1.uButton cmdControls 
+      Height          =   1410
+      Index           =   11
+      Left            =   4635
+      TabIndex        =   23
+      Top             =   3195
+      Width           =   1410
+      _ExtentX        =   2487
+      _ExtentY        =   2487
+      BackgroundColor =   14737632
+      BorderColor     =   8421504
+      ForeColor       =   0
+      MouseOverBackgroundColor=   12632256
+      FocusColor      =   12632256
+      BackgroundColorDisabled=   14737632
+      BorderColorDisabled=   8421504
+      ForeColorDisabled=   0
+      MouseOverBackgroundColorDisabled=   12632256
+      CaptionBorderColorDisabled=   0
+      FocusColorDisabled=   12632256
+      FocusVisible    =   0   'False
+      Caption         =   "t"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Wingdings 3"
+         Size            =   20.25
+         Charset         =   2
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+   End
 End
 Attribute VB_Name = "Form1"
 Attribute VB_GlobalNameSpace = False
@@ -737,10 +801,24 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, x As Single, 
             
                 Case 0
                     sendCommand i, 1, 32, 1, 255
-            
+                Case 1
+                    sendCommand i, 1, 32, 2, 255
+                    
+                Case 10
+                    sendCommand i, 1, 32, 4, 255
+                Case 11
+                    sendCommand i, 1, 32, 3, 255
+                    
                 Case 3
                     sendCommand i, 1, 32, 0, 255
-                    
+                
+                Case 2
+                    Dim j As Byte
+                    For j = 0 To 5
+                        sendCommand i, 1, 33 + j, 0, 255
+                        DoEvents
+                        wait 100
+                    Next j
             End Select
         End If
     Next i
@@ -1022,7 +1100,7 @@ Sub fillCommportList()
     ReDim serialDevices(0)
     Dim itemCount As Long
     
-    
+    If colItems Is Nothing Then Exit Sub
     
     For Each objItem In colItems
         ReDim Preserve serialDevices(0 To itemCount)

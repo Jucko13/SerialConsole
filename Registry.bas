@@ -113,6 +113,10 @@ Type SerialDevice
 End Type
 
 
+Public Declare Function GetTickCount Lib "kernel32" () As Long
+
+
+
 Sub fillDeviceProperties(ByRef obj As SerialDevice)
     Dim hKey As Long
     Dim Length As Long
@@ -214,3 +218,24 @@ Function getCommPortList(ByRef resultList() As String)
     Debug.Print txt
     
 End Function
+
+
+
+
+
+Public Sub wait(ByVal dblMilliseconds As Double)
+    Dim dblStart As Double
+    Dim dblEnd As Double
+    Dim dblTickCount As Double
+    
+    dblTickCount = GetTickCount()
+    dblStart = GetTickCount()
+    dblEnd = GetTickCount + dblMilliseconds
+    
+    Do
+    DoEvents
+    dblTickCount = GetTickCount()
+    Loop Until dblTickCount > dblEnd Or dblTickCount < dblStart
+       
+    
+End Sub
