@@ -104,62 +104,6 @@ Declare Function lstrlenW Lib "kernel32" _
 Declare Function RegEnumValue Lib "advapi32.dll" Alias "RegEnumValueA" (ByVal hKey As Long, ByVal dwIndex As Long, ByVal lpValueName As String, lpcbValueName As Long, ByVal lpReserved As Long, lpType As Long, lpData As Byte, lpcbData As Long) As Long
 
 
-Type SerialDevice
-    friendlyName As String
-    commport As String
-    classGUID As String
-    instanceName As String
-    locationInformation As String
-End Type
-
-
-Public Declare Function GetTickCount Lib "kernel32" () As Long
-
-
-
-Sub fillDeviceProperties(ByRef obj As SerialDevice)
-    Dim hKey As Long
-    Dim Length As Long
-    Dim Value As String
-    
-    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & Left(obj.instanceName, Len(obj.instanceName) - 2), 0&, KEY_READ, hKey) <> ERROR_SUCCESS Then
-        Exit Sub
-    End If
-    
-    '##############################
-    Length = 0
-    RegQueryValueEx hKey, "FriendlyName", 0&, REG_SZ, 0&, Length
-    Value = Space(Length)
-    RegQueryValueEx hKey, "FriendlyName", 0&, REG_SZ, ByVal Value, Length
-    
-    obj.friendlyName = Trim(Replace(Value, Chr(0), ""))
-    '##############################
-    
-    
-    '##############################
-    Length = 0
-    RegQueryValueEx hKey, "LocationInformation", 0&, REG_SZ, 0&, Length
-    Value = Space(Length)
-    RegQueryValueEx hKey, "LocationInformation", 0&, REG_SZ, ByVal Value, Length
-    
-    obj.locationInformation = Trim(Replace(Value, Chr(0), ""))
-    '##############################
-    
-    
-    '##############################
-    Length = 0
-    RegQueryValueEx hKey, "ClassGUID", 0&, REG_SZ, 0&, Length
-    Value = Space(Length)
-    RegQueryValueEx hKey, "ClassGUID", 0&, REG_SZ, ByVal Value, Length
-    
-    obj.classGUID = Trim(Replace(Value, Chr(0), ""))
-    '##############################
-    
-    
-    RegCloseKey (hKey)
-End Sub
-
-
 Function getCommPortList(ByRef resultList() As String)
     Dim subkeys As Collection
     Dim subkey_values As Collection

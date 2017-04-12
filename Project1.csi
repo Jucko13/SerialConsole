@@ -1,53 +1,88 @@
 [History]
-1=#P0#=mb	#P1#=cmdControls_Click	#P2#=Project1/Form1/cmdControls_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410103935	#P7#=0	#P8#=26	.
-2=#P0#=mb	#P1#=fillDeviceProperties	#P2#=Project1/Registry/fillDeviceProperties	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410103626	#P7#=0	#P8#=-2	.
-3=#P0#=mb	#P1#=getCommPortList	#P2#=Project1/Registry/getCommPortList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410103615	#P7#=0	#P8#=62	.
-4=#P0#=mb	#P1#=wait	#P2#=Project1/Registry/wait	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410103615	#P7#=0	#P8#=-1	.
-5=#P0#=mb	#P1#=fillCommportList	#P2#=Project1/Form1/fillCommportList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410102235	#P7#=0	#P8#=21	.
-6=#P0#=mb	#P1#=fillLedColors	#P2#=Project1/Form1/fillLedColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170409235123	#P7#=0	#P8#=2	.
-7=#P0#=mb	#P1#=picColors_Click	#P2#=Project1/Form1/picColors_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409234518	#P7#=0	#P8#=11	.
-8=#P0#=mb	#P1#=Form_Load	#P2#=Project1/Form1/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409231007	#P7#=0	#P8#=10	.
-9=#P0#=mb	#P1#=comm_OnComm	#P2#=Project1/Form1/comm_OnComm	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409230704	#P7#=0	#P8#=11	.
-10=#P0#=mb	#P1#=chkCommOptions_ActivateNextState	#P2#=Project1/Form1/chkCommOptions_ActivateNextState	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170409230645	#P7#=0	#P8#=7	.
-11=#P0#=mb	#P1#=getDeviceErrorStatusMessage	#P2#=Project1/Form1/getDeviceErrorStatusMessage	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170409223835	#P7#=0	#P8#=0	.
-12=#P0#=mb	#P1#=txtReceived_KeyPress	#P2#=Project1/Form1/txtReceived_KeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170409223754	#P7#=0	#P8#=5	.
-13=#P0#=mb	#P1#=txtReceived_Changed	#P2#=Project1/Form1/txtReceived_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409223749	#P7#=0	#P8#=27	.
-14=#P0#=mb	#P1#=m_picMenu_MouseMove	#P2#=Project1/uDropDown/m_picMenu_MouseMove	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409222839	#P7#=0	#P8#=18	.
-15=#P0#=mb	#P1#=processIncommingMessage	#P2#=Project1/Form1/processIncommingMessage	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170409215932	#P7#=0	#P8#=4	.
-16=#P0#=mb	#P1#=ListIndex	#P2#=Project1/uDropDown/ListIndex [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170408111708	#P7#=0	#P8#=2	.
-17=#P0#=mb	#P1#=Redraw	#P2#=Project1/uButton/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407203642	#P7#=0	#P8#=63	.
-18=#P0#=mb	#P1#=UserControl_WriteProperties	#P2#=Project1/uButton/UserControl_WriteProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407203527	#P7#=0	#P8#=17	.
-19=#P0#=mb	#P1#=UserControl_ReadProperties	#P2#=Project1/uButton/UserControl_ReadProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407203511	#P7#=0	#P8#=34	.
-20=#P0#=mb	#P1#=FocusVisible	#P2#=Project1/uButton/FocusVisible [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170407203428	#P7#=0	#P8#=1	.
-21=#P0#=mb	#P1#=FocusVisible	#P2#=Project1/uButton/FocusVisible [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170407203414	#P7#=0	#P8#=1	.
-22=#P0#=mb	#P1#=FocusColor	#P2#=Project1/uButton/FocusColor [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170407203403	#P7#=0	#P8#=0	.
-23=#P0#=mb	#P1#=UserControl_EnterFocus	#P2#=Project1/uButton/UserControl_EnterFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407203335	#P7#=0	#P8#=1	.
-24=#P0#=mb	#P1#=fillZebroButtons	#P2#=Project1/Form1/fillZebroButtons	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407202410	#P7#=0	#P8#=13	.
-25=#P0#=mb	#P1#=Form_Resize	#P2#=Project1/Form1/Form_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407202103	#P7#=0	#P8#=7	.
-26=#P0#=mb	#P1#=tmrGetConnected_Timer	#P2#=Project1/Form1/tmrGetConnected_Timer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407201002	#P7#=0	#P8#=-1	.
-27=#P0#=mb	#P1#=sendCommand	#P2#=Project1/Form1/sendCommand	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407200944	#P7#=0	#P8#=3	.
-28=#P0#=mb	#P1#=printBuffer	#P2#=Project1/Form1/printBuffer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407195731	#P7#=0	#P8#=9	.
-29=#P0#=mb	#P1#=refreshConnected	#P2#=Project1/Form1/refreshConnected	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407193108	#P7#=0	#P8#=7	.
-30=#P0#=mb	#P1#=drpBaud_ItemChange	#P2#=Project1/Form1/drpBaud_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407185337	#P7#=0	#P8#=-3	.
-31=#P0#=mb	#P1#=Form_Unload	#P2#=Project1/Form1/Form_Unload	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407180805	#P7#=0	#P8#=4	.
-32=#P0#=mb	#P1#=cmdZebro_Click	#P2#=Project1/Form1/cmdZebro_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407175706	#P7#=0	#P8#=10	.
-33=#P0#=mb	#P1#=tmrCheckPortOpen_Timer	#P2#=Project1/Form1/tmrCheckPortOpen_Timer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407174535	#P7#=0	#P8#=-1	.
-34=#P0#=mb	#P1#=drpCommports_ItemChange	#P2#=Project1/Form1/drpCommports_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407174129	#P7#=0	#P8#=2	.
-35=#P0#=mb	#P1#=cmdConnect_Click	#P2#=Project1/Form1/cmdConnect_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407173748	#P7#=0	#P8#=15	.
-36=#P0#=mb	#P1#=setStatus	#P2#=Project1/Form1/setStatus	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407173651	#P7#=0	#P8#=5	.
-37=#P0#=mb	#P1#=drpCommports_OnDropdown	#P2#=Project1/Form1/drpCommports_OnDropdown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407172522	#P7#=0	#P8#=2	.
-38=#P0#=mb	#P1#=UserControl_Initialize	#P2#=Project1/uTextBox/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407172330	#P7#=0	#P8#=13	.
-39=#P0#=mb	#P1#=TextLength	#P2#=Project1/uTextBox/TextLength [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406222953	#P7#=0	#P8#=0	.
-40=#P0#=mb	#P1#=Text	#P2#=Project1/uTextBox/Text [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406222128	#P7#=0	#P8#=0	.
-41=#P0#=mb	#P1#=Redraw	#P2#=Project1/uTextBox/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406222034	#P7#=0	#P8#=251	.
-42=#P0#=mb	#P1#=FileToString	#P2#=Project1/uTextBox/FileToString	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220626	#P7#=0	#P8#=7	.
-43=#P0#=mb	#P1#=SetTopMostWindow	#P2#=Project1/uGlobals/SetTopMostWindow	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220428	#P7#=0	#P8#=12	.
-44=#P0#=mb	#P1#=ReCalculateWords	#P2#=Project1/uTextBox/ReCalculateWords	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220317	#P7#=0	#P8#=13	.
-45=#P0#=mb	#P1#=scrollTest_Scroll	#P2#=Project1/Form1/scrollTest_Scroll	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406214631	#P7#=0	#P8#=2	.
-46=#P0#=mb	#P1#=ReCalculateMarkup	#P2#=Project1/uTextBox/ReCalculateMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406213341	#P7#=0	#P8#=1	.
-47=#P0#=mb	#P1#=UserControl_DblClick	#P2#=Project1/uTextBox/UserControl_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406213325	#P7#=0	#P8#=1	.
-48=#P0#=mb	#P1#=fillBaudList	#P2#=Project1/Form1/fillBaudList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406211756	#P7#=0	#P8#=5	.
-49=#P0#=mb	#P1#=Text	#P2#=Project1/uTextBox/Text [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406210759	#P7#=0	#P8#=1	.
-50=#P0#=mb	#P1#=AddCharAtCursor	#P2#=Project1/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406210556	#P7#=0	#P8#=0	.
-51=#P0#=mb	#P1#=txtReceived_KeyDown	#P2#=Project1/Form1/txtReceived_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406205524	#P7#=0	#P8#=3	.
-52=#P0#=mb	#P1#=Redraw	#P2#=Project1/uDropDown/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406203432	#P7#=0	#P8#=89	.
+1=#P0#=mb	#P1#=cmdSend_Click	#P2#=Project1/frmMain/cmdSend_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170412005448	#P7#=0	#P8#=26	.
+2=#P0#=mb	#P1#=Bin2Dec	#P2#=Project1/InputHandler/Bin2Dec	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170412003756	#P7#=0	#P8#=1	.
+3=#P0#=mb	#P1#=getColorByType	#P2#=Project1/InputHandler/getColorByType	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170412003713	#P7#=0	#P8#=-1	.
+4=#P0#=mb	#P1#=parseString	#P2#=Project1/InputHandler/parseString	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170412005800	#P7#=0	#P8#=31	.
+5=#P0#=mb	#P1#=ScaleHeight	#P2#=Project1/uFrame/ScaleHeight [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170411224945	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=ScaleWidth	#P2#=Project1/uFrame/ScaleWidth [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170411224938	#P7#=0	#P8#=4	.
+7=#P0#=mb	#P1#=Font	#P2#=Project1/uFrame/Font [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170411224935	#P7#=0	#P8#=-2	.
+8=#P0#=mb	#P1#=optInput_Changed	#P2#=Project1/frmMain/optInput_Changed	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411195537	#P7#=0	#P8#=1	.
+9=#P0#=mb	#P1#=UserControl_MouseUp	#P2#=Project1/uOptionBox/UserControl_MouseUp	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411195526	#P7#=0	#P8#=17	.
+10=#P0#=mb	#P1#=optInput_ActivateNextState	#P2#=Project1/frmMain/optInput_ActivateNextState	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411195418	#P7#=0	#P8#=1	.
+11=#P0#=mb	#P1#=onlyContainsAllowedChars	#P2#=Project1/InputHandler/onlyContainsAllowedChars	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170412003426	#P7#=0	#P8#=0	.
+12=#P0#=mb	#P1#=getTypeByString	#P2#=Project1/InputHandler/getTypeByString	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170412003425	#P7#=0	#P8#=2	.
+13=#P0#=mb	#P1#=getTypeByString	#P2#=Project1/frmMain/getTypeByString	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411190838	#P7#=0	#P8#=0	.
+14=#P0#=mb	#P1#=AddChar	#P2#=Project1/InputHandler/AddChar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411180922	#P7#=0	#P8#=-1	.
+15=#P0#=mb	#P1#=Class_Initialize	#P2#=Project1/InputHandler/Class_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411232957	#P7#=0	#P8#=37	.
+16=#P0#=mb	#P1#=chkSend_Changed	#P2#=Project1/frmMain/chkSend_Changed	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411180424	#P7#=0	#P8#=1	.
+17=#P0#=mb	#P1#=setCheckColors	#P2#=Project1/frmMain/setCheckColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411180356	#P7#=0	#P8#=7	.
+18=#P0#=mb	#P1#=SetOtherControls	#P2#=Project1/uOptionBox/SetOtherControls	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411163123	#P7#=0	#P8#=9	.
+19=#P0#=mb	#P1#=txtInput_LostFocus	#P2#=Project1/frmMain/txtInput_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411162310	#P7#=0	#P8#=1	.
+20=#P0#=mb	#P1#=txtInput_Changed	#P2#=Project1/frmMain/txtInput_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411233206	#P7#=0	#P8#=17	.
+21=#P0#=mb	#P1#=txtInput_GotFocus	#P2#=Project1/frmMain/txtInput_GotFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411184842	#P7#=0	#P8#=1	.
+22=#P0#=mb	#P1#=Redraw	#P2#=Project1/uFrame/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410234030	#P7#=0	#P8#=36	.
+23=#P0#=mb	#P1#=Form_Load	#P2#=Project1/frmMain/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411192017	#P7#=0	#P8#=3	.
+24=#P0#=mb	#P1#=main	#P2#=Project1/GlobalFunctions/main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410230533	#P7#=0	#P8#=2	.
+25=#P0#=mb	#P1#=getCommPortList	#P2#=Project1/Registry/getCommPortList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410230443	#P7#=0	#P8#=6	.
+26=#P0#=mb	#P1#=fillBaudList	#P2#=Project1/frmMain/fillBaudList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410222839	#P7#=0	#P8#=-1	.
+27=#P0#=mb	#P1#=Form_Resize	#P2#=Project1/frmMain/Form_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411231317	#P7#=0	#P8#=12	.
+28=#P0#=mb	#P1#=drpCommports_OnDropdown	#P2#=Project1/frmMain/drpCommports_OnDropdown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410172805	#P7#=0	#P8#=8	.
+29=#P0#=mb	#P1#=UserControl_MouseDown	#P2#=Project1/uDropDown/UserControl_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410172745	#P7#=0	#P8#=10	.
+30=#P0#=mb	#P1#=fillZebroButtons	#P2#=Project1/frmMain/fillZebroButtons	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410172717	#P7#=0	#P8#=-1	.
+31=#P0#=mb	#P1#=drpCommports_ItemChange	#P2#=Project1/frmMain/drpCommports_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410172411	#P7#=0	#P8#=1	.
+32=#P0#=mb	#P1#=chkCommOptions_Changed	#P2#=Project1/frmMain/chkCommOptions_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170411180406	#P7#=0	#P8#=1	.
+33=#P0#=mb	#P1#=UserControl_MouseUp	#P2#=Project1/uCheckBox/UserControl_MouseUp	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410170835	#P7#=0	#P8#=7	.
+34=#P0#=mb	#P1#=cmdConnect_Click	#P2#=Project1/frmMain/cmdConnect_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170411180241	#P7#=0	#P8#=-2	.
+35=#P0#=mb	#P1#=setStatus	#P2#=Project1/frmMain/setStatus	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410170437	#P7#=0	#P8#=9	.
+36=#P0#=mb	#P1#=Redraw	#P2#=Project1/uTextBox/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410164054	#P7#=0	#P8#=423	.
+37=#P0#=mb	#P1#=RedrawMenu	#P2#=Project1/uDropDown/RedrawMenu	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170412005057	#P7#=0	#P8#=54	.
+38=#P0#=mb	#P1#=Redraw	#P2#=Project1/uDropDown/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170412004514	#P7#=0	#P8#=55	.
+39=#P0#=mb	#P1#=Form_Click	#P2#=Project1/frmMain/Form_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410160702	#P7#=0	#P8#=1	.
+40=#P0#=mb	#P1#=m_tmrFocus_Timer	#P2#=Project1/uDropDown/m_tmrFocus_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410160327	#P7#=0	#P8#=5	.
+41=#P0#=mb	#P1#=OpenMenu	#P2#=Project1/uDropDown/OpenMenu	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410160053	#P7#=0	#P8#=32	.
+42=#P0#=mb	#P1#=tmrCheckPortOpen_Timer	#P2#=Project1/frmMain/tmrCheckPortOpen_Timer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410154728	#P7#=0	#P8#=2	.
+43=#P0#=mb	#P1#=Refresh	#P2#=Project1/CommPortList/Refresh	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410154329	#P7#=0	#P8#=20	.
+44=#P0#=mb	#P1#=fillDeviceProperties	#P2#=Project1/CommPortList/fillDeviceProperties	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410152903	#P7#=0	#P8#=5	.
+45=#P0#=mb	#P1#=Form_Unload	#P2#=Project1/frmMain/Form_Unload	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410152739	#P7#=0	#P8#=1	.
+46=#P0#=mb	#P1#=fillCommportList	#P2#=Project1/frmMain/fillCommportList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410152635	#P7#=0	#P8#=16	.
+47=#P0#=mb	#P1#=locationInformation	#P2#=Project1/CommPortList/locationInformation [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170410152253	#P7#=0	#P8#=3	.
+48=#P0#=mb	#P1#=Class_Initialize	#P2#=Project1/CommPortList/Class_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170410151436	#P7#=0	#P8#=3	.
+49=#P0#=mb	#P1#=Clear	#P2#=Project1/CommPortList/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410151312	#P7#=0	#P8#=2	.
+50=#P0#=mb	#P1#=Count	#P2#=Project1/CommPortList/Count [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170410151309	#P7#=0	#P8#=-1	.
+51=#P0#=mb	#P1#=commPort	#P2#=Project1/CommPortList/commPort [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170410150902	#P7#=0	#P8#=5	.
+52=#P0#=mb	#P1#=friendlyName	#P2#=Project1/CommPortList/friendlyName [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170410150819	#P7#=0	#P8#=1	.
+53=#P0#=mb	#P1#=txtReceived_KeyPress	#P2#=Project1/frmMain/txtReceived_KeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410143208	#P7#=0	#P8#=2	.
+54=#P0#=mb	#P1#=cmdControls_Click	#P2#=Project1/frmMain/cmdControls_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410103935	#P7#=0	#P8#=-1	.
+55=#P0#=mb	#P1#=wait	#P2#=Project1/Registry/wait	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170410103615	#P7#=0	#P8#=-1	.
+56=#P0#=mb	#P1#=fillLedColors	#P2#=Project1/frmMain/fillLedColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170409235123	#P7#=0	#P8#=11	.
+57=#P0#=mb	#P1#=picColors_Click	#P2#=Project1/frmMain/picColors_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409234518	#P7#=0	#P8#=0	.
+58=#P0#=mb	#P1#=comm_OnComm	#P2#=Project1/frmMain/comm_OnComm	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409230704	#P7#=0	#P8#=7	.
+59=#P0#=mb	#P1#=txtReceived_Changed	#P2#=Project1/frmMain/txtReceived_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409223749	#P7#=0	#P8#=16	.
+60=#P0#=mb	#P1#=m_picMenu_MouseMove	#P2#=Project1/uDropDown/m_picMenu_MouseMove	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170409222839	#P7#=0	#P8#=18	.
+61=#P0#=mb	#P1#=processIncommingMessage	#P2#=Project1/frmMain/processIncommingMessage	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170409215932	#P7#=0	#P8#=6	.
+62=#P0#=mb	#P1#=ListIndex	#P2#=Project1/uDropDown/ListIndex [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170408111708	#P7#=0	#P8#=2	.
+63=#P0#=mb	#P1#=Redraw	#P2#=Project1/uButton/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407203642	#P7#=0	#P8#=63	.
+64=#P0#=mb	#P1#=UserControl_WriteProperties	#P2#=Project1/uButton/UserControl_WriteProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407203527	#P7#=0	#P8#=17	.
+65=#P0#=mb	#P1#=UserControl_ReadProperties	#P2#=Project1/uButton/UserControl_ReadProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407203511	#P7#=0	#P8#=34	.
+66=#P0#=mb	#P1#=FocusVisible	#P2#=Project1/uButton/FocusVisible [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170407203428	#P7#=0	#P8#=1	.
+67=#P0#=mb	#P1#=FocusVisible	#P2#=Project1/uButton/FocusVisible [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170407203414	#P7#=0	#P8#=1	.
+68=#P0#=mb	#P1#=FocusColor	#P2#=Project1/uButton/FocusColor [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170407203403	#P7#=0	#P8#=0	.
+69=#P0#=mb	#P1#=UserControl_EnterFocus	#P2#=Project1/uButton/UserControl_EnterFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407203335	#P7#=0	#P8#=1	.
+70=#P0#=mb	#P1#=tmrGetConnected_Timer	#P2#=Project1/frmMain/tmrGetConnected_Timer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407201002	#P7#=0	#P8#=0	.
+71=#P0#=mb	#P1#=sendCommand	#P2#=Project1/frmMain/sendCommand	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407200944	#P7#=0	#P8#=11	.
+72=#P0#=mb	#P1#=printBuffer	#P2#=Project1/frmMain/printBuffer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407195731	#P7#=0	#P8#=13	.
+73=#P0#=mb	#P1#=refreshConnected	#P2#=Project1/frmMain/refreshConnected	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407193108	#P7#=0	#P8#=7	.
+74=#P0#=mb	#P1#=drpBaud_ItemChange	#P2#=Project1/frmMain/drpBaud_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407185337	#P7#=0	#P8#=2	.
+75=#P0#=mb	#P1#=cmdZebro_Click	#P2#=Project1/frmMain/cmdZebro_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170407175706	#P7#=0	#P8#=0	.
+76=#P0#=mb	#P1#=UserControl_Initialize	#P2#=Project1/uTextBox/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170407172330	#P7#=0	#P8#=13	.
+77=#P0#=mb	#P1#=TextLength	#P2#=Project1/uTextBox/TextLength [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406222953	#P7#=0	#P8#=0	.
+78=#P0#=mb	#P1#=Text	#P2#=Project1/uTextBox/Text [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406222128	#P7#=0	#P8#=0	.
+79=#P0#=mb	#P1#=FileToString	#P2#=Project1/uTextBox/FileToString	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220626	#P7#=0	#P8#=7	.
+80=#P0#=mb	#P1#=SetTopMostWindow	#P2#=Project1/uGlobals/SetTopMostWindow	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220428	#P7#=0	#P8#=12	.
+81=#P0#=mb	#P1#=ReCalculateWords	#P2#=Project1/uTextBox/ReCalculateWords	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406220317	#P7#=0	#P8#=13	.
+82=#P0#=mb	#P1#=scrollTest_Scroll	#P2#=Project1/frmMain/scrollTest_Scroll	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406214631	#P7#=0	#P8#=-1	.
+83=#P0#=mb	#P1#=ReCalculateMarkup	#P2#=Project1/uTextBox/ReCalculateMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406213341	#P7#=0	#P8#=1	.
+84=#P0#=mb	#P1#=UserControl_DblClick	#P2#=Project1/uTextBox/UserControl_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170406213325	#P7#=0	#P8#=1	.
+85=#P0#=mb	#P1#=Text	#P2#=Project1/uTextBox/Text [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170406210759	#P7#=0	#P8#=1	.
+86=#P0#=mb	#P1#=AddCharAtCursor	#P2#=Project1/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406210556	#P7#=0	#P8#=0	.
+87=#P0#=mb	#P1#=txtReceived_KeyDown	#P2#=Project1/frmMain/txtReceived_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170406205524	#P7#=0	#P8#=3	.
