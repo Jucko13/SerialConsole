@@ -80,40 +80,69 @@ Private Sub Class_Initialize()
     End With
 End Sub
 
+Private Function parse(ByRef str As String, mode As ParseType) As Byte()
+    Dim outputBytes() As Byte
+    
+    Select Case mode
+        Case pAscii
+            outputBytes = StrConv(str, vbFromUnicode)
+            
+        Case pHex
+            ReDim outputBytes(0)
+            outputBytes(0) = Val("&H" & str)
+            
+        Case pBinary
+            ReDim outputBytes(0)
+            outputBytes(0) = Bin2Dec(str)
+            
+        Case pDecimal
+            ReDim outputBytes(0)
+            outputBytes(0) = Val(str)
+            
+        Case pOctal
+            ReDim outputBytes(0)
+            outputBytes(0) = Val("&O" & str)
+            
+        Case Else
+            outputBytes = StrConv("", vbFromUnicode)
+            
+    End Select
+    
+    parse = outputBytes
+End Function
 
 Function parseString(ByRef str As String, forceMode As Long) As Byte()
     Dim tmpType As ParseType
     Dim outputBytes() As Byte
+    Dim i As Long
+    
+    Dim prefixLength As Long
+    Dim suffixLength As Long
+    Dim foundAll As Boolean
+    Dim strWithoutPreSuf As String
     
     tmpType = getTypeByString(str, forceMode)
     
     If tmpType <> pNoColor Then
         
         If forceMode <> -1 Then
-            Select Case forceMode
-                Case pAscii
-                    outputBytes = StrConv(str, vbFromUnicode)
-                    
-                Case pHex
-                    ReDim outputBytes(0)
-                    outputBytes(0) = Val("&H" & str)
-                    
-                Case pBinary
-                    ReDim outputBytes(0)
-                    outputBytes(0) = Bin2Dec(str)
-                    
-                Case pDecimal
-                    ReDim outputBytes(0)
-                    outputBytes(0) = Val(str)
-                    
-                Case pOctal
-                    ReDim outputBytes(0)
-                    outputBytes(0) = Val("&O" & str)
-                
-            End Select
+            outputBytes = parse(str, tmpType)
             
         Else
-            outputBytes = StrConv("", vbFromUnicode)
+            strWithoutPreSuf = str
+            
+            prefixLength = UBound(types(tmpType).prefix)
+            suffixLength = UBound(types(tmpType).suffix)
+            
+            If prefixLength > -1 Then
+                strWithoutPreSuf = Right(strWithoutPreSuf, Len(strWithoutPreSuf) - (prefixLength + 1))
+            End If
+            
+            If suffixLength > -1 Then
+                strWithoutPreSuf = Left(strWithoutPreSuf, Len(strWithoutPreSuf) - (suffixLength + 1))
+            End If
+            
+            outputBytes = parse(strWithoutPreSuf, tmpType)
         End If
         
     Else
