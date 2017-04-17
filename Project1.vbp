@@ -19,6 +19,7 @@ UserControl=Taskbar-Tools\uOptionBox.ctl
 UserControl=Taskbar-Tools\uGraph.ctl
 UserControl=GraphChart.ctl
 Form=frmTest.frm
+Class=DynamicArray; DynamicArray.cls
 Startup="Sub Main"
 HelpFile=""
 ExeName32="ZebroMote.exe"

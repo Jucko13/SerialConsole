@@ -4,7 +4,7 @@ Begin VB.Form frmMain
    AutoRedraw      =   -1  'True
    BackColor       =   &H0024211E&
    Caption         =   "ZebroMote - V1.0 by Ricardo de Roode"
-   ClientHeight    =   7680
+   ClientHeight    =   7815
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   14775
@@ -20,12 +20,11 @@ Begin VB.Form frmMain
    ForeColor       =   &H00FFFFFF&
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   ScaleHeight     =   512
+   ScaleHeight     =   521
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   985
    StartUpPosition =   2  'CenterScreen
    Begin VB.Timer tmrShowBuffer 
-      Enabled         =   0   'False
       Interval        =   10
       Left            =   2955
       Top             =   4035
@@ -189,7 +188,7 @@ Begin VB.Form frmMain
          BorderColor     =   2367774
          Caption         =   "COS"
          CaptionOffsetLeft=   5
-         CheckBackgroundColor=   3551534
+         CheckBackgroundColor=   2367774
          CheckBorderColor=   8421504
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
@@ -308,9 +307,9 @@ Begin VB.Form frmMain
    End
    Begin SerialConsole.uTextBox txtReceived 
       Height          =   2760
-      Left            =   120
+      Left            =   225
       TabIndex        =   0
-      Top             =   825
+      Top             =   1395
       Width           =   2505
       _ExtentX        =   4419
       _ExtentY        =   4868
@@ -318,7 +317,7 @@ Begin VB.Form frmMain
       BorderColor     =   8421504
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Courier-Jucko13"
-         Size            =   9.75
+         Size            =   10.5
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -398,6 +397,7 @@ Begin VB.Form frmMain
       Width           =   150
    End
    Begin VB.Timer tmrGetConnected 
+      Enabled         =   0   'False
       Interval        =   500
       Left            =   6120
       Top             =   3090
@@ -473,8 +473,8 @@ Begin VB.Form frmMain
       Left            =   180
       TabIndex        =   1
       Top             =   180
-      Width           =   6360
-      _ExtentX        =   11218
+      Width           =   6300
+      _ExtentX        =   11113
       _ExtentY        =   820
       BackgroundColor =   14322034
       BorderColor     =   14322034
@@ -606,6 +606,33 @@ Begin VB.Form frmMain
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      Begin SerialConsole.uCheckBox chkRefreshZebro 
+         Height          =   285
+         Left            =   90
+         TabIndex        =   39
+         Top             =   4725
+         Width           =   3735
+         _ExtentX        =   6588
+         _ExtentY        =   503
+         BackgroundColor =   3551534
+         Border          =   0   'False
+         Caption         =   "Refresh connected Zebros"
+         CheckBackgroundColor=   3551534
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   1
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
       Begin VB.PictureBox picConnected 
          Appearance      =   0  'Flat
          BackColor       =   &H00C0C0FF&
@@ -1152,6 +1179,12 @@ Sub setCheckColors(chk As uCheckBox, newState As Boolean)
     End With
 End Sub
 
+Private Sub chkRefreshZebro_Changed(u_NewState As uCheckboxConstants)
+    setCheckColors chkRefreshZebro, u_NewState = u_Checked
+    
+    tmrGetConnected.Enabled = (u_NewState = u_Checked)
+End Sub
+
 Private Sub chkSend_Changed(index As Integer, u_NewState As uCheckboxConstants)
     setCheckColors chkSend(index), u_NewState = u_Checked
     
@@ -1346,7 +1379,7 @@ Private Sub comm_OnComm()
             receiveBuffer = receiveBuffer & tmpReceived
             receiveBufferForShow = receiveBufferForShow & tmpReceived
             
-            tmrShowBuffer_Timer
+            'tmrShowBuffer_Timer
             
             If InStr(1, receiveBuffer, Chr(255)) > 0 Then
                 processIncommingMessage
@@ -1619,6 +1652,15 @@ On Error Resume Next
     txtStatus.Width = Me.ScaleWidth - txtStatus.Left - 12
 
     
+    
+    
+    'upper toolbar
+    chkCommOptions(1).Left = Me.ScaleWidth - chkCommOptions(1).Width - 12
+    chkCommOptions(0).Left = chkCommOptions(1).Left - chkCommOptions(0).Width - 12
+    cmdConnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12
+    drpBaud.Left = cmdConnect.Left - drpBaud.Width - 12
+    drpCommports.Left = 12
+    drpCommports.Width = drpBaud.Left - 12 - drpCommports.Left
 
     
 
@@ -1927,6 +1969,10 @@ Sub fillReceivedTextColors(startChar As Long)
 
 
     'txtReceived.RedrawResume
+End Sub
+
+Private Sub txtReceived_Click(ByVal charIndex As Long, ByVal charRow As Long)
+    Debug.Print charIndex & " " & charRow
 End Sub
 
 Private Sub txtReceived_KeyDown(KeyCode As Integer, Shift As Integer)
