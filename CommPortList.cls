@@ -29,7 +29,7 @@ End Type
 Private Sub Class_Initialize()
     Clear
     
-    Set wmi = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\WMI") '\\.\root\cimv2
+    Set wmi = GetObject("winmgmts:\\.\root\cimv2") '"winmgmts:{impersonationLevel=impersonate}!\\.\root\WMI"           '\\.\root\cimv2
 End Sub
 
 Public Sub Clear()
@@ -47,7 +47,7 @@ Public Property Get friendlyName(index As Long) As String
 End Property
 
 Public Property Get commPort(index As Long) As String
-    If listCount = 0 Then Exit Property
+    If listCount = 0 Or index < 0 Or index >= listCount Then Exit Property
     commPort = arr(index).commPort
 End Property
 
@@ -55,6 +55,37 @@ Public Property Get locationInformation(index As Long) As String
     If listCount = 0 Then Exit Property
     locationInformation = arr(index).locationInformation
 End Property
+
+
+
+
+'
+'Public Sub Refresh()
+'    Dim colItems As Object, objItem As Object
+'    Dim itemCount As Long
+'    Dim i As Long
+'    Dim singleDevice As SerialDevice
+'    On Error Resume Next
+'
+'    Clear
+'    Set colItems = wmi.ExecQuery("SELECT * from MSSerial_PortName", , 48) ' WHERE Name LIKE '%(COM%' ''' 'Win32_SerialPort
+'
+'    For Each objItem In colItems
+'        If objItem Is Nothing Then Exit Sub
+'
+'        ReDim Preserve arr(0 To listCount)
+'
+'        With arr(listCount)
+'            .commPort = objItem.PortName
+'            .instanceName = objItem.instanceName
+'        End With
+'
+'        fillDeviceProperties listCount
+'
+'        listCount = listCount + 1
+'    Next
+'End Sub
+
 
 
 
@@ -66,32 +97,61 @@ Public Sub Refresh()
     On Error Resume Next
     
     Clear
-    Set colItems = wmi.ExecQuery("SELECT * from MSSerial_PortName", , 48) ' WHERE Name LIKE '%(COM%' ''' 'Win32_SerialPort
+    Set colItems = wmi.ExecQuery("SELECT * from Win32_PnPEntity", , 48) ' WHERE Name LIKE '%(COM%' ''' 'Win32_SerialPort
     
     For Each objItem In colItems
         If objItem Is Nothing Then Exit Sub
         
         ReDim Preserve arr(0 To listCount)
         
+        
+        
         With arr(listCount)
-            .commPort = objItem.PortName
-            .instanceName = objItem.instanceName
+            .commPort = ""
+            .instanceName = ""
+            
+            
+            '.commPort = objItem.DeviceID
+            .instanceName = objItem.DeviceID
         End With
         
-        fillDeviceProperties listCount
         
-        listCount = listCount + 1
+        If fillDeviceProperties(listCount) Then
+            listCount = listCount + 1
+        End If
     Next
 End Sub
 
-Private Sub fillDeviceProperties(index As Long) 'SerialDevice
-    Dim hKey As Long
+Private Function fillDeviceProperties(index As Long) As Boolean 'SerialDevice
+    Dim hKey As Long, hKey2 As Long
     Dim Length As Long
     Dim Value As String
     
-    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & Left(arr(index).instanceName, Len(arr(index).instanceName) - 2), 0&, KEY_READ, hKey) <> ERROR_SUCCESS Then
-        Exit Sub
+    fillDeviceProperties = False
+    
+    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & arr(index).instanceName, 0&, KEY_READ, hKey) <> ERROR_SUCCESS Then
+        GoTo CloseItAll
     End If
+    
+    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & arr(index).instanceName & "\Device Parameters", 0&, KEY_READ, hKey2) <> ERROR_SUCCESS Then
+        GoTo CloseItAll
+    End If
+    
+    'Debug.Assert Left(arr(index).instanceName, 3) <> "USB"
+     
+    '##############################
+    Length = 0
+    RegQueryValueEx hKey2, "PortName", 0&, REG_SZ, 0&, Length
+    Value = Space(Length)
+    RegQueryValueEx hKey2, "PortName", 0&, REG_SZ, ByVal Value, Length
+    
+    arr(index).commPort = Trim(Replace(Value, Chr(0), ""))
+    If arr(index).commPort = "" Then
+        GoTo CloseItAll
+    End If
+    
+    '##############################
+    
     
     '##############################
     Length = 0
@@ -122,6 +182,9 @@ Private Sub fillDeviceProperties(index As Long) 'SerialDevice
     arr(index).classGUID = Trim(Replace(Value, Chr(0), ""))
     '##############################
     
+    fillDeviceProperties = True
+    
+CloseItAll:
     
     RegCloseKey (hKey)
-End Sub
+End Function

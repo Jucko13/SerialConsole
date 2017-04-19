@@ -93,7 +93,7 @@ Declare Function RegCloseKey Lib "advapi32.dll" _
 
 Declare Function SendMessage Lib "user32" _
    Alias "SendMessageA" _
-  (ByVal hWnd As Long, _
+  (ByVal hwnd As Long, _
    ByVal wMsg As Long, _
    ByVal wParam As Long, _
    lParam As Any) As Long
@@ -165,21 +165,3 @@ End Function
 
 
 
-
-
-Public Sub wait(ByVal dblMilliseconds As Double)
-    Dim dblStart As Double
-    Dim dblEnd As Double
-    Dim dblTickCount As Double
-    
-    dblTickCount = GetTickCount()
-    dblStart = GetTickCount()
-    dblEnd = GetTickCount + dblMilliseconds
-    
-    Do
-    DoEvents
-    dblTickCount = GetTickCount()
-    Loop Until dblTickCount > dblEnd Or dblTickCount < dblStart
-       
-    
-End Sub
