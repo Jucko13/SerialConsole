@@ -495,14 +495,14 @@ Begin VB.Form frmMain
       Left            =   225
       TabIndex        =   0
       Top             =   1395
-      Width           =   2505
-      _ExtentX        =   4419
+      Width           =   3195
+      _ExtentX        =   5636
       _ExtentY        =   4868
       BackgroundColor =   3551534
       BorderColor     =   8421504
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Courier-Jucko13"
-         Size            =   10.5
+         Name            =   "Dina"
+         Size            =   7.5
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -691,6 +691,7 @@ Begin VB.Form frmMain
       _ExtentY        =   1005
       _Version        =   393216
       DTREnable       =   0   'False
+      InBufferSize    =   1
       OutBufferSize   =   1
       ParityReplace   =   0
       RThreshold      =   1
@@ -1418,6 +1419,7 @@ Dim bitrateOutbound As Long
 
 Dim searchFor() As Byte
 
+Dim consoleColors As Variant
 
 
 Private Sub chkCommOptions_Changed(index As Integer, u_NewState As uCheckboxConstants)
@@ -1698,17 +1700,19 @@ Private Sub comm_OnComm()
             Dim tmpReceived As String
             
             bitrateInbound = bitrateInbound + comm.InBufferCount
-
+            
             tmpReceived = comm.Input
             
-            receiveBuffer = receiveBuffer & tmpReceived
+            'receiveBuffer = receiveBuffer & tmpReceived
             receiveBufferForShow = receiveBufferForShow & tmpReceived
+            
+            'Debug.Print receiveBuffer
             
             'tmrShowBuffer_Timer
             
-            If InStr(1, receiveBuffer, Chr(255)) > 0 Then
-                processIncommingMessage
-            End If
+            'If InStr(1, receiveBuffer, Chr(255)) > 0 Then
+            '    processIncommingMessage
+            'End If
             
             'Debug.Print UBound(receiveBuffer)
             
@@ -1726,6 +1730,7 @@ Private Sub comm_OnComm()
             ' above 1000 then you know that an error occurred.
             txtStatus.Text = "Some ComPort Error occurred"
         Case Else
+            Debug.Print "whatthefuck"
             ' What happened? It wasn't the arrival of data - and it wasn't
             ' an error. See the ' CommEvent property for a full listing
             ' of all the events and errors.
@@ -1754,7 +1759,7 @@ Sub processIncommingMessage()
     
     Select Case Len(Msg)
         Case 22
-            For i = 0 To 19
+            For i = 0 To 10
                 picoConnected(i) = IIf(Asc(Mid$(Msg, i + 2, 1)) = 1, True, False)
             Next i
             refreshConnected
@@ -1881,9 +1886,12 @@ Private Sub Form_Click()
 End Sub
 
 Private Sub Form_Load()
+    Dim i As Long
+    
     Set serialDevices = New CommPortList
     Set timer = New PerformanceTimer
     Set inputFilter = New InputHandler
+   
     
     'testTxt
     
@@ -1901,10 +1909,10 @@ Private Sub Form_Load()
     
     comm.OutBufferSize = 5
     
-    On Error Resume Next
+    'On Error Resume Next
     drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
     
-    Dim i As Long
+    
     
     For i = 0 To chkCommOptions.UBound
         chkCommOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkCommOptions(" & i & ").Value", u_unChecked)
@@ -1932,7 +1940,30 @@ Private Sub Form_Load()
     graphDelay.AddItem 1, 0, True
     
     dragSplitPercentage = 0.41
-
+    
+    
+    
+'    Dim str As String
+'    For i = 0 To 255
+'        str = str & Chr(i)
+'    Next i
+'
+'    txtReceived.Text = str
+'    txtReceived.setCharBorderColor 65, vbRed
+'    txtReceived.setCharForeColor 65, vbGreen
+    
+    consoleColors = Array(vbBlack, vbRed, vbGreen, vbYellow, vbBlue, vbMagenta, vbCyan, vbWhite)
+    
+    
+    'Dim str As String
+    
+    'str = "dit is text "
+    'str = str & Chr(&H1B) & "[" & (6 + 30) & "m"
+    'str = str & "dit is gekleurd"
+    
+    'str = parseAndAddText(txtReceived, str)
+    
+    
 '    Dim i As Long
 '    Dim j As Long
 '
@@ -1951,6 +1982,65 @@ Private Sub Form_Load()
     
     'txtReceived.Text = txtReceived.FileToString("F:\Github\SerialConsole\changelog.txt")
 End Sub
+
+Function parseAndAddText(uTxt As uTextBox, str As String) As String
+
+    Dim strSplit() As String
+    Dim i As Long
+    
+    Dim lCommand As Long
+    Dim posCommand As Long
+    
+    strSplit = Split(str, Chr(&H1B) & "[")
+    
+    
+    For i = 0 To UBound(strSplit)
+        posCommand = InStr(1, strSplit(i), "m")
+        
+        If i = UBound(strSplit) Then
+            If Len(strSplit(i)) = 0 Or posCommand = 0 Then
+                parseAndAddText = Chr(&H1B) & "[" & strSplit(i)
+                Exit Function
+            End If
+        End If
+        
+        If posCommand > 0 Then
+            lCommand = Val(Left(strSplit(i), posCommand))
+            
+            Dim TL As Long
+            TL = txtReceived.TextLength - 1
+            If TL < 0 Then TL = 0
+            
+            Select Case lCommand
+                Case 30 To 37
+                    txtReceived.setCharForeColor TL, CLng(consoleColors(lCommand - 30))
+                    
+                Case 0
+                    txtReceived.setCharForeColor TL, -1
+            End Select
+            
+            Dim strToAdd As String
+            
+            strToAdd = Right(strSplit(i), Len(strSplit(i)) - posCommand)
+            
+            txtReceived.AddCharAtCursor strToAdd
+        Else
+            If Len(strSplit(i)) > 0 Then
+                txtReceived.AddCharAtCursor strSplit(i)
+            End If
+        End If
+        
+        'If Len(strToAdd) <> 5 Then
+        '    Debug.Print strToAdd
+        'End If
+        
+        'Debug.Assert Len(strToAdd) = 5
+        
+    Next i
+    
+    parseAndAddText = ""
+End Function
+
 
 
 
@@ -2291,18 +2381,14 @@ Private Sub tmrShowBuffer_Timer()
     
     txtReceived.RedrawPause
     txtReceived.SelStart = txtReceived.TextLength
-    txtReceived.AddCharAtCursor receiveBufferForShow
+    
+    receiveBufferForShow = parseAndAddText(txtReceived, receiveBufferForShow)
     
     txtReceived.ScrollToEnd
     
     fillReceivedTextColors txtReceived.TextLength - Len(receiveBufferForShow)
     
     txtReceived.RedrawResume
-    
-    
-   
-    
-    receiveBufferForShow = ""
     
 End Sub
 
@@ -2448,7 +2534,7 @@ Private Sub txtReceived_OnCursorPositionChanged(ByVal charIndex As Long, ByVal c
     lblCursorStats(0).Caption = "index: " & charIndex
     lblCursorStats(1).Caption = "row: " & charRow
     lblCursorStats(2).Caption = "col: " & charCol
-    lblCursorStats(3).Caption = "val: " & charVal & "(0x" & Hex(charVal) & ")"
+    lblCursorStats(3).Caption = "val: " & IIf(charIndex = txtReceived.TextLength, "-- (---)", charVal & "(0x" & Hex(charVal) & ")")
 End Sub
 
 

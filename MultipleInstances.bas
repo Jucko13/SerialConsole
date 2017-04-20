@@ -24,8 +24,6 @@ Sub SendMessageToInstances(whatToSend As String)
         Exit Sub
     End If
     
-    
-    
     'Ask for a Window title
     Ret = strSplit(1) & " - SerialConsole - V1.0 by Ricardo de Roode" 'InputBox("Enter the exact window title:" + Chr$(13) + Chr$(10) + "Note: must be an exact match")
     'Search the window
