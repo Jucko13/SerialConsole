@@ -7,14 +7,14 @@
 6=#P0#=mb	#P1#=main	#P2#=SerialConsole/GlobalFunctions/main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426220809	#P7#=0	#P8#=-1	.
 7=#P0#=mb	#P1#=Form_Load	#P2#=SerialConsole/frmTest/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426220801	#P7#=0	#P8#=15	.
 8=#P0#=mb	#P1#=UserControl_MouseMove	#P2#=SerialConsole/uGraph/UserControl_MouseMove	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426220719	#P7#=0	#P8#=28	.
-9=#P0#=mb	#P1#=DrawLine	#P2#=SerialConsole/uGraph/DrawLine	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426220652	#P7#=0	#P8#=4	.
+9=#P0#=mb	#P1#=DrawLine	#P2#=SerialConsole/uGraph/DrawLine	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170507024615	#P7#=0	#P8#=67	.
 10=#P0#=mb	#P1#=DrawPoints	#P2#=SerialConsole/uGraph/DrawPoints	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426220357	#P7#=0	#P8#=46	.
-11=#P0#=mb	#P1#=DrawGrid	#P2#=SerialConsole/uGraph/DrawGrid	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426215908	#P7#=0	#P8#=4	.
+11=#P0#=mb	#P1#=DrawGrid	#P2#=SerialConsole/uGraph/DrawGrid	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170507024226	#P7#=0	#P8#=22	.
 12=#P0#=mb	#P1#=Refresh	#P2#=SerialConsole/uGraph/Refresh	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426214902	#P7#=0	#P8#=6	.
 13=#P0#=mb	#P1#=UserControl_MouseDown	#P2#=SerialConsole/uGraph/UserControl_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426214842	#P7#=0	#P8#=-1	.
 14=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uGraph/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426204054	#P7#=0	#P8#=5	.
 15=#P0#=mb	#P1#=AddItems	#P2#=SerialConsole/uGraph/AddItems	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426204029	#P7#=0	#P8#=1	.
-16=#P0#=mb	#P1#=UserControl_Initialize	#P2#=SerialConsole/uGraph/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426203944	#P7#=0	#P8#=-19	.
+16=#P0#=mb	#P1#=UserControl_Initialize	#P2#=SerialConsole/uGraph/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170507024135	#P7#=0	#P8#=1	.
 17=#P0#=mb	#P1#=Usercontrol_Resize	#P2#=SerialConsole/uGraph/Usercontrol_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426193001	#P7#=0	#P8#=5	.
 18=#P0#=mb	#P1#=ScrollToLastItem	#P2#=SerialConsole/uGraph/ScrollToLastItem	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426191922	#P7#=0	#P8#=6	.
 19=#P0#=mb	#P1#=optInput_Changed	#P2#=SerialConsole/frmMain/optInput_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170423001958	#P7#=0	#P8#=2	.

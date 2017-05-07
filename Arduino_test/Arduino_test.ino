@@ -6,7 +6,7 @@ int i = 0;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(256000);
+  Serial.begin(38400);
   delay(10);
   
   ansi.eraseScreen();

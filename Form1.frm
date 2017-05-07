@@ -28,48 +28,33 @@ Begin VB.Form frmMain
       Left            =   3975
       TabIndex        =   64
       Top             =   1035
+      Visible         =   0   'False
       Width           =   2805
-      _ExtentX        =   4948
-      _ExtentY        =   3625
-      BackgroundColor =   2367774
-      BorderColor     =   14737632
-      ForeColor       =   16777215
-      Caption         =   "ArduinoWindow"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   4948
+      _extenty        =   3625
+      backgroundcolor =   2367774
+      bordercolor     =   14737632
+      forecolor       =   16777215
+      caption         =   "ArduinoWindow"
+      font            =   "Form1.frx":0000
       Begin SerialConsole.uListBox lstArduino 
          Height          =   960
          Left            =   300
          TabIndex        =   65
          Top             =   510
          Width           =   2265
-         _ExtentX        =   3995
-         _ExtentY        =   1693
-         BackgroundColor =   3551534
-         BorderColor     =   8421504
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   16777215
-         Text            =   "uFrame"
-         SelectionBackgroundColor=   3551534
-         SelectionBorderColor=   16777215
-         SelectionForeColor=   12648384
-         ItemHeight      =   4
-         VisibleItems    =   15
+         _extentx        =   3995
+         _extenty        =   1693
+         backgroundcolor =   3551534
+         bordercolor     =   8421504
+         font            =   "Form1.frx":0028
+         forecolor       =   16777215
+         text            =   "uFrame"
+         selectionbackgroundcolor=   3551534
+         selectionbordercolor=   16777215
+         selectionforecolor=   12648384
+         itemheight      =   4
+         visibleitems    =   15
       End
    End
    Begin VB.Timer tmrCheckForReconnect 
@@ -86,27 +71,19 @@ Begin VB.Form frmMain
       ToolTipText     =   "Auto Connect (Edit Arduino platform.txt)"
       Top             =   180
       Width           =   870
-      _ExtentX        =   1535
-      _ExtentY        =   820
-      BackgroundColor =   2367774
-      Border          =   0   'False
-      BorderColor     =   2367774
-      Caption         =   "AC"
-      CaptionOffsetLeft=   5
-      CheckBackgroundColor=   2367774
-      CheckBorderColor=   8421504
-      CheckBorderThickness=   2
-      CheckSelectionColor=   4210752
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   12632256
+      _extentx        =   1535
+      _extenty        =   820
+      backgroundcolor =   2367774
+      border          =   0   'False
+      bordercolor     =   2367774
+      caption         =   "AC"
+      captionoffsetleft=   5
+      checkbackgroundcolor=   2367774
+      checkbordercolor=   8421504
+      checkborderthickness=   2
+      checkselectioncolor=   4210752
+      font            =   "Form1.frx":0050
+      forecolor       =   12632256
    End
    Begin VB.CommandButton Command1 
       Caption         =   "Command1"
@@ -134,21 +111,13 @@ Begin VB.Form frmMain
       TabIndex        =   51
       Top             =   4350
       Width           =   4560
-      _ExtentX        =   8043
-      _ExtentY        =   767
-      BackgroundColor =   2367774
-      BorderColor     =   14737632
-      ForeColor       =   16777215
-      Caption         =   "Settings"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   8043
+      _extenty        =   767
+      backgroundcolor =   2367774
+      bordercolor     =   14737632
+      forecolor       =   16777215
+      caption         =   "Settings"
+      font            =   "Form1.frx":0078
       Begin SerialConsole.uCheckBox chkTxtSettings 
          Height          =   165
          Index           =   0
@@ -157,29 +126,21 @@ Begin VB.Form frmMain
          ToolTipText     =   "Data Terminal Ready"
          Top             =   195
          Width           =   1185
-         _ExtentX        =   2090
-         _ExtentY        =   291
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         BorderColor     =   2367774
-         Caption         =   "AutoScroll"
-         CaptionOffsetLeft=   5
-         CaptionOffsetTop=   1
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   8421504
-         CheckBorderThickness=   2
-         CheckSelectionColor=   4210752
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   12632256
+         _extentx        =   2090
+         _extenty        =   291
+         backgroundcolor =   2367774
+         border          =   0   'False
+         bordercolor     =   2367774
+         caption         =   "AutoScroll"
+         captionoffsetleft=   5
+         captionoffsettop=   1
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   8421504
+         checkborderthickness=   2
+         checkselectioncolor=   4210752
+         checksize       =   0
+         font            =   "Form1.frx":00A0
+         forecolor       =   12632256
       End
       Begin SerialConsole.uCheckBox chkTxtSettings 
          Height          =   165
@@ -189,29 +150,21 @@ Begin VB.Form frmMain
          ToolTipText     =   "Data Terminal Ready"
          Top             =   195
          Width           =   1365
-         _ExtentX        =   2408
-         _ExtentY        =   291
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         BorderColor     =   2367774
-         Caption         =   "ConsoleColors"
-         CaptionOffsetLeft=   5
-         CaptionOffsetTop=   1
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   8421504
-         CheckBorderThickness=   2
-         CheckSelectionColor=   4210752
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   12632256
+         _extentx        =   2408
+         _extenty        =   291
+         backgroundcolor =   2367774
+         border          =   0   'False
+         bordercolor     =   2367774
+         caption         =   "ConsoleColors"
+         captionoffsetleft=   5
+         captionoffsettop=   1
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   8421504
+         checkborderthickness=   2
+         checkselectioncolor=   4210752
+         checksize       =   0
+         font            =   "Form1.frx":00C8
+         forecolor       =   12632256
       End
       Begin SerialConsole.uCheckBox chkTxtSettings 
          Height          =   165
@@ -221,29 +174,21 @@ Begin VB.Form frmMain
          ToolTipText     =   "Data Terminal Ready"
          Top             =   195
          Width           =   915
-         _ExtentX        =   1614
-         _ExtentY        =   291
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         BorderColor     =   2367774
-         Caption         =   "HexFont"
-         CaptionOffsetLeft=   5
-         CaptionOffsetTop=   1
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   8421504
-         CheckBorderThickness=   2
-         CheckSelectionColor=   4210752
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   12632256
+         _extentx        =   1614
+         _extenty        =   291
+         backgroundcolor =   2367774
+         border          =   0   'False
+         bordercolor     =   2367774
+         caption         =   "HexFont"
+         captionoffsetleft=   5
+         captionoffsettop=   1
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   8421504
+         checkborderthickness=   2
+         checkselectioncolor=   4210752
+         checksize       =   0
+         font            =   "Form1.frx":00F0
+         forecolor       =   12632256
       End
    End
    Begin SerialConsole.uCheckBox chkCommOptions 
@@ -254,27 +199,19 @@ Begin VB.Form frmMain
       ToolTipText     =   "Auto Disconnect (Edit Arduino platform.txt)"
       Top             =   180
       Width           =   870
-      _ExtentX        =   1535
-      _ExtentY        =   820
-      BackgroundColor =   2367774
-      Border          =   0   'False
-      BorderColor     =   2367774
-      Caption         =   "AD"
-      CaptionOffsetLeft=   5
-      CheckBackgroundColor=   2367774
-      CheckBorderColor=   8421504
-      CheckBorderThickness=   2
-      CheckSelectionColor=   4210752
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   12632256
+      _extentx        =   1535
+      _extenty        =   820
+      backgroundcolor =   2367774
+      border          =   0   'False
+      bordercolor     =   2367774
+      caption         =   "AD"
+      captionoffsetleft=   5
+      checkbackgroundcolor=   2367774
+      checkbordercolor=   8421504
+      checkborderthickness=   2
+      checkselectioncolor=   4210752
+      font            =   "Form1.frx":0118
+      forecolor       =   12632256
    End
    Begin VB.TextBox txtDataExchange 
       BeginProperty Font 
@@ -301,27 +238,19 @@ Begin VB.Form frmMain
       ToolTipText     =   "Clear On Connect"
       Top             =   180
       Width           =   870
-      _ExtentX        =   1535
-      _ExtentY        =   820
-      BackgroundColor =   2367774
-      Border          =   0   'False
-      BorderColor     =   2367774
-      Caption         =   "COC"
-      CaptionOffsetLeft=   5
-      CheckBackgroundColor=   2367774
-      CheckBorderColor=   8421504
-      CheckBorderThickness=   2
-      CheckSelectionColor=   4210752
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   12632256
+      _extentx        =   1535
+      _extenty        =   820
+      backgroundcolor =   2367774
+      border          =   0   'False
+      bordercolor     =   2367774
+      caption         =   "COC"
+      captionoffsetleft=   5
+      checkbackgroundcolor=   2367774
+      checkbordercolor=   8421504
+      checkborderthickness=   2
+      checkselectioncolor=   4210752
+      font            =   "Form1.frx":0140
+      forecolor       =   12632256
    End
    Begin SerialConsole.uFrame frmSearch 
       Height          =   645
@@ -330,41 +259,25 @@ Begin VB.Form frmMain
       Top             =   1515
       Visible         =   0   'False
       Width           =   3435
-      _ExtentX        =   6059
-      _ExtentY        =   1138
-      BackgroundColor =   2367774
-      BorderColor     =   14737632
-      ForeColor       =   16777215
-      Caption         =   "Search individual Characters"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   6059
+      _extenty        =   1138
+      backgroundcolor =   2367774
+      bordercolor     =   14737632
+      forecolor       =   16777215
+      caption         =   "Search individual Characters"
+      font            =   "Form1.frx":0168
       Begin SerialConsole.uTextBox txtSearch 
          Height          =   330
          Left            =   75
          TabIndex        =   45
          Top             =   210
          Width           =   1935
-         _ExtentX        =   3413
-         _ExtentY        =   582
-         BorderColor     =   8421504
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Lucida Console"
-            Size            =   9
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   2367774
-         ConsoleColors   =   0   'False
+         _extentx        =   3413
+         _extenty        =   582
+         bordercolor     =   8421504
+         font            =   "Form1.frx":0190
+         forecolor       =   2367774
+         consolecolors   =   0   'False
       End
       Begin SerialConsole.uButton cmdSearch 
          Height          =   330
@@ -372,32 +285,24 @@ Begin VB.Form frmMain
          TabIndex        =   46
          Top             =   210
          Width           =   735
-         _ExtentX        =   1296
-         _ExtentY        =   582
-         BackgroundColor =   4671472
-         BorderColor     =   8421504
-         ForeColor       =   16777215
-         MouseOverBackgroundColor=   8882165
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Find"
-         Border          =   0   'False
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   1296
+         _extenty        =   582
+         backgroundcolor =   4671472
+         bordercolor     =   8421504
+         forecolor       =   16777215
+         mouseoverbackgroundcolor=   8882165
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Find"
+         border          =   0   'False
+         font            =   "Form1.frx":01C0
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uButton cmdSearchClose 
          Height          =   330
@@ -405,32 +310,24 @@ Begin VB.Form frmMain
          TabIndex        =   50
          Top             =   210
          Width           =   330
-         _ExtentX        =   582
-         _ExtentY        =   582
-         BackgroundColor =   3551534
-         BorderColor     =   8421504
-         ForeColor       =   16777215
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "X"
-         Border          =   0   'False
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   582
+         _extenty        =   582
+         backgroundcolor =   3551534
+         bordercolor     =   8421504
+         forecolor       =   16777215
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "X"
+         border          =   0   'False
+         font            =   "Form1.frx":01E8
+         captionoffsettop=   -1
       End
    End
    Begin VB.Timer tmrShowBuffer 
@@ -459,21 +356,13 @@ Begin VB.Form frmMain
       TabIndex        =   10
       Top             =   5670
       Width           =   12270
-      _ExtentX        =   21643
-      _ExtentY        =   1693
-      BackgroundColor =   2367774
-      BorderColor     =   14737632
-      ForeColor       =   16777215
-      Caption         =   "Send Information"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   21643
+      _extenty        =   1693
+      backgroundcolor =   2367774
+      bordercolor     =   14737632
+      forecolor       =   16777215
+      caption         =   "Send Information"
+      font            =   "Form1.frx":0210
       Begin SerialConsole.uOptionBox optInput 
          Height          =   315
          Index           =   1
@@ -481,26 +370,18 @@ Begin VB.Form frmMain
          TabIndex        =   13
          Top             =   180
          Width           =   780
-         _ExtentX        =   1376
-         _ExtentY        =   556
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         Caption         =   "HEX"
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   4671472
-         CheckBorderThickness=   2
-         CheckSelectionColor=   8421631
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   4671472
+         _extentx        =   1376
+         _extenty        =   556
+         backgroundcolor =   2367774
+         border          =   0   'False
+         caption         =   "HEX"
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   4671472
+         checkborderthickness=   2
+         checkselectioncolor=   8421631
+         checksize       =   0
+         font            =   "Form1.frx":0238
+         forecolor       =   4671472
       End
       Begin SerialConsole.uTextBox txtOutput 
          Height          =   330
@@ -508,19 +389,11 @@ Begin VB.Form frmMain
          TabIndex        =   11
          Top             =   540
          Width           =   2895
-         _ExtentX        =   5106
-         _ExtentY        =   582
-         BorderColor     =   8421504
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Lucida Console"
-            Size            =   9
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   2367774
+         _extentx        =   5106
+         _extenty        =   582
+         bordercolor     =   8421504
+         font            =   "Form1.frx":0260
+         forecolor       =   2367774
       End
       Begin SerialConsole.uButton cmdSend 
          Height          =   330
@@ -528,32 +401,24 @@ Begin VB.Form frmMain
          TabIndex        =   12
          Top             =   540
          Width           =   2130
-         _ExtentX        =   3757
-         _ExtentY        =   582
-         BackgroundColor =   4671472
-         BorderColor     =   8421504
-         ForeColor       =   16777215
-         MouseOverBackgroundColor=   8882165
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Send"
-         Border          =   0   'False
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   3757
+         _extenty        =   582
+         backgroundcolor =   4671472
+         bordercolor     =   8421504
+         forecolor       =   16777215
+         mouseoverbackgroundcolor=   8882165
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Send"
+         border          =   0   'False
+         font            =   "Form1.frx":0290
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uOptionBox optInput 
          Height          =   315
@@ -562,26 +427,18 @@ Begin VB.Form frmMain
          TabIndex        =   14
          Top             =   180
          Width           =   1005
-         _ExtentX        =   1773
-         _ExtentY        =   556
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         Caption         =   "ANSII"
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   13604352
-         CheckBorderThickness=   2
-         CheckSelectionColor=   16776960
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   13604352
+         _extentx        =   1773
+         _extenty        =   556
+         backgroundcolor =   2367774
+         border          =   0   'False
+         caption         =   "ANSII"
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   13604352
+         checkborderthickness=   2
+         checkselectioncolor=   16776960
+         checksize       =   0
+         font            =   "Form1.frx":02B8
+         forecolor       =   13604352
       End
       Begin SerialConsole.uCheckBox chkSend 
          Height          =   285
@@ -590,28 +447,20 @@ Begin VB.Form frmMain
          TabIndex        =   15
          Top             =   150
          Width           =   840
-         _ExtentX        =   1482
-         _ExtentY        =   503
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         BorderColor     =   2367774
-         Caption         =   "COS"
-         CaptionOffsetLeft=   5
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   8421504
-         CheckBorderThickness=   2
-         CheckSelectionColor=   4210752
-         CheckSize       =   1
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   12632256
+         _extentx        =   1482
+         _extenty        =   503
+         backgroundcolor =   2367774
+         border          =   0   'False
+         bordercolor     =   2367774
+         caption         =   "COS"
+         captionoffsetleft=   5
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   8421504
+         checkborderthickness=   2
+         checkselectioncolor=   4210752
+         checksize       =   1
+         font            =   "Form1.frx":02E0
+         forecolor       =   12632256
       End
       Begin SerialConsole.uOptionBox optInput 
          Height          =   315
@@ -620,26 +469,18 @@ Begin VB.Form frmMain
          TabIndex        =   16
          Top             =   180
          Width           =   735
-         _ExtentX        =   1296
-         _ExtentY        =   556
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         Caption         =   "BIN"
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   1746682
-         CheckBorderThickness=   2
-         CheckSelectionColor=   8438015
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   1746682
+         _extentx        =   1296
+         _extenty        =   556
+         backgroundcolor =   2367774
+         border          =   0   'False
+         caption         =   "BIN"
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   1746682
+         checkborderthickness=   2
+         checkselectioncolor=   8438015
+         checksize       =   0
+         font            =   "Form1.frx":0308
+         forecolor       =   1746682
       End
       Begin SerialConsole.uOptionBox optInput 
          Height          =   315
@@ -648,26 +489,18 @@ Begin VB.Form frmMain
          TabIndex        =   17
          Top             =   165
          Width           =   735
-         _ExtentX        =   1296
-         _ExtentY        =   556
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         Caption         =   "DEC"
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   8500547
-         CheckBorderThickness=   2
-         CheckSelectionColor=   8454016
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   8500547
+         _extentx        =   1296
+         _extenty        =   556
+         backgroundcolor =   2367774
+         border          =   0   'False
+         caption         =   "DEC"
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   8500547
+         checkborderthickness=   2
+         checkselectioncolor=   8454016
+         checksize       =   0
+         font            =   "Form1.frx":0330
+         forecolor       =   8500547
       End
       Begin SerialConsole.uOptionBox optInput 
          Height          =   315
@@ -676,26 +509,18 @@ Begin VB.Form frmMain
          TabIndex        =   18
          Top             =   165
          Width           =   1005
-         _ExtentX        =   1773
-         _ExtentY        =   556
-         BackgroundColor =   2367774
-         Border          =   0   'False
-         Caption         =   "OCTAL"
-         CheckBackgroundColor=   2367774
-         CheckBorderColor=   14322034
-         CheckBorderThickness=   2
-         CheckSelectionColor=   16761024
-         CheckSize       =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   12
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   14322034
+         _extentx        =   1773
+         _extenty        =   556
+         backgroundcolor =   2367774
+         border          =   0   'False
+         caption         =   "OCTAL"
+         checkbackgroundcolor=   2367774
+         checkbordercolor=   14322034
+         checkborderthickness=   2
+         checkselectioncolor=   16761024
+         checksize       =   0
+         font            =   "Form1.frx":0358
+         forecolor       =   14322034
       End
    End
    Begin VB.PictureBox picSplit 
@@ -720,29 +545,21 @@ Begin VB.Form frmMain
       TabIndex        =   0
       Top             =   1395
       Width           =   3195
-      _ExtentX        =   5636
-      _ExtentY        =   4868
-      BackgroundColor =   3551534
-      BorderColor     =   8421504
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Terminal_Ctrl+Hex"
-         Size            =   9
-         Charset         =   255
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   16777215
-      LineNumbers     =   -1  'True
-      LineNumberForeColor=   8421504
-      LineNumberBackground=   2367774
-      RowLines        =   -1  'True
-      RowLineColor    =   4210752
-      RowNumberOnEveryLine=   -1  'True
-      WordWrap        =   -1  'True
-      MultiLine       =   -1  'True
-      ScrollBars      =   1
+      _extentx        =   5636
+      _extenty        =   4868
+      backgroundcolor =   3551534
+      bordercolor     =   8421504
+      font            =   "Form1.frx":0380
+      forecolor       =   16777215
+      linenumbers     =   -1  'True
+      linenumberforecolor=   8421504
+      linenumberbackground=   2367774
+      rowlines        =   -1  'True
+      rowlinecolor    =   4210752
+      rownumberoneveryline=   -1  'True
+      wordwrap        =   -1  'True
+      multiline       =   -1  'True
+      scrollbars      =   1
    End
    Begin SerialConsole.uTextBox txtStatus 
       Height          =   420
@@ -750,21 +567,13 @@ Begin VB.Form frmMain
       TabIndex        =   5
       Top             =   6885
       Width           =   7650
-      _ExtentX        =   12409
-      _ExtentY        =   741
-      BorderColor     =   2367774
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   2367774
-      BorderThickness =   3
-      ConsoleColors   =   0   'False
+      _extentx        =   12409
+      _extenty        =   741
+      bordercolor     =   2367774
+      font            =   "Form1.frx":03A4
+      forecolor       =   2367774
+      borderthickness =   3
+      consolecolors   =   0   'False
    End
    Begin VB.PictureBox picToolbar 
       Appearance      =   0  'Flat
@@ -788,21 +597,13 @@ Begin VB.Form frmMain
          TabIndex        =   59
          Top             =   -30
          Width           =   1455
-         _ExtentX        =   2566
-         _ExtentY        =   1323
-         BackgroundColor =   2367774
-         BorderColor     =   14737632
-         ForeColor       =   16777215
-         Caption         =   "Com Stats"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   2566
+         _extenty        =   1323
+         backgroundcolor =   2367774
+         bordercolor     =   14737632
+         forecolor       =   16777215
+         caption         =   "Com Stats"
+         font            =   "Form1.frx":03CC
          Begin VB.Label lblComStats 
             Alignment       =   2  'Center
             BackColor       =   &H0036312E&
@@ -858,8 +659,8 @@ Begin VB.Form frmMain
          TabIndex        =   19
          Top             =   0
          Width           =   3135
-         _ExtentX        =   5530
-         _ExtentY        =   1402
+         _extentx        =   5530
+         _extenty        =   1402
       End
    End
    Begin VB.PictureBox picFocus 
@@ -890,27 +691,19 @@ Begin VB.Form frmMain
       ToolTipText     =   "Data Terminal Ready"
       Top             =   180
       Width           =   870
-      _ExtentX        =   1535
-      _ExtentY        =   820
-      BackgroundColor =   2367774
-      Border          =   0   'False
-      BorderColor     =   2367774
-      Caption         =   "DTR"
-      CaptionOffsetLeft=   5
-      CheckBackgroundColor=   2367774
-      CheckBorderColor=   8421504
-      CheckBorderThickness=   2
-      CheckSelectionColor=   4210752
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   12632256
+      _extentx        =   1535
+      _extenty        =   820
+      backgroundcolor =   2367774
+      border          =   0   'False
+      bordercolor     =   2367774
+      caption         =   "DTR"
+      captionoffsetleft=   5
+      checkbackgroundcolor=   2367774
+      checkbordercolor=   8421504
+      checkborderthickness=   2
+      checkselectioncolor=   4210752
+      font            =   "Form1.frx":03F4
+      forecolor       =   12632256
    End
    Begin SerialConsole.uButton cmdConnect 
       Height          =   465
@@ -918,31 +711,23 @@ Begin VB.Form frmMain
       TabIndex        =   3
       Top             =   180
       Width           =   2130
-      _ExtentX        =   3757
-      _ExtentY        =   820
-      BackgroundColor =   4671472
-      BorderColor     =   8421504
-      ForeColor       =   16777215
-      MouseOverBackgroundColor=   8882165
-      FocusColor      =   12632256
-      BackgroundColorDisabled=   14737632
-      BorderColorDisabled=   8421504
-      ForeColorDisabled=   0
-      MouseOverBackgroundColorDisabled=   12632256
-      CaptionBorderColorDisabled=   0
-      FocusColorDisabled=   12632256
-      FocusVisible    =   0   'False
-      Caption         =   "Connect"
-      Border          =   0   'False
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   3757
+      _extenty        =   820
+      backgroundcolor =   4671472
+      bordercolor     =   8421504
+      forecolor       =   16777215
+      mouseoverbackgroundcolor=   8882165
+      focuscolor      =   12632256
+      backgroundcolordisabled=   14737632
+      bordercolordisabled=   8421504
+      forecolordisabled=   0
+      mouseoverbackgroundcolordisabled=   12632256
+      captionbordercolordisabled=   0
+      focuscolordisabled=   12632256
+      focusvisible    =   0   'False
+      caption         =   "Connect"
+      border          =   0   'False
+      font            =   "Form1.frx":041C
    End
    Begin SerialConsole.uDropDown drpCommports 
       Height          =   465
@@ -950,29 +735,21 @@ Begin VB.Form frmMain
       TabIndex        =   1
       Top             =   180
       Width           =   6300
-      _ExtentX        =   11113
-      _ExtentY        =   820
-      BackgroundColor =   14322034
-      BorderColor     =   14322034
-      ForeColor       =   16777215
-      SelectionBackgroundColor=   13592135
-      SelectionBorderColor=   14322034
-      BackgroundColorDisabled=   14737632
-      BorderColorDisabled=   8421504
-      SelectionBackgroundColorDisabled=   14737632
-      SelectionBorderColorDisabled=   14737632
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Text            =   "drpCommports met een erg lange zin er achter aan"
-      Border          =   0   'False
-      ScrollBarWidth  =   30
+      _extentx        =   11113
+      _extenty        =   820
+      backgroundcolor =   14322034
+      bordercolor     =   14322034
+      forecolor       =   16777215
+      selectionbackgroundcolor=   13592135
+      selectionbordercolor=   14322034
+      backgroundcolordisabled=   14737632
+      bordercolordisabled=   8421504
+      selectionbackgroundcolordisabled=   14737632
+      selectionbordercolordisabled=   14737632
+      font            =   "Form1.frx":0444
+      text            =   "drpCommports met een erg lange zin er achter aan"
+      border          =   0   'False
+      scrollbarwidth  =   30
    End
    Begin MSCommLib.MSComm comm 
       Left            =   5145
@@ -994,29 +771,21 @@ Begin VB.Form frmMain
       TabIndex        =   2
       Top             =   180
       Width           =   1365
-      _ExtentX        =   2408
-      _ExtentY        =   820
-      BackgroundColor =   14322034
-      BorderColor     =   14322034
-      ForeColor       =   16777215
-      SelectionBackgroundColor=   13592135
-      SelectionBorderColor=   14322034
-      BackgroundColorDisabled=   14737632
-      BorderColorDisabled=   8421504
-      SelectionBackgroundColorDisabled=   14737632
-      SelectionBorderColorDisabled=   14737632
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Text            =   "drpCommports met een erg lange zin er achter aan"
-      ItemHeight      =   20
-      ScrollBarWidth  =   30
+      _extentx        =   2408
+      _extenty        =   820
+      backgroundcolor =   14322034
+      bordercolor     =   14322034
+      forecolor       =   16777215
+      selectionbackgroundcolor=   13592135
+      selectionbordercolor=   14322034
+      backgroundcolordisabled=   14737632
+      bordercolordisabled=   8421504
+      selectionbackgroundcolordisabled=   14737632
+      selectionbordercolordisabled=   14737632
+      font            =   "Form1.frx":046C
+      text            =   "drpCommports met een erg lange zin er achter aan"
+      itemheight      =   20
+      scrollbarwidth  =   30
    End
    Begin SerialConsole.uCheckBox chkCommOptions 
       Height          =   465
@@ -1026,27 +795,19 @@ Begin VB.Form frmMain
       ToolTipText     =   "Request To Send"
       Top             =   180
       Width           =   870
-      _ExtentX        =   1535
-      _ExtentY        =   820
-      BackgroundColor =   2367774
-      Border          =   0   'False
-      BorderColor     =   2367774
-      Caption         =   "RTS"
-      CaptionOffsetLeft=   5
-      CheckBackgroundColor=   2367774
-      CheckBorderColor=   8421504
-      CheckBorderThickness=   2
-      CheckSelectionColor=   4210752
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   12632256
+      _extentx        =   1535
+      _extenty        =   820
+      backgroundcolor =   2367774
+      border          =   0   'False
+      bordercolor     =   2367774
+      caption         =   "RTS"
+      captionoffsetleft=   5
+      checkbackgroundcolor=   2367774
+      checkbordercolor=   8421504
+      checkborderthickness=   2
+      checkselectioncolor=   4210752
+      font            =   "Form1.frx":0494
+      forecolor       =   12632256
    End
    Begin VB.PictureBox picToolbar 
       Appearance      =   0  'Flat
@@ -1070,47 +831,31 @@ Begin VB.Form frmMain
       TabIndex        =   21
       Top             =   900
       Width           =   6795
-      _ExtentX        =   11986
-      _ExtentY        =   9922
-      BackgroundColor =   3551534
-      BorderColor     =   14737632
-      ForeColor       =   16777215
-      Caption         =   "Zebro Controls"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   11986
+      _extenty        =   9922
+      backgroundcolor =   3551534
+      bordercolor     =   14737632
+      forecolor       =   16777215
+      caption         =   "Zebro Controls"
+      font            =   "Form1.frx":04BC
       Begin SerialConsole.uCheckBox chkRefreshZebro 
          Height          =   285
          Left            =   90
          TabIndex        =   39
          Top             =   4725
          Width           =   3735
-         _ExtentX        =   6588
-         _ExtentY        =   503
-         BackgroundColor =   3551534
-         Border          =   0   'False
-         Caption         =   "Refresh connected Zebros"
-         CheckBackgroundColor=   3551534
-         CheckBorderColor=   8421504
-         CheckBorderThickness=   2
-         CheckSelectionColor=   4210752
-         CheckSize       =   1
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Consolas"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   12632256
+         _extentx        =   6588
+         _extenty        =   503
+         backgroundcolor =   3551534
+         border          =   0   'False
+         caption         =   "Refresh connected Zebros"
+         checkbackgroundcolor=   3551534
+         checkbordercolor=   8421504
+         checkborderthickness=   2
+         checkselectioncolor=   4210752
+         checksize       =   1
+         font            =   "Form1.frx":04E4
+         forecolor       =   12632256
       End
       Begin VB.PictureBox picConnected 
          Appearance      =   0  'Flat
@@ -1133,21 +878,13 @@ Begin VB.Form frmMain
          Top             =   4050
          Visible         =   0   'False
          Width           =   4380
-         _ExtentX        =   7726
-         _ExtentY        =   1085
-         BackgroundColor =   3551534
-         BorderColor     =   14737632
-         ForeColor       =   16777215
-         Caption         =   "Colors for Led 1"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   7726
+         _extenty        =   1085
+         backgroundcolor =   3551534
+         bordercolor     =   14737632
+         forecolor       =   16777215
+         caption         =   "Colors for Led 1"
+         font            =   "Form1.frx":050C
          Begin VB.PictureBox picColors 
             Appearance      =   0  'Flat
             BackColor       =   &H00C0C0FF&
@@ -1170,30 +907,22 @@ Begin VB.Form frmMain
          TabIndex        =   24
          Top             =   1095
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   2487
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "p"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
-            Size            =   20.25
-            Charset         =   2
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   2487
+         _extenty        =   2487
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "p"
+         font            =   "Form1.frx":0534
       End
       Begin SerialConsole.uButton cmdZebro 
          Height          =   375
@@ -1202,30 +931,22 @@ Begin VB.Form frmMain
          TabIndex        =   26
          Top             =   555
          Width           =   420
-         _ExtentX        =   741
-         _ExtentY        =   661
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "0"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   741
+         _extenty        =   661
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "0"
+         font            =   "Form1.frx":0560
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   1410
@@ -1234,30 +955,22 @@ Begin VB.Form frmMain
          TabIndex        =   27
          Top             =   1095
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   2487
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "q"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
-            Size            =   20.25
-            Charset         =   2
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   2487
+         _extenty        =   2487
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "q"
+         font            =   "Form1.frx":0588
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   1410
@@ -1266,30 +979,22 @@ Begin VB.Form frmMain
          TabIndex        =   28
          Top             =   1095
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   2487
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Leds Off"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   15.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   2487
+         _extenty        =   2487
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Leds Off"
+         font            =   "Form1.frx":05B4
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   1410
@@ -1298,30 +1003,22 @@ Begin VB.Form frmMain
          TabIndex        =   29
          Top             =   2580
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   2487
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "STOP"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   15.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   2487
+         _extenty        =   2487
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "STOP"
+         font            =   "Form1.frx":05DC
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   420
@@ -1330,31 +1027,23 @@ Begin VB.Form frmMain
          TabIndex        =   30
          Top             =   2580
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   741
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Led 1"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   2487
+         _extenty        =   741
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Led 1"
+         font            =   "Form1.frx":0604
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   420
@@ -1363,31 +1052,23 @@ Begin VB.Form frmMain
          TabIndex        =   31
          Top             =   3075
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   741
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Led 2"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   2487
+         _extenty        =   741
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Led 2"
+         font            =   "Form1.frx":062C
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   420
@@ -1396,31 +1077,23 @@ Begin VB.Form frmMain
          TabIndex        =   32
          Top             =   3570
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   741
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Led 3"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   2487
+         _extenty        =   741
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Led 3"
+         font            =   "Form1.frx":0654
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   420
@@ -1429,31 +1102,23 @@ Begin VB.Form frmMain
          TabIndex        =   33
          Top             =   2580
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   741
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Led 4"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   2487
+         _extenty        =   741
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Led 4"
+         font            =   "Form1.frx":067C
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   420
@@ -1462,31 +1127,23 @@ Begin VB.Form frmMain
          TabIndex        =   34
          Top             =   3075
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   741
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Led 5"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   2487
+         _extenty        =   741
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Led 5"
+         font            =   "Form1.frx":06A4
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   420
@@ -1495,31 +1152,23 @@ Begin VB.Form frmMain
          TabIndex        =   35
          Top             =   3570
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   741
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "Led 6"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         CaptionOffsetTop=   -1
+         _extentx        =   2487
+         _extenty        =   741
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "Led 6"
+         font            =   "Form1.frx":06CC
+         captionoffsettop=   -1
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   1410
@@ -1528,30 +1177,22 @@ Begin VB.Form frmMain
          TabIndex        =   36
          Top             =   1095
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   2487
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "u"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
-            Size            =   20.25
-            Charset         =   2
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   2487
+         _extenty        =   2487
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "u"
+         font            =   "Form1.frx":06F4
       End
       Begin SerialConsole.uButton cmdControls 
          Height          =   1410
@@ -1560,30 +1201,22 @@ Begin VB.Form frmMain
          TabIndex        =   37
          Top             =   2580
          Width           =   1410
-         _ExtentX        =   2487
-         _ExtentY        =   2487
-         BackgroundColor =   14737632
-         BorderColor     =   8421504
-         ForeColor       =   0
-         MouseOverBackgroundColor=   12632256
-         FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
-         BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
-         MouseOverBackgroundColorDisabled=   12632256
-         CaptionBorderColorDisabled=   0
-         FocusColorDisabled=   12632256
-         FocusVisible    =   0   'False
-         Caption         =   "t"
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
-            Size            =   20.25
-            Charset         =   2
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         _extentx        =   2487
+         _extenty        =   2487
+         backgroundcolor =   14737632
+         bordercolor     =   8421504
+         forecolor       =   0
+         mouseoverbackgroundcolor=   12632256
+         focuscolor      =   12632256
+         backgroundcolordisabled=   14737632
+         bordercolordisabled=   8421504
+         forecolordisabled=   0
+         mouseoverbackgroundcolordisabled=   12632256
+         captionbordercolordisabled=   0
+         focuscolordisabled=   12632256
+         focusvisible    =   0   'False
+         caption         =   "t"
+         font            =   "Form1.frx":0720
       End
    End
    Begin SerialConsole.uFrame uFrame1 
@@ -1593,21 +1226,13 @@ Begin VB.Form frmMain
       Top             =   4890
       Visible         =   0   'False
       Width           =   1050
-      _ExtentX        =   1852
-      _ExtentY        =   556
-      BackgroundColor =   2367774
-      BorderColor     =   14737632
-      ForeColor       =   16777215
-      Caption         =   "uFrame"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   1852
+      _extenty        =   556
+      backgroundcolor =   2367774
+      bordercolor     =   14737632
+      forecolor       =   16777215
+      caption         =   "uFrame"
+      font            =   "Form1.frx":074C
    End
    Begin VB.Label lblCursorStats 
       Alignment       =   1  'Right Justify
