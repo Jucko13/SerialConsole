@@ -32,8 +32,11 @@ Private Declare Function QueryPerformanceFrequency Lib "kernel32" (lpFrequency A
 
 Private Sub Class_Initialize()
     'Does the system support a performance counter
+    
     If QueryPerformanceFrequency(m_CountsPerSecond) Then
         Dim i As Long, TotalOverhead As Currency
+        
+        TotalOverhead = 0
         
         'Find out how long it takes the system to call the API function
         For i = 1 To 1000

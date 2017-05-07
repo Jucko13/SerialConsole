@@ -6,7 +6,7 @@ Begin VB.Form frmMain
    ClientHeight    =   7905
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   14775
+   ClientWidth     =   16485
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -21,14 +21,69 @@ Begin VB.Form frmMain
    LinkTopic       =   "Form1"
    ScaleHeight     =   527
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   985
+   ScaleWidth      =   1099
    StartUpPosition =   2  'CenterScreen
+   Begin SerialConsole.uFrame frmArduinoWindow 
+      Height          =   2055
+      Left            =   3975
+      TabIndex        =   64
+      Top             =   1035
+      Width           =   2805
+      _ExtentX        =   4948
+      _ExtentY        =   3625
+      BackgroundColor =   2367774
+      BorderColor     =   14737632
+      ForeColor       =   16777215
+      Caption         =   "ArduinoWindow"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin SerialConsole.uListBox lstArduino 
+         Height          =   960
+         Left            =   300
+         TabIndex        =   65
+         Top             =   510
+         Width           =   2265
+         _ExtentX        =   3995
+         _ExtentY        =   1693
+         BackgroundColor =   3551534
+         BorderColor     =   8421504
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   16777215
+         Text            =   "uFrame"
+         SelectionBackgroundColor=   3551534
+         SelectionBorderColor=   16777215
+         SelectionForeColor=   12648384
+         ItemHeight      =   4
+         VisibleItems    =   15
+      End
+   End
+   Begin VB.Timer tmrCheckForReconnect 
+      Enabled         =   0   'False
+      Interval        =   1000
+      Left            =   14805
+      Top             =   1035
+   End
    Begin SerialConsole.uCheckBox chkCommOptions 
       Height          =   465
-      Index           =   3
-      Left            =   13770
-      TabIndex        =   49
-      ToolTipText     =   "Auto Connect Disconnect (Edit Arduino platform.txt)"
+      Index           =   4
+      Left            =   14700
+      TabIndex        =   58
+      ToolTipText     =   "Auto Connect (Edit Arduino platform.txt)"
       Top             =   180
       Width           =   870
       _ExtentX        =   1535
@@ -36,7 +91,175 @@ Begin VB.Form frmMain
       BackgroundColor =   2367774
       Border          =   0   'False
       BorderColor     =   2367774
-      Caption         =   "ACD"
+      Caption         =   "AC"
+      CaptionOffsetLeft=   5
+      CheckBackgroundColor=   2367774
+      CheckBorderColor=   8421504
+      CheckBorderThickness=   2
+      CheckSelectionColor=   4210752
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Consolas"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   12632256
+   End
+   Begin VB.CommandButton Command1 
+      Caption         =   "Command1"
+      Height          =   450
+      Index           =   1
+      Left            =   1530
+      TabIndex        =   56
+      Top             =   900
+      Visible         =   0   'False
+      Width           =   1230
+   End
+   Begin VB.CommandButton Command1 
+      Caption         =   "Command1"
+      Height          =   450
+      Index           =   0
+      Left            =   270
+      TabIndex        =   55
+      Top             =   930
+      Visible         =   0   'False
+      Width           =   1230
+   End
+   Begin SerialConsole.uFrame frmTxtSettings 
+      Height          =   435
+      Left            =   360
+      TabIndex        =   51
+      Top             =   4350
+      Width           =   4560
+      _ExtentX        =   8043
+      _ExtentY        =   767
+      BackgroundColor =   2367774
+      BorderColor     =   14737632
+      ForeColor       =   16777215
+      Caption         =   "Settings"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Consolas"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin SerialConsole.uCheckBox chkTxtSettings 
+         Height          =   165
+         Index           =   0
+         Left            =   90
+         TabIndex        =   53
+         ToolTipText     =   "Data Terminal Ready"
+         Top             =   195
+         Width           =   1185
+         _ExtentX        =   2090
+         _ExtentY        =   291
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "AutoScroll"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   1
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
+      Begin SerialConsole.uCheckBox chkTxtSettings 
+         Height          =   165
+         Index           =   1
+         Left            =   1350
+         TabIndex        =   54
+         ToolTipText     =   "Data Terminal Ready"
+         Top             =   195
+         Width           =   1365
+         _ExtentX        =   2408
+         _ExtentY        =   291
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "ConsoleColors"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   1
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
+      Begin SerialConsole.uCheckBox chkTxtSettings 
+         Height          =   165
+         Index           =   2
+         Left            =   2790
+         TabIndex        =   57
+         ToolTipText     =   "Data Terminal Ready"
+         Top             =   195
+         Width           =   915
+         _ExtentX        =   1614
+         _ExtentY        =   291
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "HexFont"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   1
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
+   End
+   Begin SerialConsole.uCheckBox chkCommOptions 
+      Height          =   465
+      Index           =   3
+      Left            =   13770
+      TabIndex        =   49
+      ToolTipText     =   "Auto Disconnect (Edit Arduino platform.txt)"
+      Top             =   180
+      Width           =   870
+      _ExtentX        =   1535
+      _ExtentY        =   820
+      BackgroundColor =   2367774
+      Border          =   0   'False
+      BorderColor     =   2367774
+      Caption         =   "AD"
       CaptionOffsetLeft=   5
       CheckBackgroundColor=   2367774
       CheckBorderColor=   8421504
@@ -64,9 +287,9 @@ Begin VB.Form frmMain
          Strikethrough   =   0   'False
       EndProperty
       Height          =   420
-      Left            =   6135
+      Left            =   3825
       TabIndex        =   48
-      Top             =   5160
+      Top             =   2385
       Visible         =   0   'False
       Width           =   480
    End
@@ -141,6 +364,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   2367774
+         ConsoleColors   =   0   'False
       End
       Begin SerialConsole.uButton cmdSearch 
          Height          =   330
@@ -210,9 +434,9 @@ Begin VB.Form frmMain
       End
    End
    Begin VB.Timer tmrShowBuffer 
-      Interval        =   10
-      Left            =   2955
-      Top             =   4035
+      Interval        =   100
+      Left            =   3900
+      Top             =   3975
    End
    Begin VB.PictureBox picToolbar 
       Appearance      =   0  'Flat
@@ -234,8 +458,8 @@ Begin VB.Form frmMain
       Left            =   90
       TabIndex        =   10
       Top             =   5670
-      Width           =   5820
-      _ExtentX        =   10266
+      Width           =   12270
+      _ExtentX        =   21643
       _ExtentY        =   1693
       BackgroundColor =   2367774
       BorderColor     =   14737632
@@ -362,9 +586,9 @@ Begin VB.Form frmMain
       Begin SerialConsole.uCheckBox chkSend 
          Height          =   285
          Index           =   0
-         Left            =   4845
+         Left            =   8400
          TabIndex        =   15
-         Top             =   165
+         Top             =   150
          Width           =   840
          _ExtentX        =   1482
          _ExtentY        =   503
@@ -501,9 +725,9 @@ Begin VB.Form frmMain
       BackgroundColor =   3551534
       BorderColor     =   8421504
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Dina"
-         Size            =   7.5
-         Charset         =   0
+         Name            =   "Terminal_Ctrl+Hex"
+         Size            =   9
+         Charset         =   255
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -522,16 +746,16 @@ Begin VB.Form frmMain
    End
    Begin SerialConsole.uTextBox txtStatus 
       Height          =   420
-      Left            =   3705
+      Left            =   6315
       TabIndex        =   5
       Top             =   6885
-      Width           =   5400
+      Width           =   7650
       _ExtentX        =   12409
       _ExtentY        =   741
       BorderColor     =   2367774
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Lucida Console"
-         Size            =   14.25
+         Name            =   "Consolas"
+         Size            =   9.75
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -540,6 +764,7 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   2367774
       BorderThickness =   3
+      ConsoleColors   =   0   'False
    End
    Begin VB.PictureBox picToolbar 
       Appearance      =   0  'Flat
@@ -557,14 +782,84 @@ Begin VB.Form frmMain
       TabStop         =   0   'False
       Top             =   6675
       Width           =   14730
-      Begin SerialConsole.uGraph graphDelay 
-         Height          =   810
+      Begin SerialConsole.uFrame frmComStats 
+         Height          =   750
+         Left            =   3255
+         TabIndex        =   59
+         Top             =   -30
+         Width           =   1455
+         _ExtentX        =   2566
+         _ExtentY        =   1323
+         BackgroundColor =   2367774
+         BorderColor     =   14737632
+         ForeColor       =   16777215
+         Caption         =   "Com Stats"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Begin VB.Label lblComStats 
+            Alignment       =   2  'Center
+            BackColor       =   &H0036312E&
+            Caption         =   "RING"
+            ForeColor       =   &H004747F0&
+            Height          =   195
+            Index           =   3
+            Left            =   765
+            TabIndex        =   63
+            Top             =   465
+            Width           =   600
+         End
+         Begin VB.Label lblComStats 
+            Alignment       =   2  'Center
+            BackColor       =   &H0036312E&
+            Caption         =   "CD"
+            ForeColor       =   &H004747F0&
+            Height          =   195
+            Index           =   2
+            Left            =   90
+            TabIndex        =   62
+            Top             =   465
+            Width           =   600
+         End
+         Begin VB.Label lblComStats 
+            Alignment       =   2  'Center
+            BackColor       =   &H0036312E&
+            Caption         =   "DSR"
+            ForeColor       =   &H004747F0&
+            Height          =   195
+            Index           =   1
+            Left            =   765
+            TabIndex        =   61
+            Top             =   195
+            Width           =   600
+         End
+         Begin VB.Label lblComStats 
+            Alignment       =   2  'Center
+            BackColor       =   &H0036312E&
+            Caption         =   "CTS"
+            ForeColor       =   &H004747F0&
+            Height          =   195
+            Index           =   0
+            Left            =   90
+            TabIndex        =   60
+            Top             =   195
+            Width           =   600
+         End
+      End
+      Begin SerialConsole.uGraph graphDataInOut 
+         Height          =   795
          Left            =   0
          TabIndex        =   19
          Top             =   0
          Width           =   3135
          _ExtentX        =   5530
-         _ExtentY        =   1429
+         _ExtentY        =   1402
       End
    End
    Begin VB.PictureBox picFocus 
@@ -586,11 +881,6 @@ Begin VB.Form frmMain
       Interval        =   500
       Left            =   6120
       Top             =   3090
-   End
-   Begin VB.Timer tmrCheckBitRate 
-      Interval        =   1000
-      Left            =   4410
-      Top             =   2865
    End
    Begin SerialConsole.uCheckBox chkCommOptions 
       Height          =   465
@@ -686,12 +976,13 @@ Begin VB.Form frmMain
    End
    Begin MSCommLib.MSComm comm 
       Left            =   5145
-      Top             =   4065
+      Top             =   4095
       _ExtentX        =   1005
       _ExtentY        =   1005
       _Version        =   393216
       DTREnable       =   0   'False
-      InBufferSize    =   1
+      InBufferSize    =   10
+      InputLen        =   1
       OutBufferSize   =   1
       ParityReplace   =   0
       RThreshold      =   1
@@ -1295,6 +1586,29 @@ Begin VB.Form frmMain
          EndProperty
       End
    End
+   Begin SerialConsole.uFrame uFrame1 
+      Height          =   315
+      Left            =   5970
+      TabIndex        =   52
+      Top             =   4890
+      Visible         =   0   'False
+      Width           =   1050
+      _ExtentX        =   1852
+      _ExtentY        =   556
+      BackgroundColor =   2367774
+      BorderColor     =   14737632
+      ForeColor       =   16777215
+      Caption         =   "uFrame"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+   End
    Begin VB.Label lblCursorStats 
       Alignment       =   1  'Right Justify
       BackColor       =   &H0024211E&
@@ -1373,7 +1687,7 @@ Begin VB.Form frmMain
       ForeColor       =   &H00FFFFFF&
       Height          =   195
       Index           =   0
-      Left            =   165
+      Left            =   180
       TabIndex        =   40
       Top             =   5040
       Width           =   855
@@ -1396,12 +1710,12 @@ Dim dragSplitPercentage As Double
 Dim dragSplit As Boolean
 
 Dim serialDevices As CommPortList
-Dim timer As PerformanceTimer
+Dim Timer As PerformanceTimer
 Dim inputFilter As InputHandler
 
 
-Dim receiveBufferForShow As String
-
+Private receiveBufferForShow As String * 5000
+Private receiveBufferForShowLength As Long
 
 Dim picoSendCommand(0 To 10) As Boolean
 Dim picoConnected(0 To 10) As Boolean
@@ -1419,15 +1733,20 @@ Dim bitrateOutbound As Long
 
 Dim searchFor() As Byte
 
-Dim consoleColors As Variant
+Dim ConsoleColors As Variant
+
+Dim arduinoListHeaders() As String
+
+Private WithEvents tmrCheckBitRate As SelfTimer
+Attribute tmrCheckBitRate.VB_VarHelpID = -1
 
 
-Private Sub chkCommOptions_Changed(index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkCommOptions_Changed(Index As Integer, u_NewState As uCheckboxConstants)
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case index
+    Select Case Index
     
         Case 0
             comm.DTREnable = newState
@@ -1439,16 +1758,16 @@ Private Sub chkCommOptions_Changed(index As Integer, u_NewState As uCheckboxCons
             comm.RTSEnable = newState
     End Select
 
-    SaveSetting "SerialConsole", "checkboxes", "chkCommOptions(" & index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkCommOptions(" & Index & ").Value", u_NewState
 
-    setCheckColors chkCommOptions(index), newState
+    setCheckColors chkCommOptions(Index), newState
 End Sub
 
 Sub setCheckColors(chk As uCheckBox, newState As Boolean)
     With chk
         If newState = False Then
             .CheckBorderColor = &H808080
-            .CheckBackgroundColor = .BackGroundColor
+            .CheckBackgroundColor = .BackgroundColor
             .CheckSelectionColor = vbWhite
         Else
             .CheckBorderColor = &HDA8972
@@ -1466,9 +1785,34 @@ Private Sub chkRefreshZebro_Changed(u_NewState As uCheckboxConstants)
     tmrGetConnected.Enabled = (u_NewState = u_Checked)
 End Sub
 
-Private Sub chkSend_Changed(index As Integer, u_NewState As uCheckboxConstants)
-    setCheckColors chkSend(index), u_NewState = u_Checked
+Private Sub chkSend_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+    setCheckColors chkSend(Index), u_NewState = u_Checked
     
+End Sub
+
+Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+    Dim newState As Boolean
+    
+    newState = (u_NewState = u_Checked)
+    
+    Select Case Index
+        Case 1
+            txtReceived.ConsoleColors = newState
+            
+        Case 2
+            If newState Then
+                txtReceived.Font.Name = "CompendiumArcana Hexadecimal"
+                txtReceived.Redraw
+            Else
+                txtReceived.Font.Name = "CompendiumArcana Ctrl Char Hex"
+                txtReceived.Redraw
+            End If
+
+    End Select
+    
+    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & Index & ").Value", u_NewState
+    
+    setCheckColors chkTxtSettings(Index), newState
 End Sub
 
 Private Sub cmdConnect_Click(Button As Integer, x As Single, y As Single)
@@ -1477,21 +1821,29 @@ Private Sub cmdConnect_Click(Button As Integer, x As Single, y As Single)
     If comm.PortOpen Then
         comm.PortOpen = False
         cmdConnect.Caption = "Connect"
-        cmdConnect.BackGroundColor = &H4747F0
+        cmdConnect.BackgroundColor = &H4747F0
         
     Else
-        cmdConnect.BackGroundColor = &H81B543
+        comm.DTREnable = False
+        
+        cmdConnect.BackgroundColor = &H81B543
         cmdConnect.Caption = "Disconnect"
         comm.PortOpen = True
+        comm.DTREnable = (chkCommOptions(0).Value = u_Checked)
+        wait 10
+        receiveBufferForShowLength = 0
+        txtReceived.Clear
         
         If chkCommOptions(0).Value = u_Checked And chkCommOptions(2).Value = u_Checked Then txtReceived.Clear
             
         setStatus "Connected!"
+        
+        tmrShowBuffer.Enabled = True
     End If
     
 Exit Sub
 notWorking:
-    cmdConnect.BackGroundColor = &H4747F0
+    cmdConnect.BackgroundColor = &H4747F0
     cmdConnect.Caption = "Connect"
     
     setStatus Err.Description, True, Err.Number
@@ -1514,13 +1866,13 @@ Sub setStatus(Msg As String, Optional isError As Boolean = False, Optional error
     txtStatus.RedrawResume
 End Sub
 
-Private Sub cmdControls_Click(index As Integer, Button As Integer, x As Single, y As Single)
+Private Sub cmdControls_Click(Index As Integer, Button As Integer, x As Single, y As Single)
     
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            Select Case index
+            Select Case Index
             
                 Case 0
                     sendCommand i, 1, 32, 1, 255
@@ -1547,14 +1899,14 @@ Private Sub cmdControls_Click(index As Integer, Button As Integer, x As Single, 
     Next i
     
     
-    Select Case index
+    Select Case Index
         Case 4 To 9
             
-            If ledCommand = index - 4 Then
+            If ledCommand = Index - 4 Then
                 ledCommand = -1
                 frmColors.Visible = False
             Else
-                ledCommand = index - 4
+                ledCommand = Index - 4
                 frmColors.Caption = "Colors for Led " & ledCommand + 1
                 frmColors.Visible = True
                 
@@ -1626,7 +1978,7 @@ Function parseInputToBytes(uTxt As uTextBox) As Byte()
             Else
                 Erase parseInputToBytes
                 uTxt.BorderColor = &H4747F0
-                uTxt.BackGroundColor = &H8080FF
+                uTxt.BackgroundColor = &H8080FF
                 Exit Function
             End If
             
@@ -1677,15 +2029,15 @@ Private Sub cmdSend_Click(Button As Integer, x As Single, y As Single)
     'txtOutput.SetFocus
 End Sub
 
-Private Sub cmdZebro_Click(index As Integer, Button As Integer, x As Single, y As Single)
+Private Sub cmdZebro_Click(Index As Integer, Button As Integer, x As Single, y As Single)
         
-    picoSendCommand(index) = Not picoSendCommand(index)
+    picoSendCommand(Index) = Not picoSendCommand(Index)
     
     
     Dim i As Long
     
     For i = 0 To UBound(picoSendCommand)
-        cmdZebro(i).BackGroundColor = IIf(picoSendCommand(i), &HFFC0C0, &HE0E0E0)
+        cmdZebro(i).BackgroundColor = IIf(picoSendCommand(i), &HFFC0C0, &HE0E0E0)
         cmdZebro(i).MouseOverBackgroundColor = IIf(picoSendCommand(i), &HFF8080, &HC0C0C0)
     Next i
     
@@ -1693,35 +2045,63 @@ End Sub
 
 Private Sub comm_OnComm()
     'On Error Resume Next
+    Static i As Long
+    Dim RL As Long 'received length
+    
+    i = i + 1
     
     Select Case comm.CommEvent
     
-        Case 2   ' comEvReceive event occured
+        Case comEvReceive   'comEvReceive event occured
             Dim tmpReceived As String
             
-            bitrateInbound = bitrateInbound + comm.InBufferCount
+            'bitrateInbound = bitrateInbound + comm.InBufferCount
+            
             
             tmpReceived = comm.Input
+            RL = Len(tmpReceived)
             
-            'receiveBuffer = receiveBuffer & tmpReceived
-            receiveBufferForShow = receiveBufferForShow & tmpReceived
+            If receiveBufferForShowLength + RL > 4000 Then
+                tmrShowBuffer_Timer
+            End If
             
-            'Debug.Print receiveBuffer
+            Mid$(receiveBufferForShow, receiveBufferForShowLength + 1, RL) = tmpReceived
+            receiveBufferForShowLength = receiveBufferForShowLength + RL
             
-            'tmrShowBuffer_Timer
+            'Debug.Print tmpReceived
             
-            'If InStr(1, receiveBuffer, Chr(255)) > 0 Then
-            '    processIncommingMessage
-            'End If
+            '########################################################################################################################################################################
+            'Replace this concatenation of bullshit with a more memory friendly solution, like a buffered string of 5000 chars that will stay 5000 chars and will never be moved
+            'this way there are no more intense memory usages
+            '########################################################################################################################################################################
             
-            'Debug.Print UBound(receiveBuffer)
+            'Clipboard.Clear
+            'Clipboard.SetText receiveBuffer
             
-'            Do While comm.InBufferCount > 0
-'                txtReceived.SelStart = txtReceived.TextLength
-'                txtReceived.SelLength = 0
-'
-'                txtReceived.AddCharAtCursor comm.Input
-'            Loop
+            bitrateInbound = bitrateInbound + Len(tmpReceived)
+            
+            'If chkRefreshZebro.Value = u_Checked Then receiveBuffer = receiveBuffer & tmpReceived
+            'receiveBufferForShow = receiveBufferForShow & tmpReceived
+        
+        Case comEvCTS
+            lblComStats(0).ForeColor = IIf(comm.CTSHolding, vbBlack, &H4747F0)
+            lblComStats(0).BackColor = IIf(comm.CTSHolding, &H81B543, &H36312E)
+            
+        Case comEvDSR
+            lblComStats(1).ForeColor = IIf(comm.DSRHolding, vbBlack, &H4747F0)
+            lblComStats(1).BackColor = IIf(comm.DSRHolding, &H81B543, &H36312E)
+            
+        Case comEvCD
+            lblComStats(2).ForeColor = IIf(comm.CDHolding, vbBlack, &H4747F0)
+            lblComStats(2).BackColor = IIf(comm.CDHolding, &H81B543, &H36312E)
+            
+        Case comEvRing ', comEvEOF
+            lblComStats(3).ForeColor = vbBlack
+            lblComStats(3).BackColor = &H81B543
+            
+            
+        Case comEvSend ' something is getting away
+        
         
         Case Is > 1000
             
@@ -1729,6 +2109,8 @@ Private Sub comm_OnComm()
             ' Whenever the CommEvent property returns a number
             ' above 1000 then you know that an error occurred.
             txtStatus.Text = "Some ComPort Error occurred"
+            
+            
         Case Else
             Debug.Print "whatthefuck"
             ' What happened? It wasn't the arrival of data - and it wasn't
@@ -1802,6 +2184,22 @@ Private Sub showDummydata()
     receiveBufferForShow = "dit is een hele" & vbCrLf & " lange test om te kijken of de 0 langetestomtekijkenofde0langetestomtekijkenofde0" & vbCrLf & "enters enzo wel goed gaan"
     tmrShowBuffer_Timer
     
+End Sub
+
+
+
+Private Sub Command1_Click(Index As Integer)
+    
+    Select Case Index
+        Case 0
+            txtReceived.AddCharAtCursor Chr(27) & "[45m" & Chr(27) & "[30mH"
+            
+        Case 1
+            txtReceived.AddCharAtCursor Chr(27) & "[47m" & Chr(27) & "[31mK"
+            
+    End Select
+    
+    txtReceived.Redraw
 End Sub
 
 Private Sub drpBaud_ItemChange(ItemIndex As Long)
@@ -1889,9 +2287,13 @@ Private Sub Form_Load()
     Dim i As Long
     
     Set serialDevices = New CommPortList
-    Set timer = New PerformanceTimer
+    Set Timer = New PerformanceTimer
     Set inputFilter = New InputHandler
-   
+    
+    Set tmrCheckBitRate = New SelfTimer
+    tmrCheckBitRate.Interval = 1000
+    tmrCheckBitRate.Enabled = True
+    
     
     'testTxt
     
@@ -1917,6 +2319,10 @@ Private Sub Form_Load()
     For i = 0 To chkCommOptions.UBound
         chkCommOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkCommOptions(" & i & ").Value", u_unChecked)
     Next i
+    For i = 0 To chkTxtSettings.UBound
+        chkTxtSettings(i).Value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
+    Next i
+    
     
     ledCommand = -1
     
@@ -1927,17 +2333,17 @@ Private Sub Form_Load()
     picFocus.Left = -10
     picFocus.Top = -10
     
-    graphDelay.LineColor(0) = vbRed
-    graphDelay.LineVisible(0) = True
-    graphDelay.LineThickness(0) = 1
+    graphDataInOut.LineColor(0) = vbRed
+    graphDataInOut.LineVisible(0) = True
+    graphDataInOut.LineThickness(0) = 1
     
-    graphDelay.LineColor(1) = vbGreen
-    graphDelay.LineVisible(1) = True
-    graphDelay.LineThickness(1) = 1
+    graphDataInOut.LineColor(1) = vbGreen
+    graphDataInOut.LineVisible(1) = True
+    graphDataInOut.LineThickness(1) = 1
     
-    graphDelay.Refresh
-    graphDelay.AddItem 0, 0, False
-    graphDelay.AddItem 1, 0, True
+    graphDataInOut.Refresh
+    graphDataInOut.AddItem 0, 0, False
+    graphDataInOut.AddItem 1, 0, True
     
     dragSplitPercentage = 0.41
     
@@ -1952,7 +2358,7 @@ Private Sub Form_Load()
 '    txtReceived.setCharBorderColor 65, vbRed
 '    txtReceived.setCharForeColor 65, vbGreen
     
-    consoleColors = Array(vbBlack, vbRed, vbGreen, vbYellow, vbBlue, vbMagenta, vbCyan, vbWhite)
+    ConsoleColors = Array(vbBlack, vbRed, vbGreen, vbYellow, vbBlue, vbMagenta, vbCyan, vbWhite)
     
     
     'Dim str As String
@@ -1978,69 +2384,28 @@ Private Sub Form_Load()
 '        txtReceived.AddCharAtCursor str1(j) & vbCrLf
 '    Next j
     
-    
+    fillArduinoListTestData
     
     'txtReceived.Text = txtReceived.FileToString("F:\Github\SerialConsole\changelog.txt")
 End Sub
 
-Function parseAndAddText(uTxt As uTextBox, str As String) As String
 
-    Dim strSplit() As String
+Sub fillArduinoListTestData()
+    
+    ReDim arduinoListHeaders(0 To 4)
+    arduinoListHeaders(0) = "PosX"
+    arduinoListHeaders(1) = "PosY"
+    arduinoListHeaders(2) = "PosZ"
+    arduinoListHeaders(3) = "Time"
+    
     Dim i As Long
     
-    Dim lCommand As Long
-    Dim posCommand As Long
-    
-    strSplit = Split(str, Chr(&H1B) & "[")
-    
-    
-    For i = 0 To UBound(strSplit)
-        posCommand = InStr(1, strSplit(i), "m")
-        
-        If i = UBound(strSplit) Then
-            If Len(strSplit(i)) = 0 Or posCommand = 0 Then
-                parseAndAddText = Chr(&H1B) & "[" & strSplit(i)
-                Exit Function
-            End If
-        End If
-        
-        If posCommand > 0 Then
-            lCommand = Val(Left(strSplit(i), posCommand))
-            
-            Dim TL As Long
-            TL = txtReceived.TextLength - 1
-            If TL < 0 Then TL = 0
-            
-            Select Case lCommand
-                Case 30 To 37
-                    txtReceived.setCharForeColor TL, CLng(consoleColors(lCommand - 30))
-                    
-                Case 0
-                    txtReceived.setCharForeColor TL, -1
-            End Select
-            
-            Dim strToAdd As String
-            
-            strToAdd = Right(strSplit(i), Len(strSplit(i)) - posCommand)
-            
-            txtReceived.AddCharAtCursor strToAdd
-        Else
-            If Len(strSplit(i)) > 0 Then
-                txtReceived.AddCharAtCursor strSplit(i)
-            End If
-        End If
-        
-        'If Len(strToAdd) <> 5 Then
-        '    Debug.Print strToAdd
-        'End If
-        
-        'Debug.Assert Len(strToAdd) = 5
-        
+    For i = 0 To 10
+        lstArduino.AddItem (i * 80) & vbTab & (80 - i * 80) & vbTab & i & vbTab & Round(Rnd + i, 3)
     Next i
+    'lstArduino.Redraw
     
-    parseAndAddText = ""
-End Function
-
+End Sub
 
 
 
@@ -2050,9 +2415,12 @@ On Error Resume Next
     
     Dim nominalOffsetX As Long
     Dim smallOffsetX As Long
+    Dim firstFrame As Long
     
+
     nominalOffsetX = 12 * Screen.TwipsPerPixelX
     smallOffsetX = 7 * Screen.TwipsPerPixelX
+    
     
     picToolbar(0).Width = Me.ScaleWidth
     picToolbar(1).Width = Me.ScaleWidth
@@ -2087,6 +2455,8 @@ On Error Resume Next
     picSplit.Top = picToolbar(0).Top + picToolbar(0).Height
     picSplit.Height = picToolbar(2).Top - picSplit.Top
     
+    firstFrame = picSplit.Left - txtReceived.Left
+    
     If frmSearch.Visible Then
         frmSearch.Left = 12
         frmSearch.Top = picToolbar(0).Top + picToolbar(0).Height
@@ -2103,26 +2473,37 @@ On Error Resume Next
         
     End If
         
-    
-    txtReceived.Left = 12
-    txtReceived.Width = picSplit.Left - txtReceived.Left
-    txtReceived.Height = picToolbar(2).Top - txtReceived.Top - lblCursorStats(0).Height
-    
-    lblCursorStats(0).Top = txtReceived.Top + txtReceived.Height
+    lblCursorStats(0).Top = picToolbar(2).Top - lblCursorStats(0).Height
     lblCursorStats(0).Left = 12
-    lblCursorStats(0).Width = Fix(txtReceived.Width / 4)
+    lblCursorStats(0).Width = Fix(firstFrame / 4)
     
     lblCursorStats(1).Top = lblCursorStats(0).Top
     lblCursorStats(1).Left = lblCursorStats(0).Left + lblCursorStats(0).Width
-    lblCursorStats(1).Width = Fix(txtReceived.Width / 5)
+    lblCursorStats(1).Width = Fix(firstFrame / 5)
     
     lblCursorStats(2).Top = lblCursorStats(0).Top
     lblCursorStats(2).Left = lblCursorStats(1).Left + lblCursorStats(1).Width
     lblCursorStats(2).Width = lblCursorStats(1).Width
     
     lblCursorStats(3).Top = lblCursorStats(0).Top
-    lblCursorStats(3).Width = (txtReceived.Width + txtReceived.Left) - (lblCursorStats(2).Width + lblCursorStats(2).Left)
+    lblCursorStats(3).Width = firstFrame - (lblCursorStats(2).Width + lblCursorStats(2).Left)
     lblCursorStats(3).Left = lblCursorStats(2).Width + lblCursorStats(2).Left
+    
+    
+    frmTxtSettings.Top = lblCursorStats(0).Top - frmTxtSettings.Height - 12
+    frmTxtSettings.Left = 12
+    frmTxtSettings.Width = firstFrame
+    
+    'chkTxtSettings(0).Left = 0
+    
+    'For i = 1 To chkTxtSettings.UBound
+    '    chkTxtSettings(i).Left = chkTxtSettings(i - 1).Left + chkTxtSettings(i).Width
+    'Next i
+    
+    
+    txtReceived.Left = 12
+    txtReceived.Width = firstFrame
+    txtReceived.Height = frmTxtSettings.Top - txtReceived.Top - 6
     
     
     
@@ -2131,8 +2512,34 @@ On Error Resume Next
     frmZebroControls.Top = picToolbar(0).Top + picToolbar(0).Height
     frmZebroControls.Height = picToolbar(2).Top - frmZebroControls.Top
     
+    frmArduinoWindow.Left = frmZebroControls.Left
+    frmArduinoWindow.Top = frmZebroControls.Top
+    frmArduinoWindow.Width = frmZebroControls.Width
+    frmArduinoWindow.Height = frmZebroControls.Height
+    
+    lstArduino.Left = smallOffsetX
+    lstArduino.Top = smallOffsetX * 2
+    lstArduino.Width = frmArduinoWindow.ScaleWidth - 2 * smallOffsetX
+    lstArduino.Height = frmArduinoWindow.ScaleHeight - 3 * smallOffsetX
+    
+    If (Not (Not (arduinoListHeaders))) <> 0 Then
+        Dim serperationWidth As Long
+        If UBound(arduinoListHeaders) > 0 Then
+            serperationWidth = lstArduino.Width / Screen.TwipsPerPixelX / UBound(arduinoListHeaders)
+            For i = 0 To UBound(arduinoListHeaders)
+                lstArduino.setTabStop i, serperationWidth * i
+            Next i
+        Else
+            lstArduino.setTabStop 0, 0
+        End If
+        
+        
+    End If
+    
+    frmComStats.Left = graphDataInOut.Left + graphDataInOut.Width + 12
+    
     txtStatus.Top = Me.ScaleHeight - txtStatus.Height - 12
-    txtStatus.Left = graphDelay.Left + graphDelay.Width + 12
+    txtStatus.Left = frmComStats.Left + frmComStats.Width + 12
     txtStatus.Width = Me.ScaleWidth - txtStatus.Left - 12
 
     
@@ -2160,7 +2567,7 @@ End Sub
 Sub fillBaudList()
 drpBaud.Clear
 
-Const bauds As String = "300,600,1200,2400,4800,9600,14400,19200,28800,38400,56000,57600,115200,128000,250000"
+Const bauds As String = "300,600,1200,2400,4800,9600,14400,19200,28800,38400,56000,57600,115200,128000,256000"
 Dim tmpSplit() As String
 Dim i As Long
 
@@ -2222,28 +2629,24 @@ Private Sub Form_Unload(cancel As Integer)
     SaveSetting "SerialConsole", "dropdown", "drpBaud.ListIndex", drpBaud.ListIndex
 End Sub
 
-Private Sub kkk_OnObjectReady(ByVal objWbemObject As WbemScripting.ISWbemObject, ByVal objWbemAsyncContext As WbemScripting.ISWbemNamedValueSet)
-
-End Sub
-
-Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
-    If optInput(index).Value = u_Selected Then
+Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
+    If optInput(Index).Value = u_Selected Then
         u_NewState = u_UnSelected
         u_Cancel = True
     End If
 End Sub
 
-Private Sub optInput_Changed(index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optInput_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
     txtOutput_Changed
     txtSearch_Changed
 End Sub
 
-Private Sub picColors_Click(index As Integer)
+Private Sub picColors_Click(Index As Integer)
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            sendCommand i, 1, 33 + ledCommand, CByte(index), 255
+            sendCommand i, 1, 33 + ledCommand, CByte(Index), 255
         End If
     Next i
     
@@ -2285,6 +2688,32 @@ Private Sub picSplit_MouseUp(Button As Integer, Shift As Integer, x As Single, y
     dragSplit = False
 End Sub
 
+Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
+    'txtStatus.Text = comm.CommEvent
+    
+    'Debug.Print Me.ActiveControl.Name
+    
+    graphDataInOut.AddItem 0, CDbl(bitrateInbound), False
+    graphDataInOut.AddItem 1, CDbl(bitrateOutbound), False
+    
+    bitrateInbound = 0
+    bitrateOutbound = 0
+    
+    graphDataInOut.ScrollToLastItem 0, True
+    graphDataInOut.Refresh
+    
+    'Debug.Print Seconds
+End Sub
+
+Private Sub tmrCheckForReconnect_Timer()
+    If comm.PortOpen = False Then
+        cmdConnect_Click 0, 0, 0
+    Else
+        tmrCheckForReconnect.Enabled = False
+    End If
+    
+End Sub
+
 Private Sub txtDataExchange_Change()
     If txtDataExchange.Text = "" Then Exit Sub
     
@@ -2303,18 +2732,23 @@ Private Sub txtDataExchange_Change()
     
     Select Case strSplit(0)
         Case "CC"
-            MsgBox "close port " & strSplit(1)
+            'MsgBox "close port " & strSplit(1)
             If comm.PortOpen = True Then
-                If serialDevices.commPort(drpCommports.ListIndex) = strSplit(1) Then
+                If strSplit(1) = "{serial.port}" Or serialDevices.commPort(drpCommports.ListIndex) = strSplit(1) Then
                     cmdConnect_Click 0, 0, 0
+                    If chkCommOptions(4).Value = u_Checked Then
+                        tmrCheckForReconnect.Enabled = False
+                        tmrCheckForReconnect.Enabled = True
+                    End If
+                    
                 End If
             End If
             
         Case "OC"
-            MsgBox "open port " & strSplit(1)
+            'MsgBox "open port " & strSplit(1)
             
             If comm.PortOpen = False Then
-                If serialDevices.commPort(drpCommports.ListIndex) = strSplit(1) Then
+                If strSplit(1) = "{serial.port}" Or serialDevices.commPort(drpCommports.ListIndex) = strSplit(1) Then
                     cmdConnect_Click 0, 0, 0
                 End If
             End If
@@ -2325,22 +2759,6 @@ Private Sub txtDataExchange_Change()
     
 End Sub
 
-Private Sub tmrCheckBitRate_Timer()
-    'txtStatus.Text = comm.CommEvent
-    
-    'Debug.Print Me.ActiveControl.Name
-    
-    
-    graphDelay.AddItem 0, CDbl(bitrateInbound), False
-    graphDelay.AddItem 1, CDbl(bitrateOutbound), False
-    
-    bitrateInbound = 0
-    bitrateOutbound = 0
-    
-    graphDelay.ScrollToLastItem 0, True
-    graphDelay.Refresh
-    
-End Sub
 
 Private Sub tmrGetConnected_Timer()
     sendCommand 20, 0, 0, 0, 255
@@ -2375,21 +2793,34 @@ End Sub
 Private Sub tmrShowBuffer_Timer()
     'receiveBufferForShow = "lolabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ lolabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
-    If LenB(receiveBufferForShow) = 0 Then Exit Sub
-    
+    If receiveBufferForShowLength = 0 Then Exit Sub
+    'Clipboard.Clear
+    'Clipboard.SetText receiveBuffer
     'printBuffer
     
     txtReceived.RedrawPause
     txtReceived.SelStart = txtReceived.TextLength
     
-    receiveBufferForShow = parseAndAddText(txtReceived, receiveBufferForShow)
+    'If chkTxtSettings(1).Value = u_Checked Then
+    '    receiveBufferForShow = parseAndAddText(txtReceived, receiveBufferForShow)
+    'Else
+        txtReceived.AddCharAtCursor Left$(receiveBufferForShow, receiveBufferForShowLength), True
+        
+    'End If
     
-    txtReceived.ScrollToEnd
+    If chkTxtSettings(0).Value = u_Checked Then txtReceived.ScrollToEnd
     
     fillReceivedTextColors txtReceived.TextLength - Len(receiveBufferForShow)
     
     txtReceived.RedrawResume
     
+    
+    receiveBufferForShowLength = 0
+    
+    
+    If comm.PortOpen = False Then
+        tmrShowBuffer.Enabled = False
+    End If
 End Sub
 
 Sub parseInputColors(uTxt As uTextBox)
@@ -2456,6 +2887,8 @@ End Sub
 
 
 Private Sub txtOutput_Changed()
+    txtOutput_GotFocus
+    
     parseInputColors txtOutput
     
     'l = Asc(Mid(firstText, i, 1))
@@ -2466,7 +2899,7 @@ End Sub
 
 Private Sub txtOutput_GotFocus()
     txtOutput.BorderColor = &H81B543
-    txtOutput.BackGroundColor = vbWhite
+    txtOutput.BackgroundColor = vbWhite
 End Sub
 
 Private Sub txtOutput_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -2486,7 +2919,8 @@ Sub fillReceivedTextColors(startChar As Long)
     Dim i As Long, j As Long
     Dim s() As Byte
     Dim t As String
-
+    
+    If startChar < 0 Then Exit Sub
 
     s = txtReceived.RawText
     'txtReceived.RedrawPause
@@ -2501,7 +2935,7 @@ Sub fillReceivedTextColors(startChar As Long)
         
         For j = 0 To UBound(searchFor)
             If s(i) = searchFor(j) Then
-                txtReceived.setCharBackColor i, vbBlue
+                txtReceived.setCharBorderColor i, vbBlue
                 Exit For
             End If
         Next j
@@ -2522,12 +2956,21 @@ Private Sub txtReceived_KeyDown(KeyCode As Integer, Shift As Integer)
         txtSearch.SetFocus
         txtSearch.SelStart = 0
         txtSearch.SelLength = txtSearch.TextLength
-        
+    ElseIf KeyCode = vbKeyH Then
+        chkTxtSettings(2).Value = u_Checked
+        KeyCode = 0
+        Shift = 0
     End If
 End Sub
 
 Private Sub txtReceived_KeyPress(KeyAscii As Integer)
     'KeyAscii = 0
+End Sub
+
+Private Sub txtReceived_KeyUp(KeyCode As Integer, Shift As Integer)
+    If KeyCode = vbKeyH Then
+        chkTxtSettings(2).Value = u_unChecked
+    End If
 End Sub
 
 Private Sub txtReceived_OnCursorPositionChanged(ByVal charIndex As Long, ByVal charRow As Long, ByVal charCol As Long, ByVal charVal As Byte)
@@ -2545,11 +2988,19 @@ End Sub
 
 
 Private Sub txtSearch_Changed()
+    txtSearch_GotFocus
     parseInputColors txtSearch
+End Sub
+
+Private Sub txtSearch_GotFocus()
+    txtSearch.BorderColor = &H81B543
+    txtSearch.BackgroundColor = vbWhite
 End Sub
 
 Private Sub txtSearch_KeyDown(KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyReturn Then
+        KeyCode = 0
+        Shift = 0
         cmdSearch_Click 0, 0, 0
     ElseIf KeyCode = vbKeyEscape Then
         cmdSearchClose_Click 0, 0, 0

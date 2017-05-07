@@ -13,10 +13,11 @@ Sub Main()
     commandProcessed = Replace(Command, Chr(34), "")
     
     If Len(commandProcessed) > 0 Then
-        MsgBox "'" & commandProcessed & "'"
+        'MsgBox "'" & commandProcessed & "'"
         SendMessageToInstances commandProcessed
     Else
         frmMain.Show
+        'frmTest.Show
     End If
     
     

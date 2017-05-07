@@ -1,104 +1,103 @@
 [History]
-1=#P0#=mb	#P1#=comm_OnComm	#P2#=SerialConsole/frmMain/comm_OnComm	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420021714	#P7#=0	#P8#=13	.
-2=#P0#=mb	#P1#=tmrShowBuffer_Timer	#P2#=SerialConsole/frmMain/tmrShowBuffer_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420022358	#P7#=0	#P8#=17	.
-3=#P0#=mb	#P1#=parseAndAddText	#P2#=SerialConsole/frmMain/parseAndAddText	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420022128	#P7#=0	#P8#=30	.
-4=#P0#=mb	#P1#=setCharBorderColor	#P2#=SerialConsole/uTextBox/setCharBorderColor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420003554	#P7#=0	#P8#=-1	.
-5=#P0#=mb	#P1#=setCharBackColor	#P2#=SerialConsole/uTextBox/setCharBackColor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420003540	#P7#=0	#P8#=4	.
-6=#P0#=mb	#P1#=Redraw	#P2#=SerialConsole/uTextBox/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420013446	#P7#=0	#P8#=211	.
-7=#P0#=mb	#P1#=UserControl_Initialize	#P2#=SerialConsole/uTextBox/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419164932	#P7#=0	#P8#=87	.
-8=#P0#=mb	#P1#=Form_Load	#P2#=SerialConsole/frmMain/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420013841	#P7#=0	#P8#=79	.
-9=#P0#=mb	#P1#=ReCalculateWords	#P2#=SerialConsole/uTextBox/ReCalculateWords	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419022628	#P7#=0	#P8#=13	.
-10=#P0#=mb	#P1#=UserControl_MouseDown	#P2#=SerialConsole/uTextBox/UserControl_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419020704	#P7#=0	#P8#=20	.
-11=#P0#=mb	#P1#=optInput_Changed	#P2#=SerialConsole/frmMain/optInput_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419020321	#P7#=0	#P8#=3	.
-12=#P0#=mb	#P1#=txtOutput_GotFocus	#P2#=SerialConsole/frmMain/txtOutput_GotFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419015906	#P7#=0	#P8#=1	.
-13=#P0#=mb	#P1#=txtReceived_KeyDown	#P2#=SerialConsole/frmMain/txtReceived_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419015750	#P7#=0	#P8#=1	.
-14=#P0#=mb	#P1#=Form_Resize	#P2#=SerialConsole/frmMain/Form_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420020834	#P7#=0	#P8#=4	.
-15=#P0#=mb	#P1#=cmdSend_Click	#P2#=SerialConsole/frmMain/cmdSend_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419015256	#P7#=0	#P8#=18	.
-16=#P0#=mb	#P1#=txtOutput_KeyDown	#P2#=SerialConsole/frmMain/txtOutput_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419015242	#P7#=0	#P8#=2	.
-17=#P0#=mb	#P1#=commOut	#P2#=SerialConsole/frmMain/commOut	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419014913	#P7#=0	#P8#=1	.
-18=#P0#=mb	#P1#=refreshConnected	#P2#=SerialConsole/frmMain/refreshConnected	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419012938	#P7#=0	#P8#=4	.
-19=#P0#=mb	#P1#=fillZebroButtons	#P2#=SerialConsole/frmMain/fillZebroButtons	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419012924	#P7#=0	#P8#=3	.
-20=#P0#=mb	#P1#=ReCalculateRowMap	#P2#=SerialConsole/uTextBox/ReCalculateRowMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420002508	#P7#=0	#P8#=159	.
-21=#P0#=mb	#P1#=txtSearch_KeyDown	#P2#=SerialConsole/frmMain/txtSearch_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419011104	#P7#=0	#P8#=6	.
-22=#P0#=mb	#P1#=cmdSearchClose_Click	#P2#=SerialConsole/frmMain/cmdSearchClose_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419010918	#P7#=0	#P8#=5	.
-23=#P0#=mb	#P1#=txtReceived_OnCursorPositionChanged	#P2#=SerialConsole/frmMain/txtReceived_OnCursorPositionChanged	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419010800	#P7#=0	#P8#=5	.
-24=#P0#=mb	#P1#=ClearMarkup	#P2#=SerialConsole/uTextBox/ClearMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419010641	#P7#=0	#P8#=9	.
-25=#P0#=mb	#P1#=SendMessageToInstances	#P2#=SerialConsole/MultipleInstances/SendMessageToInstances	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420013710	#P7#=0	#P8#=11	.
-26=#P0#=mb	#P1#=drpCommports_ItemChange	#P2#=SerialConsole/frmMain/drpCommports_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419000612	#P7#=0	#P8#=8	.
-27=#P0#=mb	#P1#=fillCommportList	#P2#=SerialConsole/frmMain/fillCommportList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419000426	#P7#=0	#P8#=28	.
-28=#P0#=mb	#P1#=main	#P2#=SerialConsole/GlobalFunctions/main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420023503	#P7#=0	#P8#=15	.
-29=#P0#=mb	#P1#=txtDataExchange_Change	#P2#=SerialConsole/frmMain/txtDataExchange_Change	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170418234411	#P7#=0	#P8#=27	.
-30=#P0#=mb	#P1#=fillDeviceProperties	#P2#=SerialConsole/CommPortList/fillDeviceProperties	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418233427	#P7#=0	#P8#=22	.
-31=#P0#=mb	#P1#=Refresh	#P2#=SerialConsole/CommPortList/Refresh	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418232745	#P7#=0	#P8#=22	.
-32=#P0#=mb	#P1#=Class_Initialize	#P2#=SerialConsole/CommPortList/Class_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170418231722	#P7#=0	#P8#=4	.
-33=#P0#=mb	#P1#=commPort	#P2#=SerialConsole/CommPortList/commPort [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170418224333	#P7#=0	#P8#=2	.
-34=#P0#=mb	#P1#=chkCommOptions_Changed	#P2#=SerialConsole/frmMain/chkCommOptions_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420013738	#P7#=0	#P8#=1	.
-35=#P0#=mb	#P1#=Value	#P2#=SerialConsole/uCheckBox/Value [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170418003714	#P7#=0	#P8#=1	.
-36=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uTextBox/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418003319	#P7#=0	#P8#=6	.
-37=#P0#=mb	#P1#=cmdConnect_Click	#P2#=SerialConsole/frmMain/cmdConnect_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170418003035	#P7#=0	#P8#=14	.
-38=#P0#=mb	#P1#=cmdSearch_Click	#P2#=SerialConsole/frmMain/cmdSearch_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418002222	#P7#=0	#P8#=6	.
-39=#P0#=mb	#P1#=getWordFromChar	#P2#=SerialConsole/uTextBox/getWordFromChar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418000618	#P7#=0	#P8#=-1	.
-40=#P0#=mb	#P1#=parseInputToBytes	#P2#=SerialConsole/frmMain/parseInputToBytes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418000334	#P7#=0	#P8#=58	.
-41=#P0#=mb	#P1#=setCharItallic	#P2#=SerialConsole/uTextBox/setCharItallic	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417235935	#P7#=0	#P8#=1	.
-42=#P0#=mb	#P1#=txtSearch_Changed	#P2#=SerialConsole/frmMain/txtSearch_Changed	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417234937	#P7#=0	#P8#=1	.
-43=#P0#=mb	#P1#=UserControl_KeyDown	#P2#=SerialConsole/uTextBox/UserControl_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417233434	#P7#=0	#P8#=22	.
-44=#P0#=mb	#P1#=Locked	#P2#=SerialConsole/uTextBox/Locked [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232840	#P7#=0	#P8#=0	.
-45=#P0#=mb	#P1#=Locked	#P2#=SerialConsole/uTextBox/Locked [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232828	#P7#=0	#P8#=1	.
-46=#P0#=mb	#P1#=Border	#P2#=SerialConsole/uTextBox/Border [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232825	#P7#=0	#P8#=12	.
-47=#P0#=mb	#P1#=BorderColor	#P2#=SerialConsole/uTextBox/BorderColor [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232820	#P7#=0	#P8#=-3	.
-48=#P0#=mb	#P1#=UserControl_WriteProperties	#P2#=SerialConsole/uTextBox/UserControl_WriteProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417232735	#P7#=0	#P8#=21	.
-49=#P0#=mb	#P1#=UserControl_ReadProperties	#P2#=SerialConsole/uTextBox/UserControl_ReadProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417232722	#P7#=0	#P8#=20	.
-50=#P0#=mb	#P1#=printBuffer	#P2#=SerialConsole/frmMain/printBuffer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417231554	#P7#=0	#P8#=0	.
-51=#P0#=mb	#P1#=updateCaretPos	#P2#=SerialConsole/uTextBox/updateCaretPos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417172439	#P7#=0	#P8#=14	.
-52=#P0#=mb	#P1#=txtReceived_Click	#P2#=SerialConsole/frmMain/txtReceived_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417172108	#P7#=0	#P8#=1	.
-53=#P0#=mb	#P1#=Usercontrol_Resize	#P2#=SerialConsole/uTextBox/Usercontrol_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417170257	#P7#=0	#P8#=1	.
-54=#P0#=mb	#P1#=chkRefreshZebro_Changed	#P2#=SerialConsole/frmMain/chkRefreshZebro_Changed	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417034246	#P7#=0	#P8#=3	.
-55=#P0#=mb	#P1#=picGraph_MouseUp	#P2#=SerialConsole/uGraph/picGraph_MouseUp	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417033824	#P7#=0	#P8#=0	.
-56=#P0#=mb	#P1#=UserControl_Initialize	#P2#=SerialConsole/uGraph/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417033824	#P7#=0	#P8#=-2	.
-57=#P0#=mb	#P1#=UserControl_DblClick	#P2#=SerialConsole/uTextBox/UserControl_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170416173811	#P7#=0	#P8#=1	.
-58=#P0#=mb	#P1#=AddCharAtCursor	#P2#=SerialConsole/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420010253	#P7#=0	#P8#=0	.
-59=#P0#=mb	#P1#=growWordMap	#P2#=SerialConsole/uTextBox/growWordMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415034849	#P7#=0	#P8#=0	.
-60=#P0#=mb	#P1#=growRowMap	#P2#=SerialConsole/uTextBox/growRowMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415034831	#P7#=0	#P8#=6	.
-61=#P0#=mb	#P1#=DrawScrollBars	#P2#=SerialConsole/uTextBox/DrawScrollBars	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415032550	#P7#=0	#P8#=11	.
-62=#P0#=mb	#P1#=SelStart	#P2#=SerialConsole/uTextBox/SelStart [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170415024459	#P7#=0	#P8#=4	.
-63=#P0#=mb	#P1#=getCharAtCursor	#P2#=SerialConsole/uTextBox/getCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415024353	#P7#=0	#P8#=13	.
-64=#P0#=mb	#P1#=RawText	#P2#=SerialConsole/uTextBox/RawText [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170415020132	#P7#=0	#P8#=1	.
-65=#P0#=mb	#P1#=UserControl_MouseMove	#P2#=SerialConsole/uTextBox/UserControl_MouseMove	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170415014001	#P7#=0	#P8#=2	.
-66=#P0#=mb	#P1#=CalculateUserControlWidthHeight	#P2#=SerialConsole/uTextBox/CalculateUserControlWidthHeight	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415013611	#P7#=0	#P8#=-1	.
-67=#P0#=mb	#P1#=ScrollToEnd	#P2#=SerialConsole/uTextBox/ScrollToEnd	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170414221209	#P7#=0	#P8#=0	.
-68=#P0#=mb	#P1#=ByteArrayToString	#P2#=SerialConsole/uTextBox/ByteArrayToString	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170414203612	#P7#=0	#P8#=0	.
-69=#P0#=mb	#P1#=DrawLine	#P2#=SerialConsole/uGraph/DrawLine	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170414202648	#P7#=0	#P8#=15	.
-70=#P0#=mb	#P1#=Usercontrol_Resize	#P2#=SerialConsole/uGraph/Usercontrol_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170414202322	#P7#=0	#P8#=7	.
-71=#P0#=mb	#P1#=LineNumbers	#P2#=SerialConsole/uTextBox/LineNumbers [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170414172842	#P7#=0	#P8#=5	.
-72=#P0#=mb	#P1#=ScrollBars	#P2#=SerialConsole/uTextBox/ScrollBars [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170414172833	#P7#=0	#P8#=3	.
-73=#P0#=mb	#P1#=m_picMenu_MouseDown	#P2#=SerialConsole/uDropDown/m_picMenu_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170414171253	#P7#=0	#P8#=8	.
-74=#P0#=mb	#P1#=BorderThickness	#P2#=SerialConsole/uTextBox/BorderThickness [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170414165940	#P7#=0	#P8#=3	.
-75=#P0#=mb	#P1#=BorderThickness	#P2#=SerialConsole/uTextBox/BorderThickness [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170414165825	#P7#=0	#P8#=0	.
-76=#P0#=mb	#P1#=Border	#P2#=SerialConsole/uTextBox/Border [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170414165645	#P7#=0	#P8#=12	.
-77=#P0#=mb	#P1#=UserControl_DblClick	#P2#=SerialConsole/uDropDown/UserControl_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170414165001	#P7#=0	#P8#=1	.
-78=#P0#=mb	#P1#=UserControl_MouseUp	#P2#=SerialConsole/uTextBox/UserControl_MouseUp	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170414164642	#P7#=0	#P8#=1	.
-79=#P0#=mb	#P1#=ScrollToLastItem	#P2#=SerialConsole/uGraph/ScrollToLastItem	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170414163726	#P7#=0	#P8#=9	.
-80=#P0#=mb	#P1#=picGraph_MouseMove	#P2#=SerialConsole/uGraph/picGraph_MouseMove	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170414163153	#P7#=0	#P8#=1	.
-81=#P0#=mb	#P1#=LineNumberBackground	#P2#=SerialConsole/uTextBox/LineNumberBackground [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170414153204	#P7#=0	#P8#=0	.
-82=#P0#=mb	#P1#=DrawGrid	#P2#=SerialConsole/uGraph/DrawGrid	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413204509	#P7#=0	#P8#=37	.
-83=#P0#=mb	#P1#=Refresh	#P2#=SerialConsole/uGraph/Refresh	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413203645	#P7#=0	#P8#=30	.
-84=#P0#=mb	#P1#=DrawPoints	#P2#=SerialConsole/uGraph/DrawPoints	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413203346	#P7#=0	#P8#=90	.
-85=#P0#=mb	#P1#=AddPoint	#P2#=SerialConsole/GraphChart/AddPoint	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413202938	#P7#=0	#P8#=14	.
-86=#P0#=mb	#P1#=picGraph_MouseDown	#P2#=SerialConsole/uGraph/picGraph_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170413202812	#P7#=0	#P8#=1	.
-87=#P0#=mb	#P1#=getShortName	#P2#=SerialConsole/uGraph/getShortName	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413202651	#P7#=0	#P8#=3	.
-88=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uGraph/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413201402	#P7#=0	#P8#=13	.
-89=#P0#=mb	#P1#=SetMinY	#P2#=SerialConsole/uGraph/SetMinY	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413194731	#P7#=0	#P8#=0	.
-90=#P0#=mb	#P1#=AddItem	#P2#=SerialConsole/uGraph/AddItem	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413194107	#P7#=0	#P8#=5	.
-91=#P0#=mb	#P1#=DrawPoints	#P2#=SerialConsole/GraphChart/DrawPoints	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413192651	#P7#=0	#P8#=26	.
-92=#P0#=mb	#P1#=DrawGrid	#P2#=SerialConsole/GraphChart/DrawGrid	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413175511	#P7#=0	#P8#=0	.
-93=#P0#=mb	#P1#=tmrTick_Timer	#P2#=SerialConsole/GraphChart/tmrTick_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170413175137	#P7#=0	#P8#=4	.
-94=#P0#=mb	#P1#=UserControl_Initialize	#P2#=SerialConsole/GraphChart/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170413175044	#P7#=0	#P8#=1	.
-95=#P0#=mb	#P1#=FillIt	#P2#=SerialConsole/GraphChart/FillIt	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413175016	#P7#=0	#P8#=-1	.
-96=#P0#=mb	#P1#=getShortName	#P2#=SerialConsole/GraphChart/getShortName	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413174820	#P7#=0	#P8#=-1	.
-97=#P0#=mb	#P1#=StartTest	#P2#=SerialConsole/GraphChart/StartTest	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413173907	#P7#=0	#P8#=-2	.
-98=#P0#=mb	#P1#=Usercontrol_Resize	#P2#=SerialConsole/GraphChart/Usercontrol_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170413173721	#P7#=0	#P8#=2	.
-99=#P0#=mb	#P1#=DrawBorder	#P2#=SerialConsole/GraphChart/DrawBorder	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413173703	#P7#=0	#P8#=7	.
-100=#P0#=mb	#P1#=DrawGemiddelde	#P2#=SerialConsole/GraphChart/DrawGemiddelde	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170413173701	#P7#=0	#P8#=8	.
+1=#P0#=mb	#P1#=Form_Resize	#P2#=SerialConsole/frmMain/Form_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426230055	#P7#=0	#P8#=120	.
+2=#P0#=mb	#P1#=fillArduinoListTestData	#P2#=SerialConsole/frmMain/fillArduinoListTestData	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426225810	#P7#=0	#P8#=13	.
+3=#P0#=mb	#P1#=Form_Load	#P2#=SerialConsole/frmMain/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426224831	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=Form_Click	#P2#=SerialConsole/frmMain/Form_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426224520	#P7#=0	#P8#=1	.
+5=#P0#=mb	#P1#=chkTxtSettings_Changed	#P2#=SerialConsole/frmMain/chkTxtSettings_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426221427	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=main	#P2#=SerialConsole/GlobalFunctions/main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426220809	#P7#=0	#P8#=-1	.
+7=#P0#=mb	#P1#=Form_Load	#P2#=SerialConsole/frmTest/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426220801	#P7#=0	#P8#=15	.
+8=#P0#=mb	#P1#=UserControl_MouseMove	#P2#=SerialConsole/uGraph/UserControl_MouseMove	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426220719	#P7#=0	#P8#=28	.
+9=#P0#=mb	#P1#=DrawLine	#P2#=SerialConsole/uGraph/DrawLine	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426220652	#P7#=0	#P8#=4	.
+10=#P0#=mb	#P1#=DrawPoints	#P2#=SerialConsole/uGraph/DrawPoints	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426220357	#P7#=0	#P8#=46	.
+11=#P0#=mb	#P1#=DrawGrid	#P2#=SerialConsole/uGraph/DrawGrid	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426215908	#P7#=0	#P8#=4	.
+12=#P0#=mb	#P1#=Refresh	#P2#=SerialConsole/uGraph/Refresh	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426214902	#P7#=0	#P8#=6	.
+13=#P0#=mb	#P1#=UserControl_MouseDown	#P2#=SerialConsole/uGraph/UserControl_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426214842	#P7#=0	#P8#=-1	.
+14=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uGraph/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426204054	#P7#=0	#P8#=5	.
+15=#P0#=mb	#P1#=AddItems	#P2#=SerialConsole/uGraph/AddItems	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426204029	#P7#=0	#P8#=1	.
+16=#P0#=mb	#P1#=UserControl_Initialize	#P2#=SerialConsole/uGraph/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426203944	#P7#=0	#P8#=-19	.
+17=#P0#=mb	#P1#=Usercontrol_Resize	#P2#=SerialConsole/uGraph/Usercontrol_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170426193001	#P7#=0	#P8#=5	.
+18=#P0#=mb	#P1#=ScrollToLastItem	#P2#=SerialConsole/uGraph/ScrollToLastItem	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170426191922	#P7#=0	#P8#=6	.
+19=#P0#=mb	#P1#=optInput_Changed	#P2#=SerialConsole/frmMain/optInput_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170423001958	#P7#=0	#P8#=2	.
+20=#P0#=mb	#P1#=comm_OnComm	#P2#=SerialConsole/frmMain/comm_OnComm	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170423001616	#P7#=0	#P8#=54	.
+21=#P0#=mb	#P1#=AddCharAtCursor	#P2#=SerialConsole/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422234723	#P7#=0	#P8#=14	.
+22=#P0#=mb	#P1#=Timer1_Timer	#P2#=SerialConsole/frmTest/Timer1_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422232552	#P7#=0	#P8#=8	.
+23=#P0#=mb	#P1#=Command1_Click	#P2#=SerialConsole/frmTest/Command1_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422232318	#P7#=0	#P8#=0	.
+24=#P0#=mb	#P1#=Class_Initialize	#P2#=SerialConsole/PerformanceTimer/Class_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422230932	#P7#=0	#P8#=8	.
+25=#P0#=mb	#P1#=txtSearch_Changed	#P2#=SerialConsole/frmMain/txtSearch_Changed	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422225724	#P7#=0	#P8#=0	.
+26=#P0#=mb	#P1#=txtSearch_GotFocus	#P2#=SerialConsole/frmMain/txtSearch_GotFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422225715	#P7#=0	#P8#=0	.
+27=#P0#=mb	#P1#=txtOutput_Changed	#P2#=SerialConsole/frmMain/txtOutput_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422225656	#P7#=0	#P8#=1	.
+28=#P0#=mb	#P1#=fillReceivedTextColors	#P2#=SerialConsole/frmMain/fillReceivedTextColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422224858	#P7#=0	#P8#=9	.
+29=#P0#=mb	#P1#=txtDataExchange_Change	#P2#=SerialConsole/frmMain/txtDataExchange_Change	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422224240	#P7#=0	#P8#=11	.
+30=#P0#=mb	#P1#=tmrCheckForReconnect_Timer	#P2#=SerialConsole/frmMain/tmrCheckForReconnect_Timer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422224030	#P7#=0	#P8#=-1	.
+31=#P0#=mb	#P1#=txtReceived_KeyDown	#P2#=SerialConsole/frmMain/txtReceived_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422204544	#P7#=0	#P8#=10	.
+32=#P0#=mb	#P1#=txtReceived_KeyUp	#P2#=SerialConsole/frmMain/txtReceived_KeyUp	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422204510	#P7#=0	#P8#=4	.
+33=#P0#=mb	#P1#=txtReceived_Click	#P2#=SerialConsole/frmMain/txtReceived_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422204440	#P7#=0	#P8#=1	.
+34=#P0#=mb	#P1#=UserControl_KeyUp	#P2#=SerialConsole/uTextBox/UserControl_KeyUp	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422204424	#P7#=0	#P8#=-1	.
+35=#P0#=mb	#P1#=cmdConnect_Click	#P2#=SerialConsole/frmMain/cmdConnect_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422204028	#P7#=0	#P8#=8	.
+36=#P0#=mb	#P1#=tmrShowBuffer_Timer	#P2#=SerialConsole/frmMain/tmrShowBuffer_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422192502	#P7#=0	#P8#=7	.
+37=#P0#=mb	#P1#=parseConsoleColors	#P2#=SerialConsole/uTextBox/parseConsoleColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422191036	#P7#=0	#P8#=127	.
+38=#P0#=mb	#P1#=Redraw	#P2#=SerialConsole/uTextBox/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422184750	#P7#=0	#P8#=102	.
+39=#P0#=mb	#P1#=Command1_Click	#P2#=SerialConsole/frmMain/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422151114	#P7#=0	#P8#=0	.
+40=#P0#=mb	#P1#=CheckCharSize	#P2#=SerialConsole/uTextBox/CheckCharSize	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422134642	#P7#=0	#P8#=45	.
+41=#P0#=mb	#P1#=UserControl_Initialize	#P2#=SerialConsole/uTextBox/UserControl_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422133508	#P7#=0	#P8#=88	.
+42=#P0#=mb	#P1#=RawText	#P2#=SerialConsole/uTextBox/RawText [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170422010200	#P7#=0	#P8#=-2	.
+43=#P0#=mb	#P1#=MultiLine	#P2#=SerialConsole/uTextBox/MultiLine [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170422001139	#P7#=0	#P8#=-2	.
+44=#P0#=mb	#P1#=ConsoleColors	#P2#=SerialConsole/uTextBox/ConsoleColors [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170422001138	#P7#=0	#P8#=-1	.
+45=#P0#=mb	#P1#=ConsoleColors	#P2#=SerialConsole/uTextBox/ConsoleColors [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170422001136	#P7#=0	#P8#=1	.
+46=#P0#=mb	#P1#=HideCursor	#P2#=SerialConsole/uTextBox/HideCursor [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170422001117	#P7#=0	#P8#=14	.
+47=#P0#=mb	#P1#=UserControl_WriteProperties	#P2#=SerialConsole/uTextBox/UserControl_WriteProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422000432	#P7#=0	#P8#=12	.
+48=#P0#=mb	#P1#=UserControl_ReadProperties	#P2#=SerialConsole/uTextBox/UserControl_ReadProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170422000331	#P7#=0	#P8#=22	.
+49=#P0#=mb	#P1#=InstrByte	#P2#=SerialConsole/uTextBox/InstrByte	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422000148	#P7#=0	#P8#=-2	.
+50=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uTextBox/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170422000118	#P7#=0	#P8#=13	.
+51=#P0#=mb	#P1#=ReCalculateRowMap	#P2#=SerialConsole/uTextBox/ReCalculateRowMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170421014150	#P7#=0	#P8#=27	.
+52=#P0#=mb	#P1#=updateCaretPos	#P2#=SerialConsole/uTextBox/updateCaretPos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170421013541	#P7#=0	#P8#=12	.
+53=#P0#=mb	#P1#=optInput_ActivateNextState	#P2#=SerialConsole/frmMain/optInput_ActivateNextState	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170421005701	#P7#=0	#P8#=0	.
+54=#P0#=mb	#P1#=ScrollToEnd	#P2#=SerialConsole/uTextBox/ScrollToEnd	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170421005230	#P7#=0	#P8#=5	.
+55=#P0#=mb	#P1#=SendMessageToInstances	#P2#=SerialConsole/MultipleInstances/SendMessageToInstances	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170421002544	#P7#=0	#P8#=22	.
+56=#P0#=mb	#P1#=EnumWindowsCallBack	#P2#=SerialConsole/MultipleInstances/EnumWindowsCallBack	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170421001355	#P7#=0	#P8#=11	.
+57=#P0#=mb	#P1#=fillBaudList	#P2#=SerialConsole/frmMain/fillBaudList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420193505	#P7#=0	#P8#=17	.
+58=#P0#=mb	#P1#=tmrCheckBitRate_Timer	#P2#=SerialConsole/frmMain/tmrCheckBitRate_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420192345	#P7#=0	#P8#=13	.
+59=#P0#=mb	#P1#=tmrGetConnected_Timer	#P2#=SerialConsole/frmMain/tmrGetConnected_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420192333	#P7#=0	#P8#=-2	.
+60=#P0#=mb	#P1#=chkCommOptions_Changed	#P2#=SerialConsole/frmMain/chkCommOptions_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420192258	#P7#=0	#P8#=17	.
+61=#P0#=mb	#P1#=ClearMarkup	#P2#=SerialConsole/uTextBox/ClearMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420181811	#P7#=0	#P8#=10	.
+62=#P0#=mb	#P1#=parseInputColors	#P2#=SerialConsole/frmMain/parseInputColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420171534	#P7#=0	#P8#=-1	.
+63=#P0#=mb	#P1#=CalculateUserControlWidthHeight	#P2#=SerialConsole/uTextBox/CalculateUserControlWidthHeight	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420171211	#P7#=0	#P8#=36	.
+64=#P0#=mb	#P1#=setCharBorderColor	#P2#=SerialConsole/uTextBox/setCharBorderColor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420003554	#P7#=0	#P8#=-1	.
+65=#P0#=mb	#P1#=setCharBackColor	#P2#=SerialConsole/uTextBox/setCharBackColor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420003540	#P7#=0	#P8#=4	.
+66=#P0#=mb	#P1#=ReCalculateWords	#P2#=SerialConsole/uTextBox/ReCalculateWords	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419022628	#P7#=0	#P8#=76	.
+67=#P0#=mb	#P1#=UserControl_MouseDown	#P2#=SerialConsole/uTextBox/UserControl_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419020704	#P7#=0	#P8#=20	.
+68=#P0#=mb	#P1#=txtOutput_GotFocus	#P2#=SerialConsole/frmMain/txtOutput_GotFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419015906	#P7#=0	#P8#=1	.
+69=#P0#=mb	#P1#=cmdSend_Click	#P2#=SerialConsole/frmMain/cmdSend_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419015256	#P7#=0	#P8#=10	.
+70=#P0#=mb	#P1#=txtOutput_KeyDown	#P2#=SerialConsole/frmMain/txtOutput_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419015242	#P7#=0	#P8#=2	.
+71=#P0#=mb	#P1#=commOut	#P2#=SerialConsole/frmMain/commOut	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419014913	#P7#=0	#P8#=5	.
+72=#P0#=mb	#P1#=refreshConnected	#P2#=SerialConsole/frmMain/refreshConnected	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419012938	#P7#=0	#P8#=4	.
+73=#P0#=mb	#P1#=fillZebroButtons	#P2#=SerialConsole/frmMain/fillZebroButtons	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419012924	#P7#=0	#P8#=3	.
+74=#P0#=mb	#P1#=txtSearch_KeyDown	#P2#=SerialConsole/frmMain/txtSearch_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419011104	#P7#=0	#P8#=10	.
+75=#P0#=mb	#P1#=cmdSearchClose_Click	#P2#=SerialConsole/frmMain/cmdSearchClose_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419010918	#P7#=0	#P8#=5	.
+76=#P0#=mb	#P1#=txtReceived_OnCursorPositionChanged	#P2#=SerialConsole/frmMain/txtReceived_OnCursorPositionChanged	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419010800	#P7#=0	#P8#=4	.
+77=#P0#=mb	#P1#=drpCommports_ItemChange	#P2#=SerialConsole/frmMain/drpCommports_ItemChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170419000612	#P7#=0	#P8#=8	.
+78=#P0#=mb	#P1#=fillCommportList	#P2#=SerialConsole/frmMain/fillCommportList	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170419000426	#P7#=0	#P8#=18	.
+79=#P0#=mb	#P1#=fillDeviceProperties	#P2#=SerialConsole/CommPortList/fillDeviceProperties	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418233427	#P7#=0	#P8#=22	.
+80=#P0#=mb	#P1#=Refresh	#P2#=SerialConsole/CommPortList/Refresh	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418232745	#P7#=0	#P8#=22	.
+81=#P0#=mb	#P1#=Class_Initialize	#P2#=SerialConsole/CommPortList/Class_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170418231722	#P7#=0	#P8#=4	.
+82=#P0#=mb	#P1#=commPort	#P2#=SerialConsole/CommPortList/commPort [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170418224333	#P7#=0	#P8#=2	.
+83=#P0#=mb	#P1#=Value	#P2#=SerialConsole/uCheckBox/Value [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170418003714	#P7#=0	#P8#=1	.
+84=#P0#=mb	#P1#=cmdSearch_Click	#P2#=SerialConsole/frmMain/cmdSearch_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418002222	#P7#=0	#P8#=5	.
+85=#P0#=mb	#P1#=getWordFromChar	#P2#=SerialConsole/uTextBox/getWordFromChar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418000618	#P7#=0	#P8#=-1	.
+86=#P0#=mb	#P1#=parseInputToBytes	#P2#=SerialConsole/frmMain/parseInputToBytes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170418000334	#P7#=0	#P8#=7	.
+87=#P0#=mb	#P1#=setCharItallic	#P2#=SerialConsole/uTextBox/setCharItallic	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417235935	#P7#=0	#P8#=1	.
+88=#P0#=mb	#P1#=UserControl_KeyDown	#P2#=SerialConsole/uTextBox/UserControl_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417233434	#P7#=0	#P8#=238	.
+89=#P0#=mb	#P1#=Locked	#P2#=SerialConsole/uTextBox/Locked [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232840	#P7#=0	#P8#=0	.
+90=#P0#=mb	#P1#=Locked	#P2#=SerialConsole/uTextBox/Locked [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232828	#P7#=0	#P8#=1	.
+91=#P0#=mb	#P1#=Border	#P2#=SerialConsole/uTextBox/Border [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232825	#P7#=0	#P8#=12	.
+92=#P0#=mb	#P1#=BorderColor	#P2#=SerialConsole/uTextBox/BorderColor [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170417232820	#P7#=0	#P8#=-3	.
+93=#P0#=mb	#P1#=printBuffer	#P2#=SerialConsole/frmMain/printBuffer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417231554	#P7#=0	#P8#=14	.
+94=#P0#=mb	#P1#=Usercontrol_Resize	#P2#=SerialConsole/uTextBox/Usercontrol_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170417170257	#P7#=0	#P8#=4	.
+95=#P0#=mb	#P1#=chkRefreshZebro_Changed	#P2#=SerialConsole/frmMain/chkRefreshZebro_Changed	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170417034246	#P7#=0	#P8#=3	.
+96=#P0#=mb	#P1#=UserControl_DblClick	#P2#=SerialConsole/uTextBox/UserControl_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170416173811	#P7#=0	#P8#=1	.
+97=#P0#=mb	#P1#=growWordMap	#P2#=SerialConsole/uTextBox/growWordMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415034849	#P7#=0	#P8#=0	.
+98=#P0#=mb	#P1#=growRowMap	#P2#=SerialConsole/uTextBox/growRowMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415034831	#P7#=0	#P8#=6	.
+99=#P0#=mb	#P1#=DrawScrollBars	#P2#=SerialConsole/uTextBox/DrawScrollBars	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170415032550	#P7#=0	#P8#=11	.
 [Workbench]
 1=#P0#=mb	#P1#=Redraw	#P2#=SerialConsole/uTextBox/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170420013446	#P7#=0	#P8#=211	.
 2=#P0#=mb	#P1#=Form_Load	#P2#=SerialConsole/frmMain/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170420013841	#P7#=0	#P8#=79	.

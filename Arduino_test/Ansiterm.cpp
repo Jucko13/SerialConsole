@@ -217,3 +217,4 @@ void Ansiterm::setAttribute(int a)
 {
  preambleAndNumberAndValue(a, 'm');
 }
+

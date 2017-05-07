@@ -10,10 +10,12 @@ to enable the support for ACD you need to add the following to the platform.txt 
 ################################################################################################
 #             Stuff for ACD (Auto Connect Disconnect) by the SerialConsole program             #
 ################################################################################################
-recipe.hooks.deploy.postupload.pattern=F:\Github\SerialConsole\ZebroMote.exe "OC {serial.port}"
+recipe.hooks.postbuild.0.pattern=F:\Github\SerialConsole\ZebroMote.exe "CC {serial.port}"
 recipe.hooks.deploy.preupload.pattern=F:\Github\SerialConsole\ZebroMote.exe "CC {serial.port}"
 recipe.hooks.deploy.errorupload.pattern=F:\Github\SerialConsole\ZebroMote.exe "CC {serial.port}"
+recipe.hooks.deploy.postupload.pattern=F:\Github\SerialConsole\ZebroMote.exe "OC {serial.port}"
 ################################################################################################
+
 
 
 platform.txt can be found in the following places FOR VISUAL MICRO:
