@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 
-Private listCount As Long
+Private ListCount As Long
 Private arr() As SerialDevice
 
 Private wmi As WbemScripting.SWbemServices
@@ -34,26 +34,26 @@ End Sub
 
 Public Sub Clear()
     ReDim arr(0)
-    listCount = 0
+    ListCount = 0
 End Sub
 
 Public Property Get Count() As Long
-    Count = listCount
+    Count = ListCount
 End Property
 
-Public Property Get friendlyName(index As Long) As String
-    If listCount = 0 Then Exit Property
-    friendlyName = arr(index).friendlyName
+Public Property Get friendlyName(Index As Long) As String
+    If ListCount = 0 Then Exit Property
+    friendlyName = arr(Index).friendlyName
 End Property
 
-Public Property Get commPort(index As Long) As String
-    If listCount = 0 Or index < 0 Or index >= listCount Then Exit Property
-    commPort = arr(index).commPort
+Public Property Get commPort(Index As Long) As String
+    If ListCount = 0 Or Index < 0 Or Index >= ListCount Then Exit Property
+    commPort = arr(Index).commPort
 End Property
 
-Public Property Get locationInformation(index As Long) As String
-    If listCount = 0 Then Exit Property
-    locationInformation = arr(index).locationInformation
+Public Property Get locationInformation(Index As Long) As String
+    If ListCount = 0 Then Exit Property
+    locationInformation = arr(Index).locationInformation
 End Property
 
 
@@ -86,7 +86,31 @@ End Property
 '    Next
 'End Sub
 
+Public Property Get isCommAvailable(Index As Long) As Boolean
+    If ListCount = 0 Then Exit Property
 
+    Dim k As PerformanceTimer
+    Dim totalDevices As Long
+    Dim tmpStr As String
+    Dim colItems As Object
+    
+    Set k = New PerformanceTimer
+    
+    k.StartTimer
+    
+    'Dim colItem As Object
+    
+    Set colItems = wmi.ExecQuery("SELECT Availability from Win32_PnPEntity WHERE DeviceID='" & Replace(arr(Index).instanceName, "\", "\\") & "'")
+    
+    'GetMembers frmMain.List1, colItems
+    
+    isCommAvailable = colItems.Count > 0
+    
+    'k.StopTimer
+    'Debug.Print k.TimeElapsed(pvMilliSecond)
+    
+    'Debug.Print tmpStr
+End Property
 
 
 Public Sub Refresh()
@@ -96,44 +120,50 @@ Public Sub Refresh()
     Dim singleDevice As SerialDevice
     On Error Resume Next
     
+
+    
+    'k.StartTimer
     Clear
-    Set colItems = wmi.ExecQuery("SELECT * from Win32_PnPEntity", , 48) ' WHERE Name LIKE '%(COM%' ''' 'Win32_SerialPort
+    Set colItems = wmi.ExecQuery("SELECT * from Win32_PnPEntity", , 48) ', , 48 = return immediately ' WHERE Name LIKE '%(COM%' ''' 'Win32_SerialPort
+    
+    'k.StopTimer
+    
+    'Debug.Print k.TimeElapsed(pvMilliSecond)
     
     For Each objItem In colItems
         If objItem Is Nothing Then Exit Sub
         
-        ReDim Preserve arr(0 To listCount)
-        
-        
-        
-        With arr(listCount)
+        ReDim Preserve arr(0 To ListCount)
+         
+        With arr(ListCount)
             .commPort = ""
             .instanceName = ""
-            
-            
+        
             '.commPort = objItem.DeviceID
-            .instanceName = objItem.DeviceID
+            .instanceName = objItem.deviceid
         End With
         
         
-        If fillDeviceProperties(listCount) Then
-            listCount = listCount + 1
+        If fillDeviceProperties(ListCount) Then
+            ListCount = ListCount + 1
         End If
     Next
+    
+    
 End Sub
 
-Private Function fillDeviceProperties(index As Long) As Boolean 'SerialDevice
+Private Function fillDeviceProperties(Index As Long) As Boolean 'SerialDevice
     Dim hKey As Long, hKey2 As Long
     Dim Length As Long
     Dim Value As String
     
     fillDeviceProperties = False
     
-    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & arr(index).instanceName, 0&, KEY_READ, hKey) <> ERROR_SUCCESS Then
+    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & arr(Index).instanceName, 0&, KEY_READ, hKey) <> ERROR_SUCCESS Then
         GoTo CloseItAll
     End If
     
-    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & arr(index).instanceName & "\Device Parameters", 0&, KEY_READ, hKey2) <> ERROR_SUCCESS Then
+    If RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\CurrentControlSet\Enum\" & arr(Index).instanceName & "\Device Parameters", 0&, KEY_READ, hKey2) <> ERROR_SUCCESS Then
         GoTo CloseItAll
     End If
     
@@ -145,8 +175,8 @@ Private Function fillDeviceProperties(index As Long) As Boolean 'SerialDevice
     Value = Space(Length)
     RegQueryValueEx hKey2, "PortName", 0&, REG_SZ, ByVal Value, Length
     
-    arr(index).commPort = Trim(Replace(Value, Chr(0), ""))
-    If arr(index).commPort = "" Then
+    arr(Index).commPort = Trim(Replace(Value, Chr(0), ""))
+    If arr(Index).commPort = "" Then
         GoTo CloseItAll
     End If
     
@@ -159,7 +189,7 @@ Private Function fillDeviceProperties(index As Long) As Boolean 'SerialDevice
     Value = Space(Length)
     RegQueryValueEx hKey, "FriendlyName", 0&, REG_SZ, ByVal Value, Length
     
-    arr(index).friendlyName = Trim(Replace(Value, Chr(0), ""))
+    arr(Index).friendlyName = Trim(Replace(Value, Chr(0), ""))
     '##############################
     
     
@@ -169,7 +199,7 @@ Private Function fillDeviceProperties(index As Long) As Boolean 'SerialDevice
     Value = Space(Length)
     RegQueryValueEx hKey, "LocationInformation", 0&, REG_SZ, ByVal Value, Length
     
-    arr(index).locationInformation = Trim(Replace(Value, Chr(0), ""))
+    arr(Index).locationInformation = Trim(Replace(Value, Chr(0), ""))
     '##############################
     
     
@@ -179,7 +209,7 @@ Private Function fillDeviceProperties(index As Long) As Boolean 'SerialDevice
     Value = Space(Length)
     RegQueryValueEx hKey, "ClassGUID", 0&, REG_SZ, ByVal Value, Length
     
-    arr(index).classGUID = Trim(Replace(Value, Chr(0), ""))
+    arr(Index).classGUID = Trim(Replace(Value, Chr(0), ""))
     '##############################
     
     fillDeviceProperties = True
