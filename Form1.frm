@@ -503,8 +503,8 @@ Begin VB.Form frmMain
    End
    Begin VB.Timer tmrShowBuffer 
       Interval        =   1
-      Left            =   3900
-      Top             =   3735
+      Left            =   3960
+      Top             =   3630
    End
    Begin VB.PictureBox picToolbar 
       Appearance      =   0  'Flat
@@ -1169,14 +1169,14 @@ Begin VB.Form frmMain
       ScrollBarWidth  =   30
    End
    Begin MSCommLib.MSComm comm 
-      Left            =   5145
-      Top             =   4095
+      Left            =   5100
+      Top             =   3210
       _ExtentX        =   1005
       _ExtentY        =   1005
       _Version        =   393216
       DTREnable       =   0   'False
       InBufferSize    =   10
-      InputLen        =   1
+      InputLen        =   100
       OutBufferSize   =   1
       ParityReplace   =   0
       RThreshold      =   1
@@ -2303,6 +2303,7 @@ Private Sub comm_OnComm()
             
             'bitrateInbound = bitrateInbound + comm.InBufferCount
             
+            'Timer.StartTimer
             
             tmpReceived = comm.Input
             RL = Len(tmpReceived)
@@ -2316,6 +2317,10 @@ Private Sub comm_OnComm()
             
             Mid$(receiveBufferArduino, receiveBufferArduinoLength + 1, RL) = tmpReceived
             receiveBufferArduinoLength = receiveBufferArduinoLength + RL
+            
+            'Timer.StopTimer
+            'Debug.Print Timer.TimeElapsed(pvMilliSecond)
+            
             
             'Debug.Print tmpReceived
             
@@ -2358,7 +2363,7 @@ Private Sub comm_OnComm()
             ' The CommEvent property always returns a numerical value.
             ' Whenever the CommEvent property returns a number
             ' above 1000 then you know that an error occurred.
-            txtStatus.Text = "Some ComPort Error occurred"
+            txtStatus.Text = "Some ComPort Error occurred: " & comm.CommEvent
             
             
         Case Else
@@ -3242,6 +3247,8 @@ Private Sub tmrShowBuffer_Timer()
     'Clipboard.SetText receiveBuffer
     'printBuffer
     
+    Timer.StartTimer
+    
     Dim tmpSelStart As Long
     Dim tmpSelLength As Long
     
@@ -3271,15 +3278,20 @@ Private Sub tmrShowBuffer_Timer()
     
     changeBitsSendReceived
     
+    Timer.StopTimer
+    
+    Debug.Print Timer.TimeElapsed(pvMilliSecond)
+    
     '##################
     '## Arduino Part ##
     '##################
+    
     
     If comm.PortOpen = False Then
         tmrShowBuffer.Enabled = False
     End If
     
-    On Error Resume Next
+    'On Error Resume Next
     If drpWindowType.ListIndex = 2 And InStr(1, receiveBufferArduino, vbCrLf) > 0 Then
         Dim tmpSplit() As String, tmpValue() As String
         tmpSplit = Split(Left$(receiveBufferArduino, receiveBufferArduinoLength), vbCrLf)
