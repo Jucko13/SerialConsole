@@ -23,6 +23,37 @@ Begin VB.Form frmMain
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1196
    StartUpPosition =   2  'CenterScreen
+   Begin SerialConsole.uCheckBox chkCommOptions 
+      Height          =   450
+      Index           =   5
+      Left            =   15765
+      TabIndex        =   75
+      ToolTipText     =   "Auto Connect USB (When you plug in USB this program will automatically connect)"
+      Top             =   180
+      Width           =   885
+      _ExtentX        =   1561
+      _ExtentY        =   794
+      BackgroundColor =   2367774
+      Border          =   0   'False
+      BorderColor     =   2367774
+      Caption         =   "ACU"
+      CaptionOffsetLeft=   5
+      CaptionOffsetTop=   2
+      CheckBackgroundColor=   2367774
+      CheckBorderColor=   8421504
+      CheckBorderThickness=   2
+      CheckSelectionColor=   4210752
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Consolas"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   12632256
+   End
    Begin SerialConsole.uFrame frmArduinoWindow 
       Height          =   2595
       Index           =   2
@@ -58,7 +89,7 @@ Begin VB.Form frmMain
    Begin SerialConsole.uFrame frmArduinoWindow 
       Height          =   2055
       Index           =   1
-      Left            =   4035
+      Left            =   4275
       TabIndex        =   64
       Top             =   930
       Width           =   2805
@@ -108,8 +139,8 @@ Begin VB.Form frmMain
    Begin VB.Timer tmrCheckForReconnect 
       Enabled         =   0   'False
       Interval        =   1000
-      Left            =   14280
-      Top             =   1065
+      Left            =   14175
+      Top             =   855
    End
    Begin SerialConsole.uCheckBox chkCommOptions 
       Height          =   450
@@ -118,8 +149,8 @@ Begin VB.Form frmMain
       TabIndex        =   58
       ToolTipText     =   "Auto Connect (Edit Arduino platform.txt)"
       Top             =   180
-      Width           =   870
-      _ExtentX        =   1535
+      Width           =   720
+      _ExtentX        =   1270
       _ExtentY        =   794
       BackgroundColor =   2367774
       Border          =   0   'False
@@ -158,15 +189,15 @@ Begin VB.Form frmMain
       Index           =   0
       Left            =   270
       TabIndex        =   55
-      Top             =   930
+      Top             =   900
       Visible         =   0   'False
       Width           =   1230
    End
    Begin SerialConsole.uFrame frmTxtSettings 
       Height          =   435
-      Left            =   360
+      Left            =   195
       TabIndex        =   51
-      Top             =   4350
+      Top             =   4320
       Width           =   6240
       _ExtentX        =   11007
       _ExtentY        =   767
@@ -319,8 +350,8 @@ Begin VB.Form frmMain
       TabIndex        =   49
       ToolTipText     =   "Auto Disconnect (Edit Arduino platform.txt)"
       Top             =   180
-      Width           =   870
-      _ExtentX        =   1535
+      Width           =   735
+      _ExtentX        =   1296
       _ExtentY        =   794
       BackgroundColor =   2367774
       Border          =   0   'False
@@ -354,21 +385,21 @@ Begin VB.Form frmMain
          Strikethrough   =   0   'False
       EndProperty
       Height          =   420
-      Left            =   3825
+      Left            =   3705
       TabIndex        =   48
-      Top             =   2385
+      Top             =   2445
       Visible         =   0   'False
       Width           =   480
    End
    Begin SerialConsole.uCheckBox chkCommOptions 
       Height          =   450
       Index           =   2
-      Left            =   12975
+      Left            =   12720
       TabIndex        =   47
       ToolTipText     =   "Clear On Connect"
       Top             =   180
-      Width           =   870
-      _ExtentX        =   1535
+      Width           =   855
+      _ExtentX        =   1508
       _ExtentY        =   794
       BackgroundColor =   2367774
       Border          =   0   'False
@@ -393,9 +424,9 @@ Begin VB.Form frmMain
    End
    Begin SerialConsole.uFrame frmSearch 
       Height          =   645
-      Left            =   3045
+      Left            =   3705
       TabIndex        =   44
-      Top             =   1515
+      Top             =   3105
       Visible         =   0   'False
       Width           =   3435
       _ExtentX        =   6059
@@ -469,7 +500,7 @@ Begin VB.Form frmMain
       End
       Begin SerialConsole.uButton cmdSearchClose 
          Height          =   330
-         Left            =   3105
+         Left            =   3000
          TabIndex        =   50
          Top             =   210
          Width           =   330
@@ -503,8 +534,8 @@ Begin VB.Form frmMain
    End
    Begin VB.Timer tmrShowBuffer 
       Interval        =   1
-      Left            =   3960
-      Top             =   3630
+      Left            =   15075
+      Top             =   855
    End
    Begin VB.PictureBox picToolbar 
       Appearance      =   0  'Flat
@@ -1072,8 +1103,8 @@ Begin VB.Form frmMain
    Begin VB.Timer tmrGetConnected 
       Enabled         =   0   'False
       Interval        =   500
-      Left            =   6120
-      Top             =   3090
+      Left            =   14625
+      Top             =   855
    End
    Begin SerialConsole.uCheckBox chkCommOptions 
       Height          =   450
@@ -1169,8 +1200,8 @@ Begin VB.Form frmMain
       ScrollBarWidth  =   30
    End
    Begin MSCommLib.MSComm comm 
-      Left            =   5100
-      Top             =   3210
+      Left            =   6645
+      Top             =   3810
       _ExtentX        =   1005
       _ExtentY        =   1005
       _Version        =   393216
@@ -1784,7 +1815,7 @@ Begin VB.Form frmMain
    End
    Begin SerialConsole.uFrame uFrame1 
       Height          =   315
-      Left            =   5970
+      Left            =   4545
       TabIndex        =   52
       Top             =   4890
       Visible         =   0   'False
@@ -2036,9 +2067,11 @@ Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxCons
         Case 2
             If newState Then
                 txtReceived.Font.Name = "CompendiumArcana Hexadecimal"
+                txtReceived.Font.Bold = False
                 txtReceived.Redraw
             Else
                 txtReceived.Font.Name = "CompendiumArcana Ctrl Char Hex"
+                txtReceived.Font.Bold = False
                 txtReceived.Redraw
             End If
 
@@ -2069,6 +2102,7 @@ Private Sub cmdConnect_Click(Button As Integer, x As Single, y As Single)
         comm.OutBufferCount = 0
         comm.DTREnable = (chkCommOptions(0).Value = u_Checked)
         
+        tmrCheckForReconnect.Enabled = False
         setStatus "Connected!"
         
         tmrShowBuffer.Enabled = True
@@ -2171,7 +2205,7 @@ Function parseInputToBytes(uTxt As uTextBox) As Byte()
     Dim forceFunction As Long
     forceFunction = -1
     
-    For i = optInput.LBound To optInput.UBound
+    For i = optInput.lbound To optInput.UBound
         If optInput(i).Value = u_Selected Then
             forceFunction = i
             Exit For
@@ -2468,7 +2502,8 @@ Private Sub drpCommports_ItemChange(ItemIndex As Long)
     SaveSetting "SerialConsole", "dropdown", "selectedCommPort", serialDevices.commPort(ItemIndex)
      
     Me.Caption = serialDevices.commPort(ItemIndex) & " - SerialConsole - V1.0 by Ricardo de Roode"
-     
+    tmrCheckForReconnect.Enabled = False
+    
     Exit Sub
 notWorking:
     setStatus Err.Description, True, Err.Number
@@ -2578,13 +2613,15 @@ Sub setFont()
             
             Select Case Left$(c.Name, 3)
                 Case "chk", "opt"
-                    
+                    'Debug.Print "name: " & c.Name & " cap:" & c.Caption & " l:"
                     If c.Container.Name = Me.Name Then
                         c.Width = Me.TextWidth(c.Caption) + 35
                     Else
                         c.Width = (Me.TextWidth(c.Caption) + 35) * Screen.TwipsPerPixelX
                     End If
             End Select
+            
+            'Debug.Print TypeName(c)
             
             If Left$(TypeName(c), 1) = "u" Then
                 c.Redraw
@@ -2629,7 +2666,7 @@ Sub fillOnSendList()
     drpOnSend.AddItem "0x00"
     drpOnSend.AddItem "0xFF"
     drpOnSend.AddItem ";"
-    
+
     drpOnSend.ItemsVisible = drpOnSend.ListCount
     
 End Sub
@@ -2690,21 +2727,6 @@ Private Sub Form_Load()
     
     comm.OutBufferSize = 5
     
-    On Error Resume Next
-    drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
-    drpOnSend.ListIndex = GetSetting("SerialConsole", "dropdown", "drpOnSend.ListIndex", 0)
-    drpReceiveSpeed.ListIndex = GetSetting("SerialConsole", "dropdown", "drpReceiveSpeed.ListIndex", 0)
-    drpWindowType.ListIndex = GetSetting("SerialConsole", "dropdown", "drpWindowType.ListIndex", 0)
-    
-    
-    For i = 0 To chkCommOptions.UBound
-        chkCommOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkCommOptions(" & i & ").Value", u_unChecked)
-    Next i
-    For i = 0 To chkTxtSettings.UBound
-        chkTxtSettings(i).Value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
-    Next i
-    
-    
     ledCommand = -1
     
     
@@ -2722,13 +2744,11 @@ Private Sub Form_Load()
     graphDataInOut.LineVisible(1) = True
     graphDataInOut.LineThickness(1) = 1
     
-    graphDataInOut.Refresh
+    graphDataInOut.Redraw
     graphDataInOut.AddItem 0, 0, False
     graphDataInOut.AddItem 1, 0, True
     
-    dragSplitPercentage = 0.409
-    
-    
+    dragSplitPercentage = GetSetting("SerialConsole", "UI", "dragSplitPercentage", 0.409)
     
 '    Dim str As String
 '    For i = 0 To 255
@@ -2768,6 +2788,20 @@ Private Sub Form_Load()
     fillArduinoListTestData
     
     setFont
+    
+    On Error Resume Next
+    drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
+    drpOnSend.ListIndex = GetSetting("SerialConsole", "dropdown", "drpOnSend.ListIndex", 0)
+    drpReceiveSpeed.ListIndex = GetSetting("SerialConsole", "dropdown", "drpReceiveSpeed.ListIndex", 0)
+    drpWindowType.ListIndex = GetSetting("SerialConsole", "dropdown", "drpWindowType.ListIndex", 0)
+
+    For i = 0 To chkCommOptions.UBound
+        chkCommOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkCommOptions(" & i & ").Value", u_unChecked)
+    Next i
+    For i = 0 To chkTxtSettings.UBound
+        chkTxtSettings(i).Value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
+    Next i
+    
     
     'txtReceived.Text = txtReceived.FileToString("F:\Github\SerialConsole\changelog.txt")
 End Sub
@@ -3047,6 +3081,7 @@ Private Sub Form_Unload(cancel As Integer)
     SaveSetting "SerialConsole", "dropdown", "drpOnSend.ListIndex", drpOnSend.ListIndex
     SaveSetting "SerialConsole", "dropdown", "drpReceiveSpeed.ListIndex", drpReceiveSpeed.ListIndex
     SaveSetting "SerialConsole", "dropdown", "drpWindowType.ListIndex", drpWindowType.ListIndex
+    SaveSetting "SerialConsole", "UI", "dragSplitPercentage", dragSplitPercentage
     
     If comm.PortOpen Then comm.PortOpen = False
     DoEvents
@@ -3136,7 +3171,7 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
     bitrateOutbound = 0
     
     graphDataInOut.ScrollToLastItem 0, True
-    graphDataInOut.Refresh
+    graphDataInOut.Redraw
     
     'Debug.Print Seconds
 End Sub
@@ -3147,6 +3182,7 @@ Private Sub tmrCheckUsbStillConnected_Timer(ByVal Seconds As Currency)
         If serialDevices.isCommAvailable(drpCommports.ListIndex) = False Then
             cmdConnect_Click 0, 0, 0
             setStatus "Device was removed unexpectedly!", True, -1
+            If chkCommOptions(5).Value = u_Checked Then tmrCheckForReconnect.Enabled = True
         End If
     End If
 End Sub
@@ -3155,8 +3191,12 @@ End Sub
 Private Sub tmrCheckForReconnect_Timer()
     If comm.PortOpen = False Then
         cmdConnect_Click 0, 0, 0
+        If comm.PortOpen = False Then
+            setStatus "Checking for automatic connect..."
+        End If
     Else
         tmrCheckForReconnect.Enabled = False
+        Exit Sub
     End If
     
 End Sub
@@ -3247,7 +3287,7 @@ Private Sub tmrShowBuffer_Timer()
     'Clipboard.SetText receiveBuffer
     'printBuffer
     
-    Timer.StartTimer
+    'Timer.StartTimer
     
     Dim tmpSelStart As Long
     Dim tmpSelLength As Long
@@ -3278,9 +3318,9 @@ Private Sub tmrShowBuffer_Timer()
     
     changeBitsSendReceived
     
-    Timer.StopTimer
+    'Timer.StopTimer
     
-    Debug.Print Timer.TimeElapsed(pvMilliSecond)
+    'Debug.Print Timer.TimeElapsed(pvMilliSecond)
     
     '##################
     '## Arduino Part ##
@@ -3318,7 +3358,7 @@ Private Sub tmrShowBuffer_Timer()
         Next i
         graphArduino.ScrollToLastItem 0, True
         
-        graphArduino.Refresh
+        graphArduino.Redraw
     ElseIf drpWindowType.ListIndex <> 2 Then
         receiveBufferArduinoLength = 0
     
@@ -3364,7 +3404,7 @@ Dim i As Long, j As Long
     Dim forceFunction As Long
     forceFunction = -1
     
-    For i = optInput.LBound To optInput.UBound
+    For i = optInput.lbound To optInput.UBound
         If optInput(i).Value = u_Selected Then
             forceFunction = i
             Exit For
@@ -3441,6 +3481,8 @@ Sub fillReceivedTextColors(startChar As Long)
     Dim s() As Byte
     Dim t As String
     
+    Dim mayColor As Boolean
+    
     If startChar < 0 Then Exit Sub
 
     s = txtReceived.RawText
@@ -3452,14 +3494,33 @@ Sub fillReceivedTextColors(startChar As Long)
     
     
     For i = startChar To UBound(s)
-        txtReceived.setCharBackColor i, -1
-        
-        For j = 0 To UBound(searchFor)
-            If s(i) = searchFor(j) Then
-                txtReceived.setCharBorderColor i, vbBlue
-                Exit For
+        If s(i) = searchFor(0) Then
+            mayColor = True
+            For j = 1 To UBound(searchFor)
+                If i + j < UBound(s) Then
+                    If s(i + j) <> searchFor(j) Then
+                        mayColor = False
+                        Exit For
+                    End If
+                Else
+                    mayColor = False
+                    Exit For
+                End If
+            Next j
+            
+            If mayColor Then
+                For j = 0 To UBound(searchFor)
+                    txtReceived.setCharBorderColor i + j, vbBlue
+                Next j
+                i = i + UBound(searchFor)
+            Else
+                txtReceived.setCharBorderColor i, -1
             End If
-        Next j
+            
+        Else
+            txtReceived.setCharBorderColor i, -1
+        End If
+        
     Next i
 
 

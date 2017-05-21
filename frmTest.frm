@@ -108,5 +108,5 @@ Private Sub Timer1_Timer()
     uGraph1.AddItem 0, Sin(i) * 100 + Rnd * 5 + 100, False
     uGraph1.AddItem 1, Sin(i + 0.5) * 100 + Rnd * 5 + 100, False
     'uGraph1.ScrollToLastItem 0, True
-    uGraph1.Refresh
+    uGraph1.Redraw
 End Sub
