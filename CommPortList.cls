@@ -89,22 +89,24 @@ End Property
 Public Property Get isCommAvailable(Index As Long) As Boolean
     If ListCount = 0 Then Exit Property
 
-    Dim k As PerformanceTimer
+    'Dim k As PerformanceTimer
     Dim totalDevices As Long
     Dim tmpStr As String
     Dim colItems As Object
     
-    Set k = New PerformanceTimer
+    'Set k = New PerformanceTimer
     
-    k.StartTimer
+    'k.StartTimer
     
     'Dim colItem As Object
     
     Set colItems = wmi.ExecQuery("SELECT Availability from Win32_PnPEntity WHERE DeviceID='" & Replace(arr(Index).instanceName, "\", "\\") & "'")
-    
+    DoEvents
     'GetMembers frmMain.List1, colItems
     
     isCommAvailable = colItems.Count > 0
+    
+    DoEvents
     
     'k.StopTimer
     'Debug.Print k.TimeElapsed(pvMilliSecond)
