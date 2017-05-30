@@ -79,7 +79,7 @@ Begin VB.Form frmMain
       End
       Begin SerialConsole.uCheckBox chkCommOptions 
          Height          =   195
-         Index           =   6
+         Index           =   3
          Left            =   90
          TabIndex        =   85
          ToolTipText     =   "Auto Disconnect (Edit Arduino platform.txt)"
@@ -196,7 +196,8 @@ Begin VB.Form frmMain
       Width           =   480
    End
    Begin VB.Timer tmrCheckUsbStillConnected 
-      Interval        =   200
+      Enabled         =   0   'False
+      Interval        =   1000
       Left            =   15525
       Top             =   855
    End
@@ -1955,9 +1956,9 @@ Begin VB.Form frmMain
    Begin SerialConsole.uFrame frmWindow 
       Height          =   3480
       Index           =   3
-      Left            =   13635
+      Left            =   13590
       TabIndex        =   75
-      Top             =   3045
+      Top             =   3015
       Visible         =   0   'False
       Width           =   3825
       _ExtentX        =   6747
@@ -2008,11 +2009,11 @@ Begin VB.Form frmMain
       End
       Begin SerialConsole.uButton cmdOpenLog 
          Height          =   330
-         Left            =   270
+         Left            =   135
          TabIndex        =   77
-         Top             =   3075
-         Width           =   1290
-         _ExtentX        =   2275
+         Top             =   1950
+         Width           =   1995
+         _ExtentX        =   3519
          _ExtentY        =   582
          BackgroundColor =   4671472
          BorderColor     =   8421504
@@ -2026,7 +2027,7 @@ Begin VB.Form frmMain
          CaptionBorderColorDisabled=   0
          FocusColorDisabled=   12632256
          FocusVisible    =   0   'False
-         Caption         =   "Open Log"
+         Caption         =   "Open Folder"
          Border          =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Px437 ATI 8x14"
@@ -2043,9 +2044,9 @@ Begin VB.Form frmMain
          Height          =   1290
          Left            =   135
          TabIndex        =   78
-         Top             =   510
-         Width           =   1980
-         _ExtentX        =   3493
+         Top             =   540
+         Width           =   1995
+         _ExtentX        =   3519
          _ExtentY        =   2275
          BackgroundColor =   2367774
          BorderColor     =   14737632
@@ -2145,6 +2146,18 @@ Begin VB.Form frmMain
             EndProperty
             ForeColor       =   12632256
          End
+      End
+      Begin VB.Label lblInfo 
+         AutoSize        =   -1  'True
+         BackColor       =   &H0024211E&
+         Caption         =   "Current Logfile Name: "
+         ForeColor       =   &H00C0C0C0&
+         Height          =   195
+         Index           =   3
+         Left            =   135
+         TabIndex        =   88
+         Top             =   2355
+         Width           =   1620
       End
    End
    Begin VB.Label LBLSplit 
@@ -2527,7 +2540,13 @@ Sub checkForAndOpenLogFile()
         Open fileName For Binary Access Write As logFileHandle
     End If
     
-
+    Dim lastName() As String
+    If fileName <> "" Then
+        lastName = Split(fileName, "\")
+        lblInfo(3).Caption = "Current Logfile Name: " & lastName(UBound(lastName))
+    Else
+        lblInfo(3).Caption = "Current Logfile Name: ..."
+    End If
     
         
     'If number = -1 Then
@@ -2611,6 +2630,21 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, x As Single, 
                 
             End If
     End Select
+    
+End Sub
+
+Private Sub cmdOpenLog_Click(Button As Integer, x As Single, y As Single)
+
+Dim deviceName As String
+    Dim fileName As String
+
+    fileName = App.Path & "\logs\"
+    
+    If serialDevices.Count > 0 Then
+        fileName = fileName & serialDevices.friendlyName(drpCommports.ListIndex)
+    End If
+    
+    ShellExecute Me.hwnd, "OPEN", "explorer.exe", fileName, "", vbNormalFocus
     
 End Sub
 
@@ -2940,7 +2974,7 @@ Private Sub drpCommports_ItemChange(ItemIndex As Long)
     SaveSetting "SerialConsole", "dropdown", "selectedCommPort", serialDevices.commPort(ItemIndex)
      
     Me.Caption = serialDevices.commPort(ItemIndex) & " - SerialConsole - V1.0 by Ricardo de Roode"
-    tmrCheckUsbStillConnected.Enabled = False
+    tmrCheckForReconnect.Enabled = False
     
     Exit Sub
 notWorking:
@@ -3141,7 +3175,7 @@ Private Sub Form_Load()
     
     Set tmrCheckBitRate = New SelfTimer
     
-    tmrCheckBitRate.Interval = 999
+    tmrCheckBitRate.Interval = 500
     tmrCheckBitRate.Enabled = True
     
     'testTxt
@@ -3702,20 +3736,41 @@ Private Sub picSplit_MouseUp(Button As Integer, Shift As Integer, x As Single, y
 End Sub
 
 Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
-    'txtStatus.Text = comm.CommEvent
+    Static timerPart As Boolean
+    
+    If Seconds = 0 Then Exit Sub
+    
+    Select Case timerPart
+        Case True
+            'Debug.Print "--- " & Seconds
+            If comm.PortOpen And drpCommports.ListIndex > -1 Then
+                If serialDevices.isCommAvailable(drpCommports.ListIndex) = False Then
+                    cmdConnect_Click 0, 0, 0
+                    setStatus "Device was removed unexpectedly!", True, -1
+                    If chkCommOptions(5).Value = u_Checked Then tmrCheckForReconnect.Enabled = True
+                End If
+            End If
+        
+        Case False
+            'Debug.Print "--> " & Seconds
+            graphDataInOut.AddItem 0, CDbl(bitrateInbound), False
+            graphDataInOut.AddItem 1, CDbl(bitrateOutbound), False
+            
+            bitrateInbound = 0
+            bitrateOutbound = 0
+            
+            graphDataInOut.ScrollToLastItem 0, True
+            graphDataInOut.Redraw
+            
+    End Select
+    
+    timerPart = Not timerPart
     
     'Debug.Print Me.ActiveControl.Name
     
-    graphDataInOut.AddItem 0, CDbl(bitrateInbound), False
-    graphDataInOut.AddItem 1, CDbl(bitrateOutbound), False
+
     
-    bitrateInbound = 0
-    bitrateOutbound = 0
     
-    graphDataInOut.ScrollToLastItem 0, True
-    graphDataInOut.Redraw
-    
-    Debug.Print Seconds
 End Sub
 
 
@@ -3727,20 +3782,10 @@ Private Sub tmrCheckForReconnect_Timer()
             setStatus "Checking for automatic connect..."
         End If
     Else
-        tmrCheckUsbStillConnected.Enabled = False
+        tmrCheckForReconnect.Enabled = False
         Exit Sub
     End If
     
-End Sub
-
-Private Sub tmrCheckUsbStillConnected_Timer()
-    If comm.PortOpen And drpCommports.ListIndex > -1 Then
-        If serialDevices.isCommAvailable(drpCommports.ListIndex) = False Then
-            cmdConnect_Click 0, 0, 0
-            setStatus "Device was removed unexpectedly!", True, -1
-            If chkCommOptions(5).Value = u_Checked Then tmrCheckUsbStillConnected.Enabled = True
-        End If
-    End If
 End Sub
 
 Private Sub txtDataExchange_Change()

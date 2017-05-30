@@ -63,8 +63,8 @@ Private m_TimerID As Long
 Private m_TimerProc As Long
 
 Private Declare Sub GetMem4LngToCur Lib "msvbvm60" Alias "GetMem4" (ByRef LngVar As Long, CurVar As Currency)
-Private Declare Function KillTimer Lib "user32" (ByVal hWnd As Long, ByVal nIDEvent As Long) As Long
-Private Declare Function SetTimer Lib "user32" (ByVal hWnd As Long, ByVal nIDEvent As Long, ByVal uElapse As Long, ByVal lpTimerFunc As Long) As Long
+Private Declare Function KillTimer Lib "user32" (ByVal hwnd As Long, ByVal nIDEvent As Long) As Long
+Private Declare Function SetTimer Lib "user32" (ByVal hwnd As Long, ByVal nIDEvent As Long, ByVal uElapse As Long, ByVal lpTimerFunc As Long) As Long
 
 ' the following are the requirements for SelfCallback
 Private Declare Sub GetMem1 Lib "msvbvm60" (ByVal Addr As Long, RetVal As Byte)
@@ -234,7 +234,7 @@ Private Sub Class_Terminate()
     Private_Stop
 End Sub
 ' must be the last procedure, ordinal #1!
-Private Function TimerProc(ByVal hWnd As Long, ByVal tMsg As Long, ByVal TimerID As Long, ByVal tickCount As Long) As Long
+Private Function TimerProc(ByVal hwnd As Long, ByVal tMsg As Long, ByVal TimerID As Long, ByVal tickCount As Long) As Long
     Dim curCounter As Currency
     ' copy Long to Currency
     GetMem4LngToCur tickCount, curCounter
