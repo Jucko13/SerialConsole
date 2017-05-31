@@ -1954,15 +1954,15 @@ Begin VB.Form frmMain
       ScrollBarWidth  =   30
    End
    Begin SerialConsole.uFrame frmWindow 
-      Height          =   3480
+      Height          =   2655
       Index           =   3
       Left            =   13590
       TabIndex        =   75
       Top             =   3015
       Visible         =   0   'False
-      Width           =   3825
-      _ExtentX        =   6747
-      _ExtentY        =   6138
+      Width           =   2280
+      _ExtentX        =   4022
+      _ExtentY        =   4683
       BackgroundColor =   2367774
       BorderColor     =   14737632
       ForeColor       =   16777215
@@ -2158,6 +2158,57 @@ Begin VB.Form frmMain
          TabIndex        =   88
          Top             =   2355
          Width           =   1620
+      End
+   End
+   Begin SerialConsole.uFrame frmWindow 
+      Height          =   1980
+      Index           =   4
+      Left            =   13665
+      TabIndex        =   89
+      Top             =   5940
+      Visible         =   0   'False
+      Width           =   2805
+      _ExtentX        =   4948
+      _ExtentY        =   3493
+      BackgroundColor =   2367774
+      BorderColor     =   14737632
+      ForeColor       =   16777215
+      Caption         =   "History"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin SerialConsole.uListBox lstHistory 
+         Height          =   1200
+         Left            =   90
+         TabIndex        =   90
+         Top             =   195
+         Width           =   1815
+         _ExtentX        =   3201
+         _ExtentY        =   2117
+         BackgroundColor =   3551534
+         BorderColor     =   8421504
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   16777215
+         Text            =   "uFrame"
+         SelectionBackgroundColor=   3551534
+         SelectionBorderColor=   16777215
+         SelectionForeColor=   12648384
+         ItemHeight      =   5
+         VisibleItems    =   15
       End
    End
    Begin VB.Label LBLSplit 
@@ -2431,14 +2482,14 @@ Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxCons
     setCheckColors chkTxtSettings(Index), newState
 End Sub
 
-Private Sub cmdConnect_Click(Button As Integer, x As Single, y As Single)
+Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
     On Error GoTo notWorking
     
     If comm.PortOpen Then
         comm.PortOpen = False
         cmdConnect.Caption = "Connect"
         cmdConnect.BackgroundColor = &H4747F0
-        
+        cmdConnect.MouseOverBackgroundColor = &H8787F5
         If logFileHandle <> -1 Then
             Close logFileHandle
             logFileHandle = -1
@@ -2450,6 +2501,8 @@ Private Sub cmdConnect_Click(Button As Integer, x As Single, y As Single)
         If chkCommOptions(0).Value = u_Checked And chkCommOptions(2).Value = u_Checked Then txtReceived.Clear
         
         cmdConnect.BackgroundColor = &H81B543
+        cmdConnect.MouseOverBackgroundColor = &HA4CB74
+        
         cmdConnect.Caption = "Disconnect"
         comm.PortOpen = True
         comm.InBufferCount = 0
@@ -2584,7 +2637,7 @@ Sub getRightFileName(ByRef currentFilename As String)
 End Sub
 
 
-Private Sub cmdControls_Click(Index As Integer, Button As Integer, x As Single, y As Single)
+Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
     
     Dim i As Byte
     
@@ -2633,7 +2686,7 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, x As Single, 
     
 End Sub
 
-Private Sub cmdOpenLog_Click(Button As Integer, x As Single, y As Single)
+Private Sub cmdOpenLog_Click(Button As Integer, X As Single, Y As Single)
 
 Dim deviceName As String
     Dim fileName As String
@@ -2644,11 +2697,11 @@ Dim deviceName As String
         fileName = fileName & serialDevices.friendlyName(drpCommports.ListIndex)
     End If
     
-    ShellExecute Me.hwnd, "OPEN", "explorer.exe", fileName, "", vbNormalFocus
+    ShellExecute Me.hWnd, "OPEN", "explorer.exe", fileName, "", vbNormalFocus
     
 End Sub
 
-Private Sub cmdSearch_Click(Button As Integer, x As Single, y As Single)
+Private Sub cmdSearch_Click(Button As Integer, X As Single, Y As Single)
     Dim tmpOutput As Variant
     Dim bytes() As Byte
     
@@ -2720,10 +2773,10 @@ Function parseInputToBytes(uTxt As uTextBox) As Byte()
     
     If drpOnSend.ListIndex > 0 Then
         j = Len(onSendCharacters(drpOnSend.ListIndex))
-        ReDim Preserve totalBytes(0 To totalBytesLength + j)
+        ReDim Preserve totalBytes(0 To totalBytesLength - 1 + j)
     
         For i = 1 To j
-            totalBytes(UBound(totalBytes) - j + i - 1) = Asc(Mid$(onSendCharacters(drpOnSend.ListIndex), i, 1))
+            totalBytes(UBound(totalBytes) - j + i) = Asc(Mid$(onSendCharacters(drpOnSend.ListIndex), i, 1))
         Next i
         totalBytesLength = totalBytesLength + j
     End If
@@ -2731,19 +2784,16 @@ Function parseInputToBytes(uTxt As uTextBox) As Byte()
     
     parseInputToBytes = totalBytes
     
-    'Dim tmpStr As String
+    Dim tmpStr As String
     
-    'For i = 0 To totalBytesLength - 1
-    '    tmpStr = tmpStr & totalBytes(i) & " "
-    'Next i
-    
-    'Dim tmpOutput As Variant
-
+    For i = 0 To UBound(totalBytes)
+        tmpStr = tmpStr & totalBytes(i) & " "
+    Next i
     
     'MsgBox tmpStr
 End Function
 
-Private Sub cmdSearchClose_Click(Button As Integer, x As Single, y As Single)
+Private Sub cmdSearchClose_Click(Button As Integer, X As Single, Y As Single)
     frmSearch.Visible = False
     Erase searchFor
     txtReceived.ClearMarkup
@@ -2753,29 +2803,85 @@ Private Sub cmdSearchClose_Click(Button As Integer, x As Single, y As Single)
     'fillReceivedTextColors 0
 End Sub
 
-Private Sub cmdSend_Click(Button As Integer, x As Single, y As Single)
+Private Sub cmdSend_Click(Button As Integer, X As Single, Y As Single)
     Dim tmpOutput As Variant
     Dim bytes() As Byte
-    
-    
+    Dim tmpCombine As String
+    Dim i As Long
     
     bytes = parseInputToBytes(txtOutput)
     
-    If comm.PortOpen = False Then Exit Sub
+    If comm.PortOpen = True Then
+        If (Not (Not bytes)) <> 0 Then
+            tmpOutput = bytes
+            commOut tmpOutput
+        End If
+        
+        Exit Sub
+    End If
     
+    'log to history list
     If (Not (Not bytes)) <> 0 Then
-        tmpOutput = bytes
-        commOut tmpOutput
+        'For i = 0 To UBound(bytes)
+        '    tmpCombine = tmpCombine & Chr(bytes(i))
+        'Next i
+        For i = 0 To lstHistory.ListCount - 1
+            If lstHistory.List(i) = txtOutput.Text Then
+                lstHistory.RemoveItem i
+                Exit For
+            End If
+        Next i
+        lstHistory.AddItem txtOutput.Text, getOutputOptionsAsLong, 0, -1, -1
     End If
     
     If chkSend(0).Value = u_Checked Then
         txtOutput.Clear
     End If
     
+    
+
+    
+    
     'txtOutput.SetFocus
 End Sub
 
-Private Sub cmdZebro_Click(Index As Integer, Button As Integer, x As Single, y As Single)
+Function getOutputOptionsAsLong() As Long
+    Dim outputVal As Long
+    Dim i As Long
+    
+    For i = 0 To optInput.UBound
+        If optInput(i).Value = u_Selected Then
+            outputVal = (outputVal Or (2 ^ i))
+        End If
+    Next i
+    
+    outputVal = outputVal + (2 ^ (drpOnSend.ListIndex + optInput.UBound + 1))
+    
+    getOutputOptionsAsLong = outputVal
+    
+End Function
+
+Sub setOutputOptionsWithLong(inputVal As Long)
+    Dim i As Long
+    
+    For i = 0 To optInput.UBound
+        If (inputVal And (2 ^ i)) > 0 Then
+            optInput(i).Value = u_Selected
+        Else
+            optInput(i).Value = u_UnSelected
+        End If
+    Next i
+    
+    For i = 0 To drpOnSend.ListCount
+        If (inputVal And (2 ^ (i + optInput.UBound + 1))) > 0 Then
+            drpOnSend.ListIndex = i
+            Exit For
+        End If
+        
+    Next i
+End Sub
+
+Private Sub cmdZebro_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
         
     picoSendCommand(Index) = Not picoSendCommand(Index)
     
@@ -3155,6 +3261,7 @@ Sub fillWindowType()
     drpWindowType.AddItem "List"
     drpWindowType.AddItem "Graph"
     drpWindowType.AddItem "Logs"
+    drpWindowType.AddItem "History"
     drpWindowType.ItemsVisible = drpWindowType.ListCount
 End Sub
 
@@ -3223,7 +3330,7 @@ Private Sub Form_Load()
     graphDataInOut.AddItem 0, 0, False
     graphDataInOut.AddItem 1, 0, True
     
-    dragSplitPercentage = GetSetting("SerialConsole", "UI", "dragSplitPercentage", 0.409)
+    dragSplitPercentage = GetSetting("SerialConsole", "UI", "dragSplitPercentage", 0.4964)
     
 '    Dim str As String
 '    For i = 0 To 255
@@ -3287,7 +3394,13 @@ Private Sub Form_Load()
     If totalCount = 0 Then optLogsReconnect(0).Value = u_Selected
     
     
+    Dim lstCount As Long
+    lstCount = GetSetting("SerialConsole", "history", "lstHistory.ListCount", 0)
+    For i = 0 To lstCount - 1
+        lstHistory.AddItem GetSetting("SerialConsole", "history", "List(" & i & ")", ""), CLng(GetSetting("SerialConsole", "history", "ItemData(" & i & ")", 0))
+    Next i
     
+    Me.Width = Screen.TwipsPerPixelX * 862
     'txtReceived.Text = txtReceived.FileToString("F:\Github\SerialConsole\changelog.txt")
 End Sub
 
@@ -3313,15 +3426,10 @@ On Error Resume Next
     picToolbar(1).Width = Me.ScaleWidth
     picToolbar(1).Top = Me.ScaleHeight - picToolbar(1).Height
     
-
-    optInput(0).Left = nominalOffsetX
-    optInput(0).Top = nominalOffsetX
-    For i = 1 To optInput.UBound
-        optInput(i).Top = nominalOffsetX
-        optInput(i).Left = optInput(i - 1).Left + optInput(i - 1).Width + nominalOffsetX
-    Next i
+    drpOnSend.Top = smallOffsetX * 2
+    txtOutput.Top = drpOnSend.Top + drpOnSend.Height + smallOffsetX
     
-    frmOutput.Height = (txtOutput.Top + txtOutput.Height + nominalOffsetX) / Screen.TwipsPerPixelX
+    frmOutput.Height = (txtOutput.Top + txtOutput.Height + smallOffsetX) / Screen.TwipsPerPixelX
     frmOutput.Left = 12
     frmOutput.Width = Me.ScaleWidth - frmOutput.Left * 2
     frmOutput.Top = picToolbar(1).Top - frmOutput.Height - 5
@@ -3329,13 +3437,26 @@ On Error Resume Next
     
     cmdSend.Left = frmOutput.ScaleWidth - cmdSend.Width - smallOffsetX
     drpOnSend.Left = cmdSend.Left
+    cmdSend.Top = drpOnSend.Top + drpOnSend.Height + smallOffsetX
+    
     lblInfo(0).Left = drpOnSend.Left - lblInfo(0).Width - nominalOffsetX
-    
+    lblInfo(0).Top = drpOnSend.Top + drpOnSend.Height / 2 - lblInfo(0).Height / 2
     chkSend(0).Left = lblInfo(0).Left - chkSend(0).Width - nominalOffsetX
+    chkSend(0).Top = drpOnSend.Top + drpOnSend.Height / 2 - chkSend(0).Height / 2
     
     
-    txtOutput.Left = nominalOffsetX
-    txtOutput.Width = cmdSend.Left - txtOutput.Left - nominalOffsetX
+    txtOutput.Left = smallOffsetX
+    txtOutput.Width = cmdSend.Left - txtOutput.Left - smallOffsetX
+    
+    optInput(0).Left = smallOffsetX
+    optInput(0).Top = smallOffsetX * 2
+    optInput(0).Height = txtOutput.Top - optInput(0).Top - smallOffsetX
+    For i = 1 To optInput.UBound
+        optInput(i).Top = optInput(0).Top
+        optInput(i).Height = optInput(0).Height
+        optInput(i).Left = optInput(i - 1).Left + optInput(i - 1).Width '+ smallOffsetX
+    Next i
+    
     
     picToolbar(2).Left = 0
     picToolbar(2).Width = Me.ScaleWidth
@@ -3483,6 +3604,13 @@ On Error Resume Next
 
     
     
+    lstHistory.Left = smallOffsetX
+    lstHistory.Top = smallOffsetX * 2
+    lstHistory.Width = frmWindow(4).ScaleWidth - 2 * smallOffsetX
+    lstHistory.Height = frmWindow(4).ScaleHeight - 3 * smallOffsetX
+    
+    
+    
     
     'upper toolbar
     
@@ -3517,6 +3645,8 @@ On Error Resume Next
     chkLogsEnable.Top = nominalOffsetX + smallOffsetX
     chkLogsEnable.Width = chkLogsEnable.Container.ScaleWidth - smallOffsetX * 2
     
+    Debug.Print Me.Width
+    Debug.Print dragSplitPercentage
 End Sub
 
 
@@ -3621,6 +3751,16 @@ Private Sub Form_Unload(cancel As Integer)
     SaveSetting "SerialConsole", "dropdown", "drpWindowType.ListIndex", drpWindowType.ListIndex
     SaveSetting "SerialConsole", "UI", "dragSplitPercentage", dragSplitPercentage
     
+    
+    Dim i As Long
+    
+    SaveSetting "SerialConsole", "history", "lstHistory.ListCount", lstHistory.ListCount
+    
+    For i = 0 To lstHistory.ListCount - 1
+        SaveSetting "SerialConsole", "history", "List(" & i & ")", lstHistory.List(i)
+        SaveSetting "SerialConsole", "history", "ItemData(" & i & ")", lstHistory.ItemData(i)
+    Next i
+    
     If comm.PortOpen Then comm.PortOpen = False
     DoEvents
 End Sub
@@ -3648,6 +3788,17 @@ Private Sub LBLSplit_Click(Index As Integer)
     End Select
     
     Form_Resize
+End Sub
+
+Private Sub lstHistory_DblClick()
+    Dim i As Long
+    
+    i = lstHistory.ListIndex
+    If i <> -1 Then
+        setOutputOptionsWithLong lstHistory.ItemData(i)
+        txtOutput.Text = lstHistory.List(i)
+    End If
+    
 End Sub
 
 Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
@@ -3686,7 +3837,7 @@ Private Sub picColors_Click(Index As Integer)
 End Sub
 
 
-Private Sub picConnectionSettings_Click()
+Private Sub picConnectionSettings_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     frmReconnectSettings.Visible = Not frmReconnectSettings.Visible
 End Sub
 
@@ -3700,12 +3851,12 @@ Private Sub picSplit_Click()
     Form_Resize
 End Sub
 
-Private Sub picSplit_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
-    dragSplitStartX = x
+Private Sub picSplit_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    dragSplitStartX = X
     dragSplit = True
 End Sub
 
-Private Sub picSplit_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picSplit_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Static isResizing As Boolean
     
     If isResizing Then Exit Sub
@@ -3714,7 +3865,7 @@ Private Sub picSplit_MouseMove(Button As Integer, Shift As Integer, x As Single,
     If dragSplit = True Then
         Dim newLeft As Double
         
-        newLeft = picSplit.Left - (dragSplitStartX - x)
+        newLeft = picSplit.Left - (dragSplitStartX - X)
         
         newLeft = 1# / Me.ScaleWidth * newLeft
         If newLeft < 0.1 Then newLeft = 0.1
@@ -3731,7 +3882,7 @@ Private Sub picSplit_MouseMove(Button As Integer, Shift As Integer, x As Single,
     isResizing = False
 End Sub
 
-Private Sub picSplit_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picSplit_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     dragSplit = False
 End Sub
 
@@ -4013,7 +4164,7 @@ Dim i As Long, j As Long
     
     For i = 0 To Len(str) - 1
         uTxt.setCharForeColor i, -1
-        uTxt.setCharBold i, False
+        uTxt.setCharBold i, 0
     Next i
 
     'txtInput.RedrawResume
@@ -4032,7 +4183,7 @@ Dim i As Long, j As Long
             
             For j = 0 To splitLength - 1
                 uTxt.setCharForeColor j + lPlace, partColor
-                uTxt.setCharBold j + lPlace, partColor <> -1
+                uTxt.setCharBold j + lPlace, IIf(partColor <> -1, 1, 0)
                 'txtInput.setCharForeColor j + lPlace, IIf(partColor = -1, vbBlack, vbWhite)
                 
             Next j

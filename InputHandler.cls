@@ -153,13 +153,13 @@ Function parseString(ByRef str As String, forceMode As Long) As Byte()
 End Function
 
 Function Bin2Dec(Num As String) As Byte
-    Dim n As Integer, a As Integer, X As Integer
+    Dim n As Integer, a As Integer, x As Integer
     n = Len(Num) - 1
     a = n
     
     Do While n > -1
-        X = Mid(Num, ((a + 1) - n), 1)
-        Bin2Dec = IIf((X = "1"), Bin2Dec + (2 ^ (n)), Bin2Dec)
+        x = Mid(Num, ((a + 1) - n), 1)
+        Bin2Dec = IIf((x = "1"), Bin2Dec + (2 ^ (n)), Bin2Dec)
         n = n - 1
     Loop
 End Function
@@ -177,6 +177,11 @@ Function getTypeByString(ByRef str As String, forceMode As Long) As ParseType
     Dim bytes() As Byte
     
     Dim i As Long, j As Long
+    
+    If str = "" Then
+        getTypeByString = pNoColor
+        Exit Function
+    End If
     
     bytes = StrConv(str, vbFromUnicode)
     
