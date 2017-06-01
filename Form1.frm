@@ -3,7 +3,7 @@ Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Begin VB.Form frmMain 
    AutoRedraw      =   -1  'True
    BackColor       =   &H0024211E&
-   ClientHeight    =   8295
+   ClientHeight    =   8325
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   17940
@@ -17,9 +17,10 @@ Begin VB.Form frmMain
       Strikethrough   =   0   'False
    EndProperty
    ForeColor       =   &H00FFFFFF&
+   Icon            =   "Form1.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   ScaleHeight     =   553
+   ScaleHeight     =   555
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1196
    StartUpPosition =   2  'CenterScreen
@@ -183,9 +184,9 @@ Begin VB.Form frmMain
       ForeColor       =   &H80000008&
       Height          =   480
       Left            =   14040
-      MouseIcon       =   "Form1.frx":0000
+      MouseIcon       =   "Form1.frx":1542
       MousePointer    =   99  'Custom
-      Picture         =   "Form1.frx":0152
+      Picture         =   "Form1.frx":1694
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
@@ -707,6 +708,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   2367774
+         BorderThickness =   3
          ConsoleColors   =   0   'False
       End
       Begin SerialConsole.uButton cmdSend 
@@ -998,7 +1000,7 @@ Begin VB.Form frmMain
       Width           =   1725
       _ExtentX        =   3043
       _ExtentY        =   741
-      BorderColor     =   2367774
+      BorderColor     =   8421504
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Consolas"
          Size            =   9.75
@@ -2206,7 +2208,7 @@ Begin VB.Form frmMain
          Text            =   "uFrame"
          SelectionBackgroundColor=   3551534
          SelectionBorderColor=   16777215
-         SelectionForeColor=   12648384
+         SelectionForeColor=   14322034
          ItemHeight      =   5
          VisibleItems    =   15
       End
@@ -3645,8 +3647,8 @@ On Error Resume Next
     chkLogsEnable.Top = nominalOffsetX + smallOffsetX
     chkLogsEnable.Width = chkLogsEnable.Container.ScaleWidth - smallOffsetX * 2
     
-    Debug.Print Me.Width
-    Debug.Print dragSplitPercentage
+    'Debug.Print Me.Width
+    'Debug.Print dragSplitPercentage
 End Sub
 
 
