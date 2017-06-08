@@ -1,0 +1,3 @@
+[submodule "TaskbarTools"]
+	path = Taskbar-Tools
+	url = https://github.com/Jucko13/Taskbar-Tools.git
