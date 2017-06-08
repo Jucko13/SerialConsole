@@ -24,6 +24,7 @@ Module=MultipleInstances; MultipleInstances.bas
 Class=SelfTimer; SelfTimer.cls
 UserControl=Taskbar-Tools\uListBox.ctl
 Module=ObjectSearcher; objectSearcher.bas
+UserControl=Taskbar-Tools\uLoadBar.ctl
 IconForm="frmMain"
 Startup="Sub Main"
 HelpFile=""

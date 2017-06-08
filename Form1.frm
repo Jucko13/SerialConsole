@@ -24,6 +24,65 @@ Begin VB.Form frmMain
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1196
    StartUpPosition =   2  'CenterScreen
+   Begin SerialConsole.uButton cmdConnect 
+      Height          =   360
+      Left            =   8295
+      TabIndex        =   3
+      Top             =   225
+      Width           =   1425
+      _ExtentX        =   2514
+      _ExtentY        =   635
+      BackgroundColor =   4671472
+      BorderColor     =   8421504
+      ForeColor       =   16777215
+      MouseOverBackgroundColor=   8882165
+      FocusColor      =   12632256
+      BackgroundColorDisabled=   14737632
+      BorderColorDisabled=   8421504
+      ForeColorDisabled=   0
+      MouseOverBackgroundColorDisabled=   12632256
+      CaptionBorderColorDisabled=   0
+      FocusColorDisabled=   12632256
+      FocusVisible    =   0   'False
+      Caption         =   "Connect"
+      Border          =   0   'False
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Consolas"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+   End
+   Begin SerialConsole.uLoadBar loadReconnect 
+      Height          =   450
+      Left            =   8250
+      TabIndex        =   91
+      Top             =   180
+      Width           =   1515
+      _ExtentX        =   2672
+      _ExtentY        =   794
+      BackgroundColor =   4671472
+      BarColor        =   14322034
+      BarType         =   0
+      BarWidth        =   0
+      Border          =   0   'False
+      Caption         =   ""
+      CaptionType     =   99
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      LoadingSpeed    =   1
+      Value           =   0
+   End
    Begin SerialConsole.uFrame frmReconnectSettings 
       Height          =   1320
       Left            =   3765
@@ -1226,38 +1285,6 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   12632256
    End
-   Begin SerialConsole.uButton cmdConnect 
-      Height          =   450
-      Left            =   8250
-      TabIndex        =   3
-      Top             =   180
-      Width           =   1515
-      _ExtentX        =   2672
-      _ExtentY        =   794
-      BackgroundColor =   4671472
-      BorderColor     =   8421504
-      ForeColor       =   16777215
-      MouseOverBackgroundColor=   8882165
-      FocusColor      =   12632256
-      BackgroundColorDisabled=   14737632
-      BorderColorDisabled=   8421504
-      ForeColorDisabled=   0
-      MouseOverBackgroundColorDisabled=   12632256
-      CaptionBorderColorDisabled=   0
-      FocusColorDisabled=   12632256
-      FocusVisible    =   0   'False
-      Caption         =   "Connect"
-      Border          =   0   'False
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Consolas"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-   End
    Begin SerialConsole.uDropDown drpCommports 
       Height          =   450
       Left            =   180
@@ -2397,13 +2424,13 @@ Dim logFileHandle As Long
 Private WithEvents tmrCheckBitRate As SelfTimer
 Attribute tmrCheckBitRate.VB_VarHelpID = -1
 
-Private Sub chkCommOptions_Changed(index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkCommOptions_Changed(Index As Integer, u_NewState As uCheckboxConstants)
     On Error GoTo disconnectError:
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case index
+    Select Case Index
     
         Case 0
             comm.DTREnable = newState
@@ -2426,9 +2453,9 @@ disconnectError:
         
     End If
     
-    SaveSetting "SerialConsole", "checkboxes", "chkCommOptions(" & index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkCommOptions(" & Index & ").Value", u_NewState
 
-    setCheckColors chkCommOptions(index), newState
+    setCheckColors chkCommOptions(Index), newState
 
 End Sub
 
@@ -2472,17 +2499,17 @@ Private Sub chkRefreshZebro_Changed(u_NewState As uCheckboxConstants)
     tmrGetConnected.Enabled = (u_NewState = u_Checked)
 End Sub
 
-Private Sub chkSend_Changed(index As Integer, u_NewState As uCheckboxConstants)
-    setCheckColors chkSend(index), u_NewState = u_Checked
+Private Sub chkSend_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+    setCheckColors chkSend(Index), u_NewState = u_Checked
     
 End Sub
 
-Private Sub chkTxtSettings_Changed(index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case index
+    Select Case Index
         Case 1
             txtReceived.ConsoleColors = newState
             
@@ -2499,9 +2526,9 @@ Private Sub chkTxtSettings_Changed(index As Integer, u_NewState As uCheckboxCons
 
     End Select
     
-    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & Index & ").Value", u_NewState
     
-    setCheckColors chkTxtSettings(index), newState
+    setCheckColors chkTxtSettings(Index), newState
 End Sub
 
 Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
@@ -2512,6 +2539,8 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
         cmdConnect.Caption = "Connect"
         cmdConnect.BackgroundColor = &H4747F0
         cmdConnect.MouseOverBackgroundColor = &H8787F5
+        loadReconnect.BackgroundColor = &H4747F0
+        
         drpCommports.Enabled = True
         cmdSend.Enabled = False
         
@@ -2524,30 +2553,30 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
         comm.DTREnable = False
         receiveBufferForShowLength = 0
         chkRefreshZebro.Value = u_unChecked
-        If chkCommOptions(2).Value = u_Checked Then txtReceived.Clear
         
-        cmdConnect.BackgroundColor = &H81B543
-        cmdConnect.MouseOverBackgroundColor = &HA4CB74
-        
-        cmdConnect.Caption = "Disconnect"
         comm.PortOpen = True
         comm.InBufferCount = 0
         comm.OutBufferCount = 0
         comm.DTREnable = (chkCommOptions(0).Value = u_Checked)
+        If chkCommOptions(2).Value = u_Checked Then txtReceived.Clear
         
         cmdSend.Enabled = True
         drpCommports.Enabled = False
         If chkLogsEnable.Value = u_Checked Then checkForAndOpenLogFile
         tmrCheckForReconnect.Enabled = False
+        loadReconnect.Loading = False
         setStatus "Connected!"
+        
+        cmdConnect.Caption = "Disconnect"
+        cmdConnect.BackgroundColor = &H81B543
+        cmdConnect.MouseOverBackgroundColor = &HA4CB74
+        loadReconnect.BackgroundColor = &H81B543
         
         tmrShowBuffer.Enabled = True
     End If
     
 Exit Sub
 notWorking:
-    cmdConnect.BackgroundColor = &H4747F0
-    cmdConnect.Caption = "Connect"
     
     setStatus Err.Description, True, Err.number
     
@@ -2665,13 +2694,13 @@ Sub getRightFileName(ByRef currentFilename As String)
 End Sub
 
 
-Private Sub cmdControls_Click(index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
     
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            Select Case index
+            Select Case Index
             
                 Case 0
                     sendCommand i, 1, 32, 1, 255
@@ -2698,14 +2727,14 @@ Private Sub cmdControls_Click(index As Integer, Button As Integer, X As Single, 
     Next i
     
     
-    Select Case index
+    Select Case Index
         Case 4 To 9
             
-            If ledCommand = index - 4 Then
+            If ledCommand = Index - 4 Then
                 ledCommand = -1
                 frmColors.Visible = False
             Else
-                ledCommand = index - 4
+                ledCommand = Index - 4
                 frmColors.Caption = "Colors for Led " & ledCommand + 1
                 frmColors.Visible = True
                 
@@ -2908,9 +2937,9 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     Next i
 End Sub
 
-Private Sub cmdZebro_Click(index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdZebro_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
         
-    picoSendCommand(index) = Not picoSendCommand(index)
+    picoSendCommand(Index) = Not picoSendCommand(Index)
     
     
     Dim i As Long
@@ -3079,7 +3108,7 @@ End Sub
 
 
 
-Private Sub Command1_Click(index As Integer)
+Private Sub Command1_Click(Index As Integer)
 '
 '    Select Case Index
 '        Case 0
@@ -3112,6 +3141,7 @@ Private Sub drpCommports_ItemChange(ItemIndex As Long)
     setCaption ItemIndex
     
     tmrCheckForReconnect.Enabled = False
+    loadReconnect.Loading = False
     
     Exit Sub
 notWorking:
@@ -3119,11 +3149,11 @@ notWorking:
     
 End Sub
 
-Sub setCaption(Optional index As Long = -1)
+Sub setCaption(Optional Index As Long = -1)
     Dim capt As String
     
-    If index > -1 And index < serialDevices.Count Then
-        capt = serialDevices.commPort(index) & " - "
+    If Index > -1 And Index < serialDevices.Count Then
+        capt = serialDevices.commPort(Index) & " - "
     End If
     
     Me.Caption = capt & "SerialConsole - V1.0 by Ricardo de Roode"
@@ -3182,6 +3212,11 @@ Private Sub drpCommports_OnDropdown(cancel As Boolean)
         cancel = True
         setStatus "Cant change COMMPORT when connected!", True, -1
         Exit Sub
+    Else
+        If tmrCheckForReconnect.Enabled = True Then
+            tmrCheckForReconnect.Enabled = False
+            loadReconnect.Loading = False
+        End If
     End If
     
     fillCommportList
@@ -3633,7 +3668,9 @@ On Error Resume Next
     '    chkCommOptions(i).Left = chkCommOptions(i + 1).Left - chkCommOptions(i).Width - 12
     'Next i
     
-    cmdConnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12
+    loadReconnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12
+    cmdConnect.Left = loadReconnect.Left + 3
+    'cmdConnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12
     drpBaud.Left = cmdConnect.Left - drpBaud.Width - 12
     drpCommports.Left = 12
     drpCommports.Width = drpBaud.Left - 12 - drpCommports.Left
@@ -3777,8 +3814,8 @@ Private Sub Form_Unload(cancel As Integer)
     DoEvents
 End Sub
 
-Private Sub lblInfo_DblClick(index As Integer)
-    Select Case index
+Private Sub lblInfo_DblClick(Index As Integer)
+    Select Case Index
         Case 1
             bitsSend = 0
             changeBitsSendReceived
@@ -3788,9 +3825,9 @@ Private Sub lblInfo_DblClick(index As Integer)
     End Select
 End Sub
 
-Private Sub LBLSplit_Click(index As Integer)
+Private Sub LBLSplit_Click(Index As Integer)
     
-    Select Case index
+    Select Case Index
         Case 0
             dragSplitPercentage = 0
             
@@ -3813,8 +3850,8 @@ Private Sub lstHistory_DblClick()
     
 End Sub
 
-Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
-    If optInput(index).Value = u_Selected Then
+Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
+    If optInput(Index).Value = u_Selected Then
         u_NewState = u_UnSelected
         u_Cancel = True
     End If
@@ -3822,12 +3859,12 @@ Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_
     
 End Sub
 
-Private Sub optInput_Changed(index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optInput_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
     txtOutput_Changed
     txtSearch_Changed
 End Sub
 
-Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
     Dim i As Long
     
     For i = 0 To optLogsReconnect.UBound
@@ -3835,12 +3872,12 @@ Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxC
     Next i
 End Sub
 
-Private Sub picColors_Click(index As Integer)
+Private Sub picColors_Click(Index As Integer)
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            sendCommand i, 1, 33 + ledCommand, CByte(index), 255
+            sendCommand i, 1, 33 + ledCommand, CByte(Index), 255
         End If
     Next i
     
@@ -3910,7 +3947,10 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
                 If serialDevices.isCommAvailable(drpCommports.ListIndex) = False Then
                     cmdConnect_Click 0, 0, 0
                     setStatus "Device was removed unexpectedly!", True, -1
-                    If chkCommOptions(5).Value = u_Checked Then tmrCheckForReconnect.Enabled = True
+                    If chkCommOptions(5).Value = u_Checked Then
+                        tmrCheckForReconnect.Enabled = True
+                        loadReconnect.Loading = True
+                    End If
                 End If
             End If
         
@@ -3946,6 +3986,7 @@ Private Sub tmrCheckForReconnect_Timer()
         End If
     Else
         tmrCheckForReconnect.Enabled = False
+        loadReconnect.Loading = False
         Exit Sub
     End If
     
@@ -3976,6 +4017,7 @@ Private Sub txtDataExchange_Change()
                     If chkCommOptions(4).Value = u_Checked Then
                         tmrCheckForReconnect.Enabled = False
                         tmrCheckForReconnect.Enabled = True
+                        loadReconnect.Loading = True
                     End If
                     
                 End If
@@ -4035,7 +4077,11 @@ Exit Sub
 disconnectFromDevice:
     cmdConnect_Click 0, 0, 0
     setStatus Err.Description, True, Err.number
-    If chkCommOptions(5).Value = u_Checked Then tmrCheckForReconnect.Enabled = True
+    If chkCommOptions(5).Value = u_Checked Then
+        tmrCheckForReconnect.Enabled = True
+        loadReconnect.Loading = True
+    End If
+    
 End Sub
 
 Private Sub tmrShowBuffer_Timer()
