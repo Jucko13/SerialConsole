@@ -65,7 +65,7 @@ Begin VB.Form frmMain
       _ExtentX        =   2672
       _ExtentY        =   794
       BackgroundColor =   4671472
-      BarColor        =   14322034
+      BarColor        =   2367774
       BarType         =   0
       BarWidth        =   0
       Border          =   0   'False
@@ -2531,6 +2531,17 @@ Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxCons
     setCheckColors chkTxtSettings(Index), newState
 End Sub
 
+
+
+Private Sub cmdConnect_MouseEnter()
+    loadReconnect.BackgroundColor = cmdConnect.MouseOverBackgroundColor
+End Sub
+
+Private Sub cmdConnect_MouseLeave()
+    loadReconnect.BackgroundColor = cmdConnect.BackgroundColor
+End Sub
+
+
 Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
     On Error GoTo notWorking
     
@@ -2539,7 +2550,11 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
         cmdConnect.Caption = "Connect"
         cmdConnect.BackgroundColor = &H4747F0
         cmdConnect.MouseOverBackgroundColor = &H8787F5
-        loadReconnect.BackgroundColor = &H4747F0
+        If cmdConnect.isMouseOverControl Then
+            loadReconnect.BackgroundColor = &H8787F5
+        Else
+            loadReconnect.BackgroundColor = &H4747F0
+        End If
         
         drpCommports.Enabled = True
         cmdSend.Enabled = False
@@ -2570,7 +2585,11 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
         cmdConnect.Caption = "Disconnect"
         cmdConnect.BackgroundColor = &H81B543
         cmdConnect.MouseOverBackgroundColor = &HA4CB74
-        loadReconnect.BackgroundColor = &H81B543
+        If cmdConnect.isMouseOverControl Then
+            loadReconnect.BackgroundColor = &HA4CB74
+        Else
+            loadReconnect.BackgroundColor = &H81B543
+        End If
         
         tmrShowBuffer.Enabled = True
     End If
@@ -2692,7 +2711,6 @@ Sub getRightFileName(ByRef currentFilename As String)
 
     
 End Sub
-
 
 Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
     
