@@ -734,9 +734,9 @@ Begin VB.Form frmMain
          Caption         =   "Send"
          Border          =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Px437 ATI 8x14"
+            Name            =   "Arial"
             Size            =   12
-            Charset         =   1
+            Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
@@ -1056,9 +1056,9 @@ Begin VB.Form frmMain
             BackColor       =   &H0024211E&
             Caption         =   "IN:  0"
             BeginProperty Font 
-               Name            =   "Px437 ATI 8x14"
+               Name            =   "Arial"
                Size            =   12
-               Charset         =   1
+               Charset         =   0
                Weight          =   400
                Underline       =   0   'False
                Italic          =   0   'False
@@ -1077,9 +1077,9 @@ Begin VB.Form frmMain
             BackColor       =   &H0024211E&
             Caption         =   "OUT: 0"
             BeginProperty Font 
-               Name            =   "Px437 ATI 8x14"
+               Name            =   "Arial"
                Size            =   12
-               Charset         =   1
+               Charset         =   0
                Weight          =   400
                Underline       =   0   'False
                Italic          =   0   'False
@@ -2032,9 +2032,9 @@ Begin VB.Form frmMain
          Caption         =   "Open Folder"
          Border          =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Px437 ATI 8x14"
+            Name            =   "Arial"
             Size            =   12
-            Charset         =   1
+            Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
@@ -2395,12 +2395,13 @@ Dim logFileHandle As Long
 Private WithEvents tmrCheckBitRate As SelfTimer
 Attribute tmrCheckBitRate.VB_VarHelpID = -1
 
-Private Sub chkCommOptions_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkCommOptions_Changed(index As Integer, u_NewState As uCheckboxConstants)
+    On Error GoTo disconnectError:
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case Index
+    Select Case index
     
         Case 0
             comm.DTREnable = newState
@@ -2412,9 +2413,21 @@ Private Sub chkCommOptions_Changed(Index As Integer, u_NewState As uCheckboxCons
             comm.RTSEnable = newState
     End Select
 
-    SaveSetting "SerialConsole", "checkboxes", "chkCommOptions(" & Index & ").Value", u_NewState
+    
+disconnectError:
+    If Err.number <> 0 Then
+        Err.Clear
+        If comm.PortOpen Then
+            cmdConnect_Click 0, 0, 0
+             
+        End If
+        
+    End If
+    
+    SaveSetting "SerialConsole", "checkboxes", "chkCommOptions(" & index & ").Value", u_NewState
 
-    setCheckColors chkCommOptions(Index), newState
+    setCheckColors chkCommOptions(index), newState
+
 End Sub
 
 Sub setCheckColors(chk As uCheckBox, newState As Boolean)
@@ -2452,17 +2465,17 @@ Private Sub chkRefreshZebro_Changed(u_NewState As uCheckboxConstants)
     tmrGetConnected.Enabled = (u_NewState = u_Checked)
 End Sub
 
-Private Sub chkSend_Changed(Index As Integer, u_NewState As uCheckboxConstants)
-    setCheckColors chkSend(Index), u_NewState = u_Checked
+Private Sub chkSend_Changed(index As Integer, u_NewState As uCheckboxConstants)
+    setCheckColors chkSend(index), u_NewState = u_Checked
     
 End Sub
 
-Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkTxtSettings_Changed(index As Integer, u_NewState As uCheckboxConstants)
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case Index
+    Select Case index
         Case 1
             txtReceived.ConsoleColors = newState
             
@@ -2479,9 +2492,9 @@ Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxCons
 
     End Select
     
-    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & Index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & index & ").Value", u_NewState
     
-    setCheckColors chkTxtSettings(Index), newState
+    setCheckColors chkTxtSettings(index), newState
 End Sub
 
 Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
@@ -2639,13 +2652,13 @@ Sub getRightFileName(ByRef currentFilename As String)
 End Sub
 
 
-Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdControls_Click(index As Integer, Button As Integer, X As Single, Y As Single)
     
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            Select Case Index
+            Select Case index
             
                 Case 0
                     sendCommand i, 1, 32, 1, 255
@@ -2672,14 +2685,14 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, 
     Next i
     
     
-    Select Case Index
+    Select Case index
         Case 4 To 9
             
-            If ledCommand = Index - 4 Then
+            If ledCommand = index - 4 Then
                 ledCommand = -1
                 frmColors.Visible = False
             Else
-                ledCommand = Index - 4
+                ledCommand = index - 4
                 frmColors.Caption = "Colors for Led " & ledCommand + 1
                 frmColors.Visible = True
                 
@@ -2819,7 +2832,6 @@ Private Sub cmdSend_Click(Button As Integer, X As Single, Y As Single)
             commOut tmpOutput
         End If
         
-        Exit Sub
     End If
     
     'log to history list
@@ -2883,9 +2895,9 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     Next i
 End Sub
 
-Private Sub cmdZebro_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdZebro_Click(index As Integer, Button As Integer, X As Single, Y As Single)
         
-    picoSendCommand(Index) = Not picoSendCommand(Index)
+    picoSendCommand(index) = Not picoSendCommand(index)
     
     
     Dim i As Long
@@ -2898,7 +2910,7 @@ Private Sub cmdZebro_Click(Index As Integer, Button As Integer, X As Single, Y A
 End Sub
 
 Private Sub comm_OnComm()
-    'On Error Resume Next
+    On Error GoTo showError:
     Static i As Long
     Dim RL As Long 'received length
     
@@ -2964,7 +2976,7 @@ Private Sub comm_OnComm()
             
             
         Case comEvSend ' something is getting away
-        
+            
         
         Case Is > 1000
             
@@ -2981,6 +2993,9 @@ Private Sub comm_OnComm()
             ' of all the events and errors.
    End Select
    
+   Exit Sub
+showError:
+   setStatus Err.Description, True, Err.number
    
 End Sub
 
@@ -3051,7 +3066,7 @@ End Sub
 
 
 
-Private Sub Command1_Click(Index As Integer)
+Private Sub Command1_Click(index As Integer)
 '
 '    Select Case Index
 '        Case 0
@@ -3080,8 +3095,9 @@ Private Sub drpCommports_ItemChange(ItemIndex As Long)
     
     comm.commPort = Replace(serialDevices.commPort(ItemIndex), "COM", "")
     SaveSetting "SerialConsole", "dropdown", "selectedCommPort", serialDevices.commPort(ItemIndex)
-     
-    Me.Caption = serialDevices.commPort(ItemIndex) & " - SerialConsole - V1.0 by Ricardo de Roode"
+    
+    setCaption ItemIndex
+    
     tmrCheckForReconnect.Enabled = False
     
     Exit Sub
@@ -3090,6 +3106,15 @@ notWorking:
     
 End Sub
 
+Sub setCaption(Optional index As Long = -1)
+    Dim capt As String
+    
+    If index > -1 And index < serialDevices.Count Then
+        capt = serialDevices.commPort(index) & " - "
+    End If
+    
+    Me.Caption = capt & "SerialConsole - V1.0 by Ricardo de Roode"
+End Sub
 
 Sub fillZebroButtons()
     Dim i As Long
@@ -3333,45 +3358,13 @@ Private Sub Form_Load()
     graphDataInOut.AddItem 1, 0, True
     
     dragSplitPercentage = GetSetting("SerialConsole", "UI", "dragSplitPercentage", 0.4964)
-    
-'    Dim str As String
-'    For i = 0 To 255
-'        str = str & Chr(i)
-'    Next i
-'
-'    txtReceived.Text = str
-'    txtReceived.setCharBorderColor 65, vbRed
-'    txtReceived.setCharForeColor 65, vbGreen
-    
+
     ConsoleColors = Array(vbBlack, vbRed, vbGreen, vbYellow, vbBlue, vbMagenta, vbCyan, vbWhite)
-    
-    
-    'Dim str As String
-    
-    'str = "dit is text "
-    'str = str & Chr(&H1B) & "[" & (6 + 30) & "m"
-    'str = str & "dit is gekleurd"
-    
-    'str = parseAndAddText(txtReceived, str)
-    
-    
-'    Dim i As Long
-'    Dim j As Long
-'
-'    Dim str1(0 To 10) As String
-'    Dim str2 As String
-'
-'    For j = 0 To 10
-'        For i = 0 To 10
-'            str1(j) = str1(j) & Chr(j)
-'        Next i
-'
-'        txtReceived.AddCharAtCursor str1(j) & vbCrLf
-'    Next j
     
     fillArduinoListTestData
     
     setFont
+    setCaption
     
     On Error Resume Next
     drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
@@ -3742,6 +3735,9 @@ Sub fillCommportList(Optional initializeForm As Boolean = False)
         Me.Caption = serialDevices.commPort(newCommPortIndex) & " - SerialConsole - V1.0 by Ricardo de Roode"
     End If
     
+    If drpCommports.ListCount = 0 Then
+        drpCommports.Text = "No Devices (click to refresh)"
+    End If
     
 End Sub
 
@@ -3767,8 +3763,8 @@ Private Sub Form_Unload(cancel As Integer)
     DoEvents
 End Sub
 
-Private Sub lblInfo_DblClick(Index As Integer)
-    Select Case Index
+Private Sub lblInfo_DblClick(index As Integer)
+    Select Case index
         Case 1
             bitsSend = 0
             changeBitsSendReceived
@@ -3778,9 +3774,9 @@ Private Sub lblInfo_DblClick(Index As Integer)
     End Select
 End Sub
 
-Private Sub LBLSplit_Click(Index As Integer)
+Private Sub LBLSplit_Click(index As Integer)
     
-    Select Case Index
+    Select Case index
         Case 0
             dragSplitPercentage = 0
             
@@ -3803,8 +3799,8 @@ Private Sub lstHistory_DblClick()
     
 End Sub
 
-Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
-    If optInput(Index).Value = u_Selected Then
+Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
+    If optInput(index).Value = u_Selected Then
         u_NewState = u_UnSelected
         u_Cancel = True
     End If
@@ -3812,12 +3808,12 @@ Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_
     
 End Sub
 
-Private Sub optInput_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optInput_Changed(index As Integer, u_NewState As uOptionBoxConstants)
     txtOutput_Changed
     txtSearch_Changed
 End Sub
 
-Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxConstants)
     Dim i As Long
     
     For i = 0 To optLogsReconnect.UBound
@@ -3825,12 +3821,12 @@ Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxC
     Next i
 End Sub
 
-Private Sub picColors_Click(Index As Integer)
+Private Sub picColors_Click(index As Integer)
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            sendCommand i, 1, 33 + ledCommand, CByte(Index), 255
+            sendCommand i, 1, 33 + ledCommand, CByte(index), 255
         End If
     Next i
     
@@ -4011,12 +4007,21 @@ Sub sendCommand(byte0 As Byte, byte1 As Byte, byte2 As Byte, byte3 As Byte, byte
 End Sub
 
 Sub commOut(bytes As Variant)
+   
     If comm.PortOpen = False Then Exit Sub
     
     bitrateOutbound = bitrateOutbound + UBound(bytes)
-    bitsSend = bitsSend + 1
+    bitsSend = bitsSend + UBound(bytes)
     changeBitsSendReceived
+    
+    On Error GoTo disconnectFromDevice
     comm.Output = bytes
+    
+Exit Sub
+disconnectFromDevice:
+    cmdConnect_Click 0, 0, 0
+    setStatus Err.Description, True, Err.number
+    If chkCommOptions(5).Value = u_Checked Then tmrCheckForReconnect.Enabled = True
 End Sub
 
 Private Sub tmrShowBuffer_Timer()
@@ -4038,12 +4043,7 @@ Private Sub tmrShowBuffer_Timer()
     txtReceived.RedrawPause
     txtReceived.SelStart = txtReceived.TextLength
     
-    'If chkTxtSettings(1).Value = u_Checked Then
-    '    receiveBufferForShow = parseAndAddText(txtReceived, receiveBufferForShow)
-    'Else
-        txtReceived.AddCharAtCursor Left$(receiveBufferForShow, receiveBufferForShowLength), True
-        
-    'End If
+    txtReceived.AddCharAtCursor Left$(receiveBufferForShow, receiveBufferForShowLength), True
     
     fillReceivedTextColors txtReceived.TextLength - Len(receiveBufferForShow)
     
