@@ -641,9 +641,9 @@ Begin VB.Form frmMain
    End
    Begin SerialConsole.uFrame frmOutput 
       Height          =   960
-      Left            =   90
+      Left            =   75
       TabIndex        =   10
-      Top             =   5670
+      Top             =   6435
       Width           =   12270
       _ExtentX        =   21643
       _ExtentY        =   1693
@@ -724,9 +724,9 @@ Begin VB.Form frmMain
          ForeColor       =   16777215
          MouseOverBackgroundColor=   8882165
          FocusColor      =   12632256
-         BackgroundColorDisabled=   14737632
+         BackgroundColorDisabled=   8421504
          BorderColorDisabled=   8421504
-         ForeColorDisabled=   0
+         ForeColorDisabled=   14737632
          MouseOverBackgroundColorDisabled=   12632256
          CaptionBorderColorDisabled=   0
          FocusColorDisabled=   12632256
@@ -743,6 +743,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          CaptionOffsetTop=   -1
+         Enabled         =   0   'False
       End
       Begin SerialConsole.uOptionBox optInput 
          Height          =   315
@@ -994,9 +995,9 @@ Begin VB.Form frmMain
    End
    Begin SerialConsole.uTextBox txtStatus 
       Height          =   420
-      Left            =   6315
+      Left            =   6600
       TabIndex        =   5
-      Top             =   6885
+      Top             =   7590
       Width           =   1725
       _ExtentX        =   3043
       _ExtentY        =   741
@@ -1022,13 +1023,13 @@ Begin VB.Form frmMain
       ForeColor       =   &H80000008&
       Height          =   810
       Index           =   1
-      Left            =   0
+      Left            =   225
       ScaleHeight     =   54
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   552
       TabIndex        =   9
       TabStop         =   0   'False
-      Top             =   6675
+      Top             =   7395
       Width           =   8280
       Begin SerialConsole.uFrame frmInOut 
          Height          =   750
@@ -1270,8 +1271,9 @@ Begin VB.Form frmMain
       ForeColor       =   16777215
       SelectionBackgroundColor=   13592135
       SelectionBorderColor=   14322034
-      BackgroundColorDisabled=   14737632
+      BackgroundColorDisabled=   8421504
       BorderColorDisabled=   8421504
+      ForeColorDisabled=   14737632
       SelectionBackgroundColorDisabled=   14737632
       SelectionBorderColorDisabled=   14737632
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -2433,6 +2435,11 @@ Sub setCheckColors(chk As uCheckBox, newState As Boolean)
     End With
 End Sub
 
+Private Sub chkEnableGraph_Changed(u_NewState As uCheckboxConstants)
+    
+    setCheckColors chkEnableGraph, u_NewState = u_Checked
+End Sub
+
 Private Sub chkLogsEnable_Changed(u_NewState As uCheckboxConstants)
     SaveSetting "SerialConsole", "logs", "chkLogsEnable.Value", u_NewState
     
@@ -2492,6 +2499,9 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
         cmdConnect.Caption = "Connect"
         cmdConnect.BackgroundColor = &H4747F0
         cmdConnect.MouseOverBackgroundColor = &H8787F5
+        drpCommports.Enabled = True
+        cmdSend.Enabled = False
+        
         If logFileHandle <> -1 Then
             Close logFileHandle
             logFileHandle = -1
@@ -2500,7 +2510,8 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
     Else
         comm.DTREnable = False
         receiveBufferForShowLength = 0
-        If chkCommOptions(0).Value = u_Checked And chkCommOptions(2).Value = u_Checked Then txtReceived.Clear
+        chkRefreshZebro.Value = u_unChecked
+        If chkCommOptions(2).Value = u_Checked Then txtReceived.Clear
         
         cmdConnect.BackgroundColor = &H81B543
         cmdConnect.MouseOverBackgroundColor = &HA4CB74
@@ -2511,6 +2522,8 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
         comm.OutBufferCount = 0
         comm.DTREnable = (chkCommOptions(0).Value = u_Checked)
         
+        cmdSend.Enabled = True
+        drpCommports.Enabled = False
         If chkLogsEnable.Value = u_Checked Then checkForAndOpenLogFile
         tmrCheckForReconnect.Enabled = False
         setStatus "Connected!"
@@ -3427,6 +3440,7 @@ On Error Resume Next
     picToolbar(0).Width = Me.ScaleWidth
     picToolbar(1).Width = Me.ScaleWidth
     picToolbar(1).Top = Me.ScaleHeight - picToolbar(1).Height
+    picToolbar(1).Left = 0
     
     drpOnSend.Top = smallOffsetX * 2
     txtOutput.Top = drpOnSend.Top + drpOnSend.Height + smallOffsetX
@@ -4136,10 +4150,9 @@ Sub changeBitsSendReceived()
     If mustResize Then Form_Resize
 End Sub
 
-Sub parseInputColors(uTxt As uTextBox)
+Sub parseInputColors(uTxt As uTextBox, uCmd As uButton, checkConnected As Boolean)
 Dim i As Long, j As Long
     Dim lPlace As Long
-    
     
     Dim str As String
     Dim splitStr() As String
@@ -4152,6 +4165,7 @@ Dim i As Long, j As Long
     splitStr = Split(str, " ")
     
     uTxt.RedrawPause
+    If checkConnected And comm.PortOpen Then uCmd.Enabled = True
     
     Dim forceFunction As Long
     forceFunction = -1
@@ -4181,6 +4195,7 @@ Dim i As Long, j As Long
                 partColor = inputFilter.getColorByType(partType)
             Else
                 partColor = -1
+                uCmd.Enabled = False
             End If
             
             For j = 0 To splitLength - 1
@@ -4202,7 +4217,7 @@ End Sub
 Private Sub txtOutput_Changed()
     txtOutput_GotFocus
     
-    parseInputColors txtOutput
+    parseInputColors txtOutput, cmdSend, True
     
     'l = Asc(Mid(firstText, i, 1))
     'tmpStr = tmpStr & IIf(l < 16, "0", "") & Hex(l) & " "
@@ -4323,7 +4338,7 @@ End Sub
 
 Private Sub txtSearch_Changed()
     txtSearch_GotFocus
-    parseInputColors txtSearch
+    parseInputColors txtSearch, cmdSearch, False
 End Sub
 
 Private Sub txtSearch_GotFocus()
