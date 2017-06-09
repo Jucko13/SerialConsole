@@ -24,6 +24,16 @@ Begin VB.Form frmMain
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1196
    StartUpPosition =   2  'CenterScreen
+   Begin SerialConsole.uToolTip ttToolTip 
+      Height          =   420
+      Left            =   5130
+      TabIndex        =   93
+      Top             =   3420
+      Visible         =   0   'False
+      Width           =   780
+      _ExtentX        =   7938
+      _ExtentY        =   7938
+   End
    Begin SerialConsole.uButton cmdConnect 
       Height          =   360
       Left            =   8295
@@ -84,14 +94,14 @@ Begin VB.Form frmMain
       Value           =   0
    End
    Begin SerialConsole.uFrame frmReconnectSettings 
-      Height          =   1320
+      Height          =   1785
       Left            =   3765
       TabIndex        =   83
       Top             =   1230
       Visible         =   0   'False
-      Width           =   2310
-      _ExtentX        =   4075
-      _ExtentY        =   2328
+      Width           =   2400
+      _ExtentX        =   4233
+      _ExtentY        =   3149
       BackgroundColor =   2367774
       BorderColor     =   14737632
       ForeColor       =   16777215
@@ -113,7 +123,7 @@ Begin VB.Form frmMain
          ToolTipText     =   "Clear On Connect"
          Top             =   240
          Width           =   2130
-         _ExtentX        =   3757
+         _ExtentX        =   3572
          _ExtentY        =   344
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -126,6 +136,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   9.75
@@ -145,7 +156,7 @@ Begin VB.Form frmMain
          ToolTipText     =   "Auto Disconnect (Edit Arduino platform.txt)"
          Top             =   510
          Width           =   2130
-         _ExtentX        =   3757
+         _ExtentX        =   3387
          _ExtentY        =   344
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -158,6 +169,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   9.75
@@ -177,7 +189,7 @@ Begin VB.Form frmMain
          ToolTipText     =   "Auto Connect (Edit Arduino platform.txt)"
          Top             =   780
          Width           =   2130
-         _ExtentX        =   3757
+         _ExtentX        =   2831
          _ExtentY        =   344
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -190,6 +202,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   9.75
@@ -209,7 +222,7 @@ Begin VB.Form frmMain
          ToolTipText     =   "Auto Connect USB (When you plug in USB this program will automatically connect)"
          Top             =   1050
          Width           =   2130
-         _ExtentX        =   3757
+         _ExtentX        =   3572
          _ExtentY        =   344
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -222,6 +235,40 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
+      Begin SerialConsole.uCheckBox chkCommOptions 
+         Height          =   375
+         Index           =   6
+         Left            =   90
+         TabIndex        =   92
+         ToolTipText     =   "Auto Connect USB (When you plug in USB this program will automatically connect)"
+         Top             =   1320
+         Width           =   2235
+         _ExtentX        =   3942
+         _ExtentY        =   661
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "Auto disconnect on"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   2
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   9.75
@@ -251,7 +298,7 @@ Begin VB.Form frmMain
       ScaleWidth      =   32
       TabIndex        =   82
       TabStop         =   0   'False
-      ToolTipText     =   "Reconnect Settings"
+      ToolTipText     =   "Connect/Reconnect/Arduino Settings"
       Top             =   165
       Width           =   480
    End
@@ -300,7 +347,7 @@ Begin VB.Form frmMain
          ToolTipText     =   "Show the received data in hex (Hold: H)"
          Top             =   240
          Width           =   1905
-         _ExtentX        =   3360
+         _ExtentX        =   1191
          _ExtentY        =   291
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -313,6 +360,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   8.25
@@ -323,6 +371,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   12632256
+         AutoSize        =   0   'False
       End
    End
    Begin SerialConsole.uFrame frmWindow 
@@ -459,10 +508,9 @@ Begin VB.Form frmMain
          Index           =   0
          Left            =   90
          TabIndex        =   51
-         ToolTipText     =   "Automatically scrolldown in textbox when receiving data"
          Top             =   195
          Width           =   1185
-         _ExtentX        =   2090
+         _ExtentX        =   2196
          _ExtentY        =   291
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -475,6 +523,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   8.25
@@ -491,10 +540,9 @@ Begin VB.Form frmMain
          Index           =   1
          Left            =   1350
          TabIndex        =   52
-         ToolTipText     =   "Enable support for Ansii console colors"
          Top             =   195
          Width           =   1365
-         _ExtentX        =   2408
+         _ExtentX        =   2672
          _ExtentY        =   291
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -507,6 +555,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   8.25
@@ -523,10 +572,9 @@ Begin VB.Form frmMain
          Index           =   2
          Left            =   2790
          TabIndex        =   55
-         ToolTipText     =   "Show the received data in hex (Hold: H)"
          Top             =   195
          Width           =   1170
-         _ExtentX        =   2064
+         _ExtentX        =   1720
          _ExtentY        =   291
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -539,6 +587,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   8.25
@@ -836,16 +885,15 @@ Begin VB.Form frmMain
       Begin SerialConsole.uCheckBox chkSend 
          Height          =   285
          Index           =   0
-         Left            =   8055
+         Left            =   7410
          TabIndex        =   15
          ToolTipText     =   "Clear On Send"
          Top             =   165
-         Width           =   750
-         _ExtentX        =   1323
+         Width           =   780
+         _ExtentX        =   1376
          _ExtentY        =   503
          BackgroundColor =   2367774
          Border          =   0   'False
-         BorderColor     =   2367774
          Caption         =   "COS"
          CaptionOffsetLeft=   5
          CaptionOffsetTop=   2
@@ -854,6 +902,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   1
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   12
@@ -1262,7 +1311,7 @@ Begin VB.Form frmMain
       ToolTipText     =   "Data Terminal Ready"
       Top             =   180
       Width           =   870
-      _ExtentX        =   1535
+      _ExtentX        =   1482
       _ExtentY        =   794
       BackgroundColor =   2367774
       Border          =   0   'False
@@ -1274,6 +1323,7 @@ Begin VB.Form frmMain
       CheckBorderColor=   8421504
       CheckBorderThickness=   2
       CheckSelectionColor=   4210752
+      CheckOffsetLeft =   2
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Consolas"
          Size            =   12
@@ -1365,10 +1415,9 @@ Begin VB.Form frmMain
       Index           =   1
       Left            =   11550
       TabIndex        =   6
-      ToolTipText     =   "Request To Send"
       Top             =   180
       Width           =   870
-      _ExtentX        =   1535
+      _ExtentX        =   1482
       _ExtentY        =   794
       BackgroundColor =   2367774
       Border          =   0   'False
@@ -1380,6 +1429,7 @@ Begin VB.Form frmMain
       CheckBorderColor=   8421504
       CheckBorderThickness=   2
       CheckSelectionColor=   4210752
+      CheckOffsetLeft =   2
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Consolas"
          Size            =   12
@@ -1435,8 +1485,8 @@ Begin VB.Form frmMain
          Left            =   90
          TabIndex        =   39
          Top             =   4725
-         Width           =   3735
-         _ExtentX        =   6588
+         Width           =   2790
+         _ExtentX        =   4921
          _ExtentY        =   503
          BackgroundColor =   3551534
          Border          =   0   'False
@@ -2014,7 +2064,7 @@ Begin VB.Form frmMain
          ToolTipText     =   "Show the received data in hex (Hold: H)"
          Top             =   210
          Width           =   1905
-         _ExtentX        =   3360
+         _ExtentX        =   1191
          _ExtentY        =   291
          BackgroundColor =   2367774
          Border          =   0   'False
@@ -2027,6 +2077,7 @@ Begin VB.Form frmMain
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
          CheckSize       =   0
+         CheckOffsetLeft =   2
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Consolas"
             Size            =   8.25
@@ -2037,6 +2088,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   12632256
+         AutoSize        =   0   'False
       End
       Begin SerialConsole.uButton cmdOpenLog 
          Height          =   330
@@ -3366,6 +3418,31 @@ Sub initLogs()
 
 End Sub
 
+Sub initToolTips()
+    ttToolTip.setForm Me
+
+    'ttToolTip.Add txtReceived.hWnd, "test"
+    ttToolTip.Add drpBaud.hWnd, "Select the used baudrate." & vbCrLf & "Can be changed on the fly."
+    ttToolTip.Add cmdConnect.hWnd, "Connect/Disconnect." & vbCrLf & "Shows a animation when reconnect is pending."
+    ttToolTip.Add chkCommOptions(0).hWnd, "Data Terminal Ready." & vbCrLf & "Resets Arduino on connect and on rising toggle."
+    
+    ttToolTip.Add chkTxtSettings(1).hWnd, "Enable support for Ansii console colors"
+    
+    ttToolTip.Add chkTxtSettings(2).hWnd, "Show the received data in hex (Hold: H)"
+    ttToolTip.Add chkTxtSettings(0).hWnd, "Automatically scrolldown in textbox when receiving data"
+    ttToolTip.Add drpCommports.hWnd, "List of available comports." & vbCrLf & "Click to refresh list."
+    ttToolTip.Add chkCommOptions(1).hWnd, "Request To Send"
+    ttToolTip.Add drpReceiveSpeed.hWnd, "Set the receive window refresh rate." & vbCrLf & "Fully utilized baudrates above 115200 requires lower speed."
+    'ttToolTip.Add .hWnd, ""
+    'ttToolTip.Add .hWnd, ""
+    'ttToolTip.Add .hWnd, ""
+    
+    
+    
+    
+    ttToolTip.StartTimer
+End Sub
+
 Private Sub Form_Load()
     Dim i As Long
     
@@ -3395,6 +3472,8 @@ Private Sub Form_Load()
     fillReceiveSpeeds
     
     fillWindowType
+    
+    initToolTips
     
     initLogs
     
@@ -3462,12 +3541,23 @@ Private Sub Form_Load()
     Next i
     
     Me.Width = Screen.TwipsPerPixelX * 862
+    
+    chkCommOptions(6).Caption = "Auto disconnect on" & vbCrLf & "focus loss"
+    
     'txtReceived.Text = txtReceived.FileToString("F:\Github\SerialConsole\changelog.txt")
 End Sub
 
 
 Private Sub Form_Click()
     picFocus.SetFocus
+End Sub
+
+Private Sub Form_LostFocus()
+    Debug.Print "lost focus"
+End Sub
+
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Debug.Print X; Y
 End Sub
 
 Private Sub Form_Resize()
@@ -3992,6 +4082,14 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
     
     timerPart = Not timerPart
     
+    If chkCommOptions(6).Value = u_Checked Then
+    
+        If comm.PortOpen And GetForegroundWindow() <> Me.hWnd Then
+            cmdConnect_Click 0, 0, 0
+            setStatus "Disconnected by focus loss"
+        End If
+        
+    End If
     'Debug.Print Me.ActiveControl.Name
     
 

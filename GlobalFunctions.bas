@@ -3,7 +3,7 @@ Option Explicit
 
 
 Public Declare Function GetTickCount Lib "kernel32" () As Long
-
+Public Declare Function GetForegroundWindow Lib "user32.dll" () As Long
 
 Sub Main()
     Dim commandProcessed As String
