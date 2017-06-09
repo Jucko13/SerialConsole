@@ -3430,7 +3430,7 @@ Private Sub Form_Load()
     fillArduinoListTestData
     
     setFont
-    setCaption
+    'setCaption
     
     On Error Resume Next
     drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
@@ -3806,7 +3806,12 @@ Sub fillCommportList(Optional initializeForm As Boolean = False)
     
     If drpCommports.ListCount = 0 Then
         drpCommports.Text = "No Devices (click to refresh)"
+        setCaption
+    Else
+        setCaption drpCommports.ListIndex
     End If
+    
+    
     
 End Sub
 
