@@ -93,7 +93,7 @@ Declare Function RegCloseKey Lib "advapi32.dll" _
 
 Declare Function SendMessage Lib "user32" _
    Alias "SendMessageA" _
-  (ByVal hwnd As Long, _
+  (ByVal hWnd As Long, _
    ByVal wMsg As Long, _
    ByVal wParam As Long, _
    lParam As Any) As Long
@@ -144,7 +144,7 @@ Function getCommPortList(ByRef resultList() As String)
         value_name = Left$(value_name, value_name_len)
         
         
-        Debug.Print value_name
+        'Debug.Print value_name
         Select Case value_type
             Case REG_SZ
                     value_string = ""
@@ -159,7 +159,7 @@ Function getCommPortList(ByRef resultList() As String)
         value_num = value_num + 1
     Loop
     
-    Debug.Print txt
+    'Debug.Print txt
     
 End Function
 

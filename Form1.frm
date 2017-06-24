@@ -120,7 +120,6 @@ Begin VB.Form frmMain
          Index           =   2
          Left            =   90
          TabIndex        =   84
-         ToolTipText     =   "Clear On Connect"
          Top             =   240
          Width           =   2130
          _ExtentX        =   3572
@@ -153,7 +152,6 @@ Begin VB.Form frmMain
          Index           =   3
          Left            =   90
          TabIndex        =   85
-         ToolTipText     =   "Auto Disconnect (Edit Arduino platform.txt)"
          Top             =   510
          Width           =   2130
          _ExtentX        =   3387
@@ -186,7 +184,6 @@ Begin VB.Form frmMain
          Index           =   4
          Left            =   90
          TabIndex        =   86
-         ToolTipText     =   "Auto Connect (Edit Arduino platform.txt)"
          Top             =   780
          Width           =   2130
          _ExtentX        =   2831
@@ -219,7 +216,6 @@ Begin VB.Form frmMain
          Index           =   5
          Left            =   90
          TabIndex        =   87
-         ToolTipText     =   "Auto Connect USB (When you plug in USB this program will automatically connect)"
          Top             =   1050
          Width           =   2130
          _ExtentX        =   3572
@@ -252,7 +248,6 @@ Begin VB.Form frmMain
          Index           =   6
          Left            =   90
          TabIndex        =   92
-         ToolTipText     =   "Auto Connect USB (When you plug in USB this program will automatically connect)"
          Top             =   1320
          Width           =   2235
          _ExtentX        =   3942
@@ -1055,22 +1050,6 @@ Begin VB.Form frmMain
          Width           =   945
       End
    End
-   Begin VB.PictureBox picSplit 
-      Appearance      =   0  'Flat
-      BackColor       =   &H0024211E&
-      BorderStyle     =   0  'None
-      ForeColor       =   &H80000008&
-      Height          =   4815
-      Left            =   7035
-      MousePointer    =   9  'Size W E
-      ScaleHeight     =   321
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   12
-      TabIndex        =   20
-      TabStop         =   0   'False
-      Top             =   825
-      Width           =   180
-   End
    Begin SerialConsole.uTextBox txtReceived 
       Height          =   1965
       Left            =   225
@@ -1308,7 +1287,6 @@ Begin VB.Form frmMain
       Index           =   0
       Left            =   10395
       TabIndex        =   4
-      ToolTipText     =   "Data Terminal Ready"
       Top             =   180
       Width           =   870
       _ExtentX        =   1482
@@ -2270,7 +2248,7 @@ Begin VB.Form frmMain
          Height          =   1200
          Left            =   90
          TabIndex        =   90
-         Top             =   195
+         Top             =   540
          Width           =   1815
          _ExtentX        =   3201
          _ExtentY        =   2117
@@ -2293,6 +2271,55 @@ Begin VB.Form frmMain
          ItemHeight      =   5
          VisibleItems    =   15
       End
+      Begin SerialConsole.uCheckBox chkSendOnDoubleClick 
+         Height          =   165
+         Left            =   90
+         TabIndex        =   94
+         ToolTipText     =   "Show the received data in hex (Hold: H)"
+         Top             =   240
+         Width           =   2295
+         _ExtentX        =   1191
+         _ExtentY        =   291
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "Send on double click"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   1
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         CheckOffsetLeft =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+         AutoSize        =   0   'False
+      End
+   End
+   Begin VB.PictureBox picSplit 
+      Appearance      =   0  'Flat
+      BackColor       =   &H0024211E&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   4815
+      Left            =   7035
+      MousePointer    =   9  'Size W E
+      ScaleHeight     =   321
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   12
+      TabIndex        =   20
+      TabStop         =   0   'False
+      Top             =   825
+      Width           =   180
    End
    Begin VB.Label LBLSplit 
       AutoSize        =   -1  'True
@@ -2554,6 +2581,13 @@ End Sub
 Private Sub chkSend_Changed(Index As Integer, u_NewState As uCheckboxConstants)
     setCheckColors chkSend(Index), u_NewState = u_Checked
     
+End Sub
+
+Private Sub chkSendOnDoubleClick_Changed(u_NewState As uCheckboxConstants)
+
+    SaveSetting "SerialConsole", "history", "chkSendOnDoubleClick.Value", u_NewState
+
+    setCheckColors chkSendOnDoubleClick, u_NewState = u_Checked
 End Sub
 
 Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
@@ -2851,7 +2885,7 @@ Function parseInputToBytes(uTxt As uTextBox) As Byte()
     Dim forceFunction As Long
     forceFunction = -1
     
-    For i = optInput.LBound To optInput.UBound
+    For i = optInput.LBound To optInput.ubound
         If optInput(i).Value = u_Selected Then
             forceFunction = i
             Exit For
@@ -2975,13 +3009,13 @@ Function getOutputOptionsAsLong() As Long
     Dim outputVal As Long
     Dim i As Long
     
-    For i = 0 To optInput.UBound
+    For i = 0 To optInput.ubound
         If optInput(i).Value = u_Selected Then
             outputVal = (outputVal Or (2 ^ i))
         End If
     Next i
     
-    outputVal = outputVal + (2 ^ (drpOnSend.ListIndex + optInput.UBound + 1))
+    outputVal = outputVal + (2 ^ (drpOnSend.ListIndex + optInput.ubound + 1))
     
     getOutputOptionsAsLong = outputVal
     
@@ -2990,7 +3024,7 @@ End Function
 Sub setOutputOptionsWithLong(inputVal As Long)
     Dim i As Long
     
-    For i = 0 To optInput.UBound
+    For i = 0 To optInput.ubound
         If (inputVal And (2 ^ i)) > 0 Then
             optInput(i).Value = u_Selected
         Else
@@ -2999,7 +3033,7 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     Next i
     
     For i = 0 To drpOnSend.ListCount
-        If (inputVal And (2 ^ (i + optInput.UBound + 1))) > 0 Then
+        If (inputVal And (2 ^ (i + optInput.ubound + 1))) > 0 Then
             drpOnSend.ListIndex = i
             Exit For
         End If
@@ -3193,7 +3227,24 @@ Private Sub Command1_Click(Index As Integer)
 
 'SetParent Me.hWnd, 332588
 
-checkForAndOpenLogFile
+'checkForAndOpenLogFile
+
+'Dim i As Long
+'Dim s As String
+'
+'For i = 0 To 500
+'    s = s & "hoi" & vbLf & Chr(0) & vbCr & String(20, " ")
+'Next i
+'
+'txtReceived.Text = s
+
+Dim i As Long
+For i = 0 To 90
+    graphDataInOut.AddItem 0, Sin(i / 180 * 3.1415926535926) * 80, False
+    graphDataInOut.AddItem 1, Sin(i / 180 * 3.1415926535926) * 80, False
+Next i
+
+graphDataInOut.Redraw
 
 
 End Sub
@@ -3359,7 +3410,7 @@ End Sub
 Private Sub drpWindowType_ItemChange(ItemIndex As Long)
     Dim i As Long
     
-    For i = 0 To frmWindow.UBound
+    For i = 0 To frmWindow.ubound
         frmWindow(i).Visible = (i = ItemIndex)
     Next i
     
@@ -3423,9 +3474,9 @@ Sub initToolTips()
 
     'ttToolTip.Add txtReceived.hWnd, "test"
     ttToolTip.Add drpBaud.hWnd, "Select the used baudrate." & vbCrLf & "Can be changed on the fly."
-    ttToolTip.Add cmdConnect.hWnd, "Connect/Disconnect." & vbCrLf & "Shows a animation when reconnect is pending."
+    ttToolTip.Add cmdConnect.hWnd, "Connect/Disconnect." & vbCrLf & "Shows an animation when reconnect is pending."
     ttToolTip.Add chkCommOptions(0).hWnd, "Data Terminal Ready." & vbCrLf & "Resets Arduino on connect and on rising toggle."
-    
+
     ttToolTip.Add chkTxtSettings(1).hWnd, "Enable support for Ansii console colors"
     
     ttToolTip.Add chkTxtSettings(2).hWnd, "Show the received data in hex (Hold: H)"
@@ -3433,6 +3484,15 @@ Sub initToolTips()
     ttToolTip.Add drpCommports.hWnd, "List of available comports." & vbCrLf & "Click to refresh list."
     ttToolTip.Add chkCommOptions(1).hWnd, "Request To Send"
     ttToolTip.Add drpReceiveSpeed.hWnd, "Set the receive window refresh rate." & vbCrLf & "Fully utilized baudrates above 115200 requires lower speed."
+    
+    
+    ttToolTip.Add chkCommOptions(2).hWnd, "Clear receive window on connect" & vbCrLf & "or on rising edge of DTR."
+    ttToolTip.Add chkCommOptions(3).hWnd, "Disconnect when you want to upload" & vbCrLf & "with VisualMicro or the Arduino IDE."
+    ttToolTip.Add chkCommOptions(4).hWnd, "Automatically connect when disconnect" & vbCrLf & "was triggered by Auto Disconnect."
+    ttToolTip.Add chkCommOptions(5).hWnd, "Automatically connect when USB is" & vbCrLf & "plugged after it was disconnected."
+    
+
+
     'ttToolTip.Add .hWnd, ""
     'ttToolTip.Add .hWnd, ""
     'ttToolTip.Add .hWnd, ""
@@ -3518,16 +3578,17 @@ Private Sub Form_Load()
     drpWindowType.ListIndex = GetSetting("SerialConsole", "dropdown", "drpWindowType.ListIndex", 0)
     
     chkLogsEnable.Value = GetSetting("SerialConsole", "logs", "chkLogsEnable.Value", u_unChecked)
+    chkSendOnDoubleClick.Value = GetSetting("SerialConsole", "history", "chkSendOnDoubleClick.Value", u_unChecked)
 
-    For i = 0 To chkCommOptions.UBound
+    For i = 0 To chkCommOptions.ubound
         chkCommOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkCommOptions(" & i & ").Value", u_unChecked)
     Next i
-    For i = 0 To chkTxtSettings.UBound
+    For i = 0 To chkTxtSettings.ubound
         chkTxtSettings(i).Value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
     Next i
     
     Dim totalCount As Long
-    For i = 0 To optLogsReconnect.UBound
+    For i = 0 To optLogsReconnect.ubound
         optLogsReconnect(i).Value = GetSetting("SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", u_UnSelected)
         totalCount = totalCount + IIf(optLogsReconnect(i).Value = u_Selected, 1, 0)
     Next i
@@ -3557,7 +3618,7 @@ Private Sub Form_LostFocus()
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    Debug.Print X; Y
+    'Debug.Print X; Y
 End Sub
 
 Private Sub Form_Resize()
@@ -3603,7 +3664,7 @@ On Error Resume Next
     optInput(0).Left = smallOffsetX
     optInput(0).Top = smallOffsetX * 2
     optInput(0).Height = txtOutput.Top - optInput(0).Top - smallOffsetX
-    For i = 1 To optInput.UBound
+    For i = 1 To optInput.ubound
         optInput(i).Top = optInput(0).Top
         optInput(i).Height = optInput(0).Height
         optInput(i).Left = optInput(i - 1).Left + optInput(i - 1).Width '+ smallOffsetX
@@ -3618,7 +3679,7 @@ On Error Resume Next
     'splitter
     txtReceived.Visible = True
     frmTxtSettings.Visible = True
-    For i = 0 To lblCursorStats.UBound: lblCursorStats(i).Visible = True: Next i
+    For i = 0 To lblCursorStats.ubound: lblCursorStats(i).Visible = True: Next i
     'For i = 0 To frmWindow.UBound: frmWindow(i).Visible = True: Next i
     drpWindowType.Visible = True
         
@@ -3627,12 +3688,12 @@ On Error Resume Next
         txtReceived.Visible = False
         frmSearch.Visible = False
         frmTxtSettings.Visible = False
-        For i = 0 To lblCursorStats.UBound: lblCursorStats(i).Visible = False: Next i
+        For i = 0 To lblCursorStats.ubound: lblCursorStats(i).Visible = False: Next i
         drpWindowType_ItemChange drpWindowType.ListIndex
         
     ElseIf dragSplitPercentage = 1 Then
         picSplit.Left = Me.ScaleWidth - picSplit.Width
-        For i = 0 To frmWindow.UBound: frmWindow(i).Visible = False: Next i
+        For i = 0 To frmWindow.ubound: frmWindow(i).Visible = False: Next i
         drpWindowType.Visible = False
         
     Else
@@ -3691,7 +3752,7 @@ On Error Resume Next
     frmTxtSettings.Width = firstFrame
     
     chkTxtSettings(0).Left = smallOffsetX
-    For i = 1 To chkTxtSettings.UBound
+    For i = 1 To chkTxtSettings.ubound
         chkTxtSettings(i).Left = smallOffsetX + chkTxtSettings(i - 1).Width + chkTxtSettings(i - 1).Left
     Next i
     
@@ -3711,7 +3772,7 @@ On Error Resume Next
     txtReceived.Height = frmTxtSettings.Top - txtReceived.Top - 6
     
     
-    drpWindowType.Left = picSplit.Left + picSplit.Width
+    drpWindowType.Left = picSplit.Left + picSplit.Width + 1
     drpWindowType.Top = picToolbar(0).Top + picToolbar(0).Height
     drpWindowType.Width = Me.ScaleWidth - drpWindowType.Left - 12
     
@@ -3720,7 +3781,7 @@ On Error Resume Next
     frmWindow(0).Top = drpWindowType.Top + drpWindowType.Height
     frmWindow(0).Height = picToolbar(2).Top - frmWindow(0).Top
     
-    For i = 1 To frmWindow.UBound
+    For i = 1 To frmWindow.ubound
         frmWindow(i).Left = frmWindow(0).Left
         frmWindow(i).Top = frmWindow(0).Top
         frmWindow(i).Width = frmWindow(0).Width
@@ -3756,11 +3817,7 @@ On Error Resume Next
 
     
     
-    lstHistory.Left = smallOffsetX
-    lstHistory.Top = smallOffsetX * 2
-    lstHistory.Width = frmWindow(4).ScaleWidth - 2 * smallOffsetX
-    lstHistory.Height = frmWindow(4).ScaleHeight - 3 * smallOffsetX
-    
+
     
     
     
@@ -3776,7 +3833,7 @@ On Error Resume Next
     '    chkCommOptions(i).Left = chkCommOptions(i + 1).Left - chkCommOptions(i).Width - 12
     'Next i
     
-    loadReconnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12
+    loadReconnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12 - 7
     cmdConnect.Left = loadReconnect.Left + 3
     'cmdConnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12
     drpBaud.Left = cmdConnect.Left - drpBaud.Width - 12
@@ -3798,6 +3855,16 @@ On Error Resume Next
     chkLogsEnable.Left = smallOffsetX
     chkLogsEnable.Top = nominalOffsetX + smallOffsetX
     chkLogsEnable.Width = chkLogsEnable.Container.ScaleWidth - smallOffsetX * 2
+    
+    
+    chkSendOnDoubleClick.Left = smallOffsetX
+    chkSendOnDoubleClick.Top = nominalOffsetX + smallOffsetX
+    chkSendOnDoubleClick.Width = lstHistory.Width - smallOffsetX * 2
+    lstHistory.Left = smallOffsetX
+    lstHistory.Top = nominalOffsetX + chkSendOnDoubleClick.Top + chkSendOnDoubleClick.Height
+    lstHistory.Width = frmWindow(4).ScaleWidth - 2 * smallOffsetX
+    lstHistory.Height = frmWindow(4).ScaleHeight - 3 * smallOffsetX
+    
     
     'Debug.Print Me.Width
     'Debug.Print dragSplitPercentage
@@ -3959,6 +4026,7 @@ Private Sub lstHistory_DblClick()
     If i <> -1 Then
         setOutputOptionsWithLong lstHistory.ItemData(i)
         txtOutput.Text = lstHistory.List(i)
+        If chkSendOnDoubleClick.Value = u_Checked Then cmdSend_Click 0, 0, 0
     End If
     
 End Sub
@@ -3980,7 +4048,7 @@ End Sub
 Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
     Dim i As Long
     
-    For i = 0 To optLogsReconnect.UBound
+    For i = 0 To optLogsReconnect.ubound
         SaveSetting "SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", optLogsReconnect(i).Value
     Next i
 End Sub
@@ -4337,7 +4405,7 @@ Dim i As Long, j As Long
     Dim forceFunction As Long
     forceFunction = -1
     
-    For i = optInput.LBound To optInput.UBound
+    For i = optInput.LBound To optInput.ubound
         If optInput(i).Value = u_Selected Then
             forceFunction = i
             Exit For
