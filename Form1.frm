@@ -2885,7 +2885,7 @@ Function parseInputToBytes(uTxt As uTextBox) As Byte()
     Dim forceFunction As Long
     forceFunction = -1
     
-    For i = optInput.LBound To optInput.ubound
+    For i = optInput.LBound To optInput.UBound
         If optInput(i).Value = u_Selected Then
             forceFunction = i
             Exit For
@@ -3009,13 +3009,13 @@ Function getOutputOptionsAsLong() As Long
     Dim outputVal As Long
     Dim i As Long
     
-    For i = 0 To optInput.ubound
+    For i = 0 To optInput.UBound
         If optInput(i).Value = u_Selected Then
             outputVal = (outputVal Or (2 ^ i))
         End If
     Next i
     
-    outputVal = outputVal + (2 ^ (drpOnSend.ListIndex + optInput.ubound + 1))
+    outputVal = outputVal + (2 ^ (drpOnSend.ListIndex + optInput.UBound + 1))
     
     getOutputOptionsAsLong = outputVal
     
@@ -3024,7 +3024,7 @@ End Function
 Sub setOutputOptionsWithLong(inputVal As Long)
     Dim i As Long
     
-    For i = 0 To optInput.ubound
+    For i = 0 To optInput.UBound
         If (inputVal And (2 ^ i)) > 0 Then
             optInput(i).Value = u_Selected
         Else
@@ -3033,7 +3033,7 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     Next i
     
     For i = 0 To drpOnSend.ListCount
-        If (inputVal And (2 ^ (i + optInput.ubound + 1))) > 0 Then
+        If (inputVal And (2 ^ (i + optInput.UBound + 1))) > 0 Then
             drpOnSend.ListIndex = i
             Exit For
         End If
@@ -3410,7 +3410,7 @@ End Sub
 Private Sub drpWindowType_ItemChange(ItemIndex As Long)
     Dim i As Long
     
-    For i = 0 To frmWindow.ubound
+    For i = 0 To frmWindow.UBound
         frmWindow(i).Visible = (i = ItemIndex)
     Next i
     
@@ -3580,15 +3580,15 @@ Private Sub Form_Load()
     chkLogsEnable.Value = GetSetting("SerialConsole", "logs", "chkLogsEnable.Value", u_unChecked)
     chkSendOnDoubleClick.Value = GetSetting("SerialConsole", "history", "chkSendOnDoubleClick.Value", u_unChecked)
 
-    For i = 0 To chkCommOptions.ubound
+    For i = 0 To chkCommOptions.UBound
         chkCommOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkCommOptions(" & i & ").Value", u_unChecked)
     Next i
-    For i = 0 To chkTxtSettings.ubound
+    For i = 0 To chkTxtSettings.UBound
         chkTxtSettings(i).Value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
     Next i
     
     Dim totalCount As Long
-    For i = 0 To optLogsReconnect.ubound
+    For i = 0 To optLogsReconnect.UBound
         optLogsReconnect(i).Value = GetSetting("SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", u_UnSelected)
         totalCount = totalCount + IIf(optLogsReconnect(i).Value = u_Selected, 1, 0)
     Next i
@@ -3664,7 +3664,7 @@ On Error Resume Next
     optInput(0).Left = smallOffsetX
     optInput(0).Top = smallOffsetX * 2
     optInput(0).Height = txtOutput.Top - optInput(0).Top - smallOffsetX
-    For i = 1 To optInput.ubound
+    For i = 1 To optInput.UBound
         optInput(i).Top = optInput(0).Top
         optInput(i).Height = optInput(0).Height
         optInput(i).Left = optInput(i - 1).Left + optInput(i - 1).Width '+ smallOffsetX
@@ -3679,7 +3679,7 @@ On Error Resume Next
     'splitter
     txtReceived.Visible = True
     frmTxtSettings.Visible = True
-    For i = 0 To lblCursorStats.ubound: lblCursorStats(i).Visible = True: Next i
+    For i = 0 To lblCursorStats.UBound: lblCursorStats(i).Visible = True: Next i
     'For i = 0 To frmWindow.UBound: frmWindow(i).Visible = True: Next i
     drpWindowType.Visible = True
         
@@ -3688,12 +3688,12 @@ On Error Resume Next
         txtReceived.Visible = False
         frmSearch.Visible = False
         frmTxtSettings.Visible = False
-        For i = 0 To lblCursorStats.ubound: lblCursorStats(i).Visible = False: Next i
+        For i = 0 To lblCursorStats.UBound: lblCursorStats(i).Visible = False: Next i
         drpWindowType_ItemChange drpWindowType.ListIndex
         
     ElseIf dragSplitPercentage = 1 Then
         picSplit.Left = Me.ScaleWidth - picSplit.Width
-        For i = 0 To frmWindow.ubound: frmWindow(i).Visible = False: Next i
+        For i = 0 To frmWindow.UBound: frmWindow(i).Visible = False: Next i
         drpWindowType.Visible = False
         
     Else
@@ -3752,7 +3752,7 @@ On Error Resume Next
     frmTxtSettings.Width = firstFrame
     
     chkTxtSettings(0).Left = smallOffsetX
-    For i = 1 To chkTxtSettings.ubound
+    For i = 1 To chkTxtSettings.UBound
         chkTxtSettings(i).Left = smallOffsetX + chkTxtSettings(i - 1).Width + chkTxtSettings(i - 1).Left
     Next i
     
@@ -3781,7 +3781,7 @@ On Error Resume Next
     frmWindow(0).Top = drpWindowType.Top + drpWindowType.Height
     frmWindow(0).Height = picToolbar(2).Top - frmWindow(0).Top
     
-    For i = 1 To frmWindow.ubound
+    For i = 1 To frmWindow.UBound
         frmWindow(i).Left = frmWindow(0).Left
         frmWindow(i).Top = frmWindow(0).Top
         frmWindow(i).Width = frmWindow(0).Width
@@ -3863,7 +3863,7 @@ On Error Resume Next
     lstHistory.Left = smallOffsetX
     lstHistory.Top = nominalOffsetX + chkSendOnDoubleClick.Top + chkSendOnDoubleClick.Height
     lstHistory.Width = frmWindow(4).ScaleWidth - 2 * smallOffsetX
-    lstHistory.Height = frmWindow(4).ScaleHeight - 3 * smallOffsetX
+    lstHistory.Height = frmWindow(4).ScaleHeight - smallOffsetX - lstHistory.Top
     
     
     'Debug.Print Me.Width
@@ -4048,7 +4048,7 @@ End Sub
 Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
     Dim i As Long
     
-    For i = 0 To optLogsReconnect.ubound
+    For i = 0 To optLogsReconnect.UBound
         SaveSetting "SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", optLogsReconnect(i).Value
     Next i
 End Sub
@@ -4405,7 +4405,7 @@ Dim i As Long, j As Long
     Dim forceFunction As Long
     forceFunction = -1
     
-    For i = optInput.LBound To optInput.ubound
+    For i = optInput.LBound To optInput.UBound
         If optInput(i).Value = u_Selected Then
             forceFunction = i
             Exit For

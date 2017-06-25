@@ -9,6 +9,7 @@ Sub Main()
     Dim commandProcessed As String
     
     uDontDrawDots = True
+    uEnableMouseHooks = True
     
     commandProcessed = Replace(Command, Chr(34), "")
     

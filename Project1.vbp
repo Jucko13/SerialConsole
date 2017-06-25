@@ -26,6 +26,7 @@ UserControl=Taskbar-Tools\uListBox.ctl
 Module=ObjectSearcher; objectSearcher.bas
 UserControl=Taskbar-Tools\uLoadBar.ctl
 UserControl=Taskbar-Tools\uToolTip.ctl
+Class=uMouseWheel; Taskbar-Tools\uMouseWheel.cls
 IconForm="frmMain"
 Startup="Sub Main"
 HelpFile=""
