@@ -2633,13 +2633,13 @@ Dim logFileHandle As Long
 Private WithEvents tmrCheckBitRate As SelfTimer
 Attribute tmrCheckBitRate.VB_VarHelpID = -1
 
-Private Sub chkComOptions_Changed(index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkComOptions_Changed(Index As Integer, u_NewState As uCheckboxConstants)
     On Error GoTo disconnectError:
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case index
+    Select Case Index
     
         Case 0
             comm.DTREnable = newState
@@ -2662,9 +2662,9 @@ disconnectError:
         
     End If
     
-    SaveSetting "SerialConsole", "checkboxes", "chkComOptions(" & index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkComOptions(" & Index & ").Value", u_NewState
 
-    setCheckColors chkComOptions(index), newState
+    setCheckColors chkComOptions(Index), newState
 
 End Sub
 
@@ -2714,8 +2714,8 @@ Private Sub chkRefreshZebro_Changed(u_NewState As uCheckboxConstants)
     tmrGetConnected.Enabled = (u_NewState = u_Checked)
 End Sub
 
-Private Sub chkSend_Changed(index As Integer, u_NewState As uCheckboxConstants)
-    setCheckColors chkSend(index), u_NewState = u_Checked
+Private Sub chkSend_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+    setCheckColors chkSend(Index), u_NewState = u_Checked
     
 End Sub
 
@@ -2726,12 +2726,12 @@ Private Sub chkSendOnDoubleClick_Changed(u_NewState As uCheckboxConstants)
     setCheckColors chkSendOnDoubleClick, u_NewState = u_Checked
 End Sub
 
-Private Sub chkTxtSettings_Changed(index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case index
+    Select Case Index
         Case 1
             txtReceived.ConsoleColors = newState
             
@@ -2748,9 +2748,9 @@ Private Sub chkTxtSettings_Changed(index As Integer, u_NewState As uCheckboxCons
 
     End Select
     
-    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & Index & ").Value", u_NewState
     
-    setCheckColors chkTxtSettings(index), newState
+    setCheckColors chkTxtSettings(Index), newState
 End Sub
 
 
@@ -2759,7 +2759,11 @@ Private Sub cmdClearLabels_Click(Button As Integer, X As Single, Y As Single)
     Dim s As Variant
     
     For Each s In arduinoLabels
-        If s(0) <> 0 Then Unload lblLabel(s(0))
+        If s(0) <> 0 Then
+            Unload lblLabel(s(0))
+        Else
+            lblLabel(s(0)).Visible = False
+        End If
     Next s
     
     Set arduinoLabels = New Collection
@@ -2944,13 +2948,13 @@ Sub getRightFileName(ByRef currentFilename As String)
     
 End Sub
 
-Private Sub cmdControls_Click(index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
     
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            Select Case index
+            Select Case Index
             
                 Case 0
                     sendCommand i, 1, 32, 1, 255
@@ -2977,14 +2981,14 @@ Private Sub cmdControls_Click(index As Integer, Button As Integer, X As Single, 
     Next i
     
     
-    Select Case index
+    Select Case Index
         Case 4 To 9
             
-            If ledCommand = index - 4 Then
+            If ledCommand = Index - 4 Then
                 ledCommand = -1
                 frmColors.Visible = False
             Else
-                ledCommand = index - 4
+                ledCommand = Index - 4
                 frmColors.Caption = "Colors for Led " & ledCommand + 1
                 frmColors.Visible = True
                 
@@ -3187,9 +3191,9 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     Next i
 End Sub
 
-Private Sub cmdZebro_Click(index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdZebro_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
         
-    picoSendCommand(index) = Not picoSendCommand(index)
+    picoSendCommand(Index) = Not picoSendCommand(Index)
     
     
     Dim i As Long
@@ -3358,7 +3362,7 @@ End Sub
 
 
 
-Private Sub Command1_Click(index As Integer)
+Private Sub Command1_Click(Index As Integer)
 '
 '    Select Case Index
 '        Case 0
@@ -3420,11 +3424,11 @@ notWorking:
     
 End Sub
 
-Sub setCaption(Optional index As Long = -1)
+Sub setCaption(Optional Index As Long = -1)
     Dim capt As String
     
-    If index > -1 And index < serialDevices.Count Then
-        capt = serialDevices.commPort(index) & " - "
+    If Index > -1 And Index < serialDevices.Count Then
+        capt = serialDevices.commPort(Index) & " - "
     End If
     
     Me.Caption = capt & "SerialConsole - V1.0 by Ricardo de Roode"
@@ -4151,8 +4155,8 @@ Private Sub Form_Unload(cancel As Integer)
     DoEvents
 End Sub
 
-Private Sub lblInfo_DblClick(index As Integer)
-    Select Case index
+Private Sub lblInfo_DblClick(Index As Integer)
+    Select Case Index
         Case 1
             bitsSend = 0
             changeBitsSendReceived
@@ -4162,9 +4166,9 @@ Private Sub lblInfo_DblClick(index As Integer)
     End Select
 End Sub
 
-Private Sub LBLSplit_Click(index As Integer)
+Private Sub LBLSplit_Click(Index As Integer)
     
-    Select Case index
+    Select Case Index
         Case 0
             dragSplitPercentage = 0
             
@@ -4188,8 +4192,8 @@ Private Sub lstHistory_DblClick()
     
 End Sub
 
-Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
-    If optInput(index).Value = u_Selected Then
+Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
+    If optInput(Index).Value = u_Selected Then
         u_NewState = u_UnSelected
         u_Cancel = True
     End If
@@ -4197,12 +4201,12 @@ Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_
     
 End Sub
 
-Private Sub optInput_Changed(index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optInput_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
     txtOutput_Changed
     txtSearch_Changed
 End Sub
 
-Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
     Dim i As Long
     
     For i = 0 To optLogsReconnect.UBound
@@ -4210,12 +4214,12 @@ Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxC
     Next i
 End Sub
 
-Private Sub picColors_Click(index As Integer)
+Private Sub picColors_Click(Index As Integer)
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            sendCommand i, 1, 33 + ledCommand, CByte(index), 255
+            sendCommand i, 1, 33 + ledCommand, CByte(Index), 255
         End If
     Next i
     
@@ -4567,13 +4571,13 @@ End Sub
 Sub CheckIfLabelIsAddedOrAdd(whatLabel As String, whatValue As String)
     On Error GoTo ExistsNonObjectErrorHandler
     Dim triedBefore As Boolean
-    Dim index As Long
+    Dim Index As Long
     
     triedBefore = False
     
 tryAgain:
-    index = arduinoLabels(whatLabel)(0)
-    lblLabel(index).Caption = whatValue
+    Index = arduinoLabels(whatLabel)(0)
+    lblLabel(Index).Caption = whatValue
     
     Exit Sub
 ExistsNonObjectErrorHandler:
