@@ -5,6 +5,11 @@ Option Explicit
 Public Declare Function GetTickCount Lib "kernel32" () As Long
 Public Declare Function GetForegroundWindow Lib "user32.dll" () As Long
 
+Type arduinoLabel
+    sKey As String
+    lValue As Long
+End Type
+
 Sub Main()
     Dim commandProcessed As String
     

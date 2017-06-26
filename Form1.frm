@@ -115,7 +115,7 @@ Begin VB.Form frmMain
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Begin SerialConsole.uCheckBox chkCommOptions 
+      Begin SerialConsole.uCheckBox chkComOptions 
          Height          =   195
          Index           =   2
          Left            =   90
@@ -147,7 +147,7 @@ Begin VB.Form frmMain
          EndProperty
          ForeColor       =   12632256
       End
-      Begin SerialConsole.uCheckBox chkCommOptions 
+      Begin SerialConsole.uCheckBox chkComOptions 
          Height          =   195
          Index           =   3
          Left            =   90
@@ -179,7 +179,7 @@ Begin VB.Form frmMain
          EndProperty
          ForeColor       =   12632256
       End
-      Begin SerialConsole.uCheckBox chkCommOptions 
+      Begin SerialConsole.uCheckBox chkComOptions 
          Height          =   195
          Index           =   4
          Left            =   90
@@ -211,7 +211,7 @@ Begin VB.Form frmMain
          EndProperty
          ForeColor       =   12632256
       End
-      Begin SerialConsole.uCheckBox chkCommOptions 
+      Begin SerialConsole.uCheckBox chkComOptions 
          Height          =   195
          Index           =   5
          Left            =   90
@@ -243,7 +243,7 @@ Begin VB.Form frmMain
          EndProperty
          ForeColor       =   12632256
       End
-      Begin SerialConsole.uCheckBox chkCommOptions 
+      Begin SerialConsole.uCheckBox chkComOptions 
          Height          =   375
          Index           =   6
          Left            =   90
@@ -328,16 +328,16 @@ Begin VB.Form frmMain
       EndProperty
       Begin SerialConsole.uGraph graphArduino 
          Height          =   705
-         Left            =   135
+         Left            =   90
          TabIndex        =   71
-         Top             =   570
+         Top             =   510
          Width           =   1920
          _ExtentX        =   3387
          _ExtentY        =   1244
       End
       Begin SerialConsole.uCheckBox chkEnableGraph 
          Height          =   165
-         Left            =   120
+         Left            =   90
          TabIndex        =   74
          ToolTipText     =   "Show the received data in hex (Hold: H)"
          Top             =   240
@@ -746,7 +746,7 @@ Begin VB.Form frmMain
       Height          =   960
       Left            =   75
       TabIndex        =   10
-      Top             =   6435
+      Top             =   6450
       Width           =   12270
       _ExtentX        =   21643
       _ExtentY        =   1693
@@ -1282,7 +1282,7 @@ Begin VB.Form frmMain
       Left            =   14625
       Top             =   855
    End
-   Begin SerialConsole.uCheckBox chkCommOptions 
+   Begin SerialConsole.uCheckBox chkComOptions 
       Height          =   450
       Index           =   0
       Left            =   10395
@@ -1388,7 +1388,7 @@ Begin VB.Form frmMain
       ItemHeight      =   20
       ScrollBarWidth  =   30
    End
-   Begin SerialConsole.uCheckBox chkCommOptions 
+   Begin SerialConsole.uCheckBox chkComOptions 
       Height          =   450
       Index           =   1
       Left            =   11550
@@ -1442,10 +1442,10 @@ Begin VB.Form frmMain
       TabIndex        =   21
       Top             =   1275
       Visible         =   0   'False
-      Width           =   6090
-      _ExtentX        =   10742
+      Width           =   2445
+      _ExtentX        =   4313
       _ExtentY        =   9446
-      BackgroundColor =   3551534
+      BackgroundColor =   2367774
       BorderColor     =   14737632
       ForeColor       =   16777215
       Caption         =   "Zebro Controls"
@@ -1466,10 +1466,10 @@ Begin VB.Form frmMain
          Width           =   2790
          _ExtentX        =   4921
          _ExtentY        =   503
-         BackgroundColor =   3551534
+         BackgroundColor =   2367774
          Border          =   0   'False
          Caption         =   "Refresh connected Zebros"
-         CheckBackgroundColor=   3551534
+         CheckBackgroundColor=   2367774
          CheckBorderColor=   8421504
          CheckBorderThickness=   2
          CheckSelectionColor=   4210752
@@ -1508,10 +1508,10 @@ Begin VB.Form frmMain
          Width           =   4380
          _ExtentX        =   7726
          _ExtentY        =   1085
-         BackgroundColor =   3551534
+         BackgroundColor =   2367774
          BorderColor     =   14737632
          ForeColor       =   16777215
-         Caption         =   "Colors for Led 1"
+         Caption         =   "Led Color"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
             Size            =   8.25
@@ -2105,7 +2105,7 @@ Begin VB.Form frmMain
          Height          =   1290
          Left            =   135
          TabIndex        =   78
-         Top             =   540
+         Top             =   525
          Width           =   1995
          _ExtentX        =   3519
          _ExtentY        =   2275
@@ -2321,6 +2321,130 @@ Begin VB.Form frmMain
       Top             =   825
       Width           =   180
    End
+   Begin SerialConsole.uFrame frmWindow 
+      Height          =   3990
+      Index           =   5
+      Left            =   9975
+      TabIndex        =   96
+      Top             =   1305
+      Width           =   3495
+      _ExtentX        =   6165
+      _ExtentY        =   7038
+      BackgroundColor =   2367774
+      BorderColor     =   14737632
+      ForeColor       =   16777215
+      Caption         =   "Label List"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin SerialConsole.uButton cmdClearLabels 
+         Height          =   330
+         Left            =   90
+         TabIndex        =   97
+         Top             =   3585
+         Width           =   1950
+         _ExtentX        =   3440
+         _ExtentY        =   582
+         BackgroundColor =   4671472
+         BorderColor     =   8421504
+         ForeColor       =   16777215
+         MouseOverBackgroundColor=   8882165
+         FocusColor      =   12632256
+         BackgroundColorDisabled=   14737632
+         BorderColorDisabled=   8421504
+         ForeColorDisabled=   0
+         MouseOverBackgroundColorDisabled=   12632256
+         CaptionBorderColorDisabled=   0
+         FocusColorDisabled=   12632256
+         FocusVisible    =   0   'False
+         Caption         =   "Clear Labels"
+         Border          =   0   'False
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   12
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         CaptionOffsetTop=   -1
+      End
+      Begin SerialConsole.uCheckBox chkEnableLabelList 
+         Height          =   165
+         Left            =   90
+         TabIndex        =   99
+         ToolTipText     =   "Show the received data in hex (Hold: H)"
+         Top             =   240
+         Width           =   1950
+         _ExtentX        =   1191
+         _ExtentY        =   291
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "Enable Label List"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   1
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         CheckOffsetLeft =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+         AutoSize        =   0   'False
+      End
+      Begin VB.Label lblLabel 
+         AutoSize        =   -1  'True
+         BackColor       =   &H0024211E&
+         Caption         =   "Label1"
+         ForeColor       =   &H00FFFFFF&
+         Height          =   195
+         Index           =   0
+         Left            =   180
+         TabIndex        =   98
+         Top             =   555
+         Visible         =   0   'False
+         Width           =   465
+      End
+   End
+   Begin VB.Label lblCursorStats 
+      Alignment       =   2  'Center
+      BackColor       =   &H008080FF&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Label1"
+      BeginProperty Font 
+         Name            =   "Consolas"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   195
+      Index           =   3
+      Left            =   2145
+      TabIndex        =   95
+      Top             =   5040
+      Width           =   570
+   End
    Begin VB.Label LBLSplit 
       AutoSize        =   -1  'True
       BackColor       =   &H0024211E&
@@ -2365,7 +2489,9 @@ Begin VB.Form frmMain
    End
    Begin VB.Label lblCursorStats 
       Alignment       =   1  'Right Justify
-      BackColor       =   &H0024211E&
+      AutoSize        =   -1  'True
+      BackColor       =   &H008080FF&
+      BackStyle       =   0  'Transparent
       Caption         =   "Label1"
       BeginProperty Font 
          Name            =   "Consolas"
@@ -2378,15 +2504,16 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   &H00FFFFFF&
       Height          =   195
-      Index           =   3
-      Left            =   3285
+      Index           =   4
+      Left            =   3750
       TabIndex        =   43
       Top             =   5040
-      Width           =   1005
+      Width           =   540
    End
    Begin VB.Label lblCursorStats 
       Alignment       =   2  'Center
-      BackColor       =   &H0024211E&
+      BackColor       =   &H008080FF&
+      BackStyle       =   0  'Transparent
       Caption         =   "Label1"
       BeginProperty Font 
          Name            =   "Consolas"
@@ -2400,14 +2527,15 @@ Begin VB.Form frmMain
       ForeColor       =   &H00FFFFFF&
       Height          =   195
       Index           =   2
-      Left            =   2130
+      Left            =   1485
       TabIndex        =   42
       Top             =   5040
-      Width           =   1005
+      Width           =   600
    End
    Begin VB.Label lblCursorStats 
       Alignment       =   2  'Center
-      BackColor       =   &H0024211E&
+      BackColor       =   &H008080FF&
+      BackStyle       =   0  'Transparent
       Caption         =   "Label1"
       BeginProperty Font 
          Name            =   "Consolas"
@@ -2421,13 +2549,14 @@ Begin VB.Form frmMain
       ForeColor       =   &H00FFFFFF&
       Height          =   195
       Index           =   1
-      Left            =   1095
+      Left            =   765
       TabIndex        =   41
       Top             =   5040
-      Width           =   855
+      Width           =   645
    End
    Begin VB.Label lblCursorStats 
-      BackColor       =   &H0024211E&
+      BackColor       =   &H008080FF&
+      BackStyle       =   0  'Transparent
       Caption         =   "Label1"
       BeginProperty Font 
          Name            =   "Consolas"
@@ -2441,10 +2570,10 @@ Begin VB.Form frmMain
       ForeColor       =   &H00FFFFFF&
       Height          =   195
       Index           =   0
-      Left            =   180
+      Left            =   90
       TabIndex        =   40
       Top             =   5040
-      Width           =   855
+      Width           =   600
    End
 End
 Attribute VB_Name = "frmMain"
@@ -2497,23 +2626,24 @@ Dim searchFor() As Byte
 Dim ConsoleColors As Variant
 
 Dim arduinoListHeaders() As String
+Dim arduinoLabels As Collection
 
 Dim logFileHandle As Long
 
 Private WithEvents tmrCheckBitRate As SelfTimer
 Attribute tmrCheckBitRate.VB_VarHelpID = -1
 
-Private Sub chkCommOptions_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkComOptions_Changed(index As Integer, u_NewState As uCheckboxConstants)
     On Error GoTo disconnectError:
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case Index
+    Select Case index
     
         Case 0
             comm.DTREnable = newState
-            If newState And chkCommOptions(2).Value = u_Checked Then
+            If newState And chkComOptions(2).Value = u_Checked Then
                 txtReceived.Clear
             End If
             
@@ -2532,9 +2662,9 @@ disconnectError:
         
     End If
     
-    SaveSetting "SerialConsole", "checkboxes", "chkCommOptions(" & Index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkComOptions(" & index & ").Value", u_NewState
 
-    setCheckColors chkCommOptions(Index), newState
+    setCheckColors chkComOptions(index), newState
 
 End Sub
 
@@ -2559,6 +2689,12 @@ Private Sub chkEnableGraph_Changed(u_NewState As uCheckboxConstants)
     setCheckColors chkEnableGraph, u_NewState = u_Checked
 End Sub
 
+Private Sub chkEnableLabelList_Changed(u_NewState As uCheckboxConstants)
+    SaveSetting "SerialConsole", "label", "chkEnableLabelList.Value", u_NewState
+    
+    setCheckColors chkEnableLabelList, u_NewState = u_Checked
+End Sub
+
 Private Sub chkLogsEnable_Changed(u_NewState As uCheckboxConstants)
     SaveSetting "SerialConsole", "logs", "chkLogsEnable.Value", u_NewState
     
@@ -2578,8 +2714,8 @@ Private Sub chkRefreshZebro_Changed(u_NewState As uCheckboxConstants)
     tmrGetConnected.Enabled = (u_NewState = u_Checked)
 End Sub
 
-Private Sub chkSend_Changed(Index As Integer, u_NewState As uCheckboxConstants)
-    setCheckColors chkSend(Index), u_NewState = u_Checked
+Private Sub chkSend_Changed(index As Integer, u_NewState As uCheckboxConstants)
+    setCheckColors chkSend(index), u_NewState = u_Checked
     
 End Sub
 
@@ -2590,12 +2726,12 @@ Private Sub chkSendOnDoubleClick_Changed(u_NewState As uCheckboxConstants)
     setCheckColors chkSendOnDoubleClick, u_NewState = u_Checked
 End Sub
 
-Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkTxtSettings_Changed(index As Integer, u_NewState As uCheckboxConstants)
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case Index
+    Select Case index
         Case 1
             txtReceived.ConsoleColors = newState
             
@@ -2612,12 +2748,22 @@ Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxCons
 
     End Select
     
-    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & Index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & index & ").Value", u_NewState
     
-    setCheckColors chkTxtSettings(Index), newState
+    setCheckColors chkTxtSettings(index), newState
 End Sub
 
 
+Private Sub cmdClearLabels_Click(Button As Integer, X As Single, Y As Single)
+    Dim i As Long
+    Dim s As Variant
+    
+    For Each s In arduinoLabels
+        If s(0) <> 0 Then Unload lblLabel(s(0))
+    Next s
+    
+    Set arduinoLabels = New Collection
+End Sub
 
 Private Sub cmdConnect_MouseEnter()
     loadReconnect.BackgroundColor = cmdConnect.MouseOverBackgroundColor
@@ -2658,8 +2804,8 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
         comm.PortOpen = True
         comm.InBufferCount = 0
         comm.OutBufferCount = 0
-        comm.DTREnable = (chkCommOptions(0).Value = u_Checked)
-        If chkCommOptions(2).Value = u_Checked Then txtReceived.Clear
+        comm.DTREnable = (chkComOptions(0).Value = u_Checked)
+        If chkComOptions(2).Value = u_Checked Then txtReceived.Clear
         
         cmdSend.Enabled = True
         drpCommports.Enabled = False
@@ -2798,13 +2944,13 @@ Sub getRightFileName(ByRef currentFilename As String)
     
 End Sub
 
-Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdControls_Click(index As Integer, Button As Integer, X As Single, Y As Single)
     
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            Select Case Index
+            Select Case index
             
                 Case 0
                     sendCommand i, 1, 32, 1, 255
@@ -2831,14 +2977,14 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, 
     Next i
     
     
-    Select Case Index
+    Select Case index
         Case 4 To 9
             
-            If ledCommand = Index - 4 Then
+            If ledCommand = index - 4 Then
                 ledCommand = -1
                 frmColors.Visible = False
             Else
-                ledCommand = Index - 4
+                ledCommand = index - 4
                 frmColors.Caption = "Colors for Led " & ledCommand + 1
                 frmColors.Visible = True
                 
@@ -3041,9 +3187,9 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     Next i
 End Sub
 
-Private Sub cmdZebro_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdZebro_Click(index As Integer, Button As Integer, X As Single, Y As Single)
         
-    picoSendCommand(Index) = Not picoSendCommand(Index)
+    picoSendCommand(index) = Not picoSendCommand(index)
     
     
     Dim i As Long
@@ -3212,7 +3358,7 @@ End Sub
 
 
 
-Private Sub Command1_Click(Index As Integer)
+Private Sub Command1_Click(index As Integer)
 '
 '    Select Case Index
 '        Case 0
@@ -3229,22 +3375,26 @@ Private Sub Command1_Click(Index As Integer)
 
 'checkForAndOpenLogFile
 
-'Dim i As Long
-'Dim s As String
-'
-'For i = 0 To 500
-'    s = s & "hoi" & vbLf & Chr(0) & vbCr & String(20, " ")
-'Next i
-'
-'txtReceived.Text = s
-
 Dim i As Long
-For i = 0 To 90
-    graphDataInOut.AddItem 0, Sin(i / 180 * 3.1415926535926) * 80, False
-    graphDataInOut.AddItem 1, Sin(i / 180 * 3.1415926535926) * 80, False
+Dim s As String
+
+txtReceived.Text = "hahah" & vbCrLf
+
+For i = 0 To 500
+    txtReceived.RedrawPause
+    txtReceived.SelStart = txtReceived.TextLength
+    txtReceived.AddCharAtCursor "h"
+    txtReceived.RedrawResume
 Next i
 
-graphDataInOut.Redraw
+
+'Dim i As Long
+'For i = 0 To 90
+'    graphDataInOut.AddItem 0, Sin(i / 180 * 3.1415926535926) * 80, False
+'    graphDataInOut.AddItem 1, Sin(i / 180 * 3.1415926535926) * 80, False
+'Next i
+'
+'graphDataInOut.Redraw
 
 
 End Sub
@@ -3270,11 +3420,11 @@ notWorking:
     
 End Sub
 
-Sub setCaption(Optional Index As Long = -1)
+Sub setCaption(Optional index As Long = -1)
     Dim capt As String
     
-    If Index > -1 And Index < serialDevices.Count Then
-        capt = serialDevices.commPort(Index) & " - "
+    If index > -1 And index < serialDevices.Count Then
+        capt = serialDevices.commPort(index) & " - "
     End If
     
     Me.Caption = capt & "SerialConsole - V1.0 by Ricardo de Roode"
@@ -3458,6 +3608,8 @@ Sub fillWindowType()
     drpWindowType.AddItem "Graph"
     drpWindowType.AddItem "Logs"
     drpWindowType.AddItem "History"
+    drpWindowType.AddItem "Label List"
+    
     drpWindowType.ItemsVisible = drpWindowType.ListCount
 End Sub
 
@@ -3475,21 +3627,21 @@ Sub initToolTips()
     'ttToolTip.Add txtReceived.hWnd, "test"
     ttToolTip.Add drpBaud.hWnd, "Select the used baudrate." & vbCrLf & "Can be changed on the fly."
     ttToolTip.Add cmdConnect.hWnd, "Connect/Disconnect." & vbCrLf & "Shows an animation when reconnect is pending."
-    ttToolTip.Add chkCommOptions(0).hWnd, "Data Terminal Ready." & vbCrLf & "Resets Arduino on connect and on rising toggle."
+    ttToolTip.Add chkComOptions(0).hWnd, "Data Terminal Ready." & vbCrLf & "Resets Arduino on connect and on rising toggle."
 
     ttToolTip.Add chkTxtSettings(1).hWnd, "Enable support for Ansii console colors"
     
     ttToolTip.Add chkTxtSettings(2).hWnd, "Show the received data in hex (Hold: H)"
     ttToolTip.Add chkTxtSettings(0).hWnd, "Automatically scrolldown in textbox when receiving data"
     ttToolTip.Add drpCommports.hWnd, "List of available comports." & vbCrLf & "Click to refresh list."
-    ttToolTip.Add chkCommOptions(1).hWnd, "Request To Send"
+    ttToolTip.Add chkComOptions(1).hWnd, "Request To Send"
     ttToolTip.Add drpReceiveSpeed.hWnd, "Set the receive window refresh rate." & vbCrLf & "Fully utilized baudrates above 115200 requires lower speed."
     
     
-    ttToolTip.Add chkCommOptions(2).hWnd, "Clear receive window on connect" & vbCrLf & "or on rising edge of DTR."
-    ttToolTip.Add chkCommOptions(3).hWnd, "Disconnect when you want to upload" & vbCrLf & "with VisualMicro or the Arduino IDE."
-    ttToolTip.Add chkCommOptions(4).hWnd, "Automatically connect when disconnect" & vbCrLf & "was triggered by Auto Disconnect."
-    ttToolTip.Add chkCommOptions(5).hWnd, "Automatically connect when USB is" & vbCrLf & "plugged after it was disconnected."
+    ttToolTip.Add chkComOptions(2).hWnd, "Clear receive window on connect" & vbCrLf & "or on rising edge of DTR."
+    ttToolTip.Add chkComOptions(3).hWnd, "Disconnect when you want to upload" & vbCrLf & "with VisualMicro or the Arduino IDE."
+    ttToolTip.Add chkComOptions(4).hWnd, "Automatically connect when disconnect" & vbCrLf & "was triggered by Auto Disconnect."
+    ttToolTip.Add chkComOptions(5).hWnd, "Automatically connect when USB is" & vbCrLf & "plugged after it was disconnected."
     
 
 
@@ -3505,6 +3657,8 @@ End Sub
 
 Private Sub Form_Load()
     Dim i As Long
+    Dim lstCount As Long, totalCount As Long
+    
     
     Set serialDevices = New CommPortList
     Set Timer = New PerformanceTimer
@@ -3512,10 +3666,10 @@ Private Sub Form_Load()
     
     Set tmrCheckBitRate = New SelfTimer
     
+    Set arduinoLabels = New Collection
+    
     tmrCheckBitRate.Interval = 500
     tmrCheckBitRate.Enabled = True
-    
-    'testTxt
     
     Erase searchFor
     
@@ -3569,7 +3723,6 @@ Private Sub Form_Load()
     fillArduinoListTestData
     
     setFont
-    'setCaption
     
     On Error Resume Next
     drpBaud.ListIndex = GetSetting("SerialConsole", "dropdown", "drpBaud.ListIndex", 0)
@@ -3579,15 +3732,17 @@ Private Sub Form_Load()
     
     chkLogsEnable.Value = GetSetting("SerialConsole", "logs", "chkLogsEnable.Value", u_unChecked)
     chkSendOnDoubleClick.Value = GetSetting("SerialConsole", "history", "chkSendOnDoubleClick.Value", u_unChecked)
-
-    For i = 0 To chkCommOptions.UBound
-        chkCommOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkCommOptions(" & i & ").Value", u_unChecked)
+    chkEnableLabelList.Value = GetSetting("SerialConsole", "label", "chkEnableLabelList.Value", u_unChecked)
+    
+    'loading comport options
+    For i = 0 To chkComOptions.UBound
+        chkComOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkComOptions(" & i & ").Value", u_unChecked)
     Next i
     For i = 0 To chkTxtSettings.UBound
         chkTxtSettings(i).Value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
     Next i
     
-    Dim totalCount As Long
+    'loading reconnect checkboxes
     For i = 0 To optLogsReconnect.UBound
         optLogsReconnect(i).Value = GetSetting("SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", u_UnSelected)
         totalCount = totalCount + IIf(optLogsReconnect(i).Value = u_Selected, 1, 0)
@@ -3595,15 +3750,21 @@ Private Sub Form_Load()
     If totalCount = 0 Then optLogsReconnect(0).Value = u_Selected
     
     
-    Dim lstCount As Long
+    'loading history
     lstCount = GetSetting("SerialConsole", "history", "lstHistory.ListCount", 0)
     For i = 0 To lstCount - 1
         lstHistory.AddItem GetSetting("SerialConsole", "history", "List(" & i & ")", ""), CLng(GetSetting("SerialConsole", "history", "ItemData(" & i & ")", 0))
     Next i
     
+    'loading label
+    lstCount = GetSetting("SerialConsole", "label", "labelCount", 0)
+    For i = 0 To lstCount - 1
+        AddLabel GetSetting("SerialConsole", "label", i, "")
+    Next i
+    
     Me.Width = Screen.TwipsPerPixelX * 862
     
-    chkCommOptions(6).Caption = "Auto disconnect on" & vbCrLf & "focus loss"
+    chkComOptions(6).Caption = "Auto disconnect on" & vbCrLf & "focus loss"
     
     'txtReceived.Text = txtReceived.FileToString("F:\Github\SerialConsole\changelog.txt")
 End Sub
@@ -3729,23 +3890,8 @@ On Error Resume Next
         txtReceived.Top = picToolbar(0).Top + picToolbar(0).Height
         
     End If
-        
-    lblCursorStats(0).Top = picToolbar(2).Top - lblCursorStats(0).Height
-    lblCursorStats(0).Left = 12
-    lblCursorStats(0).Width = Fix(firstFrame / 4)
     
-    lblCursorStats(1).Top = lblCursorStats(0).Top
-    lblCursorStats(1).Left = lblCursorStats(0).Left + lblCursorStats(0).Width
-    lblCursorStats(1).Width = Fix(firstFrame / 5)
-    
-    lblCursorStats(2).Top = lblCursorStats(0).Top
-    lblCursorStats(2).Left = lblCursorStats(1).Left + lblCursorStats(1).Width
-    lblCursorStats(2).Width = lblCursorStats(1).Width
-    
-    lblCursorStats(3).Top = lblCursorStats(0).Top
-    lblCursorStats(3).Width = firstFrame - (lblCursorStats(2).Width + lblCursorStats(2).Left)
-    lblCursorStats(3).Left = lblCursorStats(2).Width + lblCursorStats(2).Left
-    
+    resizeReceivedTextLabels
     
     frmTxtSettings.Top = lblCursorStats(0).Top - frmTxtSettings.Height - 12
     frmTxtSettings.Left = 12
@@ -3815,8 +3961,9 @@ On Error Resume Next
     txtStatus.Left = frmComStats.Left + frmComStats.Width + 12
     txtStatus.Width = Me.ScaleWidth - txtStatus.Left - 12
 
-    
-    
+    cmdClearLabels.Top = cmdClearLabels.Container.ScaleHeight - cmdClearLabels.Height - smallOffsetX
+    cmdClearLabels.Left = smallOffsetX
+    cmdClearLabels.Width = cmdClearLabels.Container.ScaleWidth - smallOffsetX * 2
 
     
     
@@ -3826,16 +3973,16 @@ On Error Resume Next
     picConnectionSettings.Left = Me.ScaleWidth - picConnectionSettings.Width - 12
     frmReconnectSettings.Left = Me.ScaleWidth - frmReconnectSettings.Width - 12
     frmReconnectSettings.Top = picToolbar(0).Top + picToolbar(0).Height
-    chkCommOptions(1).Left = picConnectionSettings.Left - chkCommOptions(1).Width - 12
-    chkCommOptions(0).Left = chkCommOptions(1).Left - chkCommOptions(0).Width - 12
+    chkComOptions(1).Left = picConnectionSettings.Left - chkComOptions(1).Width - 12
+    chkComOptions(0).Left = chkComOptions(1).Left - chkComOptions(0).Width - 12
     
-    'For i = chkCommOptions.UBound - 1 To 0 Step -1
-    '    chkCommOptions(i).Left = chkCommOptions(i + 1).Left - chkCommOptions(i).Width - 12
+    'For i = chkComOptions.UBound - 1 To 0 Step -1
+    '    chkComOptions(i).Left = chkComOptions(i + 1).Left - chkComOptions(i).Width - 12
     'Next i
     
-    loadReconnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12 - 7
+    loadReconnect.Left = chkComOptions(0).Left - cmdConnect.Width - 12 - 7
     cmdConnect.Left = loadReconnect.Left + 3
-    'cmdConnect.Left = chkCommOptions(0).Left - cmdConnect.Width - 12
+    'cmdConnect.Left = chkComOptions(0).Left - cmdConnect.Width - 12
     drpBaud.Left = cmdConnect.Left - drpBaud.Width - 12
     drpCommports.Left = 12
     drpCommports.Width = drpBaud.Left - 12 - drpCommports.Left
@@ -3855,7 +4002,7 @@ On Error Resume Next
     chkLogsEnable.Left = smallOffsetX
     chkLogsEnable.Top = nominalOffsetX + smallOffsetX
     chkLogsEnable.Width = chkLogsEnable.Container.ScaleWidth - smallOffsetX * 2
-    
+    frmLogsOnReconnect.Left = smallOffsetX
     
     chkSendOnDoubleClick.Left = smallOffsetX
     chkSendOnDoubleClick.Top = nominalOffsetX + smallOffsetX
@@ -3865,6 +4012,9 @@ On Error Resume Next
     lstHistory.Width = frmWindow(4).ScaleWidth - 2 * smallOffsetX
     lstHistory.Height = frmWindow(4).ScaleHeight - smallOffsetX - lstHistory.Top
     
+    chkEnableLabelList.Left = smallOffsetX
+    chkEnableLabelList.Top = nominalOffsetX + smallOffsetX
+    chkEnableLabelList.Width = chkEnableLabelList.Container.ScaleWidth - smallOffsetX * 2
     
     'Debug.Print Me.Width
     'Debug.Print dragSplitPercentage
@@ -3980,7 +4130,6 @@ Private Sub Form_Unload(cancel As Integer)
     SaveSetting "SerialConsole", "dropdown", "drpWindowType.ListIndex", drpWindowType.ListIndex
     SaveSetting "SerialConsole", "UI", "dragSplitPercentage", dragSplitPercentage
     
-    
     Dim i As Long
     
     SaveSetting "SerialConsole", "history", "lstHistory.ListCount", lstHistory.ListCount
@@ -3990,12 +4139,20 @@ Private Sub Form_Unload(cancel As Integer)
         SaveSetting "SerialConsole", "history", "ItemData(" & i & ")", lstHistory.ItemData(i)
     Next i
     
+    
+    SaveSetting "SerialConsole", "label", "labelCount", arduinoLabels.Count
+    
+    Dim v As Variant
+    For Each v In arduinoLabels
+        SaveSetting "SerialConsole", "label", CLng(v(0)), CStr(v(1))
+    Next v
+    
     If comm.PortOpen Then comm.PortOpen = False
     DoEvents
 End Sub
 
-Private Sub lblInfo_DblClick(Index As Integer)
-    Select Case Index
+Private Sub lblInfo_DblClick(index As Integer)
+    Select Case index
         Case 1
             bitsSend = 0
             changeBitsSendReceived
@@ -4005,9 +4162,9 @@ Private Sub lblInfo_DblClick(Index As Integer)
     End Select
 End Sub
 
-Private Sub LBLSplit_Click(Index As Integer)
+Private Sub LBLSplit_Click(index As Integer)
     
-    Select Case Index
+    Select Case index
         Case 0
             dragSplitPercentage = 0
             
@@ -4031,8 +4188,8 @@ Private Sub lstHistory_DblClick()
     
 End Sub
 
-Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
-    If optInput(Index).Value = u_Selected Then
+Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
+    If optInput(index).Value = u_Selected Then
         u_NewState = u_UnSelected
         u_Cancel = True
     End If
@@ -4040,12 +4197,12 @@ Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_
     
 End Sub
 
-Private Sub optInput_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optInput_Changed(index As Integer, u_NewState As uOptionBoxConstants)
     txtOutput_Changed
     txtSearch_Changed
 End Sub
 
-Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxConstants)
     Dim i As Long
     
     For i = 0 To optLogsReconnect.UBound
@@ -4053,12 +4210,12 @@ Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxC
     Next i
 End Sub
 
-Private Sub picColors_Click(Index As Integer)
+Private Sub picColors_Click(index As Integer)
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            sendCommand i, 1, 33 + ledCommand, CByte(Index), 255
+            sendCommand i, 1, 33 + ledCommand, CByte(index), 255
         End If
     Next i
     
@@ -4128,7 +4285,7 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
                 If serialDevices.isCommAvailable(drpCommports.ListIndex) = False Then
                     cmdConnect_Click 0, 0, 0
                     setStatus "Device was removed unexpectedly!", True, -1
-                    If chkCommOptions(5).Value = u_Checked Then
+                    If chkComOptions(5).Value = u_Checked Then
                         tmrCheckForReconnect.Enabled = True
                         loadReconnect.Loading = True
                     End If
@@ -4150,7 +4307,7 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
     
     timerPart = Not timerPart
     
-    If chkCommOptions(6).Value = u_Checked Then
+    If chkComOptions(6).Value = u_Checked Then
     
         If comm.PortOpen And GetForegroundWindow() <> Me.hWnd Then
             cmdConnect_Click 0, 0, 0
@@ -4190,7 +4347,7 @@ Private Sub txtDataExchange_Change()
     
     txtDataExchange.Text = ""
     
-    If chkCommOptions(3).Value <> u_Checked Then Exit Sub
+    If chkComOptions(3).Value <> u_Checked Then Exit Sub
     
     If UBound(strSplit) <> 1 Then
         MsgBox "Not a valid message!"
@@ -4203,7 +4360,7 @@ Private Sub txtDataExchange_Change()
             If comm.PortOpen = True Then
                 If strSplit(1) = "{serial.port}" Or serialDevices.commPort(drpCommports.ListIndex) = strSplit(1) Then
                     cmdConnect_Click 0, 0, 0
-                    If chkCommOptions(4).Value = u_Checked Then
+                    If chkComOptions(4).Value = u_Checked Then
                         tmrCheckForReconnect.Enabled = False
                         tmrCheckForReconnect.Enabled = True
                         loadReconnect.Loading = True
@@ -4266,7 +4423,7 @@ Exit Sub
 disconnectFromDevice:
     cmdConnect_Click 0, 0, 0
     setStatus Err.Description, True, Err.number
-    If chkCommOptions(5).Value = u_Checked Then
+    If chkComOptions(5).Value = u_Checked Then
         tmrCheckForReconnect.Enabled = True
         loadReconnect.Loading = True
     End If
@@ -4332,40 +4489,127 @@ Private Sub tmrShowBuffer_Timer()
         tmrShowBuffer.Enabled = False
     End If
     
-    On Error Resume Next
-    If chkEnableGraph.Value = u_Checked And InStr(1, receiveBufferArduino, vbCrLf) > 0 Then
-        Dim tmpSplit() As String, tmpValue() As String
-        tmpSplit = Split(Left$(receiveBufferArduino, receiveBufferArduinoLength), vbCrLf)
-        Dim i As Long, j As Long
-        
-        For i = 0 To UBound(tmpSplit)
-            If i = UBound(tmpSplit) Then
-                If Len(tmpSplit(UBound(tmpSplit))) > 0 Then
-                    receiveBufferArduinoLength = Len(tmpSplit(UBound(tmpSplit)))
-                    Mid$(receiveBufferArduino, 1, receiveBufferArduinoLength) = tmpSplit(UBound(tmpSplit))
-                    Exit For
-                Else
-                    receiveBufferArduinoLength = 0
-                End If
-            End If
-            
-            tmpValue = Split(tmpSplit(i), " ")
-            For j = 0 To UBound(tmpValue)
-                If Val(tmpValue(j)) = tmpValue(j) Then
-                    graphArduino.LineVisible(j) = True
-                    graphArduino.AddItem j, Val(tmpValue(j))
-                End If
-            Next j
-        Next i
-        graphArduino.ScrollToLastItem 0, True
-        
-        graphArduino.Redraw
-    ElseIf drpWindowType.ListIndex <> 2 Then
-        receiveBufferArduinoLength = 0
-    
-    End If
+    ProcessGraphData
     
 End Sub
+
+
+Sub ProcessGraphData()
+    'On Error Resume Next
+    Dim tmpSplit() As String, tmpValue() As String
+    Dim i As Long, j As Long
+    
+    If (drpWindowType.ListIndex <> 2 And drpWindowType.ListIndex <> 5) Or _
+        (chkEnableGraph.Value <> u_Checked And chkEnableLabelList.Value <> u_Checked) Then
+        receiveBufferArduinoLength = 0
+        Exit Sub
+    End If
+    
+    
+    If InStr(1, receiveBufferArduino, vbCrLf) > 0 Then
+        If chkEnableGraph.Value = u_Checked Then
+            
+            tmpSplit = Split(Left$(receiveBufferArduino, receiveBufferArduinoLength), vbCrLf)
+            
+            
+            For i = 0 To UBound(tmpSplit)
+                If i = UBound(tmpSplit) Then
+                    If Len(tmpSplit(UBound(tmpSplit))) > 0 Then
+                        receiveBufferArduinoLength = Len(tmpSplit(UBound(tmpSplit)))
+                        Mid$(receiveBufferArduino, 1, receiveBufferArduinoLength) = tmpSplit(UBound(tmpSplit))
+                        Exit For
+                    Else
+                        receiveBufferArduinoLength = 0
+                    End If
+                End If
+                
+                tmpValue = Split(tmpSplit(i), " ")
+                For j = 0 To UBound(tmpValue)
+                    If Val(tmpValue(j)) = tmpValue(j) Then
+                        graphArduino.LineVisible(j) = True
+                        graphArduino.AddItem j, Val(tmpValue(j))
+                    End If
+                Next j
+            Next i
+            graphArduino.ScrollToLastItem 0, True
+            
+            graphArduino.Redraw
+            
+        ElseIf chkEnableLabelList.Value = u_Checked Then
+            tmpSplit = Split(Left$(receiveBufferArduino, receiveBufferArduinoLength), vbCrLf)
+            
+            For i = 0 To UBound(tmpSplit)
+                
+                If Len(tmpSplit(i)) > 0 Then
+                    If i = UBound(tmpSplit) Then
+                        receiveBufferArduinoLength = Len(tmpSplit(UBound(tmpSplit)))
+                        Mid$(receiveBufferArduino, 1, receiveBufferArduinoLength) = tmpSplit(UBound(tmpSplit))
+                    Else
+                        tmpValue = Split(tmpSplit(i), ":")
+                        If UBound(tmpValue) > 0 Then
+                            If Len(tmpValue(0)) > 0 Then
+                                CheckIfLabelIsAddedOrAdd tmpValue(0), tmpSplit(i)
+                            End If
+                        End If
+                    End If
+                ElseIf i = UBound(tmpSplit) Then
+                    'the end of the splitter
+                    receiveBufferArduinoLength = 0
+                End If
+
+            Next i
+        End If
+    
+    End If
+
+End Sub
+
+Sub CheckIfLabelIsAddedOrAdd(whatLabel As String, whatValue As String)
+    On Error GoTo ExistsNonObjectErrorHandler
+    Dim triedBefore As Boolean
+    Dim index As Long
+    
+    triedBefore = False
+    
+tryAgain:
+    index = arduinoLabels(whatLabel)(0)
+    lblLabel(index).Caption = whatValue
+    
+    Exit Sub
+ExistsNonObjectErrorHandler:
+    'not found, add here
+    AddLabel whatLabel
+    
+    If triedBefore = False Then
+        triedBefore = False
+        GoTo tryAgain
+    End If
+End Sub
+
+
+Sub AddLabel(labelDescription As String)
+    Dim i As Long
+    Dim a(0 To 1) As Variant
+    
+    a(0) = arduinoLabels.Count
+    a(1) = labelDescription
+    
+    arduinoLabels.Add a, CStr(a(1))
+
+    If a(0) > 0 Then
+        Load lblLabel(a(0))
+        
+        lblLabel(a(0)).Top = lblLabel(a(0) - 1).Top + lblLabel(a(0) - 1).Height * 2
+        lblLabel(a(0)).Left = lblLabel(a(0) - 1).Left
+    End If
+    
+    lblLabel(a(0)).Visible = True
+    lblLabel(a(0)).Caption = a(1) & ": "
+    
+End Sub
+
+
+
 
 Sub changeBitsSendReceived()
     Dim bitsIn As String
@@ -4561,10 +4805,39 @@ Private Sub txtReceived_OnCursorPositionChanged(ByVal charIndex As Long, ByVal c
     lblCursorStats(0).Caption = "index: " & charIndex
     lblCursorStats(1).Caption = "row: " & charRow
     lblCursorStats(2).Caption = "col: " & charCol
-    lblCursorStats(3).Caption = "val: " & IIf(charIndex = txtReceived.TextLength, "-- (---)", charVal & "(0x" & Hex(charVal) & ")")
+    lblCursorStats(3).Caption = "sel: " & txtReceived.SelLength
+    lblCursorStats(4).Caption = "val: " & IIf(charIndex = txtReceived.TextLength, "-- (---)", charVal & "(0x" & Hex(charVal) & ")")
+    resizeReceivedTextLabels
 End Sub
 
+Sub resizeReceivedTextLabels()
+    Dim firstFrame As Long
 
+    firstFrame = picSplit.Left - txtReceived.Left
+        
+    lblCursorStats(0).Top = picToolbar(2).Top - lblCursorStats(0).Height
+    lblCursorStats(0).Left = 12
+    lblCursorStats(0).Width = Fix(firstFrame / 5)
+    
+    lblCursorStats(1).Top = lblCursorStats(0).Top
+    lblCursorStats(1).Left = lblCursorStats(0).Left + lblCursorStats(0).Width
+    lblCursorStats(1).Width = Fix(firstFrame / 5)
+    
+    lblCursorStats(2).Top = lblCursorStats(0).Top
+    lblCursorStats(2).Left = lblCursorStats(1).Left + lblCursorStats(1).Width
+    lblCursorStats(2).Width = lblCursorStats(1).Width
+    
+    lblCursorStats(4).Top = lblCursorStats(0).Top
+    'lblCursorStats(4).Width = firstFrame - (lblCursorStats(3).Width + lblCursorStats(3).Left)
+    lblCursorStats(4).Left = firstFrame - lblCursorStats(4).Width + txtReceived.Left
+    
+    lblCursorStats(3).Top = lblCursorStats(0).Top
+    lblCursorStats(3).Left = lblCursorStats(2).Left + lblCursorStats(2).Width
+    lblCursorStats(3).Width = lblCursorStats(4).Left - lblCursorStats(3).Left
+    
+
+
+End Sub
 
 
 
