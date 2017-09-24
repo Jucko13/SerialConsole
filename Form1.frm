@@ -455,7 +455,7 @@ Begin VB.Form frmMain
       TabIndex        =   53
       Top             =   900
       Visible         =   0   'False
-      Width           =   1230
+      Width           =   795
    End
    Begin SerialConsole.uFrame frmTxtSettings 
       Height          =   450
@@ -3514,18 +3514,13 @@ Private Sub Command1_Click(Index As Integer)
 'SetParent Me.hWnd, 332588
 
 'checkForAndOpenLogFile
+txtReceived.Clear
 
-Dim i As Long
-Dim s As String
 
-txtReceived.Text = "hahah" & vbCrLf
+txtReceived.AddCharAtCursor Chr(27) & "[41m"
 
-For i = 0 To 500
-    txtReceived.RedrawPause
-    txtReceived.SelStart = txtReceived.TextLength
-    txtReceived.AddCharAtCursor "h"
-    txtReceived.RedrawResume
-Next i
+txtReceived.AddCharAtCursor "hallo"
+txtReceived.RedrawResume
 
 
 'Dim i As Long

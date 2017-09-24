@@ -15,28 +15,30 @@ void setup() {
 }
 
 void loop() {
+  ansi.eraseScreen();
   // put your main code here, to run repeatedly:
-  ansi.setBackgroundColor(WHITE);
   ansi.setForegroundColor(RED);
+  ansi.setBackgroundColor(WHITE);
   Serial.print("Rood ");
   //delay(500);
-  ansi.setBackgroundColor(BLACK);
-  ansi.setForegroundColor(GREEN);
-  Serial.print("Groe ");
+  //ansi.setBackgroundColor(BLACK);
+  //ansi.setForegroundColor(GREEN);
+  //Serial.print("Groe ");
   //delay(500);
-  ansi.setBackgroundColor(CYAN);
-  ansi.setForegroundColor(BLUE);
-  Serial.print("Blau ");
+  //ansi.setBackgroundColor(CYAN);
+  //ansi.setForegroundColor(BLUE);
+  //Serial.print("Blau ");
   //delay(500);
 
-  i++;
+  //i++;
 
+  delay(100);
+  //if(i > 10){
+  //  i = 0;
+    
+  //}
 
-  if(i > 10){
-    i = 0;
-    Serial.println();
-  }
-
+  
 }
 
 
