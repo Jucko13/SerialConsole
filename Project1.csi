@@ -1,10 +1,9 @@
 [History]
-1=#P0#=mb	#P1#=Command1_Click	#P2#=SerialConsole/frmMain/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170924164635	#P7#=0	#P8#=16	.
-2=#P0#=mb	#P1#=ClearMarkup	#P2#=SerialConsole/uTextBox/ClearMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924163301	#P7#=0	#P8#=9	.
-3=#P0#=mb	#P1#=Form_Unload	#P2#=SerialConsole/frmMain/Form_Unload	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170924162519	#P7#=0	#P8#=10	.
-4=#P0#=mb	#P1#=ReCalculateRowMap	#P2#=SerialConsole/uTextBox/ReCalculateRowMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924162049	#P7#=0	#P8#=166	.
-5=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uTextBox/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165919	#P7#=0	#P8#=11	.
-6=#P0#=mb	#P1#=AddCharAtCursor	#P2#=SerialConsole/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165825	#P7#=0	#P8#=44	.
-7=#P0#=mb	#P1#=max	#P2#=SerialConsole/uTextBox/max	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165450	#P7#=0	#P8#=1	.
-8=#P0#=mb	#P1#=min	#P2#=SerialConsole/uTextBox/min	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924142917	#P7#=0	#P8#=-1	.
-9=#P0#=mb	#P1#=parseConsoleColors	#P2#=SerialConsole/uTextBox/parseConsoleColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165507	#P7#=0	#P8#=-2	.
+1=#P0#=mb	#P1#=Main	#P2#=SerialConsole/GlobalFunctions/Main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924223315	#P7#=0	#P8#=4	.
+2=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uTextBox/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165919	#P7#=0	#P8#=11	.
+3=#P0#=mb	#P1#=AddCharAtCursor	#P2#=SerialConsole/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165825	#P7#=0	#P8#=44	.
+4=#P0#=mb	#P1#=parseConsoleColors	#P2#=SerialConsole/uTextBox/parseConsoleColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165507	#P7#=0	#P8#=-2	.
+5=#P0#=mb	#P1#=Command1_Click	#P2#=SerialConsole/frmMain/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170924164635	#P7#=0	#P8#=16	.
+6=#P0#=mb	#P1#=ClearMarkup	#P2#=SerialConsole/uTextBox/ClearMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924163301	#P7#=0	#P8#=9	.
+7=#P0#=mb	#P1#=Form_Unload	#P2#=SerialConsole/frmMain/Form_Unload	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170924162519	#P7#=0	#P8#=10	.
+8=#P0#=mb	#P1#=ReCalculateRowMap	#P2#=SerialConsole/uTextBox/ReCalculateRowMap	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924162049	#P7#=0	#P8#=166	.
