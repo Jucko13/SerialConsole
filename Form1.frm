@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
+Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32_ALTERED.OCX"
 Begin VB.Form frmMain 
    AutoRedraw      =   -1  'True
    BackColor       =   &H0024211E&
@@ -24,6 +24,20 @@ Begin VB.Form frmMain
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1196
    StartUpPosition =   2  'CenterScreen
+   Begin MSCommLib.MSComm comm 
+      Left            =   3225
+      Top             =   5745
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      _Version        =   393216
+      DTREnable       =   0   'False
+      InBufferSize    =   10
+      InputLen        =   100
+      OutBufferSize   =   1
+      ParityReplace   =   48
+      RThreshold      =   1
+      SThreshold      =   1
+   End
    Begin SerialConsole.uButton picConnectionSettings 
       Height          =   480
       Left            =   14085
@@ -462,8 +476,8 @@ Begin VB.Form frmMain
       Left            =   195
       TabIndex        =   49
       Top             =   4320
-      Width           =   6240
-      _ExtentX        =   11007
+      Width           =   7020
+      _ExtentX        =   12383
       _ExtentY        =   794
       BackgroundColor =   2367774
       BorderColor     =   14737632
@@ -480,7 +494,7 @@ Begin VB.Form frmMain
       EndProperty
       Begin SerialConsole.uDropDown drpReceiveSpeed 
          Height          =   255
-         Left            =   4485
+         Left            =   5385
          TabIndex        =   65
          Top             =   150
          Width           =   1605
@@ -587,6 +601,38 @@ Begin VB.Form frmMain
          Border          =   0   'False
          BorderColor     =   2367774
          Caption         =   "Font(Hex, Dec)"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   1
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         CheckOffsetLeft =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
+      Begin SerialConsole.uCheckBox chkTxtSettings 
+         Height          =   195
+         Index           =   3
+         Left            =   4365
+         TabIndex        =   104
+         Top             =   180
+         Width           =   1335
+         _ExtentX        =   2355
+         _ExtentY        =   344
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "Print CR LF"
          CaptionOffsetLeft=   5
          CaptionOffsetTop=   1
          CheckBackgroundColor=   2367774
@@ -1355,20 +1401,6 @@ Begin VB.Form frmMain
       Text            =   "drpCommports"
       Border          =   0   'False
       ScrollBarWidth  =   30
-   End
-   Begin MSCommLib.MSComm comm 
-      Left            =   4365
-      Top             =   4965
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      _Version        =   393216
-      DTREnable       =   0   'False
-      InBufferSize    =   10
-      InputLen        =   100
-      OutBufferSize   =   1
-      ParityReplace   =   0
-      RThreshold      =   1
-      SThreshold      =   1
    End
    Begin SerialConsole.uDropDown drpBaud 
       Height          =   450
@@ -2563,9 +2595,9 @@ Begin VB.Form frmMain
       ForeColor       =   &H00FFFFFF&
       Height          =   450
       Index           =   1
-      Left            =   6555
+      Left            =   5940
       TabIndex        =   73
-      Top             =   4485
+      Top             =   5790
       Width           =   180
    End
    Begin VB.Label LBLSplit 
@@ -2584,9 +2616,9 @@ Begin VB.Form frmMain
       ForeColor       =   &H00FFFFFF&
       Height          =   450
       Index           =   0
-      Left            =   6750
+      Left            =   6285
       TabIndex        =   72
-      Top             =   3975
+      Top             =   5760
       Width           =   180
    End
    Begin VB.Label lblCursorStats 
@@ -2881,7 +2913,9 @@ Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxCons
             f.Bold = False
             Set txtReceived.Font = f
             txtReceived.Redraw
-            
+        
+        Case 3
+            txtReceived.PrintNewlineCharacters = newState
     End Select
     
     SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & Index & ").Value", u_NewState
@@ -2993,23 +3027,23 @@ Sub checkForAndOpenLogFile()
     initLogs
     
     Dim deviceName As String
-    Dim fileName As String
+    Dim FileName As String
 
     If serialDevices.Count = 0 Then Exit Sub
     
     deviceName = serialDevices.friendlyName(drpCommports.ListIndex)
     
-    fileName = App.Path & "\logs\" & deviceName
+    FileName = App.Path & "\logs\" & deviceName
     
-    If Dir(fileName, vbDirectory) = "" Then
-        MkDir fileName
+    If Dir(FileName, vbDirectory) = "" Then
+        MkDir FileName
     End If
     
 
     If optLogsReconnect(0).Value = u_Selected Or optLogsReconnect(1).Value = u_Selected Then 'append or overwrite
         Dim sFile As String
         Dim sFile2 As String
-        sFile2 = Dir(fileName & "\*.log", vbNormal)
+        sFile2 = Dir(FileName & "\*.log", vbNormal)
         sFile = sFile2
         
         Do While sFile2 <> ""
@@ -3020,30 +3054,30 @@ Sub checkForAndOpenLogFile()
         logFileHandle = FreeFile
         
         If sFile = "" Then
-            getRightFileName fileName
-            Open fileName For Binary Access Write As logFileHandle
+            getRightFileName FileName
+            Open FileName For Binary Access Write As logFileHandle
         Else
-            fileName = fileName & "\" & sFile
+            FileName = FileName & "\" & sFile
             
             If optLogsReconnect(1).Value = u_Selected Then
-                Kill fileName
+                Kill FileName
             End If
             
-            Open fileName For Binary Access Write As logFileHandle
+            Open FileName For Binary Access Write As logFileHandle
             Seek logFileHandle, LOF(logFileHandle) + 1
         End If
     
     ElseIf optLogsReconnect(2).Value = u_Selected Then 'create new file
-        getRightFileName fileName
+        getRightFileName FileName
         
         logFileHandle = FreeFile
     
-        Open fileName For Binary Access Write As logFileHandle
+        Open FileName For Binary Access Write As logFileHandle
     End If
     
     Dim lastName() As String
-    If fileName <> "" Then
-        lastName = Split(fileName, "\")
+    If FileName <> "" Then
+        lastName = Split(FileName, "\")
         lblInfo(3).Caption = "Current Logfile Name: " & lastName(UBound(lastName))
     Else
         lblInfo(3).Caption = "Current Logfile Name: ..."
@@ -3136,15 +3170,15 @@ End Sub
 Private Sub cmdOpenLog_Click(Button As Integer, X As Single, Y As Single)
 
 Dim deviceName As String
-    Dim fileName As String
+    Dim FileName As String
 
-    fileName = App.Path & "\logs\"
+    FileName = App.Path & "\logs\"
     
     If serialDevices.Count > 0 Then
-        fileName = fileName & serialDevices.friendlyName(drpCommports.ListIndex)
+        FileName = FileName & serialDevices.friendlyName(drpCommports.ListIndex)
     End If
     
-    ShellExecute Me.hWnd, "OPEN", "explorer.exe", fileName, "", vbNormalFocus
+    ShellExecute Me.hWnd, "OPEN", "explorer.exe", FileName, "", vbNormalFocus
     
 End Sub
 
@@ -3519,7 +3553,7 @@ txtReceived.Clear
 
 txtReceived.AddCharAtCursor Chr(27) & "[41m"
 
-txtReceived.AddCharAtCursor "hallo"
+txtReceived.AddCharAtCursor "hallo" & vbCrLf
 txtReceived.RedrawResume
 
 
