@@ -1,7 +1,7 @@
 [History]
 1=#P0#=mb	#P1#=Main	#P2#=SerialConsole/GlobalFunctions/Main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170925234527	#P7#=0	#P8#=4	.
-2=#P0#=mb	#P1#=RegSvr32	#P2#=SerialConsole/RegisterDLLAndOCX/RegSvr32	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170925212151	#P7#=0	#P8#=0	.
-3=#P0#=mb	#P1#=wait	#P2#=SerialConsole/GlobalFunctions/wait	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170925213039	#P7#=0	#P8#=16	.
+2=#P0#=mb	#P1#=wait	#P2#=SerialConsole/GlobalFunctions/wait	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170925213039	#P7#=0	#P8#=16	.
+3=#P0#=mb	#P1#=RegSvr32	#P2#=SerialConsole/RegisterDLLAndOCX/RegSvr32	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170925212151	#P7#=0	#P8#=0	.
 4=#P0#=mb	#P1#=UserControl_WriteProperties	#P2#=SerialConsole/uTextBox/UserControl_WriteProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170925204816	#P7#=0	#P8#=22	.
 5=#P0#=mb	#P1#=UserControl_ReadProperties	#P2#=SerialConsole/uTextBox/UserControl_ReadProperties	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170925204804	#P7#=0	#P8#=13	.
 6=#P0#=mb	#P1#=PrintNewlineCharacters	#P2#=SerialConsole/uTextBox/PrintNewlineCharacters [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20170925204728	#P7#=0	#P8#=1	.
@@ -11,7 +11,7 @@
 10=#P0#=mb	#P1#=chkTxtSettings_Changed	#P2#=SerialConsole/frmMain/chkTxtSettings_Changed	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170925204604	#P7#=0	#P8#=30	.
 11=#P0#=mb	#P1#=Redraw	#P2#=SerialConsole/uTextBox/Redraw	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170925204308	#P7#=0	#P8#=282	.
 12=#P0#=mb	#P1#=Command1_Click	#P2#=SerialConsole/frmMain/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20170925201654	#P7#=0	#P8#=21	.
-13=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uTextBox/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165919	#P7#=0	#P8#=11	.
+13=#P0#=mb	#P1#=Clear	#P2#=SerialConsole/uTextBox/Clear	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20171001211219	#P7#=0	#P8#=5	.
 14=#P0#=mb	#P1#=AddCharAtCursor	#P2#=SerialConsole/uTextBox/AddCharAtCursor	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165825	#P7#=0	#P8#=40	.
 15=#P0#=mb	#P1#=parseConsoleColors	#P2#=SerialConsole/uTextBox/parseConsoleColors	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924165507	#P7#=0	#P8#=-2	.
 16=#P0#=mb	#P1#=ClearMarkup	#P2#=SerialConsole/uTextBox/ClearMarkup	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20170924163301	#P7#=0	#P8#=9	.
