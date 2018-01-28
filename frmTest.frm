@@ -4,7 +4,7 @@ Begin VB.Form frmTest
    ClientHeight    =   6960
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   13815
+   ClientWidth     =   5535
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -16,21 +16,21 @@ Begin VB.Form frmTest
    EndProperty
    LinkTopic       =   "Form1"
    ScaleHeight     =   6960
-   ScaleWidth      =   13815
+   ScaleWidth      =   5535
    StartUpPosition =   3  'Windows Default
    Begin VB.CommandButton Command1 
       Caption         =   "Command1"
-      Height          =   1065
-      Left            =   7635
+      Height          =   285
+      Left            =   1665
       TabIndex        =   2
-      Top             =   3075
+      Top             =   5100
       Width           =   1560
    End
    Begin SerialConsole.uGraph uGraph1 
       Height          =   1290
-      Left            =   2220
+      Left            =   1275
       TabIndex        =   1
-      Top             =   2985
+      Top             =   5385
       Width           =   4500
       _ExtentX        =   7938
       _ExtentY        =   2275
@@ -42,34 +42,25 @@ Begin VB.Form frmTest
       Top             =   5145
    End
    Begin SerialConsole.uTextBox txtReceived 
-      Height          =   2760
-      Left            =   165
+      Height          =   4695
+      Left            =   90
       TabIndex        =   0
-      Top             =   255
+      Top             =   45
       Width           =   5220
-      _ExtentX        =   9208
-      _ExtentY        =   4868
-      BackgroundColor =   3551534
-      BorderColor     =   8421504
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Arial"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   16777215
-      LineNumbers     =   -1  'True
-      LineNumberForeColor=   8421504
-      LineNumberBackground=   2367774
-      RowLines        =   -1  'True
-      RowLineColor    =   8421504
-      RowNumberOnEveryLine=   -1  'True
-      WordWrap        =   -1  'True
-      MultiLine       =   -1  'True
-      ScrollBars      =   1
+      _extentx        =   9208
+      _extenty        =   8281
+      backgroundcolor =   3551534
+      bordercolor     =   8421504
+      font            =   "frmTest.frx":0000
+      forecolor       =   16777215
+      linenumberforecolor=   8421504
+      linenumberbackground=   2367774
+      rowlines        =   -1  'True
+      rowlinecolor    =   8421504
+      rownumberoneveryline=   -1  'True
+      wordwrap        =   -1  'True
+      multiline       =   -1  'True
+      scrollbars      =   1
    End
 End
 Attribute VB_Name = "frmTest"
@@ -90,14 +81,46 @@ Private Sub Form_Load()
     
     Me.Visible = True
     
+    Dim f As StdFont
+    Set f = New StdFont
+    
+    
+    f.Name = "CompendiumArcana Ctrl Char Hex"
+    f.Size = 12
+    
+    f.Bold = False
+    Set txtReceived.Font = f
+    txtReceived.Redraw
+            
+    txtReceived.PrintNewlineCharacters = False
+    txtReceived.Text = "[32mDit is een test" & vbCrLf & "en nog eentj`e dan." & vbCrLf
+    
+    txtReceived.m_CursorPos = txtReceived.TextLength - 1
+    txtReceived.AddCharAtCursor "[32mDit is een       test" & vbCrLf & "en nog eenawdddawdawdtje dan." & vbCrLf & "[32mDit is een       test" & vbCrLf & "en nog eenawdddawdawdtje dan." & vbCrLf & "[32mDit is een       test" & vbCrLf & "en nog eenawdddawdawdtje dan." & vbCrLf
+    
+    txtReceived.AddCharAtCursor "[32mDit is een test tskskj tkjwlk tlkjsf kjslda kdjaals ldkjas kdjsladkjasd kjdk sjd ksj ks  test" & vbCrLf & "en nog ewdawdawdawdentje dan." & vbCrLf
+    
+    txtReceived.AddCharAtCursor "[32mDit is een test" & vbCrLf & "en nog eentje dan. " & vbCrLf
+
+    txtReceived.AddCharAtCursor "[32mDit is een test" & vbCrLf & "en nog eentje dan." & vbCrLf
+    
+    txtReceived.AddCharAtCursor "[32mDit is een test" & vbCrLf & "en nog eentje dan." & vbCrLf
+    
+    txtReceived.Redraw
+    Me.Left = -Me.ScaleWidth * 1.2
     'Do While 1
     Dim i As Long
-    For i = 0 To 200
-        Timer1_Timer
-        DoEvents
-    Next i
+'    For i = 0 To 200
+'        Timer1_Timer
+'        DoEvents
+'    Next i
     'Loop
     
+End Sub
+
+Private Sub Form_Resize()
+    txtReceived.Left = 0
+    txtReceived.Width = Me.ScaleWidth
 End Sub
 
 Private Sub Timer1_Timer()
