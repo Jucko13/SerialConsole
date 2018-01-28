@@ -23,8 +23,8 @@ Sub Main()
         'MsgBox "'" & commandProcessed & "'"
         SendMessageToInstances commandProcessed
     Else
-        Dim t As TypeLibInfo
-        Set t = TLI.TypeLibInfoFromFile(App.Path & "/MSCOMM32_ALTERED.OCX")
+        'Dim t As TypeLibInfo
+        'Set t = TLI.TypeLibInfoFromFile(App.Path & "/MSCOMM32_ALTERED.OCX")
     
         On Error GoTo NO_DLLS
         
@@ -38,7 +38,7 @@ Sub Main()
 Exit Sub
 NO_DLLS:
     Dim errNum As Long
-    errNum = Err.number
+    errNum = Err.Number
     
     If errNum <> 713 And errNum <> 339 Then Exit Sub
     
