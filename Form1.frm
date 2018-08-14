@@ -142,14 +142,14 @@ Begin VB.Form frmMain
       Value           =   0
    End
    Begin SerialConsole.uFrame frmReconnectSettings 
-      Height          =   1785
+      Height          =   2685
       Left            =   3735
       TabIndex        =   81
       Top             =   1245
       Visible         =   0   'False
       Width           =   2400
       _ExtentX        =   4233
-      _ExtentY        =   3149
+      _ExtentY        =   4736
       BackgroundColor =   2367774
       BorderColor     =   14737632
       ForeColor       =   16777215
@@ -323,6 +323,70 @@ Begin VB.Form frmMain
          EndProperty
          ForeColor       =   12632256
       End
+      Begin SerialConsole.uCheckBox chkComOptions 
+         Height          =   375
+         Index           =   7
+         Left            =   90
+         TabIndex        =   114
+         Top             =   1770
+         Width           =   2235
+         _ExtentX        =   3942
+         _ExtentY        =   661
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "Auto disconnect on"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   2
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         CheckOffsetLeft =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
+      Begin SerialConsole.uCheckBox chkComOptions 
+         Height          =   375
+         Index           =   8
+         Left            =   75
+         TabIndex        =   115
+         Top             =   2220
+         Width           =   2445
+         _ExtentX        =   4313
+         _ExtentY        =   661
+         BackgroundColor =   2367774
+         Border          =   0   'False
+         BorderColor     =   2367774
+         Caption         =   "Auto Connect on send"
+         CaptionOffsetLeft=   5
+         CaptionOffsetTop=   2
+         CheckBackgroundColor=   2367774
+         CheckBorderColor=   8421504
+         CheckBorderThickness=   2
+         CheckSelectionColor=   4210752
+         CheckSize       =   0
+         CheckOffsetLeft =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Consolas"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12632256
+      End
    End
    Begin VB.Timer tmrCheckUsbStillConnected 
       Enabled         =   0   'False
@@ -402,8 +466,8 @@ Begin VB.Form frmMain
       Left            =   9945
       TabIndex        =   61
       Top             =   4695
-      Width           =   4530
-      _ExtentX        =   7990
+      Width           =   3090
+      _ExtentX        =   5450
       _ExtentY        =   6165
       BackgroundColor =   2367774
       BorderColor     =   14737632
@@ -421,12 +485,12 @@ Begin VB.Form frmMain
       Begin VB.Timer tmrWinsock 
          Enabled         =   0   'False
          Interval        =   100
-         Left            =   2970
-         Top             =   1395
+         Left            =   2280
+         Top             =   1800
       End
       Begin MSWinsockLib.Winsock win 
-         Left            =   2955
-         Top             =   375
+         Left            =   2520
+         Top             =   960
          _ExtentX        =   741
          _ExtentY        =   741
          _Version        =   393216
@@ -1736,7 +1800,7 @@ Begin VB.Form frmMain
          FocusVisible    =   0   'False
          Caption         =   "p"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
+            Name            =   "Wingdings"
             Size            =   20.25
             Charset         =   2
             Weight          =   400
@@ -1800,7 +1864,7 @@ Begin VB.Form frmMain
          FocusVisible    =   0   'False
          Caption         =   "q"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
+            Name            =   "Wingdings"
             Size            =   20.25
             Charset         =   2
             Weight          =   400
@@ -2094,7 +2158,7 @@ Begin VB.Form frmMain
          FocusVisible    =   0   'False
          Caption         =   "u"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
+            Name            =   "Wingdings"
             Size            =   20.25
             Charset         =   2
             Weight          =   400
@@ -2126,7 +2190,7 @@ Begin VB.Form frmMain
          FocusVisible    =   0   'False
          Caption         =   "t"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Wingdings 3"
+            Name            =   "Wingdings"
             Size            =   20.25
             Charset         =   2
             Weight          =   400
@@ -2491,12 +2555,12 @@ Begin VB.Form frmMain
    Begin SerialConsole.uFrame frmWindow 
       Height          =   1980
       Index           =   4
-      Left            =   14955
+      Left            =   15600
       TabIndex        =   87
-      Top             =   4635
+      Top             =   4680
       Visible         =   0   'False
-      Width           =   2805
-      _ExtentX        =   4948
+      Width           =   2205
+      _ExtentX        =   3889
       _ExtentY        =   3493
       BackgroundColor =   2367774
       BorderColor     =   14737632
@@ -2688,6 +2752,132 @@ Begin VB.Form frmMain
          Top             =   555
          Visible         =   0   'False
          Width           =   465
+      End
+   End
+   Begin SerialConsole.uFrame frmWindow 
+      Height          =   3435
+      Index           =   6
+      Left            =   13200
+      TabIndex        =   110
+      Top             =   4800
+      Visible         =   0   'False
+      Width           =   1890
+      _ExtentX        =   3334
+      _ExtentY        =   6059
+      BackgroundColor =   2367774
+      BorderColor     =   14737632
+      ForeColor       =   16777215
+      Caption         =   "Flash Driver"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin SerialConsole.uButton cmdFlash 
+         Height          =   510
+         Index           =   0
+         Left            =   90
+         TabIndex        =   111
+         Top             =   240
+         Width           =   1725
+         _ExtentX        =   3043
+         _ExtentY        =   900
+         BackgroundColor =   14737632
+         BorderColor     =   8421504
+         ForeColor       =   0
+         MouseOverBackgroundColor=   12632256
+         CaptionBorderColor=   12632256
+         FocusColor      =   0
+         BackgroundColorDisabled=   14737632
+         BorderColorDisabled=   8421504
+         ForeColorDisabled=   0
+         MouseOverBackgroundColorDisabled=   12632256
+         CaptionBorderColorDisabled=   12632256
+         FocusColorDisabled=   0
+         FocusVisible    =   0   'False
+         Caption         =   "Trigger Flash"
+         BorderAnimation =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin SerialConsole.uButton cmdFlash 
+         Height          =   510
+         Index           =   1
+         Left            =   90
+         TabIndex        =   112
+         Top             =   825
+         Width           =   1725
+         _ExtentX        =   3043
+         _ExtentY        =   900
+         BackgroundColor =   14737632
+         BorderColor     =   8421504
+         ForeColor       =   0
+         MouseOverBackgroundColor=   12632256
+         CaptionBorderColor=   12632256
+         FocusColor      =   0
+         BackgroundColorDisabled=   14737632
+         BorderColorDisabled=   8421504
+         ForeColorDisabled=   0
+         MouseOverBackgroundColorDisabled=   12632256
+         CaptionBorderColorDisabled=   12632256
+         FocusColorDisabled=   0
+         FocusVisible    =   0   'False
+         Caption         =   "Flash 1000"
+         BorderAnimation =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin SerialConsole.uButton cmdFlash 
+         Height          =   510
+         Index           =   2
+         Left            =   90
+         TabIndex        =   113
+         Top             =   1410
+         Width           =   1725
+         _ExtentX        =   3043
+         _ExtentY        =   900
+         BackgroundColor =   14737632
+         BorderColor     =   8421504
+         ForeColor       =   0
+         MouseOverBackgroundColor=   12632256
+         CaptionBorderColor=   12632256
+         FocusColor      =   0
+         BackgroundColorDisabled=   14737632
+         BorderColorDisabled=   8421504
+         ForeColorDisabled=   0
+         MouseOverBackgroundColorDisabled=   12632256
+         CaptionBorderColorDisabled=   12632256
+         FocusColorDisabled=   0
+         FocusVisible    =   0   'False
+         Caption         =   "Flash OFF"
+         BorderAnimation =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
    End
    Begin VB.Label lblCursorStats 
@@ -3304,6 +3494,24 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, 
     
 End Sub
 
+Private Sub cmdFlash_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
+    Select Case Index
+    
+        Case 0
+            txtOutput.Text = "0x03 ""{2}{1,3}"" 0x02"
+            
+        Case 1
+            txtOutput.Text = "0x03 ""{1}{1,1,1000}"" 0x02"
+            
+        Case 2
+            txtOutput.Text = "0x03 ""{1}{1,1,0}"" 0x02"
+            
+            
+    End Select
+    
+    cmdSend_Click 0, 0, 0
+End Sub
+
 Private Sub cmdOpenLog_Click(Button As Integer, X As Single, Y As Single)
 
 Dim deviceName As String
@@ -3402,11 +3610,11 @@ Function parseInputToBytes(uTxt As uTextBox, Optional addOnSendCharacters As Boo
     
     parseInputToBytes = totalBytes
     
-    Dim tmpStr As String
-    
-    For i = 0 To UBound(totalBytes)
-        tmpStr = tmpStr & totalBytes(i) & " "
-    Next i
+'    Dim tmpStr As String
+'
+'    For i = 0 To UBound(totalBytes)
+'        tmpStr = tmpStr & totalBytes(i) & " "
+'    Next i
     
     'MsgBox tmpStr
 End Function
@@ -3427,7 +3635,16 @@ Private Sub cmdSend_Click(Button As Integer, X As Single, Y As Single)
     Dim tmpCombine As String
     Dim i As Long
     
+        
+    If comm.PortOpen = False Then
+        If chkComOptions(8).Value = u_Checked Then
+            cmdConnect_Click 0, 0, 0
+            DoEvents
+        End If
+    End If
+    
     bytes = parseInputToBytes(txtOutput, True)
+
     
     If comm.PortOpen = True Then
         If (Not (Not bytes)) <> 0 Then
@@ -3705,17 +3922,17 @@ txtReceived.RedrawResume
 
 End Sub
 
-Private Sub drpBaud_ItemChange(ItemIndex As Long)
-    comm.Settings = drpBaud.List(ItemIndex) & ",n,8,1"
+Private Sub drpBaud_ItemChange(itemIndex As Long)
+    comm.Settings = drpBaud.List(itemIndex) & ",n,8,1"
 End Sub
 
-Private Sub drpCommports_ItemChange(ItemIndex As Long)
+Private Sub drpCommports_ItemChange(itemIndex As Long)
     On Error GoTo notWorking
     
-    comm.commPort = Replace(serialDevices.commPort(ItemIndex), "COM", "")
-    SaveSetting "SerialConsole", "dropdown", "selectedCommPort", serialDevices.commPort(ItemIndex)
+    comm.commPort = Replace(serialDevices.commPort(itemIndex), "COM", "")
+    SaveSetting "SerialConsole", "dropdown", "selectedCommPort", serialDevices.commPort(itemIndex)
     
-    setCaption ItemIndex
+    setCaption itemIndex
     
     tmrCheckForReconnect.Enabled = False
     loadReconnect.Loading = False
@@ -3784,9 +4001,9 @@ Sub fillLedColors()
     
 End Sub
 
-Private Sub drpCommports_OnDropdown(cancel As Boolean)
+Private Sub drpCommports_OnDropdown(Cancel As Boolean)
    If comm.PortOpen Then
-        cancel = True
+        Cancel = True
         setStatus "Cant change COMMPORT when connected!", True, -1
         Exit Sub
     Else
@@ -3799,8 +4016,8 @@ Private Sub drpCommports_OnDropdown(cancel As Boolean)
     fillCommportList
 End Sub
 
-Private Sub drpReceiveSpeed_ItemChange(ItemIndex As Long)
-    tmrShowBuffer.Interval = drpReceiveSpeed.ItemData(ItemIndex)
+Private Sub drpReceiveSpeed_ItemChange(itemIndex As Long)
+    tmrShowBuffer.Interval = drpReceiveSpeed.ItemData(itemIndex)
 End Sub
 
 Public Function IsControlInArray(ctl As Object) As Boolean
@@ -3891,11 +4108,11 @@ Sub setFont()
     
 End Sub
 
-Private Sub drpWindowType_ItemChange(ItemIndex As Long)
+Private Sub drpWindowType_ItemChange(itemIndex As Long)
     Dim i As Long
     
     For i = 0 To frmWindow.UBound
-        frmWindow(i).Visible = (i = ItemIndex)
+        frmWindow(i).Visible = (i = itemIndex)
     Next i
     
 End Sub
@@ -3943,6 +4160,7 @@ Sub fillWindowType()
     drpWindowType.AddItem "Logs and Settings"
     drpWindowType.AddItem "History"
     drpWindowType.AddItem "Label List"
+    drpWindowType.AddItem "Flash Driver"
     
     drpWindowType.ItemsVisible = drpWindowType.ListCount
 End Sub
@@ -4097,7 +4315,8 @@ Private Sub Form_Load()
     Me.Width = Screen.TwipsPerPixelX * 862
     
     chkComOptions(6).Caption = "Auto disconnect on" & vbCrLf & "focus loss"
-    
+    chkComOptions(7).Caption = "Auto connect on" & vbCrLf & "gaining focus"
+    chkComOptions(8).Caption = "Auto connect on" & vbCrLf & "send"
     'txtReceived.Text = txtReceived.FileToString("F:\Github\SerialConsole\changelog.txt")
 End Sub
 
@@ -4457,7 +4676,7 @@ Sub fillCommportList(Optional initializeForm As Boolean = False)
 End Sub
 
 
-Private Sub Form_Unload(cancel As Integer)
+Private Sub Form_Unload(Cancel As Integer)
     SaveSetting "SerialConsole", "dropdown", "drpBaud.ListIndex", drpBaud.ListIndex
     SaveSetting "SerialConsole", "dropdown", "drpOnSend.ListIndex", drpOnSend.ListIndex
     SaveSetting "SerialConsole", "dropdown", "drpReceiveSpeed.ListIndex", drpReceiveSpeed.ListIndex
@@ -4609,6 +4828,8 @@ End Sub
 
 Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
     Static timerPart As Boolean
+    Static previousFocusWindow As Long
+    
     
     If Seconds = 0 Then Exit Sub
     
@@ -4641,14 +4862,45 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
     
     timerPart = Not timerPart
     
-    If chkComOptions(6).Value = u_Checked Then
     
-        If comm.PortOpen And GetForegroundWindow() <> Me.hWnd Then
+    '-------------------------
+    
+    Dim currentFocusWindow As Long
+    
+    currentFocusWindow = GetForegroundWindow()
+    If previousFocusWindow = 0 Then previousFocusWindow = currentFocusWindow
+    
+    If chkComOptions(7).Value = u_Checked Then
+    
+        If Not comm.PortOpen And currentFocusWindow = Me.hWnd And previousFocusWindow <> currentFocusWindow Then
             cmdConnect_Click 0, 0, 0
-            setStatus "Disconnected by focus loss"
+            If comm.PortOpen Then
+                setStatus "Connected by: program got focus."
+                
+            Else
+                setStatus "Could not reconnect after gaining focus!", True
+            End If
+            loadReconnect.Loading = False
         End If
         
     End If
+    
+    If chkComOptions(6).Value = u_Checked Then
+    
+        If comm.PortOpen And currentFocusWindow <> Me.hWnd And previousFocusWindow <> currentFocusWindow Then
+            cmdConnect_Click 0, 0, 0
+            If Not comm.PortOpen Then
+                setStatus "Disconnected by: program lost focus."
+                loadReconnect.Loading = True
+            End If
+            
+        End If
+        
+    End If
+    
+    previousFocusWindow = currentFocusWindow
+    
+    '-------------------------
     'Debug.Print Me.ActiveControl.Name
     
 
@@ -5262,6 +5514,10 @@ Private Sub cmdWinsockHost_Click(Button As Integer, X As Single, Y As Single)
         tmrWinsock.Enabled = True
         
     End If
+End Sub
+
+Private Sub uButton1_Click(Button As Integer, X As Single, Y As Single)
+
 End Sub
 
 Private Sub win_ConnectionRequest(ByVal requestID As Long)
