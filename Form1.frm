@@ -4,7 +4,7 @@ Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmMain 
    AutoRedraw      =   -1  'True
    BackColor       =   &H0024211E&
-   ClientHeight    =   8325
+   ClientHeight    =   8910
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   17940
@@ -21,7 +21,7 @@ Begin VB.Form frmMain
    Icon            =   "Form1.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   ScaleHeight     =   555
+   ScaleHeight     =   594
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1196
    StartUpPosition =   2  'CenterScreen
@@ -2755,15 +2755,15 @@ Begin VB.Form frmMain
       End
    End
    Begin SerialConsole.uFrame frmWindow 
-      Height          =   3435
+      Height          =   3690
       Index           =   6
-      Left            =   13200
+      Left            =   13185
       TabIndex        =   110
-      Top             =   4800
+      Top             =   4590
       Visible         =   0   'False
-      Width           =   1890
-      _ExtentX        =   3334
-      _ExtentY        =   6059
+      Width           =   1935
+      _ExtentX        =   3413
+      _ExtentY        =   6509
       BackgroundColor =   2367774
       BorderColor     =   14737632
       ForeColor       =   16777215
@@ -2868,6 +2868,108 @@ Begin VB.Form frmMain
          FocusColorDisabled=   0
          FocusVisible    =   0   'False
          Caption         =   "Flash OFF"
+         BorderAnimation =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin SerialConsole.uButton cmdFlash 
+         Height          =   510
+         Index           =   3
+         Left            =   90
+         TabIndex        =   116
+         Top             =   2130
+         Width           =   1725
+         _ExtentX        =   3043
+         _ExtentY        =   900
+         BackgroundColor =   14737632
+         BorderColor     =   8421504
+         ForeColor       =   0
+         MouseOverBackgroundColor=   12632256
+         CaptionBorderColor=   12632256
+         FocusColor      =   0
+         BackgroundColorDisabled=   14737632
+         BorderColorDisabled=   8421504
+         ForeColorDisabled=   0
+         MouseOverBackgroundColorDisabled=   12632256
+         CaptionBorderColorDisabled=   12632256
+         FocusColorDisabled=   0
+         FocusVisible    =   0   'False
+         Caption         =   "PWM by Resistor"
+         BorderAnimation =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin SerialConsole.uButton cmdFlash 
+         Height          =   510
+         Index           =   4
+         Left            =   90
+         TabIndex        =   117
+         Top             =   2715
+         Width           =   1725
+         _ExtentX        =   3043
+         _ExtentY        =   900
+         BackgroundColor =   14737632
+         BorderColor     =   8421504
+         ForeColor       =   0
+         MouseOverBackgroundColor=   12632256
+         CaptionBorderColor=   12632256
+         FocusColor      =   0
+         BackgroundColorDisabled=   14737632
+         BorderColorDisabled=   8421504
+         ForeColorDisabled=   0
+         MouseOverBackgroundColorDisabled=   12632256
+         CaptionBorderColorDisabled=   12632256
+         FocusColorDisabled=   0
+         FocusVisible    =   0   'False
+         Caption         =   "PWM MAX"
+         BorderAnimation =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin SerialConsole.uButton cmdFlash 
+         Height          =   510
+         Index           =   5
+         Left            =   90
+         TabIndex        =   118
+         Top             =   3300
+         Width           =   1725
+         _ExtentX        =   3043
+         _ExtentY        =   900
+         BackgroundColor =   14737632
+         BorderColor     =   8421504
+         ForeColor       =   0
+         MouseOverBackgroundColor=   12632256
+         CaptionBorderColor=   12632256
+         FocusColor      =   0
+         BackgroundColorDisabled=   14737632
+         BorderColorDisabled=   8421504
+         ForeColorDisabled=   0
+         MouseOverBackgroundColorDisabled=   12632256
+         CaptionBorderColorDisabled=   12632256
+         FocusColorDisabled=   0
+         FocusVisible    =   0   'False
+         Caption         =   "PWM OFF"
          BorderAnimation =   0
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
@@ -3090,13 +3192,13 @@ Dim logFileHandle As Long
 Private WithEvents tmrCheckBitRate As SelfTimer
 Attribute tmrCheckBitRate.VB_VarHelpID = -1
 
-Private Sub chkComOptions_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkComOptions_Changed(index As Integer, u_NewState As uCheckboxConstants)
     On Error GoTo disconnectError:
     Dim newState As Boolean
     
     newState = (u_NewState = u_Checked)
     
-    Select Case Index
+    Select Case index
     
         Case 0
             comm.DTREnable = newState
@@ -3119,9 +3221,9 @@ disconnectError:
         
     End If
     
-    SaveSetting "SerialConsole", "checkboxes", "chkComOptions(" & Index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkComOptions(" & index & ").Value", u_NewState
 
-    setCheckColors chkComOptions(Index), newState
+    setCheckColors chkComOptions(index), newState
 
 End Sub
 
@@ -3171,8 +3273,8 @@ Private Sub chkRefreshZebro_Changed(u_NewState As uCheckboxConstants)
     tmrGetConnected.Enabled = (u_NewState = u_Checked)
 End Sub
 
-Private Sub chkSend_Changed(Index As Integer, u_NewState As uCheckboxConstants)
-    setCheckColors chkSend(Index), u_NewState = u_Checked
+Private Sub chkSend_Changed(index As Integer, u_NewState As uCheckboxConstants)
+    setCheckColors chkSend(index), u_NewState = u_Checked
     
 End Sub
 
@@ -3183,8 +3285,8 @@ Private Sub chkSendOnDoubleClick_Changed(u_NewState As uCheckboxConstants)
     setCheckColors chkSendOnDoubleClick, u_NewState = u_Checked
 End Sub
 
-Private Sub chkSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
-    SaveSetting "SerialConsole", "settings", "chkSettings(" & Index & ").Value", u_NewState
+Private Sub chkSettings_Changed(index As Integer, u_NewState As uCheckboxConstants)
+    SaveSetting "SerialConsole", "settings", "chkSettings(" & index & ").Value", u_NewState
     
     If u_NewState = u_Checked Then
         
@@ -3192,13 +3294,13 @@ Private Sub chkSettings_Changed(Index As Integer, u_NewState As uCheckboxConstan
         
     End If
     
-    setCheckColors chkSettings(Index), u_NewState = u_Checked
+    setCheckColors chkSettings(index), u_NewState = u_Checked
 End Sub
 
 
 
-Private Sub chkTxtSettings_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uCheckboxConstants)
-    If Index = 2 Then
+Private Sub chkTxtSettings_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uCheckboxConstants)
+    If index = 2 Then
         If u_NewState = u_Checked Then
             u_NewState = u_PartialChecked
         ElseIf u_NewState = u_PartialChecked Then
@@ -3210,14 +3312,14 @@ Private Sub chkTxtSettings_ActivateNextState(Index As Integer, u_Cancel As Boole
     End If
 End Sub
 
-Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxConstants)
+Private Sub chkTxtSettings_Changed(index As Integer, u_NewState As uCheckboxConstants)
     Dim newState As Boolean
     Dim f As StdFont
     Set f = New StdFont
     
     newState = (u_NewState = u_Checked)
     
-    Select Case Index
+    Select Case index
         Case 1
             txtReceived.ConsoleColors = newState
             
@@ -3241,9 +3343,9 @@ Private Sub chkTxtSettings_Changed(Index As Integer, u_NewState As uCheckboxCons
             txtReceived.PrintNewlineCharacters = newState
     End Select
     
-    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & Index & ").Value", u_NewState
+    SaveSetting "SerialConsole", "checkboxes", "chkTxtSettings(" & index & ").Value", u_NewState
     
-    setCheckColors chkTxtSettings(Index), newState
+    setCheckColors chkTxtSettings(index), newState
 End Sub
 
 
@@ -3445,13 +3547,13 @@ Sub getRightFileName(ByRef currentFilename As String)
     
 End Sub
 
-Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdControls_Click(index As Integer, Button As Integer, X As Single, Y As Single)
     
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            Select Case Index
+            Select Case index
             
                 Case 0
                     sendCommand i, 1, 32, 1, 255
@@ -3478,14 +3580,14 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, 
     Next i
     
     
-    Select Case Index
+    Select Case index
         Case 4 To 9
             
-            If ledCommand = Index - 4 Then
+            If ledCommand = index - 4 Then
                 ledCommand = -1
                 frmColors.Visible = False
             Else
-                ledCommand = Index - 4
+                ledCommand = index - 4
                 frmColors.Caption = "Colors for Led " & ledCommand + 1
                 frmColors.Visible = True
                 
@@ -3494,18 +3596,26 @@ Private Sub cmdControls_Click(Index As Integer, Button As Integer, X As Single, 
     
 End Sub
 
-Private Sub cmdFlash_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
-    Select Case Index
+Private Sub cmdFlash_Click(index As Integer, Button As Integer, X As Single, Y As Single)
+    Select Case index
     
         Case 0
-            txtOutput.Text = "0x03 ""{2}{1,3}"" 0x02"
+            txtOutput.Text = "0x02 ""{2}{1,3}"" 0x03"
             
         Case 1
-            txtOutput.Text = "0x03 ""{1}{1,1,1000}"" 0x02"
+            txtOutput.Text = "0x02 ""{1}{1,1,1000}"" 0x03"
             
         Case 2
-            txtOutput.Text = "0x03 ""{1}{1,1,0}"" 0x02"
+            txtOutput.Text = "0x02 ""{1}{1,1,0}"" 0x03"
             
+        Case 3
+            txtOutput.Text = "0x02 ""{1}{1,3,-1}"" 0x03"
+            
+        Case 4
+            txtOutput.Text = "0x02 ""{1}{1,3,14}"" 0x03"
+            
+        Case 5
+            txtOutput.Text = "0x02 ""{1}{1,3,0}"" 0x03"
             
     End Select
     
@@ -3715,9 +3825,9 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     Next i
 End Sub
 
-Private Sub cmdZebro_Click(Index As Integer, Button As Integer, X As Single, Y As Single)
+Private Sub cmdZebro_Click(index As Integer, Button As Integer, X As Single, Y As Single)
         
-    picoSendCommand(Index) = Not picoSendCommand(Index)
+    picoSendCommand(index) = Not picoSendCommand(index)
     
     
     Dim i As Long
@@ -3886,7 +3996,7 @@ End Sub
 
 
 
-Private Sub Command1_Click(Index As Integer)
+Private Sub Command1_Click(index As Integer)
 '
 '    Select Case Index
 '        Case 0
@@ -3943,11 +4053,11 @@ notWorking:
     
 End Sub
 
-Sub setCaption(Optional Index As Long = -1)
+Sub setCaption(Optional index As Long = -1)
     Dim capt As String
     
-    If Index > -1 And Index < serialDevices.Count Then
-        capt = serialDevices.commPort(Index) & " - "
+    If index > -1 And index < serialDevices.Count Then
+        capt = serialDevices.commPort(index) & " - "
     End If
     
     Me.Caption = capt & "SerialConsole - V1.0 by Ricardo de Roode"
@@ -4704,8 +4814,8 @@ Private Sub Form_Unload(Cancel As Integer)
     DoEvents
 End Sub
 
-Private Sub lblInfo_DblClick(Index As Integer)
-    Select Case Index
+Private Sub lblInfo_DblClick(index As Integer)
+    Select Case index
         Case 1
             bitsSend = 0
             changeBitsSendReceived
@@ -4715,9 +4825,9 @@ Private Sub lblInfo_DblClick(Index As Integer)
     End Select
 End Sub
 
-Private Sub LBLSplit_Click(Index As Integer)
+Private Sub LBLSplit_Click(index As Integer)
     
-    Select Case Index
+    Select Case index
         Case 0
             dragSplitPercentage = 0
             
@@ -4741,8 +4851,8 @@ Private Sub lstHistory_DblClick()
     
 End Sub
 
-Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
-    If optInput(Index).Value = u_Selected Then
+Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
+    If optInput(index).Value = u_Selected Then
         u_NewState = u_UnSelected
         u_Cancel = True
     End If
@@ -4750,12 +4860,12 @@ Private Sub optInput_ActivateNextState(Index As Integer, u_Cancel As Boolean, u_
     
 End Sub
 
-Private Sub optInput_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optInput_Changed(index As Integer, u_NewState As uOptionBoxConstants)
     txtOutput_Changed
     txtSearch_Changed
 End Sub
 
-Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxConstants)
+Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxConstants)
     Dim i As Long
     
     For i = 0 To optLogsReconnect.UBound
@@ -4763,12 +4873,12 @@ Private Sub optLogsReconnect_Changed(Index As Integer, u_NewState As uOptionBoxC
     Next i
 End Sub
 
-Private Sub picColors_Click(Index As Integer)
+Private Sub picColors_Click(index As Integer)
     Dim i As Byte
     
     For i = 0 To UBound(picoSendCommand)
         If picoSendCommand(i) And picoConnected(i) Then
-            sendCommand i, 1, 33 + ledCommand, CByte(Index), 255
+            sendCommand i, 1, 33 + ledCommand, CByte(index), 255
         End If
     Next i
     
@@ -5161,13 +5271,13 @@ End Sub
 Sub CheckIfLabelIsAddedOrAdd(whatLabel As String, whatValue As String)
     On Error GoTo ExistsNonObjectErrorHandler
     Dim triedBefore As Boolean
-    Dim Index As Long
+    Dim index As Long
     
     triedBefore = False
     
 tryAgain:
-    Index = arduinoLabels(whatLabel)(0)
-    lblLabel(Index).Caption = whatValue
+    index = arduinoLabels(whatLabel)(0)
+    lblLabel(index).Caption = whatValue
     
     Exit Sub
 ExistsNonObjectErrorHandler:
@@ -5514,10 +5624,6 @@ Private Sub cmdWinsockHost_Click(Button As Integer, X As Single, Y As Single)
         tmrWinsock.Enabled = True
         
     End If
-End Sub
-
-Private Sub uButton1_Click(Button As Integer, X As Single, Y As Single)
-
 End Sub
 
 Private Sub win_ConnectionRequest(ByVal requestID As Long)
