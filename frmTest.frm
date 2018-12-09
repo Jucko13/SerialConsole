@@ -47,20 +47,28 @@ Begin VB.Form frmTest
       TabIndex        =   0
       Top             =   45
       Width           =   5220
-      _extentx        =   9208
-      _extenty        =   8281
-      backgroundcolor =   3551534
-      bordercolor     =   8421504
-      font            =   "frmTest.frx":0000
-      forecolor       =   16777215
-      linenumberforecolor=   8421504
-      linenumberbackground=   2367774
-      rowlines        =   -1  'True
-      rowlinecolor    =   8421504
-      rownumberoneveryline=   -1  'True
-      wordwrap        =   -1  'True
-      multiline       =   -1  'True
-      scrollbars      =   1
+      _ExtentX        =   9208
+      _ExtentY        =   8281
+      BackgroundColor =   3551534
+      BorderColor     =   8421504
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   16777215
+      LineNumberForeColor=   8421504
+      LineNumberBackground=   2367774
+      RowLines        =   -1  'True
+      RowLineColor    =   8421504
+      RowNumberOnEveryLine=   -1  'True
+      WordWrap        =   -1  'True
+      MultiLine       =   -1  'True
+      ScrollBars      =   1
    End
 End
 Attribute VB_Name = "frmTest"

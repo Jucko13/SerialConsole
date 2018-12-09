@@ -1538,7 +1538,7 @@ Begin VB.Form frmMain
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H00808080&
+            ForeColor       =   &H000000FF&
             Height          =   210
             Index           =   2
             Left            =   90
@@ -1559,7 +1559,7 @@ Begin VB.Form frmMain
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H00808080&
+            ForeColor       =   &H0000FF00&
             Height          =   210
             Index           =   1
             Left            =   90
@@ -3334,7 +3334,7 @@ Private Sub chkComOptions_Changed(index As Integer, u_NewState As uCheckboxConst
     
         Case 0
             comm.DTREnable = newState
-            If newState And chkComOptions(2).Value = u_Checked Then
+            If newState And chkComOptions(2).value = u_Checked Then
                 txtReceived.Clear
             End If
             
@@ -3530,17 +3530,17 @@ Private Sub cmdConnect_Click(Button As Integer, X As Single, Y As Single)
     Else
         comm.DTREnable = False
         receiveBufferForShowLength = 0
-        chkRefreshZebro.Value = u_unChecked
+        chkRefreshZebro.value = u_unChecked
         
         comm.PortOpen = True
         comm.InBufferCount = 0
         comm.OutBufferCount = 0
-        comm.DTREnable = (chkComOptions(0).Value = u_Checked)
-        If chkComOptions(2).Value = u_Checked Then txtReceived.Clear
+        comm.DTREnable = (chkComOptions(0).value = u_Checked)
+        If chkComOptions(2).value = u_Checked Then txtReceived.Clear
         
         cmdSend.Enabled = True
         drpCommports.Enabled = False
-        If chkLogsEnable.Value = u_Checked Then checkForAndOpenLogFile
+        If chkLogsEnable.value = u_Checked Then checkForAndOpenLogFile
         tmrCheckForReconnect.Enabled = False
         loadReconnect.Loading = False
         setStatus "Connected!"
@@ -3601,7 +3601,7 @@ Sub checkForAndOpenLogFile()
     End If
     
 
-    If optLogsReconnect(0).Value = u_Selected Or optLogsReconnect(1).Value = u_Selected Then 'append or overwrite
+    If optLogsReconnect(0).value = u_Selected Or optLogsReconnect(1).value = u_Selected Then 'append or overwrite
         Dim sFile As String
         Dim sFile2 As String
         sFile2 = Dir(FileName & "\*.log", vbNormal)
@@ -3620,7 +3620,7 @@ Sub checkForAndOpenLogFile()
         Else
             FileName = FileName & "\" & sFile
             
-            If optLogsReconnect(1).Value = u_Selected Then
+            If optLogsReconnect(1).value = u_Selected Then
                 Kill FileName
             End If
             
@@ -3628,7 +3628,7 @@ Sub checkForAndOpenLogFile()
             Seek logFileHandle, LOF(logFileHandle) + 1
         End If
     
-    ElseIf optLogsReconnect(2).Value = u_Selected Then 'create new file
+    ElseIf optLogsReconnect(2).value = u_Selected Then 'create new file
         getRightFileName FileName
         
         logFileHandle = FreeFile
@@ -3793,7 +3793,7 @@ Function parseInputToBytes(uTxt As uTextBox, Optional addOnSendCharacters As Boo
     forceFunction = -1
     
     For i = optInput.LBound To optInput.UBound
-        If optInput(i).Value = u_Selected Then
+        If optInput(i).value = u_Selected Then
             forceFunction = i
             Exit For
         End If
@@ -3879,14 +3879,15 @@ Private Sub cmdSend_Click(Button As Integer, X As Single, Y As Single)
     
         
     If comm.PortOpen = False Then
-        If chkComOptions(8).Value = u_Checked Then
+        If chkComOptions(8).value = u_Checked Then
             cmdConnect_Click 0, 0, 0
             DoEvents
         End If
     End If
     
     bytes = parseInputToBytes(txtOutput, True)
-
+    
+    Debug.Print bytes(1)
     
     If comm.PortOpen = True Then
         If (Not (Not bytes)) <> 0 Then
@@ -3910,7 +3911,7 @@ Private Sub cmdSend_Click(Button As Integer, X As Single, Y As Single)
         lstHistory.AddItem txtOutput.Text, getOutputOptionsAsLong, 0, -1, -1
     End If
     
-    If chkSend(0).Value = u_Checked Then
+    If chkSend(0).value = u_Checked Then
         txtOutput.Clear
     End If
     
@@ -3926,7 +3927,7 @@ Function getOutputOptionsAsLong() As Long
     Dim i As Long
     
     For i = 0 To optInput.UBound
-        If optInput(i).Value = u_Selected Then
+        If optInput(i).value = u_Selected Then
             outputVal = (outputVal Or (2 ^ i))
         End If
     Next i
@@ -3942,9 +3943,9 @@ Sub setOutputOptionsWithLong(inputVal As Long)
     
     For i = 0 To optInput.UBound
         If (inputVal And (2 ^ i)) > 0 Then
-            optInput(i).Value = u_Selected
+            optInput(i).value = u_Selected
         Else
-            optInput(i).Value = u_UnSelected
+            optInput(i).value = u_UnSelected
         End If
     Next i
     
@@ -4017,7 +4018,7 @@ Private Sub comm_OnComm()
             bitrateInbound = bitrateInbound + RL
             bitsReceived = bitsReceived + RL
             
-            If chkRefreshZebro.Value = u_Checked Then receiveBuffer = receiveBuffer & tmpReceived
+            If chkRefreshZebro.value = u_Checked Then receiveBuffer = receiveBuffer & tmpReceived
             'receiveBufferForShow = receiveBufferForShow & tmpReceived
         
         Case comEvCTS
@@ -4435,23 +4436,31 @@ Sub initToolTips()
     'ttToolTip.Add txtReceived.hWnd, "test"
     ttToolTip.Add drpBaud.hWnd, "Select the used baudrate." & vbCrLf & "Can be changed on the fly."
     ttToolTip.Add cmdConnect.hWnd, "Connect/Disconnect." & vbCrLf & "Shows an animation when reconnect is pending."
-    ttToolTip.Add chkComOptions(0).hWnd, "Data Terminal Ready." & vbCrLf & "Resets Arduino on connect and on rising toggle."
-
-    ttToolTip.Add chkTxtSettings(1).hWnd, "Enable support for Ansii console colors"
-    
-    ttToolTip.Add chkTxtSettings(2).hWnd, "Show the received data in HEX or DEC (Hold: H for HEX, D for DEC)"
-    ttToolTip.Add chkTxtSettings(0).hWnd, "Automatically scrolldown in textbox when receiving data"
     ttToolTip.Add drpCommports.hWnd, "List of available comports." & vbCrLf & "Click to refresh list."
-    ttToolTip.Add chkComOptions(1).hWnd, "Request To Send"
     ttToolTip.Add drpReceiveSpeed.hWnd, "Set the receive window refresh rate." & vbCrLf & "Fully utilized baudrates above 115200 requires lower speed."
     
+    ttToolTip.Add chkTxtSettings(0).hWnd, "Automatically scrolldown in textbox when receiving data."
+    ttToolTip.Add chkTxtSettings(1).hWnd, "Enable support for Ansii console colors."
+    ttToolTip.Add chkTxtSettings(2).hWnd, "Show the received data in HEX or DEC (Hold: H for HEX, D for DEC)."
+    ttToolTip.Add chkTxtSettings(3).hWnd, "Show the Carriage return and line feed characters in the output window."
     
+    
+    ttToolTip.Add chkComOptions(0).hWnd, "Data Terminal Ready." & vbCrLf & "Resets Arduino on connect and on rising toggle."
+    ttToolTip.Add chkComOptions(1).hWnd, "Request To Send"
     ttToolTip.Add chkComOptions(2).hWnd, "Clear receive window on connect" & vbCrLf & "or on rising edge of DTR."
     ttToolTip.Add chkComOptions(3).hWnd, "Disconnect when you want to upload" & vbCrLf & "with VisualMicro or the Arduino IDE."
     ttToolTip.Add chkComOptions(4).hWnd, "Automatically connect when disconnect" & vbCrLf & "was triggered by Auto Disconnect."
     ttToolTip.Add chkComOptions(5).hWnd, "Automatically connect when USB is" & vbCrLf & "plugged after it was disconnected."
     
-
+    
+    ttToolTip.Add chkSend(0).hWnd, "Clear On Send"
+    
+    ttToolTip.Add optInput(0).hWnd, "Parse input as ANSII. (on: abcd, off:""abcd"")." & vbCrLf & "Click again to disable."
+    ttToolTip.Add optInput(1).hWnd, "Parse input as Binary (on: 11001100, off: 0b11001100)." & vbCrLf & "Click again to disable."
+    ttToolTip.Add optInput(2).hWnd, "Parse input as Hexadecimal. (on: 11001100, off: 0b11001100)." & vbCrLf & "Click again to disable."
+    ttToolTip.Add optInput(3).hWnd, "Parse input as Decimals. (on: 255, off: 255)." & vbCrLf & "Click again to disable."
+    ttToolTip.Add optInput(4).hWnd, "Parse input as Octal. (on: 731, off: 0731)." & vbCrLf & "Click again to disable."
+    
 
     'ttToolTip.Add .hWnd, ""
     'ttToolTip.Add .hWnd, ""
@@ -4543,24 +4552,24 @@ Private Sub Form_Load()
     drpReceiveSpeed.ListIndex = GetSetting("SerialConsole", "dropdown", "drpReceiveSpeed.ListIndex", 0)
     drpWindowType.ListIndex = GetSetting("SerialConsole", "dropdown", "drpWindowType.ListIndex", 0)
     
-    chkLogsEnable.Value = GetSetting("SerialConsole", "logs", "chkLogsEnable.Value", u_unChecked)
-    chkSendOnDoubleClick.Value = GetSetting("SerialConsole", "history", "chkSendOnDoubleClick.Value", u_unChecked)
-    chkEnableLabelList.Value = GetSetting("SerialConsole", "label", "chkEnableLabelList.Value", u_unChecked)
+    chkLogsEnable.value = GetSetting("SerialConsole", "logs", "chkLogsEnable.Value", u_unChecked)
+    chkSendOnDoubleClick.value = GetSetting("SerialConsole", "history", "chkSendOnDoubleClick.Value", u_unChecked)
+    chkEnableLabelList.value = GetSetting("SerialConsole", "label", "chkEnableLabelList.Value", u_unChecked)
     
     'loading comport options
     For i = 0 To chkComOptions.UBound
-        chkComOptions(i).Value = GetSetting("SerialConsole", "checkboxes", "chkComOptions(" & i & ").Value", u_unChecked)
+        chkComOptions(i).value = GetSetting("SerialConsole", "checkboxes", "chkComOptions(" & i & ").Value", u_unChecked)
     Next i
     For i = 0 To chkTxtSettings.UBound
-        chkTxtSettings(i).Value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
+        chkTxtSettings(i).value = GetSetting("SerialConsole", "checkboxes", "chkTxtSettings(" & i & ").Value", u_unChecked)
     Next i
     
     'loading reconnect checkboxes
     For i = 0 To optLogsReconnect.UBound
-        optLogsReconnect(i).Value = GetSetting("SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", u_UnSelected)
-        totalCount = totalCount + IIf(optLogsReconnect(i).Value = u_Selected, 1, 0)
+        optLogsReconnect(i).value = GetSetting("SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", u_UnSelected)
+        totalCount = totalCount + IIf(optLogsReconnect(i).value = u_Selected, 1, 0)
     Next i
-    If totalCount = 0 Then optLogsReconnect(0).Value = u_Selected
+    If totalCount = 0 Then optLogsReconnect(0).value = u_Selected
     
     
     'loading history
@@ -5067,13 +5076,13 @@ Private Sub lstHistory_DblClick()
     If i <> -1 Then
         setOutputOptionsWithLong lstHistory.ItemData(i)
         txtOutput.Text = lstHistory.List(i)
-        If chkSendOnDoubleClick.Value = u_Checked Then cmdSend_Click 0, 0, 0
+        If chkSendOnDoubleClick.value = u_Checked Then cmdSend_Click 0, 0, 0
     End If
     
 End Sub
 
 Private Sub optInput_ActivateNextState(index As Integer, u_Cancel As Boolean, u_NewState As uOptionBoxConstants)
-    If optInput(index).Value = u_Selected Then
+    If optInput(index).value = u_Selected Then
         u_NewState = u_UnSelected
         u_Cancel = True
     End If
@@ -5090,7 +5099,7 @@ Private Sub optLogsReconnect_Changed(index As Integer, u_NewState As uOptionBoxC
     Dim i As Long
     
     For i = 0 To optLogsReconnect.UBound
-        SaveSetting "SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", optLogsReconnect(i).Value
+        SaveSetting "SerialConsole", "logs", "optLogsReconnect(" & i & ").Value", optLogsReconnect(i).value
     Next i
 End Sub
 
@@ -5171,7 +5180,7 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
                 If serialDevices.isCommAvailable(drpCommports.ListIndex) = False Then
                     cmdConnect_Click 0, 0, 0
                     setStatus "Device was removed unexpectedly!", True, -1
-                    If chkComOptions(5).Value = u_Checked Then
+                    If chkComOptions(5).value = u_Checked Then
                         tmrCheckForReconnect.Enabled = True
                         loadReconnect.Loading = True
                     End If
@@ -5201,7 +5210,7 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
     currentFocusWindow = GetForegroundWindow()
     If previousFocusWindow = 0 Then previousFocusWindow = currentFocusWindow
     
-    If chkComOptions(7).Value = u_Checked Then
+    If chkComOptions(7).value = u_Checked Then
     
         If Not comm.PortOpen And currentFocusWindow = Me.hWnd And previousFocusWindow <> currentFocusWindow Then
             cmdConnect_Click 0, 0, 0
@@ -5216,7 +5225,7 @@ Private Sub tmrCheckBitRate_Timer(ByVal Seconds As Currency)
         
     End If
     
-    If chkComOptions(6).Value = u_Checked Then
+    If chkComOptions(6).value = u_Checked Then
     
         If comm.PortOpen And currentFocusWindow <> Me.hWnd And previousFocusWindow <> currentFocusWindow Then
             cmdConnect_Click 0, 0, 0
@@ -5265,7 +5274,7 @@ Private Sub txtDataExchange_Change()
     
     txtDataExchange.Text = ""
     
-    If chkComOptions(3).Value <> u_Checked Then Exit Sub
+    If chkComOptions(3).value <> u_Checked Then Exit Sub
     
     If UBound(strSplit) <> 1 Then
         MsgBox "Not a valid message!"
@@ -5278,7 +5287,7 @@ Private Sub txtDataExchange_Change()
             If comm.PortOpen = True Then
                 If strSplit(1) = "{serial.port}" Or serialDevices.commPort(drpCommports.ListIndex) = strSplit(1) Then
                     cmdConnect_Click 0, 0, 0
-                    If chkComOptions(4).Value = u_Checked Then
+                    If chkComOptions(4).value = u_Checked Then
                         tmrCheckForReconnect.Enabled = False
                         tmrCheckForReconnect.Enabled = True
                         loadReconnect.Loading = True
@@ -5341,7 +5350,7 @@ Exit Sub
 disconnectFromDevice:
     cmdConnect_Click 0, 0, 0
     setStatus err.Description, True, err.Number
-    If chkComOptions(5).Value = u_Checked Then
+    If chkComOptions(5).value = u_Checked Then
         tmrCheckForReconnect.Enabled = True
         loadReconnect.Loading = True
     End If
@@ -5368,7 +5377,7 @@ Private Sub tmrShowBuffer_Timer()
     txtReceived.SelStart = txtReceived.TextLength
     
     
-    If chkSettings(0).Value = u_Checked Then
+    If chkSettings(0).value = u_Checked Then
         
     Else
         txtReceived.AddCharAtCursor Left$(receiveBufferForShow, receiveBufferForShowLength), True
@@ -5383,9 +5392,9 @@ Private Sub tmrShowBuffer_Timer()
     
     txtReceived.RedrawResume
     
-    If chkTxtSettings(0).Value = u_Checked Then txtReceived.ScrollToEnd
+    If chkTxtSettings(0).value = u_Checked Then txtReceived.ScrollToEnd
     
-    If chkLogsEnable.Value = u_Checked And logFileHandle <> -1 Then
+    If chkLogsEnable.value = u_Checked And logFileHandle <> -1 Then
         Put logFileHandle, , Mid$(receiveBufferForShow, 1, receiveBufferForShowLength)
     End If
     
@@ -5394,7 +5403,7 @@ Private Sub tmrShowBuffer_Timer()
     changeBitsSendReceived
     
     
-    If chkRefreshZebro.Value = u_Checked Then
+    If chkRefreshZebro.value = u_Checked Then
         processIncommingMessage
     End If
     
@@ -5425,14 +5434,14 @@ Sub ProcessGraphData()
     Dim i As Long, j As Long
     
     If (drpWindowType.ListIndex <> 2 And drpWindowType.ListIndex <> 5) Or _
-        (chkEnableGraph.Value <> u_Checked And chkEnableLabelList.Value <> u_Checked) Then
+        (chkEnableGraph.value <> u_Checked And chkEnableLabelList.value <> u_Checked) Then
         receiveBufferArduinoLength = 0
         Exit Sub
     End If
     
     
     If InStr(1, receiveBufferArduino, vbCrLf) > 0 Then
-        If chkEnableGraph.Value = u_Checked Then
+        If chkEnableGraph.value = u_Checked Then
             
             tmpSplit = Split(Left$(receiveBufferArduino, receiveBufferArduinoLength), vbCrLf)
             
@@ -5460,7 +5469,7 @@ Sub ProcessGraphData()
             
             graphArduino.Redraw
             
-        ElseIf chkEnableLabelList.Value = u_Checked Then
+        ElseIf chkEnableLabelList.value = u_Checked Then
             tmpSplit = Split(Left$(receiveBufferArduino, receiveBufferArduinoLength), vbCrLf)
             
             For i = 0 To UBound(tmpSplit)
@@ -5575,7 +5584,7 @@ Dim i As Long, j As Long
     forceFunction = -1
     
     For i = optInput.LBound To optInput.UBound
-        If optInput(i).Value = u_Selected Then
+        If optInput(i).value = u_Selected Then
             forceFunction = i
             Exit For
         End If
@@ -5709,8 +5718,9 @@ Private Sub txtReceived_KeyDown(KeyCode As Integer, Shift As Integer)
         txtSearch.SetFocus
         txtSearch.SelStart = 0
         txtSearch.SelLength = txtSearch.TextLength
+        txtReceived.Redraw
     ElseIf KeyCode = vbKeyH Then
-        chkTxtSettings(2).Value = u_Checked
+        chkTxtSettings(2).value = u_Checked
         KeyCode = 0
         Shift = 0
     End If
@@ -5722,7 +5732,7 @@ End Sub
 
 Private Sub txtReceived_KeyUp(KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyH Then
-        chkTxtSettings(2).Value = u_unChecked
+        chkTxtSettings(2).value = u_unChecked
     End If
 End Sub
 

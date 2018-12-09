@@ -19,6 +19,7 @@ Public Enum ParseType
     pBinary = 2
     pDecimal = 3
     pOctal = 4
+    pControl = 5
     pNoColor = 99
 End Enum
 
@@ -33,9 +34,16 @@ End Type
 Private totalTypes As Long
 Private types() As TypeStats
 
+Private Type ControlCharacter
+    abbreviations() As String
+    value As Long
+End Type
+
+Private ControlCharacters() As ControlCharacter
+
 
 Private Sub Class_Initialize()
-    totalTypes = 5
+    totalTypes = 6
     ReDim types(0 To totalTypes - 1)
     
     With types(ParseType.pAscii)
@@ -75,10 +83,36 @@ Private Sub Class_Initialize()
         .allowedChars = StrConv("01234567", vbFromUnicode)
         .color = &HDA8972
         .maxLength = 3
-        .prefix = StrConv("0o", vbFromUnicode)
+        .prefix = StrConv("0", vbFromUnicode)
         .suffix = StrConv("", vbFromUnicode)
     End With
+    
+    With types(ParseType.pControl)
+        .allowedChars = StrConv("NULSOHMTXEAQWRCKBF0VID1234YlG567", vbFromUnicode)
+        .color = &H808080
+        .maxLength = 4
+        .prefix = StrConv("", vbFromUnicode)
+        .suffix = StrConv("", vbFromUnicode)
+    End With
+    
+    Dim tmpStr() As String
+    Dim i As Long, j As Long
+    
+    tmpStr = Split("NUL:NULL,SOH:SOM,STX:EOA,ETX:EOM,EOT,ENQ:WRU,ACK:RU,BEL:BELL,BS:FE0,HT:SK,LF,VT:VTAB,FF,CR,SO,SI,DLE:DC0,DC1,DC2,DC3,DC4,NAK:ERR,SYN:SYNC,ETB:lEM,CAN:S0,EM:S1,SUB:S2,ESC:S3,FS:S4,GS:S5,RS:S6,US:S7", ",")
+    ReDim ControlCharacters(0 To UBound(tmpStr) + 1)
+    
+    For i = 0 To UBound(tmpStr)
+        ControlCharacters(i) = NewControlCharacter(tmpStr(i), i)
+    Next i
+    
+    ControlCharacters(i) = NewControlCharacter("DEL", 127)
+    
 End Sub
+
+Private Function NewControlCharacter(abbreviations As String, value As Long) As ControlCharacter
+    NewControlCharacter.abbreviations = Split(abbreviations, ":")
+    NewControlCharacter.value = value
+End Function
 
 Private Function parse(ByRef str As String, mode As ParseType) As Byte()
     Dim outputBytes() As Byte
@@ -103,6 +137,10 @@ Private Function parse(ByRef str As String, mode As ParseType) As Byte()
             ReDim outputBytes(0)
             outputBytes(0) = Val("&O" & str)
             
+        Case pControl
+            ReDim outputBytes(0)
+            outputBytes(0) = ControlCharacterValue(str)
+            
         Case Else
             outputBytes = StrConv("", vbFromUnicode)
             
@@ -110,6 +148,32 @@ Private Function parse(ByRef str As String, mode As ParseType) As Byte()
     
     parse = outputBytes
 End Function
+
+Function ControlCharacterValue(str As String) As Integer
+    Dim i As Long, j As Long
+    
+    Dim l As Long
+    
+    l = Len(str)
+    
+    ControlCharacterValue = -1
+    
+    str = UCase(str)
+    
+    For i = 0 To UBound(ControlCharacters)
+        
+        For j = 0 To UBound(ControlCharacters(i).abbreviations)
+            If l = Len(ControlCharacters(i).abbreviations(j)) Then
+                If ControlCharacters(i).abbreviations(j) = str Then
+                    ControlCharacterValue = ControlCharacters(i).value
+                    Exit Function
+                End If
+            End If
+        Next j
+    Next i
+    
+End Function
+
 
 Function parseString(ByRef str As String, forceMode As Long) As Byte()
     Dim tmpType As ParseType
@@ -153,13 +217,13 @@ Function parseString(ByRef str As String, forceMode As Long) As Byte()
 End Function
 
 Function Bin2Dec(Num As String) As Byte
-    Dim n As Integer, a As Integer, x As Integer
+    Dim n As Integer, a As Integer, X As Integer
     n = Len(Num) - 1
     a = n
     
     Do While n > -1
-        x = Mid(Num, ((a + 1) - n), 1)
-        Bin2Dec = IIf((x = "1"), Bin2Dec + (2 ^ (n)), Bin2Dec)
+        X = Mid(Num, ((a + 1) - n), 1)
+        Bin2Dec = IIf((X = "1"), Bin2Dec + (2 ^ (n)), Bin2Dec)
         n = n - 1
     Loop
 End Function
@@ -285,7 +349,16 @@ Function getTypeByString(ByRef str As String, forceMode As Long) As ParseType
                             getTypeByString = pNoColor
                         End If
                     End If
-            
+                    
+                Case ParseType.pControl
+                    Dim tmpVal As Integer
+                    tmpVal = ControlCharacterValue(str)
+                    If tmpVal <> -1 Then
+                        getTypeByString = pControl
+                    Else
+                        getTypeByString = pNoColor
+                    End If
+                
             End Select
             
         End If
