@@ -1,3 +1,2 @@
-Line 27: Cannot load control comm.
-Line 27: Cannot load control comm.
-Line 27: Cannot load control comm.
+Line 28: Class MSCommLib.MSComm of control comm was not a loaded control class.
+Line 427: Class MSWinsockLib.Winsock of control win was not a loaded control class.
