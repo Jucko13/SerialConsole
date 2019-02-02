@@ -36,7 +36,7 @@ Private types() As TypeStats
 
 Private Type ControlCharacter
     abbreviations() As String
-    value As Long
+    Value As Long
 End Type
 
 Private ControlCharacters() As ControlCharacter
@@ -109,9 +109,9 @@ Private Sub Class_Initialize()
     
 End Sub
 
-Private Function NewControlCharacter(abbreviations As String, value As Long) As ControlCharacter
+Private Function NewControlCharacter(abbreviations As String, Value As Long) As ControlCharacter
     NewControlCharacter.abbreviations = Split(abbreviations, ":")
-    NewControlCharacter.value = value
+    NewControlCharacter.Value = Value
 End Function
 
 Private Function parse(ByRef str As String, mode As ParseType) As Byte()
@@ -123,7 +123,7 @@ Private Function parse(ByRef str As String, mode As ParseType) As Byte()
             
         Case pHex
             ReDim outputBytes(0)
-            outputBytes(0) = Val("&H" & str)
+            outputBytes(0) = val("&H" & str)
             
         Case pBinary
             ReDim outputBytes(0)
@@ -131,11 +131,11 @@ Private Function parse(ByRef str As String, mode As ParseType) As Byte()
             
         Case pDecimal
             ReDim outputBytes(0)
-            outputBytes(0) = Val(str)
+            outputBytes(0) = val(str)
             
         Case pOctal
             ReDim outputBytes(0)
-            outputBytes(0) = Val("&O" & str)
+            outputBytes(0) = val("&O" & str)
             
         Case pControl
             ReDim outputBytes(0)
@@ -165,7 +165,7 @@ Function ControlCharacterValue(str As String) As Integer
         For j = 0 To UBound(ControlCharacters(i).abbreviations)
             If l = Len(ControlCharacters(i).abbreviations(j)) Then
                 If ControlCharacters(i).abbreviations(j) = str Then
-                    ControlCharacterValue = ControlCharacters(i).value
+                    ControlCharacterValue = ControlCharacters(i).Value
                     Exit Function
                 End If
             End If
@@ -259,14 +259,14 @@ Function getTypeByString(ByRef str As String, forceMode As Long) As ParseType
         Select Case forceMode
             Case ParseType.pDecimal
                 If getTypeByString <> pNoColor Then
-                    If Val(str) > 255 Or Val(str) < 0 Then
+                    If val(str) > 255 Or val(str) < 0 Then
                         getTypeByString = pNoColor
                     End If
                 End If
                 
             Case ParseType.pOctal
                 If getTypeByString <> pNoColor Then
-                    If Val("&O" & str) > 255 Or Val("&O" & str) < 0 Then
+                    If val("&O" & str) > 255 Or val("&O" & str) < 0 Then
                         getTypeByString = pNoColor
                     End If
                 End If
@@ -314,26 +314,28 @@ Function getTypeByString(ByRef str As String, forceMode As Long) As ParseType
                 Select Case i
                     Case ParseType.pDecimal
                         If getTypeByString <> pNoColor Then
-                            If Val(str) > 255 Or Val(str) < 0 Then
+                            If val(str) > 255 Or val(str) < 0 Then
                                 getTypeByString = pNoColor
                             End If
                         End If
                 
                     Case ParseType.pOctal
                         If getTypeByString <> pNoColor Then
-                            If Val("&O" & str) > 255 Or Val("&O" & str) < 0 Then
+                            If val("&O" & str) > 255 Or val("&O" & str) < 0 Then
                                 getTypeByString = pNoColor
                             End If
                         End If
                     
 '
                 End Select
+                
+                If getTypeByString <> pNoColor Then Exit Function
             End If
         End If
         
     Next i
     
-    If getTypeByString <> pNoColor Then Exit Function
+    
     
     
     For i = 0 To totalTypes - 1
@@ -345,7 +347,7 @@ Function getTypeByString(ByRef str As String, forceMode As Long) As ParseType
                     getTypeByString = IIf(onlyContainsAllowedChars(prefixLength, bytes, types(i).allowedChars, types(i).maxLength), i, pNoColor)
                     
                     If getTypeByString <> pNoColor Then
-                        If Val(str) > 255 Or Val(str) < 0 Then
+                        If val(str) > 255 Or val(str) < 0 Then
                             getTypeByString = pNoColor
                         End If
                     End If
@@ -362,7 +364,7 @@ Function getTypeByString(ByRef str As String, forceMode As Long) As ParseType
             End Select
             
         End If
-        
+        If getTypeByString <> pNoColor Then Exit Function
     Next i
     
     

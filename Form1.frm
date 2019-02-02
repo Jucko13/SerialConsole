@@ -26,7 +26,7 @@ Begin VB.Form frmMain
    ScaleWidth      =   1196
    StartUpPosition =   2  'CenterScreen
    Begin MSCommLib.MSComm comm 
-      Left            =   3225
+      Left            =   240
       Top             =   5745
       _ExtentX        =   1005
       _ExtentY        =   1005
@@ -1462,7 +1462,6 @@ Begin VB.Form frmMain
       LineNumberBackground=   2367774
       RowLines        =   -1  'True
       RowLineColor    =   4210752
-      RowNumberOnEveryLine=   -1  'True
       WordWrap        =   -1  'True
       MultiLine       =   -1  'True
       ScrollBars      =   1
@@ -3996,11 +3995,11 @@ Private Sub comm_OnComm()
                 tmrShowBuffer_Timer
             End If
             
-            'Mid$(receiveBufferForShow, receiveBufferForShowLength + 1, RL) = tmpReceived
-            'receiveBufferForShowLength = receiveBufferForShowLength + RL
+            Mid$(receiveBufferForShow, receiveBufferForShowLength + 1, RL) = tmpReceived
+            receiveBufferForShowLength = receiveBufferForShowLength + RL
             
-            'Mid$(receiveBufferArduino, receiveBufferArduinoLength + 1, RL) = tmpReceived
-            'receiveBufferArduinoLength = receiveBufferArduinoLength + RL
+            Mid$(receiveBufferArduino, receiveBufferArduinoLength + 1, RL) = tmpReceived
+            receiveBufferArduinoLength = receiveBufferArduinoLength + RL
             
             'Timer.StopTimer
             'Debug.Print Timer.TimeElapsed(pvMilliSecond)
@@ -5460,9 +5459,9 @@ Sub ProcessGraphData()
                 
                 tmpValue = Split(tmpSplit(i), " ")
                 For j = 0 To UBound(tmpValue)
-                    If Val(tmpValue(j)) = tmpValue(j) Then
+                    If val(tmpValue(j)) = tmpValue(j) Then
                         graphArduino.LineVisible(j) = True
-                        graphArduino.AddItem j, Val(tmpValue(j))
+                        graphArduino.AddItem j, val(tmpValue(j))
                     End If
                 Next j
             Next i
